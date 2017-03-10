@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pkusoft.admin.dao.SysUserMapper" >
+  <resultMap id="BaseResultMap" type="com.pkusoft.admin.model.SysUser" >
+    <id column="USER_ID" property="userId" jdbcType="DECIMAL" />
+    <result column="LOGIN_NAME" property="loginName" jdbcType="VARCHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="POLICE_CODE" property="policeCode" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="SALT" property="salt" jdbcType="VARCHAR" />
+    <result column="DEPT_ID" property="deptId" jdbcType="VARCHAR" />
+    <result column="USER_LEVEL" property="userLevel" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="USER_TYPE" property="userType" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="TEL" property="tel" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="IDCARD" property="idcard" jdbcType="VARCHAR" />
+    <result column="CERTIFICATE" property="certificate" jdbcType="VARCHAR" />
+    <result column="CUNITID" property="cunitid" jdbcType="VARCHAR" />
+    <result column="SUNITID" property="sunitid" jdbcType="VARCHAR" />
+    <result column="TUNITID" property="tunitid" jdbcType="VARCHAR" />
+    <result column="RESERVE1" property="reserve1" jdbcType="VARCHAR" />
+    <result column="RESERVE2" property="reserve2" jdbcType="VARCHAR" />
+    <result column="RESERVE3" property="reserve3" jdbcType="VARCHAR" />
+    <result column="RESERVE4" property="reserve4" jdbcType="VARCHAR" />
+    <result column="RESERVE5" property="reserve5" jdbcType="VARCHAR" />
+    <result column="MEMO" property="memo" jdbcType="VARCHAR" />
+    <result column="ADD_USER_ID" property="addUserId" jdbcType="DECIMAL" />
+    <result column="ADD_USER_NAME" property="addUserName" jdbcType="VARCHAR" />
+    <result column="ADD_TIME" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_USER_ID" property="modifyUserId" jdbcType="DECIMAL" />
+    <result column="MODIFY_USER_NAME" property="modifyUserName" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="pageHeader">
+  	<!-- 
+    select * from(select s_.*,rownum rn_ from(
+    -->
+  </sql>
+  <sql id="pageRoot">
+  	  <!-- 
+      ) s_ where rownum &lt;= #{pager.limit}) where rn_ &gt; #{pager.start}
+      -->
+       limit #{pager.start}, #{pager.pageSize} 
+  </sql>
+  <sql id="Criteria_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Criteria_Where_Clause" >
+    <where >
+      <foreach collection="criteria.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+  	USER_ID
+  	, LOGIN_NAME
+  	, USER_NAME
+  	, POLICE_CODE
+  	, PASSWORD
+  	, SALT
+  	, DEPT_ID
+  	, USER_LEVEL
+  	, STATUS
+  	, USER_TYPE
+  	, EMAIL
+  	, TEL
+  	, MOBILE
+  	, IDCARD
+  	, CERTIFICATE
+  	, CUNITID
+  	, SUNITID
+  	, TUNITID
+  	, RESERVE1
+  	, RESERVE2
+  	, RESERVE3
+  	, RESERVE4
+  	, RESERVE5
+  	, MEMO
+  	, ADD_USER_ID
+  	, ADD_USER_NAME
+  	, ADD_TIME
+  	, MODIFY_USER_ID
+  	, MODIFY_USER_NAME
+  	, MODIFY_TIME
+  </sql>
+  <select id="getListByCriteria" resultMap="BaseResultMap" parameterType="com.pkusoft.framework.model.Criteria" >
+  	<if test="pager != null" >
+      <include refid="pageHeader" />
+    </if> 
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_USER
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="pager != null" >
+      <include refid="pageRoot" />
+    </if>
+  </select>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_USER
+    where 
+    USER_ID = #{userId,jdbcType=DECIMAL}
+  </select>
+  <delete id="delete" parameterType="java.lang.Object" >
+    delete from SYS_USER
+    where 
+    USER_ID = #{userId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.pkusoft.framework.model.Criteria" >
+    delete from SYS_USER
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pkusoft.admin.model.SysUser" >
+    insert into SYS_USER (
+  	USER_ID
+  	, LOGIN_NAME
+  	, USER_NAME
+  	, POLICE_CODE
+  	, PASSWORD
+  	, SALT
+  	, DEPT_ID
+  	, USER_LEVEL
+  	, STATUS
+  	, USER_TYPE
+  	, EMAIL
+  	, TEL
+  	, MOBILE
+  	, IDCARD
+  	, CERTIFICATE
+  	, CUNITID
+  	, SUNITID
+  	, TUNITID
+  	, RESERVE1
+  	, RESERVE2
+  	, RESERVE3
+  	, RESERVE4
+  	, RESERVE5
+  	, MEMO
+  	, ADD_USER_ID
+  	, ADD_USER_NAME
+  	, ADD_TIME
+  	, MODIFY_USER_ID
+  	, MODIFY_USER_NAME
+  	, MODIFY_TIME
+      )
+    values (
+  	#{userId,jdbcType=DECIMAL}
+  	, #{loginName,jdbcType=VARCHAR}
+  	, #{userName,jdbcType=VARCHAR}
+  	, #{policeCode,jdbcType=VARCHAR}
+  	, #{password,jdbcType=VARCHAR}
+  	, #{salt,jdbcType=VARCHAR}
+  	, #{deptId,jdbcType=VARCHAR}
+  	, #{userLevel,jdbcType=VARCHAR}
+  	, #{status,jdbcType=VARCHAR}
+  	, #{userType,jdbcType=VARCHAR}
+  	, #{email,jdbcType=VARCHAR}
+  	, #{tel,jdbcType=VARCHAR}
+  	, #{mobile,jdbcType=VARCHAR}
+  	, #{idcard,jdbcType=VARCHAR}
+  	, #{certificate,jdbcType=VARCHAR}
+  	, #{cunitid,jdbcType=VARCHAR}
+  	, #{sunitid,jdbcType=VARCHAR}
+  	, #{tunitid,jdbcType=VARCHAR}
+  	, #{reserve1,jdbcType=VARCHAR}
+  	, #{reserve2,jdbcType=VARCHAR}
+  	, #{reserve3,jdbcType=VARCHAR}
+  	, #{reserve4,jdbcType=VARCHAR}
+  	, #{reserve5,jdbcType=VARCHAR}
+  	, #{memo,jdbcType=VARCHAR}
+  	, #{addUserId,jdbcType=DECIMAL}
+  	, #{addUserName,jdbcType=VARCHAR}
+  	, #{addTime,jdbcType=TIMESTAMP}
+  	, #{modifyUserId,jdbcType=DECIMAL}
+  	, #{modifyUserName,jdbcType=VARCHAR}
+  	, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pkusoft.admin.model.SysUser" >
+    insert into SYS_USER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+	    USER_ID,
+      </if>
+      <if test="loginName != null" >
+	    LOGIN_NAME,
+      </if>
+      <if test="userName != null" >
+	    USER_NAME,
+      </if>
+      <if test="policeCode != null" >
+	    POLICE_CODE,
+      </if>
+      <if test="password != null" >
+	    PASSWORD,
+      </if>
+      <if test="salt != null" >
+	    SALT,
+      </if>
+      <if test="deptId != null" >
+	    DEPT_ID,
+      </if>
+      <if test="userLevel != null" >
+	    USER_LEVEL,
+      </if>
+      <if test="status != null" >
+	    STATUS,
+      </if>
+      <if test="userType != null" >
+	    USER_TYPE,
+      </if>
+      <if test="email != null" >
+	    EMAIL,
+      </if>
+      <if test="tel != null" >
+	    TEL,
+      </if>
+      <if test="mobile != null" >
+	    MOBILE,
+      </if>
+      <if test="idcard != null" >
+	    IDCARD,
+      </if>
+      <if test="certificate != null" >
+	    CERTIFICATE,
+      </if>
+      <if test="cunitid != null" >
+	    CUNITID,
+      </if>
+      <if test="sunitid != null" >
+	    SUNITID,
+      </if>
+      <if test="tunitid != null" >
+	    TUNITID,
+      </if>
+      <if test="reserve1 != null" >
+	    RESERVE1,
+      </if>
+      <if test="reserve2 != null" >
+	    RESERVE2,
+      </if>
+      <if test="reserve3 != null" >
+	    RESERVE3,
+      </if>
+      <if test="reserve4 != null" >
+	    RESERVE4,
+      </if>
+      <if test="reserve5 != null" >
+	    RESERVE5,
+      </if>
+      <if test="memo != null" >
+	    MEMO,
+      </if>
+      <if test="addUserId != null" >
+	    ADD_USER_ID,
+      </if>
+      <if test="addUserName != null" >
+	    ADD_USER_NAME,
+      </if>
+      <if test="addTime != null" >
+	    ADD_TIME,
+      </if>
+      <if test="modifyUserId != null" >
+	    MODIFY_USER_ID,
+      </if>
+      <if test="modifyUserName != null" >
+	    MODIFY_USER_NAME,
+      </if>
+      <if test="modifyTime != null" >
+	    MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+	    #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="loginName != null" >
+	    #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+	    #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="policeCode != null" >
+	    #{policeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+	    #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+	    #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null" >
+	    #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="userLevel != null" >
+	    #{userLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+	    #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+	    #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+	    #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+	    #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+	    #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+	    #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="certificate != null" >
+	    #{certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="cunitid != null" >
+	    #{cunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="sunitid != null" >
+	    #{sunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="tunitid != null" >
+	    #{tunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null" >
+	    #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+	    #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+	    #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+	    #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null" >
+	    #{reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+	    #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="addUserId != null" >
+	    #{addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="addUserName != null" >
+	    #{addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+	    #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+	    #{modifyUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyUserName != null" >
+	    #{modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+	    #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="getCountByCriteria" parameterType="com.pkusoft.framework.model.Criteria" resultType="java.lang.Integer" >
+    select count(*) from SYS_USER
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteriaSelective" parameterType="map" >
+    update SYS_USER
+    <set >
+      <if test="record.userId != null" >
+	    USER_ID = #{record.userId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.loginName != null" >
+	    LOGIN_NAME = #{record.loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userName != null" >
+	    USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.policeCode != null" >
+	    POLICE_CODE = #{record.policeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+	    PASSWORD = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salt != null" >
+	    SALT = #{record.salt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptId != null" >
+	    DEPT_ID = #{record.deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userLevel != null" >
+	    USER_LEVEL = #{record.userLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+	    STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userType != null" >
+	    USER_TYPE = #{record.userType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+	    EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tel != null" >
+	    TEL = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null" >
+	    MOBILE = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idcard != null" >
+	    IDCARD = #{record.idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certificate != null" >
+	    CERTIFICATE = #{record.certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cunitid != null" >
+	    CUNITID = #{record.cunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sunitid != null" >
+	    SUNITID = #{record.sunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tunitid != null" >
+	    TUNITID = #{record.tunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve1 != null" >
+	    RESERVE1 = #{record.reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve2 != null" >
+	    RESERVE2 = #{record.reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve3 != null" >
+	    RESERVE3 = #{record.reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve4 != null" >
+	    RESERVE4 = #{record.reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve5 != null" >
+	    RESERVE5 = #{record.reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memo != null" >
+	    MEMO = #{record.memo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addUserId != null" >
+	    ADD_USER_ID = #{record.addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.addUserName != null" >
+	    ADD_USER_NAME = #{record.addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTime != null" >
+	    ADD_TIME = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyUserId != null" >
+	    MODIFY_USER_ID = #{record.modifyUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.modifyUserName != null" >
+	    MODIFY_USER_NAME = #{record.modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyTime != null" >
+	    MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByCriteria" parameterType="map" >
+    update SYS_USER
+    set 
+		USER_ID = #{record.userId,jdbcType=DECIMAL}
+		, LOGIN_NAME = #{record.loginName,jdbcType=VARCHAR}
+		, USER_NAME = #{record.userName,jdbcType=VARCHAR}
+		, POLICE_CODE = #{record.policeCode,jdbcType=VARCHAR}
+		, PASSWORD = #{record.password,jdbcType=VARCHAR}
+		, SALT = #{record.salt,jdbcType=VARCHAR}
+		, DEPT_ID = #{record.deptId,jdbcType=VARCHAR}
+		, USER_LEVEL = #{record.userLevel,jdbcType=VARCHAR}
+		, STATUS = #{record.status,jdbcType=VARCHAR}
+		, USER_TYPE = #{record.userType,jdbcType=VARCHAR}
+		, EMAIL = #{record.email,jdbcType=VARCHAR}
+		, TEL = #{record.tel,jdbcType=VARCHAR}
+		, MOBILE = #{record.mobile,jdbcType=VARCHAR}
+		, IDCARD = #{record.idcard,jdbcType=VARCHAR}
+		, CERTIFICATE = #{record.certificate,jdbcType=VARCHAR}
+		, CUNITID = #{record.cunitid,jdbcType=VARCHAR}
+		, SUNITID = #{record.sunitid,jdbcType=VARCHAR}
+		, TUNITID = #{record.tunitid,jdbcType=VARCHAR}
+		, RESERVE1 = #{record.reserve1,jdbcType=VARCHAR}
+		, RESERVE2 = #{record.reserve2,jdbcType=VARCHAR}
+		, RESERVE3 = #{record.reserve3,jdbcType=VARCHAR}
+		, RESERVE4 = #{record.reserve4,jdbcType=VARCHAR}
+		, RESERVE5 = #{record.reserve5,jdbcType=VARCHAR}
+		, MEMO = #{record.memo,jdbcType=VARCHAR}
+		, ADD_USER_ID = #{record.addUserId,jdbcType=DECIMAL}
+		, ADD_USER_NAME = #{record.addUserName,jdbcType=VARCHAR}
+		, ADD_TIME = #{record.addTime,jdbcType=TIMESTAMP}
+		, MODIFY_USER_ID = #{record.modifyUserId,jdbcType=DECIMAL}
+		, MODIFY_USER_NAME = #{record.modifyUserName,jdbcType=VARCHAR}
+		, MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateSelective" parameterType="com.pkusoft.admin.model.SysUser" >
+    update SYS_USER
+    <set >
+      <if test="userId != null" >
+       USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="loginName != null" >
+       LOGIN_NAME = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+       USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="policeCode != null" >
+       POLICE_CODE = #{policeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+       PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+       SALT = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null" >
+       DEPT_ID = #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="userLevel != null" >
+       USER_LEVEL = #{userLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+       STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+       USER_TYPE = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+       EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+       TEL = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+       MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+       IDCARD = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="certificate != null" >
+       CERTIFICATE = #{certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="cunitid != null" >
+       CUNITID = #{cunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="sunitid != null" >
+       SUNITID = #{sunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="tunitid != null" >
+       TUNITID = #{tunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null" >
+       RESERVE1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+       RESERVE2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+       RESERVE3 = #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+       RESERVE4 = #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null" >
+       RESERVE5 = #{reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+       MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="addUserId != null" >
+       ADD_USER_ID = #{addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="addUserName != null" >
+       ADD_USER_NAME = #{addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+       ADD_TIME = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+       MODIFY_USER_ID = #{modifyUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyUserName != null" >
+       MODIFY_USER_NAME = #{modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+       MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where 
+    USER_ID = #{userId,jdbcType=DECIMAL}
+  </update>
+  <update id="update" parameterType="com.pkusoft.admin.model.SysUser" >
+    update SYS_USER
+    set 
+		USER_ID = #{userId,jdbcType=DECIMAL}
+		, LOGIN_NAME = #{loginName,jdbcType=VARCHAR}
+		, USER_NAME = #{userName,jdbcType=VARCHAR}
+		, POLICE_CODE = #{policeCode,jdbcType=VARCHAR}
+		, PASSWORD = #{password,jdbcType=VARCHAR}
+		, SALT = #{salt,jdbcType=VARCHAR}
+		, DEPT_ID = #{deptId,jdbcType=VARCHAR}
+		, USER_LEVEL = #{userLevel,jdbcType=VARCHAR}
+		, STATUS = #{status,jdbcType=VARCHAR}
+		, USER_TYPE = #{userType,jdbcType=VARCHAR}
+		, EMAIL = #{email,jdbcType=VARCHAR}
+		, TEL = #{tel,jdbcType=VARCHAR}
+		, MOBILE = #{mobile,jdbcType=VARCHAR}
+		, IDCARD = #{idcard,jdbcType=VARCHAR}
+		, CERTIFICATE = #{certificate,jdbcType=VARCHAR}
+		, CUNITID = #{cunitid,jdbcType=VARCHAR}
+		, SUNITID = #{sunitid,jdbcType=VARCHAR}
+		, TUNITID = #{tunitid,jdbcType=VARCHAR}
+		, RESERVE1 = #{reserve1,jdbcType=VARCHAR}
+		, RESERVE2 = #{reserve2,jdbcType=VARCHAR}
+		, RESERVE3 = #{reserve3,jdbcType=VARCHAR}
+		, RESERVE4 = #{reserve4,jdbcType=VARCHAR}
+		, RESERVE5 = #{reserve5,jdbcType=VARCHAR}
+		, MEMO = #{memo,jdbcType=VARCHAR}
+		, ADD_USER_ID = #{addUserId,jdbcType=DECIMAL}
+		, ADD_USER_NAME = #{addUserName,jdbcType=VARCHAR}
+		, ADD_TIME = #{addTime,jdbcType=TIMESTAMP}
+		, MODIFY_USER_ID = #{modifyUserId,jdbcType=DECIMAL}
+		, MODIFY_USER_NAME = #{modifyUserName,jdbcType=VARCHAR}
+		, MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where 
+    USER_ID = #{userId,jdbcType=DECIMAL}
+  </update> 
+  
+  <select id="getListInRole" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    <if test="pager != null" >
+      <include refid="pageHeader" />
+    </if> 
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_USER
+    where 
+    (USER_ID in (select USER_ID from SYS_ROLE_USER where ROLE_ID = #{roleId,jdbcType=DECIMAL}))
+    <if test="userCunitId != null" >
+       and CUNITID = #{userCunitId,jdbcType=VARCHAR}
+    </if>
+    <if test="userSunitId != null" >
+       and SUNITID = #{userSunitId,jdbcType=VARCHAR}
+    </if>
+    <if test="userTunitId != null" >
+       and TUNITID = #{userTunitId,jdbcType=VARCHAR}
+    </if>
+    <if test="userName != null" >
+    and USER_NAME like '%'||#{userName,jdbcType=VARCHAR}||'%'
+    </if>
+    <if test="pager != null" >
+      <include refid="pageRoot" />
+    </if>
+  </select>
+  <select id="getListNotInRole" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    <if test="pager != null" >
+      <include refid="pageHeader" />
+    </if> 
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_USER
+    where 
+    (USER_ID not in (select USER_ID from SYS_ROLE_USER where ROLE_ID = #{roleId,jdbcType=DECIMAL}))
+    <if test="userCunitId != null" >
+       and CUNITID = #{userCunitId,jdbcType=VARCHAR}
+    </if>
+    <if test="userSunitId != null" >
+       and SUNITID = #{userSunitId,jdbcType=VARCHAR}
+    </if>
+    <if test="userTunitId != null" >
+       and TUNITID = #{userTunitId,jdbcType=VARCHAR}
+    </if>
+    <if test="roleLevel != null" >
+       and USER_LEVEL = #{roleLevel,jdbcType=VARCHAR}  
+    </if>
+    <if test="userName != null" >
+       and USER_NAME like '%'||#{userName,jdbcType=VARCHAR}||'%'
+    </if>
+    <if test="pager != null" >
+      <include refid="pageRoot" />
+    </if>
+  </select>
+  
+  <!-- 获取用户的数据权限配置列表  create by tanggj -->
+  <select id="getUserPermitList" resultType="java.util.Map" parameterType="java.lang.Object" >
+  SELECT t.PERMIT_CODE,
+         t.PERMIT_VALUE
+    FROM Sys_Permit t, Sys_Role_Permit s
+    WHERE t.Permit_Id = s.Permit_Id 
+            <if test="permitCode != null" >
+            AND t.PERMIT_Code = #{permitCode,jdbcType=VARCHAR}
+            </if>
+            AND s.Role_Id = (SELECT a.Role_Id FROM Sys_Role_User a WHERE a.User_Id = #{userId,jdbcType=DECIMAL})
+  </select>
+</mapper>

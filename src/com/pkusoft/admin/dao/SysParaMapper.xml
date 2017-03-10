@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pkusoft.admin.dao.SysParaMapper" >
+  <resultMap id="BaseResultMap" type="com.pkusoft.admin.model.SysPara" >
+    <id column="PARA_CODE" property="paraCode" jdbcType="VARCHAR" />
+    <result column="PARA_NAME" property="paraName" jdbcType="VARCHAR" />
+    <result column="PARA_VALUE" property="paraValue" jdbcType="VARCHAR" />
+    <result column="PARA_DESC" property="paraDesc" jdbcType="VARCHAR" />
+    <result column="VISIABLE" property="visiable" jdbcType="VARCHAR" />
+    <result column="RESERVE1" property="reserve1" jdbcType="VARCHAR" />
+    <result column="RESERVE2" property="reserve2" jdbcType="VARCHAR" />
+    <result column="RESERVE3" property="reserve3" jdbcType="VARCHAR" />
+    <result column="RESERVE4" property="reserve4" jdbcType="VARCHAR" />
+    <result column="RESERVE5" property="reserve5" jdbcType="VARCHAR" />
+    <result column="ADD_USER_ID" property="addUserId" jdbcType="DECIMAL" />
+    <result column="ADD_USER_NAME" property="addUserName" jdbcType="VARCHAR" />
+    <result column="ADD_TIME" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_USER_ID" property="modifyUserId" jdbcType="DECIMAL" />
+    <result column="MODIFY_USER_NAME" property="modifyUserName" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="pageHeader">
+  	<!-- 
+    select * from(select s_.*,rownum rn_ from(
+    -->
+  </sql>
+  <sql id="pageRoot">
+  	  <!-- 
+      ) s_ where rownum &lt;= #{pager.limit}) where rn_ &gt; #{pager.start}
+      -->
+       limit #{pager.start}, #{pager.pageSize} 
+  </sql>
+  <sql id="Criteria_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Criteria_Where_Clause" >
+    <where >
+      <foreach collection="criteria.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+  	PARA_CODE
+  	, PARA_NAME
+  	, PARA_VALUE
+  	, PARA_DESC
+  	, VISIABLE
+  	, RESERVE1
+  	, RESERVE2
+  	, RESERVE3
+  	, RESERVE4
+  	, RESERVE5
+  	, ADD_USER_ID
+  	, ADD_USER_NAME
+  	, ADD_TIME
+  	, MODIFY_USER_ID
+  	, MODIFY_USER_NAME
+  	, MODIFY_TIME
+  </sql>
+  <select id="getListByCriteria" resultMap="BaseResultMap" parameterType="com.pkusoft.framework.model.Criteria" >
+  	<if test="pager != null" >
+      <include refid="pageHeader" />
+    </if> 
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_PARA
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="pager != null" >
+      <include refid="pageRoot" />
+    </if>
+  </select>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_PARA
+    where 
+    PARA_CODE = #{paraCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="delete" parameterType="java.lang.Object" >
+    delete from SYS_PARA
+    where 
+    PARA_CODE = #{paraCode,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.pkusoft.framework.model.Criteria" >
+    delete from SYS_PARA
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pkusoft.admin.model.SysPara" >
+    insert into SYS_PARA (
+  	PARA_CODE
+  	, PARA_NAME
+  	, PARA_VALUE
+  	, PARA_DESC
+  	, VISIABLE
+  	, RESERVE1
+  	, RESERVE2
+  	, RESERVE3
+  	, RESERVE4
+  	, RESERVE5
+  	, ADD_USER_ID
+  	, ADD_USER_NAME
+  	, ADD_TIME
+  	, MODIFY_USER_ID
+  	, MODIFY_USER_NAME
+  	, MODIFY_TIME
+      )
+    values (
+  	#{paraCode,jdbcType=VARCHAR}
+  	, #{paraName,jdbcType=VARCHAR}
+  	, #{paraValue,jdbcType=VARCHAR}
+  	, #{paraDesc,jdbcType=VARCHAR}
+  	, #{visiable,jdbcType=VARCHAR}
+  	, #{reserve1,jdbcType=VARCHAR}
+  	, #{reserve2,jdbcType=VARCHAR}
+  	, #{reserve3,jdbcType=VARCHAR}
+  	, #{reserve4,jdbcType=VARCHAR}
+  	, #{reserve5,jdbcType=VARCHAR}
+  	, #{addUserId,jdbcType=DECIMAL}
+  	, #{addUserName,jdbcType=VARCHAR}
+  	, #{addTime,jdbcType=TIMESTAMP}
+  	, #{modifyUserId,jdbcType=DECIMAL}
+  	, #{modifyUserName,jdbcType=VARCHAR}
+  	, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pkusoft.admin.model.SysPara" >
+    insert into SYS_PARA
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="paraCode != null" >
+	    PARA_CODE,
+      </if>
+      <if test="paraName != null" >
+	    PARA_NAME,
+      </if>
+      <if test="paraValue != null" >
+	    PARA_VALUE,
+      </if>
+      <if test="paraDesc != null" >
+	    PARA_DESC,
+      </if>
+      <if test="visiable != null" >
+	    VISIABLE,
+      </if>
+      <if test="reserve1 != null" >
+	    RESERVE1,
+      </if>
+      <if test="reserve2 != null" >
+	    RESERVE2,
+      </if>
+      <if test="reserve3 != null" >
+	    RESERVE3,
+      </if>
+      <if test="reserve4 != null" >
+	    RESERVE4,
+      </if>
+      <if test="reserve5 != null" >
+	    RESERVE5,
+      </if>
+      <if test="addUserId != null" >
+	    ADD_USER_ID,
+      </if>
+      <if test="addUserName != null" >
+	    ADD_USER_NAME,
+      </if>
+      <if test="addTime != null" >
+	    ADD_TIME,
+      </if>
+      <if test="modifyUserId != null" >
+	    MODIFY_USER_ID,
+      </if>
+      <if test="modifyUserName != null" >
+	    MODIFY_USER_NAME,
+      </if>
+      <if test="modifyTime != null" >
+	    MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="paraCode != null" >
+	    #{paraCode,jdbcType=VARCHAR},
+      </if>
+      <if test="paraName != null" >
+	    #{paraName,jdbcType=VARCHAR},
+      </if>
+      <if test="paraValue != null" >
+	    #{paraValue,jdbcType=VARCHAR},
+      </if>
+      <if test="paraDesc != null" >
+	    #{paraDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="visiable != null" >
+	    #{visiable,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null" >
+	    #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+	    #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+	    #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+	    #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null" >
+	    #{reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="addUserId != null" >
+	    #{addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="addUserName != null" >
+	    #{addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+	    #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+	    #{modifyUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyUserName != null" >
+	    #{modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+	    #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="getCountByCriteria" parameterType="com.pkusoft.framework.model.Criteria" resultType="java.lang.Integer" >
+    select count(*) from SYS_PARA
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteriaSelective" parameterType="map" >
+    update SYS_PARA
+    <set >
+      <if test="record.paraCode != null" >
+	    PARA_CODE = #{record.paraCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paraName != null" >
+	    PARA_NAME = #{record.paraName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paraValue != null" >
+	    PARA_VALUE = #{record.paraValue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paraDesc != null" >
+	    PARA_DESC = #{record.paraDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.visiable != null" >
+	    VISIABLE = #{record.visiable,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve1 != null" >
+	    RESERVE1 = #{record.reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve2 != null" >
+	    RESERVE2 = #{record.reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve3 != null" >
+	    RESERVE3 = #{record.reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve4 != null" >
+	    RESERVE4 = #{record.reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve5 != null" >
+	    RESERVE5 = #{record.reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addUserId != null" >
+	    ADD_USER_ID = #{record.addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.addUserName != null" >
+	    ADD_USER_NAME = #{record.addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTime != null" >
+	    ADD_TIME = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyUserId != null" >
+	    MODIFY_USER_ID = #{record.modifyUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.modifyUserName != null" >
+	    MODIFY_USER_NAME = #{record.modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyTime != null" >
+	    MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByCriteria" parameterType="map" >
+    update SYS_PARA
+    set 
+		PARA_CODE = #{record.paraCode,jdbcType=VARCHAR}
+		, PARA_NAME = #{record.paraName,jdbcType=VARCHAR}
+		, PARA_VALUE = #{record.paraValue,jdbcType=VARCHAR}
+		, PARA_DESC = #{record.paraDesc,jdbcType=VARCHAR}
+		, VISIABLE = #{record.visiable,jdbcType=VARCHAR}
+		, RESERVE1 = #{record.reserve1,jdbcType=VARCHAR}
+		, RESERVE2 = #{record.reserve2,jdbcType=VARCHAR}
+		, RESERVE3 = #{record.reserve3,jdbcType=VARCHAR}
+		, RESERVE4 = #{record.reserve4,jdbcType=VARCHAR}
+		, RESERVE5 = #{record.reserve5,jdbcType=VARCHAR}
+		, ADD_USER_ID = #{record.addUserId,jdbcType=DECIMAL}
+		, ADD_USER_NAME = #{record.addUserName,jdbcType=VARCHAR}
+		, ADD_TIME = #{record.addTime,jdbcType=TIMESTAMP}
+		, MODIFY_USER_ID = #{record.modifyUserId,jdbcType=DECIMAL}
+		, MODIFY_USER_NAME = #{record.modifyUserName,jdbcType=VARCHAR}
+		, MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateSelective" parameterType="com.pkusoft.admin.model.SysPara" >
+    update SYS_PARA
+    <set >
+      <if test="paraCode != null" >
+       PARA_CODE = #{paraCode,jdbcType=VARCHAR},
+      </if>
+      <if test="paraName != null" >
+       PARA_NAME = #{paraName,jdbcType=VARCHAR},
+      </if>
+      <if test="paraValue != null" >
+       PARA_VALUE = #{paraValue,jdbcType=VARCHAR},
+      </if>
+      <if test="paraDesc != null" >
+       PARA_DESC = #{paraDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="visiable != null" >
+       VISIABLE = #{visiable,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null" >
+       RESERVE1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+       RESERVE2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+       RESERVE3 = #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+       RESERVE4 = #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null" >
+       RESERVE5 = #{reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="addUserId != null" >
+       ADD_USER_ID = #{addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="addUserName != null" >
+       ADD_USER_NAME = #{addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+       ADD_TIME = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+       MODIFY_USER_ID = #{modifyUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyUserName != null" >
+       MODIFY_USER_NAME = #{modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+       MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where 
+    PARA_CODE = #{paraCode,jdbcType=VARCHAR}
+  </update>
+  <update id="update" parameterType="com.pkusoft.admin.model.SysPara" >
+    update SYS_PARA
+    set 
+		PARA_CODE = #{paraCode,jdbcType=VARCHAR}
+		, PARA_NAME = #{paraName,jdbcType=VARCHAR}
+		, PARA_VALUE = #{paraValue,jdbcType=VARCHAR}
+		, PARA_DESC = #{paraDesc,jdbcType=VARCHAR}
+		, VISIABLE = #{visiable,jdbcType=VARCHAR}
+		, RESERVE1 = #{reserve1,jdbcType=VARCHAR}
+		, RESERVE2 = #{reserve2,jdbcType=VARCHAR}
+		, RESERVE3 = #{reserve3,jdbcType=VARCHAR}
+		, RESERVE4 = #{reserve4,jdbcType=VARCHAR}
+		, RESERVE5 = #{reserve5,jdbcType=VARCHAR}
+		, ADD_USER_ID = #{addUserId,jdbcType=DECIMAL}
+		, ADD_USER_NAME = #{addUserName,jdbcType=VARCHAR}
+		, ADD_TIME = #{addTime,jdbcType=TIMESTAMP}
+		, MODIFY_USER_ID = #{modifyUserId,jdbcType=DECIMAL}
+		, MODIFY_USER_NAME = #{modifyUserName,jdbcType=VARCHAR}
+		, MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where 
+    PARA_CODE = #{paraCode,jdbcType=VARCHAR}
+  </update> 
+  
+  <select id="getMaxParaCode" resultType="java.lang.String" parameterType="com.pkusoft.admin.model.SysPara" >
+    select max(para_code) from SYS_PARA
+  </select>
+</mapper>
