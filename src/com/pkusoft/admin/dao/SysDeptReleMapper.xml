@@ -9,10 +9,15 @@
   </resultMap>
   <!-- Oracle分页SQL片段 -->
   <sql id="pageHeader">
+  	<!-- 
     select * from(select s_.*,rownum rn_ from(
+    -->
   </sql>
   <sql id="pageRoot">
+  	  <!-- 
       ) s_ where rownum &lt;= #{pager.limit}) where rn_ &gt; #{pager.start}
+      -->
+       limit #{pager.start}, #{pager.pageSize} 
   </sql>
   <!-- 查询操作的查询标准SQL片段 -->
   <sql id="Criteria_Where_Clause" >

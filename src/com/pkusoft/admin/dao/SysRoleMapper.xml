@@ -20,10 +20,15 @@
     <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="pageHeader">
+  	<!-- 
     select * from(select s_.*,rownum rn_ from(
+    -->
   </sql>
   <sql id="pageRoot">
+  	  <!-- 
       ) s_ where rownum &lt;= #{pager.limit}) where rn_ &gt; #{pager.start}
+      -->
+       limit #{pager.start}, #{pager.pageSize} 
   </sql>
   <sql id="Criteria_Where_Clause" >
     <where >
