@@ -562,7 +562,7 @@
   <!-- 获取角色拥有的菜单列表 create by hey -->
   <select id="getMenuListByRole" resultMap="MiniResultMap" parameterType="java.lang.Object" >
     select
-       case NVL(rm.MENU_ID , 0) when 0 THEN '' else 'checked' end CHECKED
+       case IFNULL(rm.MENU_ID , 0) when 0 THEN '' else 'checked' end CHECKED
      , m.MENU_ID
      , m.MENU_NAME
      , m.ICON
