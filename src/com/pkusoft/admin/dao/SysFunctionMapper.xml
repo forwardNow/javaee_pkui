@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pkusoft.admin.dao.SysFunctionMapper" >
+  <resultMap id="BaseResultMap" type="com.pkusoft.admin.model.SysFunction" >
+    <id column="FUNCTION_ID" property="functionId" jdbcType="DECIMAL" />
+    <result column="FUNCTION_CODE" property="functionCode" jdbcType="VARCHAR" />
+    <result column="FUNCTION_NAME" property="functionName" jdbcType="VARCHAR" />
+    <result column="LOG_TYPE" property="logType" jdbcType="VARCHAR" />
+    <result column="MODULE" property="module" jdbcType="VARCHAR" />
+    <result column="SUBMODULE" property="submodule" jdbcType="VARCHAR" />
+    <result column="OPERATION_TYPE" property="operationType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="pageHeader">
+    select * from(select s_.*,rownum rn_ from(
+  </sql>
+  <sql id="pageRoot">
+      ) s_ where rownum &lt;= #{pager.limit}) where rn_ &gt; #{pager.start}
+  </sql>
+  <sql id="Criteria_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Criteria_Where_Clause" >
+    <where >
+      <foreach collection="criteria.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+  	FUNCTION_ID
+  	, FUNCTION_CODE
+  	, FUNCTION_NAME
+  	, LOG_TYPE
+  	, MODULE
+  	, SUBMODULE
+  	, OPERATION_TYPE
+  </sql>
+  <select id="getListByCriteria" resultMap="BaseResultMap" parameterType="com.pkusoft.framework.model.Criteria" >
+  	<if test="pager != null" >
+      <include refid="pageHeader" />
+    </if> 
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_FUNCTION
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="pager != null" >
+      <include refid="pageRoot" />
+    </if>
+  </select>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_FUNCTION
+    where 
+    FUNCTION_ID = #{functionId,jdbcType=DECIMAL}
+  </select>
+  <delete id="delete" parameterType="java.lang.Object" >
+    delete from SYS_FUNCTION
+    where 
+    FUNCTION_ID = #{functionId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.pkusoft.framework.model.Criteria" >
+    delete from SYS_FUNCTION
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pkusoft.admin.model.SysFunction" >
+    insert into SYS_FUNCTION (
+  	FUNCTION_ID
+  	, FUNCTION_CODE
+  	, FUNCTION_NAME
+  	, LOG_TYPE
+  	, MODULE
+  	, SUBMODULE
+  	, OPERATION_TYPE
+      )
+    values (
+  	#{functionId,jdbcType=DECIMAL}
+  	, #{functionCode,jdbcType=VARCHAR}
+  	, #{functionName,jdbcType=VARCHAR}
+  	, #{logType,jdbcType=VARCHAR}
+  	, #{module,jdbcType=VARCHAR}
+  	, #{submodule,jdbcType=VARCHAR}
+  	, #{operationType,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pkusoft.admin.model.SysFunction" >
+    insert into SYS_FUNCTION
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="functionId != null" >
+	    FUNCTION_ID,
+      </if>
+      <if test="functionCode != null" >
+	    FUNCTION_CODE,
+      </if>
+      <if test="functionName != null" >
+	    FUNCTION_NAME,
+      </if>
+      <if test="logType != null" >
+	    LOG_TYPE,
+      </if>
+      <if test="module != null" >
+	    MODULE,
+      </if>
+      <if test="submodule != null" >
+	    SUBMODULE,
+      </if>
+      <if test="operationType != null" >
+	    OPERATION_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="functionId != null" >
+	    #{functionId,jdbcType=DECIMAL},
+      </if>
+      <if test="functionCode != null" >
+	    #{functionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="functionName != null" >
+	    #{functionName,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null" >
+	    #{logType,jdbcType=VARCHAR},
+      </if>
+      <if test="module != null" >
+	    #{module,jdbcType=VARCHAR},
+      </if>
+      <if test="submodule != null" >
+	    #{submodule,jdbcType=VARCHAR},
+      </if>
+      <if test="operationType != null" >
+	    #{operationType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="getCountByCriteria" parameterType="com.pkusoft.framework.model.Criteria" resultType="java.lang.Integer" >
+    select count(*) from SYS_FUNCTION
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteriaSelective" parameterType="map" >
+    update SYS_FUNCTION
+    <set >
+      <if test="record.functionId != null" >
+	    FUNCTION_ID = #{record.functionId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.functionCode != null" >
+	    FUNCTION_CODE = #{record.functionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.functionName != null" >
+	    FUNCTION_NAME = #{record.functionName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logType != null" >
+	    LOG_TYPE = #{record.logType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.module != null" >
+	    MODULE = #{record.module,jdbcType=VARCHAR},
+      </if>
+      <if test="record.submodule != null" >
+	    SUBMODULE = #{record.submodule,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operationType != null" >
+	    OPERATION_TYPE = #{record.operationType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByCriteria" parameterType="map" >
+    update SYS_FUNCTION
+    set 
+		FUNCTION_ID = #{record.functionId,jdbcType=DECIMAL}
+		, FUNCTION_CODE = #{record.functionCode,jdbcType=VARCHAR}
+		, FUNCTION_NAME = #{record.functionName,jdbcType=VARCHAR}
+		, LOG_TYPE = #{record.logType,jdbcType=VARCHAR}
+		, MODULE = #{record.module,jdbcType=VARCHAR}
+		, SUBMODULE = #{record.submodule,jdbcType=VARCHAR}
+		, OPERATION_TYPE = #{record.operationType,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateSelective" parameterType="com.pkusoft.admin.model.SysFunction" >
+    update SYS_FUNCTION
+    <set >
+      <if test="functionId != null" >
+       FUNCTION_ID = #{functionId,jdbcType=DECIMAL},
+      </if>
+      <if test="functionCode != null" >
+       FUNCTION_CODE = #{functionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="functionName != null" >
+       FUNCTION_NAME = #{functionName,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null" >
+       LOG_TYPE = #{logType,jdbcType=VARCHAR},
+      </if>
+      <if test="module != null" >
+       MODULE = #{module,jdbcType=VARCHAR},
+      </if>
+      <if test="submodule != null" >
+       SUBMODULE = #{submodule,jdbcType=VARCHAR},
+      </if>
+      <if test="operationType != null" >
+       OPERATION_TYPE = #{operationType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where 
+    FUNCTION_ID = #{functionId,jdbcType=DECIMAL}
+  </update>
+  <update id="update" parameterType="com.pkusoft.admin.model.SysFunction" >
+    update SYS_FUNCTION
+    set 
+		FUNCTION_ID = #{functionId,jdbcType=DECIMAL}
+		, FUNCTION_CODE = #{functionCode,jdbcType=VARCHAR}
+		, FUNCTION_NAME = #{functionName,jdbcType=VARCHAR}
+		, LOG_TYPE = #{logType,jdbcType=VARCHAR}
+		, MODULE = #{module,jdbcType=VARCHAR}
+		, SUBMODULE = #{submodule,jdbcType=VARCHAR}
+		, OPERATION_TYPE = #{operationType,jdbcType=VARCHAR}
+    where 
+    FUNCTION_ID = #{functionId,jdbcType=DECIMAL}
+  </update> 
+  <select id="getSysFunctionList" parameterType="java.lang.String" resultType="com.pkusoft.admin.model.SysFunction" >
+    select 
+    FUNCTION_CODE ,FUNCTION_NAME
+    from SYS_FUNCTION  
+  </select>
+</mapper>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.pkusoft.admin.dao.SysDicItemMapper" >
-  <!-- 结果集映射 -->
   <resultMap id="BaseResultMap" type="com.pkusoft.admin.model.SysDicItem" >
     <id column="ITEM_ID" property="itemId" jdbcType="DECIMAL" />
     <result column="DIC_NAME" property="dicName" jdbcType="VARCHAR" />
@@ -9,16 +8,27 @@
     <result column="ITEM_VALUE" property="itemValue" jdbcType="VARCHAR" />
     <result column="ITEM_SPELL" property="itemSpell" jdbcType="VARCHAR" />
     <result column="ITEM_ASPELL" property="itemAspell" jdbcType="VARCHAR" />
-    <result column="VISIBLE" property="visible" jdbcType="VARCHAR" />
+    <result column="VISIABLE" property="visiable" jdbcType="VARCHAR" />
+    <result column="ORDER_FLAG" property="orderFlag" jdbcType="DECIMAL" />
+    <result column="MEMO" property="memo" jdbcType="VARCHAR" />
+    <result column="RESERVE1" property="reserve1" jdbcType="VARCHAR" />
+    <result column="RESERVE2" property="reserve2" jdbcType="VARCHAR" />
+    <result column="RESERVE3" property="reserve3" jdbcType="VARCHAR" />
+    <result column="RESERVE4" property="reserve4" jdbcType="VARCHAR" />
+    <result column="RESERVE5" property="reserve5" jdbcType="VARCHAR" />
+    <result column="ADD_USER_ID" property="addUserId" jdbcType="DECIMAL" />
+    <result column="ADD_USER_NAME" property="addUserName" jdbcType="VARCHAR" />
+    <result column="ADD_TIME" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_USER_ID" property="modifyUserId" jdbcType="DECIMAL" />
+    <result column="MODIFY_USER_NAME" property="modifyUserName" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
   </resultMap>
-  <!-- MySQL分页SQL片段 -->
   <sql id="pageHeader">
-    
+    select * from(select s_.*,rownum rn_ from(
   </sql>
   <sql id="pageRoot">
-      limit #{pager.start}, #{pager.pageSize}
+      ) s_ where rownum &lt;= #{pager.limit}) where rn_ &gt; #{pager.start}
   </sql>
-  <!-- 查询操作的查询标准SQL片段 -->
   <sql id="Criteria_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -48,7 +58,6 @@
       </foreach>
     </where>
   </sql>
-  <!-- 更新操作的查询标准SQL片段 -->
   <sql id="Update_By_Criteria_Where_Clause" >
     <where >
       <foreach collection="criteria.oredCriteria" item="criteria" separator="or" >
@@ -78,17 +87,28 @@
       </foreach>
     </where>
   </sql>
-  <!-- 查询字段SQL片段 -->
   <sql id="Base_Column_List" >
-  	ITEM_ID,
-  	DIC_NAME,
-  	ITEM_CODE,
-  	ITEM_VALUE,
-  	ITEM_SPELL,
-  	ITEM_ASPELL,
-  	VISIBLE
+  	MODIFY_USER_NAME
+  	, MODIFY_TIME
+  	, ITEM_ID
+  	, DIC_NAME
+  	, ITEM_CODE
+  	, ITEM_VALUE
+  	, ITEM_SPELL
+  	, ITEM_ASPELL
+  	, VISIABLE
+  	, ORDER_FLAG
+  	, MEMO
+  	, RESERVE1
+  	, RESERVE2
+  	, RESERVE3
+  	, RESERVE4
+  	, RESERVE5
+  	, ADD_USER_ID
+  	, ADD_USER_NAME
+  	, ADD_TIME
+  	, MODIFY_USER_ID
   </sql>
-  <!-- 根据查询标准获取列表数据-->
   <select id="getListByCriteria" resultMap="BaseResultMap" parameterType="com.pkusoft.framework.model.Criteria" >
   	<if test="pager != null" >
       <include refid="pageHeader" />
@@ -98,7 +118,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from sys_dic_item
+    from SYS_DIC_ITEM
     <if test="_parameter != null" >
       <include refid="Criteria_Where_Clause" />
     </if>
@@ -109,51 +129,79 @@
       <include refid="pageRoot" />
     </if>
   </select>
-  <!-- 根据主键获取对象信息 -->
   <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Object" >
     select 
     <include refid="Base_Column_List" />
-    from sys_dic_item
+    from SYS_DIC_ITEM
     where 
     ITEM_ID = #{itemId,jdbcType=DECIMAL}
   </select>
-  <!-- 根据主键删除记录 -->
   <delete id="delete" parameterType="java.lang.Object" >
-    delete from sys_dic_item
+    delete from SYS_DIC_ITEM
     where 
     ITEM_ID = #{itemId,jdbcType=DECIMAL}
   </delete>
   <delete id="deleteByCriteria" parameterType="com.pkusoft.framework.model.Criteria" >
-    delete from sys_dic_item
+    delete from SYS_DIC_ITEM
     <if test="_parameter != null" >
       <include refid="Criteria_Where_Clause" />
     </if>
   </delete>
-  <!-- 全字段插入 -->
   <insert id="insert" parameterType="com.pkusoft.admin.model.SysDicItem" >
-    insert into sys_dic_item (
-    ITEM_ID,
-    DIC_NAME,
-    ITEM_CODE,
-    ITEM_VALUE,
-    ITEM_SPELL,
-    ITEM_ASPELL,
-    VISIBLE
+    insert into SYS_DIC_ITEM (
+  	MODIFY_USER_NAME
+  	, MODIFY_TIME
+  	, ITEM_ID
+  	, DIC_NAME
+  	, ITEM_CODE
+  	, ITEM_VALUE
+  	, ITEM_SPELL
+  	, ITEM_ASPELL
+  	, VISIABLE
+  	, ORDER_FLAG
+  	, MEMO
+  	, RESERVE1
+  	, RESERVE2
+  	, RESERVE3
+  	, RESERVE4
+  	, RESERVE5
+  	, ADD_USER_ID
+  	, ADD_USER_NAME
+  	, ADD_TIME
+  	, MODIFY_USER_ID
       )
     values (
-    #{itemId,jdbcType=DECIMAL},
-    #{dicName,jdbcType=VARCHAR},
-    #{itemCode,jdbcType=VARCHAR},
-    #{itemValue,jdbcType=VARCHAR},
-    #{itemSpell,jdbcType=VARCHAR},
-    #{itemAspell,jdbcType=VARCHAR},
-    #{visible,jdbcType=VARCHAR}
+  	#{modifyUserName,jdbcType=VARCHAR}
+  	, #{modifyTime,jdbcType=TIMESTAMP}
+  	, #{itemId,jdbcType=DECIMAL}
+  	, #{dicName,jdbcType=VARCHAR}
+  	, #{itemCode,jdbcType=VARCHAR}
+  	, #{itemValue,jdbcType=VARCHAR}
+  	, #{itemSpell,jdbcType=VARCHAR}
+  	, #{itemAspell,jdbcType=VARCHAR}
+  	, #{visiable,jdbcType=VARCHAR}
+  	, #{orderFlag,jdbcType=DECIMAL}
+  	, #{memo,jdbcType=VARCHAR}
+  	, #{reserve1,jdbcType=VARCHAR}
+  	, #{reserve2,jdbcType=VARCHAR}
+  	, #{reserve3,jdbcType=VARCHAR}
+  	, #{reserve4,jdbcType=VARCHAR}
+  	, #{reserve5,jdbcType=VARCHAR}
+  	, #{addUserId,jdbcType=DECIMAL}
+  	, #{addUserName,jdbcType=VARCHAR}
+  	, #{addTime,jdbcType=TIMESTAMP}
+  	, #{modifyUserId,jdbcType=DECIMAL}
       )
   </insert>
-  <!-- 选择值不为空的字段插入 -->
   <insert id="insertSelective" parameterType="com.pkusoft.admin.model.SysDicItem" >
-    insert into sys_dic_item
+    insert into SYS_DIC_ITEM
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="modifyUserName != null" >
+	    MODIFY_USER_NAME,
+      </if>
+      <if test="modifyTime != null" >
+	    MODIFY_TIME,
+      </if>
       <if test="itemId != null" >
 	    ITEM_ID,
       </if>
@@ -172,11 +220,50 @@
       <if test="itemAspell != null" >
 	    ITEM_ASPELL,
       </if>
-      <if test="visible != null" >
-	    VISIBLE,
+      <if test="visiable != null" >
+	    VISIABLE,
+      </if>
+      <if test="orderFlag != null" >
+	    ORDER_FLAG,
+      </if>
+      <if test="memo != null" >
+	    MEMO,
+      </if>
+      <if test="reserve1 != null" >
+	    RESERVE1,
+      </if>
+      <if test="reserve2 != null" >
+	    RESERVE2,
+      </if>
+      <if test="reserve3 != null" >
+	    RESERVE3,
+      </if>
+      <if test="reserve4 != null" >
+	    RESERVE4,
+      </if>
+      <if test="reserve5 != null" >
+	    RESERVE5,
+      </if>
+      <if test="addUserId != null" >
+	    ADD_USER_ID,
+      </if>
+      <if test="addUserName != null" >
+	    ADD_USER_NAME,
+      </if>
+      <if test="addTime != null" >
+	    ADD_TIME,
+      </if>
+      <if test="modifyUserId != null" >
+	    MODIFY_USER_ID,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="modifyUserName != null" >
+	    #{modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+	    #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="itemId != null" >
 	    #{itemId,jdbcType=DECIMAL},
       </if>
@@ -195,22 +282,59 @@
       <if test="itemAspell != null" >
 	    #{itemAspell,jdbcType=VARCHAR},
       </if>
-      <if test="visible != null" >
-	    #{visible,jdbcType=VARCHAR},
+      <if test="visiable != null" >
+	    #{visiable,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFlag != null" >
+	    #{orderFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="memo != null" >
+	    #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null" >
+	    #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+	    #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+	    #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+	    #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null" >
+	    #{reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="addUserId != null" >
+	    #{addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="addUserName != null" >
+	    #{addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+	    #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+	    #{modifyUserId,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
-  <!-- 根据查询标准获取记录数 -->
   <select id="getCountByCriteria" parameterType="com.pkusoft.framework.model.Criteria" resultType="java.lang.Integer" >
-    select count(*) from sys_dic_item
+    select count(*) from SYS_DIC_ITEM
     <if test="_parameter != null" >
       <include refid="Criteria_Where_Clause" />
     </if>
   </select>
-  <!-- 根据查询标准更新 ，选择字段值不为空的更新 -->
   <update id="updateByCriteriaSelective" parameterType="map" >
-    update sys_dic_item
+    update SYS_DIC_ITEM
     <set >
+      <if test="record.modifyUserName != null" >
+	    MODIFY_USER_NAME = #{record.modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyTime != null" >
+	    MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="record.itemId != null" >
 	    ITEM_ID = #{record.itemId,jdbcType=DECIMAL},
       </if>
@@ -229,33 +353,83 @@
       <if test="record.itemAspell != null" >
 	    ITEM_ASPELL = #{record.itemAspell,jdbcType=VARCHAR},
       </if>
-      <if test="record.visible != null" >
-	    VISIBLE = #{record.visible,jdbcType=VARCHAR},
+      <if test="record.visiable != null" >
+	    VISIABLE = #{record.visiable,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderFlag != null" >
+	    ORDER_FLAG = #{record.orderFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="record.memo != null" >
+	    MEMO = #{record.memo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve1 != null" >
+	    RESERVE1 = #{record.reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve2 != null" >
+	    RESERVE2 = #{record.reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve3 != null" >
+	    RESERVE3 = #{record.reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve4 != null" >
+	    RESERVE4 = #{record.reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve5 != null" >
+	    RESERVE5 = #{record.reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addUserId != null" >
+	    ADD_USER_ID = #{record.addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.addUserName != null" >
+	    ADD_USER_NAME = #{record.addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTime != null" >
+	    ADD_TIME = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyUserId != null" >
+	    MODIFY_USER_ID = #{record.modifyUserId,jdbcType=DECIMAL},
       </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Criteria_Where_Clause" />
     </if>
   </update>
-  <!-- 根据查询标准全字段更新 -->
   <update id="updateByCriteria" parameterType="map" >
-    update sys_dic_item
+    update SYS_DIC_ITEM
     set 
-		ITEM_ID = #{record.itemId,jdbcType=DECIMAL},
-		DIC_NAME = #{record.dicName,jdbcType=VARCHAR},
-		ITEM_CODE = #{record.itemCode,jdbcType=VARCHAR},
-		ITEM_VALUE = #{record.itemValue,jdbcType=VARCHAR},
-		ITEM_SPELL = #{record.itemSpell,jdbcType=VARCHAR},
-		ITEM_ASPELL = #{record.itemAspell,jdbcType=VARCHAR},
-		VISIBLE = #{record.visible,jdbcType=VARCHAR}
+		MODIFY_USER_NAME = #{record.modifyUserName,jdbcType=VARCHAR}
+		, MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP}
+		, ITEM_ID = #{record.itemId,jdbcType=DECIMAL}
+		, DIC_NAME = #{record.dicName,jdbcType=VARCHAR}
+		, ITEM_CODE = #{record.itemCode,jdbcType=VARCHAR}
+		, ITEM_VALUE = #{record.itemValue,jdbcType=VARCHAR}
+		, ITEM_SPELL = #{record.itemSpell,jdbcType=VARCHAR}
+		, ITEM_ASPELL = #{record.itemAspell,jdbcType=VARCHAR}
+		, VISIABLE = #{record.visiable,jdbcType=VARCHAR}
+		, ORDER_FLAG = #{record.orderFlag,jdbcType=DECIMAL}
+		, MEMO = #{record.memo,jdbcType=VARCHAR}
+		, RESERVE1 = #{record.reserve1,jdbcType=VARCHAR}
+		, RESERVE2 = #{record.reserve2,jdbcType=VARCHAR}
+		, RESERVE3 = #{record.reserve3,jdbcType=VARCHAR}
+		, RESERVE4 = #{record.reserve4,jdbcType=VARCHAR}
+		, RESERVE5 = #{record.reserve5,jdbcType=VARCHAR}
+		, ADD_USER_ID = #{record.addUserId,jdbcType=DECIMAL}
+		, ADD_USER_NAME = #{record.addUserName,jdbcType=VARCHAR}
+		, ADD_TIME = #{record.addTime,jdbcType=TIMESTAMP}
+		, MODIFY_USER_ID = #{record.modifyUserId,jdbcType=DECIMAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Criteria_Where_Clause" />
     </if>
   </update>
-  <!-- 根据主键更新 ，选择字段值不为空的更新 -->
   <update id="updateSelective" parameterType="com.pkusoft.admin.model.SysDicItem" >
-    update sys_dic_item
+    update SYS_DIC_ITEM
     <set >
+      <if test="modifyUserName != null" >
+       MODIFY_USER_NAME = #{modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+       MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="itemId != null" >
        ITEM_ID = #{itemId,jdbcType=DECIMAL},
       </if>
@@ -274,33 +448,98 @@
       <if test="itemAspell != null" >
        ITEM_ASPELL = #{itemAspell,jdbcType=VARCHAR},
       </if>
-      <if test="visible != null" >
-       VISIBLE = #{visible,jdbcType=VARCHAR},
+      <if test="visiable != null" >
+       VISIABLE = #{visiable,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFlag != null" >
+       ORDER_FLAG = #{orderFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="memo != null" >
+       MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null" >
+       RESERVE1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+       RESERVE2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+       RESERVE3 = #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+       RESERVE4 = #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null" >
+       RESERVE5 = #{reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="addUserId != null" >
+       ADD_USER_ID = #{addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="addUserName != null" >
+       ADD_USER_NAME = #{addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+       ADD_TIME = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+       MODIFY_USER_ID = #{modifyUserId,jdbcType=DECIMAL},
       </if>
     </set>
     where 
     ITEM_ID = #{itemId,jdbcType=DECIMAL}
   </update>
-  <!-- 根据主键全字段更新 -->
   <update id="update" parameterType="com.pkusoft.admin.model.SysDicItem" >
-    update sys_dic_item
+    update SYS_DIC_ITEM
     set 
-		ITEM_ID = #{itemId,jdbcType=DECIMAL},
-		DIC_NAME = #{dicName,jdbcType=VARCHAR},
-		ITEM_CODE = #{itemCode,jdbcType=VARCHAR},
-		ITEM_VALUE = #{itemValue,jdbcType=VARCHAR},
-		ITEM_SPELL = #{itemSpell,jdbcType=VARCHAR},
-		ITEM_ASPELL = #{itemAspell,jdbcType=VARCHAR},
-		VISIBLE = #{visible,jdbcType=VARCHAR}
+		MODIFY_USER_NAME = #{modifyUserName,jdbcType=VARCHAR}
+		, MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+		, ITEM_ID = #{itemId,jdbcType=DECIMAL}
+		, DIC_NAME = #{dicName,jdbcType=VARCHAR}
+		, ITEM_CODE = #{itemCode,jdbcType=VARCHAR}
+		, ITEM_VALUE = #{itemValue,jdbcType=VARCHAR}
+		, ITEM_SPELL = #{itemSpell,jdbcType=VARCHAR}
+		, ITEM_ASPELL = #{itemAspell,jdbcType=VARCHAR}
+		, VISIABLE = #{visiable,jdbcType=VARCHAR}
+		, ORDER_FLAG = #{orderFlag,jdbcType=DECIMAL}
+		, MEMO = #{memo,jdbcType=VARCHAR}
+		, RESERVE1 = #{reserve1,jdbcType=VARCHAR}
+		, RESERVE2 = #{reserve2,jdbcType=VARCHAR}
+		, RESERVE3 = #{reserve3,jdbcType=VARCHAR}
+		, RESERVE4 = #{reserve4,jdbcType=VARCHAR}
+		, RESERVE5 = #{reserve5,jdbcType=VARCHAR}
+		, ADD_USER_ID = #{addUserId,jdbcType=DECIMAL}
+		, ADD_USER_NAME = #{addUserName,jdbcType=VARCHAR}
+		, ADD_TIME = #{addTime,jdbcType=TIMESTAMP}
+		, MODIFY_USER_ID = #{modifyUserId,jdbcType=DECIMAL}
     where 
     ITEM_ID = #{itemId,jdbcType=DECIMAL}
   </update> 
+    <select id="getListByParentDic" parameterType="java.lang.String" resultType="com.pkusoft.admin.model.SysDicItem" >
+   	 <if test="pager != null" >
+      <include refid="pageHeader" />
+     </if> 
+   		select b.* from (select DIC_NAME from sys_dic_list c where c.parent_dic=#{dicName,jdbcType=VARCHAR} ) a ,sys_dic_item b 
+    		where a.dic_name = b.dic_name 
+ 		union select d.* from sys_dic_item d where d.dic_name = #{dicName,jdbcType=VARCHAR}
+	 <if test="pager != null" >
+    	  <include refid="pageRoot" />
+ 	 </if>
+  </select>
+  <select id="getMaxItemId" parameterType="java.lang.String" resultType="java.lang.Long" >
+	select max(item_Id)from Sys_dic_item
+  </select>
   
-  <!-- 在以下扩展数据操作接口 -->
-  <select id="getSysDicItemXmlByDicname" parameterType="java.lang.String" resultMap="BaseResultMap" >
+  <select id="getListByDicNameAndItemValue" parameterType="com.pkusoft.admin.model.SysDicItem" resultType="com.pkusoft.admin.model.SysDicItem" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_DIC_ITEM where DIC_NAME = #{dicName,jdbcType=VARCHAR}  AND
+    ITEM_VALUE like #{itemValue,jdbcType=VARCHAR}
+
+  </select>
+  <select id="getSysDicItemXmlByDicname" parameterType="java.lang.String" resultType="com.pkusoft.admin.model.SysDicItem" >
     select 
     DIC_NAME ,ITEM_CODE,ITEM_VALUE,ITEM_SPELL, ITEM_ASPELL
-    from SYS_DIC_ITEM where DIC_NAME = #{dicName,jdbcType=VARCHAR}  and VISIBLE = '1'
+    from SYS_DIC_ITEM where DIC_NAME = #{dicName,jdbcType=VARCHAR}  and VISIABLE = '1'
 
   </select>
 </mapper>

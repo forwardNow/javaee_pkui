@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pkusoft.admin.dao.SysDeptReleMapper" >
+  <!-- 结果集映射 -->
+  <resultMap id="BaseResultMap" type="com.pkusoft.admin.model.SysDeptRele" >
+    <result column="DEPT_ID" property="deptId" jdbcType="VARCHAR" />
+    <result column="RELE_DEPT_ID" property="releDeptId" jdbcType="VARCHAR" />
+    <result column="RELE_DEPT_NAME" property="releDeptName" jdbcType="VARCHAR" />
+  </resultMap>
+  <!-- Oracle分页SQL片段 -->
+  <sql id="pageHeader">
+    select * from(select s_.*,rownum rn_ from(
+  </sql>
+  <sql id="pageRoot">
+      ) s_ where rownum &lt;= #{pager.limit}) where rn_ &gt; #{pager.start}
+  </sql>
+  <!-- 查询操作的查询标准SQL片段 -->
+  <sql id="Criteria_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!-- 更新操作的查询标准SQL片段 -->
+  <sql id="Update_By_Criteria_Where_Clause" >
+    <where >
+      <foreach collection="criteria.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!-- 查询字段SQL片段 -->
+  <sql id="Base_Column_List" >
+  	DEPT_ID,
+  	RELE_DEPT_ID,
+  	RELE_DEPT_NAME
+  </sql>
+  <!-- 根据查询标准获取列表数据-->
+  <select id="getListByCriteria" resultMap="BaseResultMap" parameterType="com.pkusoft.framework.model.Criteria" >
+  	<if test="pager != null" >
+      <include refid="pageHeader" />
+    </if> 
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_DEPT_RELE
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="pager != null" >
+      <include refid="pageRoot" />
+    </if>
+  </select>
+  <!-- 根据主键获取对象信息 -->
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_DEPT_RELE
+    where 
+    DEPT_ID = #{deptId,jdbcType=VARCHAR}
+    and RELE_DEPT_ID = #{releDeptId,jdbcType=VARCHAR}
+  </select>
+  <!-- 根据主键删除记录 -->
+  <delete id="delete" parameterType="java.lang.Object" >
+    delete from SYS_DEPT_RELE
+    where 
+    DEPT_ID = #{deptId,jdbcType=VARCHAR}
+    and RELE_DEPT_ID = #{releDeptId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.pkusoft.framework.model.Criteria" >
+    delete from SYS_DEPT_RELE
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </delete>
+  <!-- 全字段插入 -->
+  <insert id="insert" parameterType="com.pkusoft.admin.model.SysDeptRele" >
+    insert into SYS_DEPT_RELE (
+    DEPT_ID,
+    RELE_DEPT_ID,
+    RELE_DEPT_NAME
+      )
+    values (
+    #{deptId,jdbcType=VARCHAR},
+    #{releDeptId,jdbcType=VARCHAR},
+    #{releDeptName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <!-- 选择值不为空的字段插入 -->
+  <insert id="insertSelective" parameterType="com.pkusoft.admin.model.SysDeptRele" >
+    insert into SYS_DEPT_RELE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+	    DEPT_ID,
+      </if>
+      <if test="releDeptId != null" >
+	    RELE_DEPT_ID,
+      </if>
+      <if test="releDeptName != null" >
+	    RELE_DEPT_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+	    #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="releDeptId != null" >
+	    #{releDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="releDeptName != null" >
+	    #{releDeptName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- 根据查询标准获取记录数 -->
+  <select id="getCountByCriteria" parameterType="com.pkusoft.framework.model.Criteria" resultType="java.lang.Integer" >
+    select count(*) from SYS_DEPT_RELE
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </select>
+  <!-- 根据查询标准更新 ，选择字段值不为空的更新 -->
+  <update id="updateByCriteriaSelective" parameterType="map" >
+    update SYS_DEPT_RELE
+    <set >
+      <if test="record.deptId != null" >
+	    DEPT_ID = #{record.deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.releDeptId != null" >
+	    RELE_DEPT_ID = #{record.releDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.releDeptName != null" >
+	    RELE_DEPT_NAME = #{record.releDeptName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <!-- 根据查询标准全字段更新 -->
+  <update id="updateByCriteria" parameterType="map" >
+    update SYS_DEPT_RELE
+    set 
+		DEPT_ID = #{record.deptId,jdbcType=VARCHAR},
+		RELE_DEPT_ID = #{record.releDeptId,jdbcType=VARCHAR},
+		RELE_DEPT_NAME = #{record.releDeptName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <!-- 根据主键更新 ，选择字段值不为空的更新 -->
+  <update id="updateSelective" parameterType="com.pkusoft.admin.model.SysDeptRele" >
+    update SYS_DEPT_RELE
+    <set >
+      <if test="deptId != null" >
+       DEPT_ID = #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="releDeptId != null" >
+       RELE_DEPT_ID = #{releDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="releDeptName != null" >
+       RELE_DEPT_NAME = #{releDeptName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where 
+    DEPT_ID = #{deptId,jdbcType=VARCHAR}
+    and RELE_DEPT_ID = #{releDeptId,jdbcType=VARCHAR}
+  </update>
+  <!-- 根据主键全字段更新 -->
+  <update id="update" parameterType="com.pkusoft.admin.model.SysDeptRele" >
+    update SYS_DEPT_RELE
+    set 
+		DEPT_ID = #{deptId,jdbcType=VARCHAR},
+		RELE_DEPT_ID = #{releDeptId,jdbcType=VARCHAR},
+		RELE_DEPT_NAME = #{releDeptName,jdbcType=VARCHAR}
+    where 
+    DEPT_ID = #{deptId,jdbcType=VARCHAR}
+    and RELE_DEPT_ID = #{releDeptId,jdbcType=VARCHAR}
+  </update> 
+  
+  <!-- 在以下扩展数据操作接口 -->
+  
+</mapper>

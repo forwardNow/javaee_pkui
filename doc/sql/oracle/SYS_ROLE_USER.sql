@@ -1,0 +1,59 @@
+/*
+ Navicat Oracle Data Transfer
+
+ Source Server         : gdbaweb
+ Source Server Version : 112010
+ Source Host           : 27.17.3.62
+ Source Schema         : PKUWH_GDBAWEB
+
+ Target Server Version : 112010
+ File Encoding         : utf-8
+
+ Date: 03/10/2017 15:36:35 PM
+*/
+
+-- ----------------------------
+--  Table structure for "SYS_ROLE_USER"
+-- ----------------------------
+DROP TABLE "SYS_ROLE_USER";
+CREATE TABLE "SYS_ROLE_USER" (   "ROLE_USER_ID" NUMBER(16,0) NOT NULL, "USER_ID" NUMBER(16,0) NOT NULL, "ROLE_ID" NUMBER(16,0), "ADD_USER_ID" NUMBER(16,0) NOT NULL, "ADD_USER_NAME" VARCHAR2(30CHAR) NOT NULL, "ADD_TIME" DATE NOT NULL);
+COMMENT ON COLUMN "SYS_ROLE_USER"."ROLE_USER_ID" IS '角色用户标识号';
+COMMENT ON COLUMN "SYS_ROLE_USER"."USER_ID" IS '用户编号';
+COMMENT ON COLUMN "SYS_ROLE_USER"."ROLE_ID" IS '角色编号';
+COMMENT ON COLUMN "SYS_ROLE_USER"."ADD_USER_ID" IS '录入用户编号';
+COMMENT ON COLUMN "SYS_ROLE_USER"."ADD_USER_NAME" IS '录入用户姓名';
+COMMENT ON COLUMN "SYS_ROLE_USER"."ADD_TIME" IS '录入时间';
+
+-- ----------------------------
+--  Records of "SYS_ROLE_USER"
+-- ----------------------------
+INSERT INTO "SYS_ROLE_USER" VALUES ('3', '5', '25', '5', '超级管理员', TO_DATE('2014-05-18 20:53:28','YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SYS_ROLE_USER" VALUES ('13', '1', '1', '5', '超级管理员', TO_DATE('2014-08-08 18:04:54','YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SYS_ROLE_USER" VALUES ('361', '25', '25', '5', '管理员', TO_DATE('2013-07-03 15:36:44','YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SYS_ROLE_USER" VALUES ('369', '33', '25', '5', '管理员', TO_DATE('2013-07-05 15:53:28','YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SYS_ROLE_USER" VALUES ('371', '34', '25', '5', '管理员', TO_DATE('2013-07-08 16:39:41','YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SYS_ROLE_USER" VALUES ('972', '260', '74', '5', '超级管理员', TO_DATE('2015-12-23 11:27:12','YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SYS_ROLE_USER" VALUES ('975', '262', '80', '5', '超级管理员', TO_DATE('2015-12-23 13:46:40','YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SYS_ROLE_USER" VALUES ('973', '261', '74', '5', '超级管理员', TO_DATE('2015-12-23 11:28:03','YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SYS_ROLE_USER" VALUES ('977', '257', '74', '5', '超级管理员', TO_DATE('2015-12-25 10:30:45','YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SYS_ROLE_USER" VALUES ('978', '263', '74', '5', '超级管理员', TO_DATE('2015-12-30 14:09:15','YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SYS_ROLE_USER" VALUES ('959', '253', '74', '5', '超级管理员', TO_DATE('2015-12-03 17:27:08','YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SYS_ROLE_USER" VALUES ('976', '249', '74', '5', '超级管理员', TO_DATE('2015-12-23 13:47:31','YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "SYS_ROLE_USER" VALUES ('970', '258', '74', '5', '超级管理员', TO_DATE('2015-12-22 15:23:23','YYYY-MM-DD HH24:MI:SS'));
+COMMIT;
+
+-- ----------------------------
+--  Primary key structure for table "SYS_ROLE_USER"
+-- ----------------------------
+ALTER TABLE "SYS_ROLE_USER" ADD CONSTRAINT "PK_SYS_ROLE_USER" PRIMARY KEY("ROLE_USER_ID");
+
+-- ----------------------------
+--  Indexes structure for table "SYS_ROLE_USER"
+-- ----------------------------
+CREATE INDEX I_U_SYS_ROLE_USER_ID ON SYS_ROLE_USER (USER_ID ASC, ROLE_ID ASC) TABLESPACE TS_GDBAWEB_SYS_INDEX LOGGING VISIBLE PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE( INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645);
+
+-- ----------------------------
+--  Comment for table "SYS_ROLE_USER"
+-- ----------------------------
+COMMENT ON TABLE "SYS_ROLE_USER" IS '角色用户表';
+

@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pkusoft.admin.dao.SysLogMapper" >
+  <resultMap id="BaseResultMap" type="com.pkusoft.admin.model.SysLog" >
+    <id column="LOG_ID" property="logId" jdbcType="DECIMAL" />
+    <result column="USER_ID" property="userId" jdbcType="DECIMAL" />
+    <result column="LOGIN_NAME" property="loginName" jdbcType="VARCHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="DEPT_ID" property="deptId" jdbcType="VARCHAR" />
+    <result column="DEPT_NAME" property="deptName" jdbcType="VARCHAR" />
+    <result column="LOG_DEPT_LEVEL" property="logDeptLevel" jdbcType="VARCHAR" />
+    <result column="IP" property="ip" jdbcType="VARCHAR" />
+    <result column="LOG_TYPE" property="logType" jdbcType="VARCHAR" />
+    <result column="FUNCTION_ID" property="functionId" jdbcType="VARCHAR" />
+    <result column="MODEL_ID" property="modelId" jdbcType="VARCHAR" />
+    <result column="SUB_MODEL_ID" property="subModelId" jdbcType="VARCHAR" />
+    <result column="OPER_TYPE" property="operType" jdbcType="VARCHAR" />
+    <result column="LOG_TIME" property="logTime" jdbcType="TIMESTAMP" />
+    <result column="LOG_INFO" property="logInfo" jdbcType="VARCHAR" />
+    <result column="CUNITID" property="cunitid" jdbcType="VARCHAR" />
+    <result column="SUNITID" property="sunitid" jdbcType="VARCHAR" />
+    <result column="TUNITID" property="tunitid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="pageHeader">
+    select * from(select s_.*,rownum rn_ from(
+  </sql>
+  <sql id="pageRoot">
+      ) s_ where rownum &lt;= #{pager.limit}) where rn_ &gt; #{pager.start}
+  </sql>
+  <sql id="Criteria_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Criteria_Where_Clause" >
+    <where >
+      <foreach collection="criteria.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+  	LOG_ID
+  	, USER_ID
+  	, LOGIN_NAME
+  	, USER_NAME
+  	, DEPT_ID
+  	, DEPT_NAME
+  	, LOG_DEPT_LEVEL
+  	, IP
+  	, LOG_TYPE
+  	, FUNCTION_ID
+  	, MODEL_ID
+  	, SUB_MODEL_ID
+  	, OPER_TYPE
+  	, LOG_TIME
+  	, LOG_INFO
+  	, CUNITID
+  	, SUNITID
+  	, TUNITID
+  </sql>
+  <select id="getListByCriteria" resultMap="BaseResultMap" parameterType="com.pkusoft.framework.model.Criteria" >
+  	<if test="pager != null" >
+      <include refid="pageHeader" />
+    </if> 
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_LOG
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="pager != null" >
+      <include refid="pageRoot" />
+    </if>
+  </select>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_LOG
+    where 
+    LOG_ID = #{logId,jdbcType=DECIMAL}
+  </select>
+  <delete id="delete" parameterType="java.lang.Object" >
+    delete from SYS_LOG
+    where 
+    LOG_ID = #{logId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.pkusoft.framework.model.Criteria" >
+    delete from SYS_LOG
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pkusoft.admin.model.SysLog" >
+    insert into SYS_LOG (
+  	LOG_ID
+  	, USER_ID
+  	, LOGIN_NAME
+  	, USER_NAME
+  	, DEPT_ID
+  	, DEPT_NAME
+  	, LOG_DEPT_LEVEL
+  	, IP
+  	, LOG_TYPE
+  	, FUNCTION_ID
+  	, MODEL_ID
+  	, SUB_MODEL_ID
+  	, OPER_TYPE
+  	, LOG_TIME
+  	, LOG_INFO
+  	, CUNITID
+  	, SUNITID
+  	, TUNITID
+      )
+    values (
+  	#{logId,jdbcType=DECIMAL}
+  	, #{userId,jdbcType=DECIMAL}
+  	, #{loginName,jdbcType=VARCHAR}
+  	, #{userName,jdbcType=VARCHAR}
+  	, #{deptId,jdbcType=VARCHAR}
+  	, #{deptName,jdbcType=VARCHAR}
+  	, #{logDeptLevel,jdbcType=VARCHAR}
+  	, #{ip,jdbcType=VARCHAR}
+  	, #{logType,jdbcType=VARCHAR}
+  	, #{functionId,jdbcType=VARCHAR}
+  	, #{modelId,jdbcType=VARCHAR}
+  	, #{subModelId,jdbcType=VARCHAR}
+  	, #{operType,jdbcType=VARCHAR}
+  	, #{logTime,jdbcType=TIMESTAMP}
+  	, #{logInfo,jdbcType=VARCHAR}
+  	, #{cunitid,jdbcType=VARCHAR}
+  	, #{sunitid,jdbcType=VARCHAR}
+  	, #{tunitid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pkusoft.admin.model.SysLog" >
+    insert into SYS_LOG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+	    LOG_ID,
+      </if>
+      <if test="userId != null" >
+	    USER_ID,
+      </if>
+      <if test="loginName != null" >
+	    LOGIN_NAME,
+      </if>
+      <if test="userName != null" >
+	    USER_NAME,
+      </if>
+      <if test="deptId != null" >
+	    DEPT_ID,
+      </if>
+      <if test="deptName != null" >
+	    DEPT_NAME,
+      </if>
+      <if test="logDeptLevel != null" >
+	    LOG_DEPT_LEVEL,
+      </if>
+      <if test="ip != null" >
+	    IP,
+      </if>
+      <if test="logType != null" >
+	    LOG_TYPE,
+      </if>
+      <if test="functionId != null" >
+	    FUNCTION_ID,
+      </if>
+      <if test="modelId != null" >
+	    MODEL_ID,
+      </if>
+      <if test="subModelId != null" >
+	    SUB_MODEL_ID,
+      </if>
+      <if test="operType != null" >
+	    OPER_TYPE,
+      </if>
+      <if test="logTime != null" >
+	    LOG_TIME,
+      </if>
+      <if test="logInfo != null" >
+	    LOG_INFO,
+      </if>
+      <if test="cunitid != null" >
+	    CUNITID,
+      </if>
+      <if test="sunitid != null" >
+	    SUNITID,
+      </if>
+      <if test="tunitid != null" >
+	    TUNITID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+	    #{logId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+	    #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="loginName != null" >
+	    #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+	    #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null" >
+	    #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+	    #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="logDeptLevel != null" >
+	    #{logDeptLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+	    #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null" >
+	    #{logType,jdbcType=VARCHAR},
+      </if>
+      <if test="functionId != null" >
+	    #{functionId,jdbcType=VARCHAR},
+      </if>
+      <if test="modelId != null" >
+	    #{modelId,jdbcType=VARCHAR},
+      </if>
+      <if test="subModelId != null" >
+	    #{subModelId,jdbcType=VARCHAR},
+      </if>
+      <if test="operType != null" >
+	    #{operType,jdbcType=VARCHAR},
+      </if>
+      <if test="logTime != null" >
+	    #{logTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logInfo != null" >
+	    #{logInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="cunitid != null" >
+	    #{cunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="sunitid != null" >
+	    #{sunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="tunitid != null" >
+	    #{tunitid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="getCountByCriteria" parameterType="com.pkusoft.framework.model.Criteria" resultType="java.lang.Integer" >
+    select count(*) from SYS_LOG
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteriaSelective" parameterType="map" >
+    update SYS_LOG
+    <set >
+      <if test="record.logId != null" >
+	    LOG_ID = #{record.logId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userId != null" >
+	    USER_ID = #{record.userId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.loginName != null" >
+	    LOGIN_NAME = #{record.loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userName != null" >
+	    USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptId != null" >
+	    DEPT_ID = #{record.deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptName != null" >
+	    DEPT_NAME = #{record.deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logDeptLevel != null" >
+	    LOG_DEPT_LEVEL = #{record.logDeptLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ip != null" >
+	    IP = #{record.ip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logType != null" >
+	    LOG_TYPE = #{record.logType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.functionId != null" >
+	    FUNCTION_ID = #{record.functionId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modelId != null" >
+	    MODEL_ID = #{record.modelId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subModelId != null" >
+	    SUB_MODEL_ID = #{record.subModelId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operType != null" >
+	    OPER_TYPE = #{record.operType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logTime != null" >
+	    LOG_TIME = #{record.logTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.logInfo != null" >
+	    LOG_INFO = #{record.logInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cunitid != null" >
+	    CUNITID = #{record.cunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sunitid != null" >
+	    SUNITID = #{record.sunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tunitid != null" >
+	    TUNITID = #{record.tunitid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByCriteria" parameterType="map" >
+    update SYS_LOG
+    set 
+		LOG_ID = #{record.logId,jdbcType=DECIMAL}
+		, USER_ID = #{record.userId,jdbcType=DECIMAL}
+		, LOGIN_NAME = #{record.loginName,jdbcType=VARCHAR}
+		, USER_NAME = #{record.userName,jdbcType=VARCHAR}
+		, DEPT_ID = #{record.deptId,jdbcType=VARCHAR}
+		, DEPT_NAME = #{record.deptName,jdbcType=VARCHAR}
+		, LOG_DEPT_LEVEL = #{record.logDeptLevel,jdbcType=VARCHAR}
+		, IP = #{record.ip,jdbcType=VARCHAR}
+		, LOG_TYPE = #{record.logType,jdbcType=VARCHAR}
+		, FUNCTION_ID = #{record.functionId,jdbcType=VARCHAR}
+		, MODEL_ID = #{record.modelId,jdbcType=VARCHAR}
+		, SUB_MODEL_ID = #{record.subModelId,jdbcType=VARCHAR}
+		, OPER_TYPE = #{record.operType,jdbcType=VARCHAR}
+		, LOG_TIME = #{record.logTime,jdbcType=TIMESTAMP}
+		, LOG_INFO = #{record.logInfo,jdbcType=VARCHAR}
+		, CUNITID = #{record.cunitid,jdbcType=VARCHAR}
+		, SUNITID = #{record.sunitid,jdbcType=VARCHAR}
+		, TUNITID = #{record.tunitid,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateSelective" parameterType="com.pkusoft.admin.model.SysLog" >
+    update SYS_LOG
+    <set >
+      <if test="logId != null" >
+       LOG_ID = #{logId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+       USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="loginName != null" >
+       LOGIN_NAME = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+       USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null" >
+       DEPT_ID = #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+       DEPT_NAME = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="logDeptLevel != null" >
+       LOG_DEPT_LEVEL = #{logDeptLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+       IP = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null" >
+       LOG_TYPE = #{logType,jdbcType=VARCHAR},
+      </if>
+      <if test="functionId != null" >
+       FUNCTION_ID = #{functionId,jdbcType=VARCHAR},
+      </if>
+      <if test="modelId != null" >
+       MODEL_ID = #{modelId,jdbcType=VARCHAR},
+      </if>
+      <if test="subModelId != null" >
+       SUB_MODEL_ID = #{subModelId,jdbcType=VARCHAR},
+      </if>
+      <if test="operType != null" >
+       OPER_TYPE = #{operType,jdbcType=VARCHAR},
+      </if>
+      <if test="logTime != null" >
+       LOG_TIME = #{logTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logInfo != null" >
+       LOG_INFO = #{logInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="cunitid != null" >
+       CUNITID = #{cunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="sunitid != null" >
+       SUNITID = #{sunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="tunitid != null" >
+       TUNITID = #{tunitid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where 
+    LOG_ID = #{logId,jdbcType=DECIMAL}
+  </update>
+  <update id="update" parameterType="com.pkusoft.admin.model.SysLog" >
+    update SYS_LOG
+    set 
+		LOG_ID = #{logId,jdbcType=DECIMAL}
+		, USER_ID = #{userId,jdbcType=DECIMAL}
+		, LOGIN_NAME = #{loginName,jdbcType=VARCHAR}
+		, USER_NAME = #{userName,jdbcType=VARCHAR}
+		, DEPT_ID = #{deptId,jdbcType=VARCHAR}
+		, DEPT_NAME = #{deptName,jdbcType=VARCHAR}
+		, LOG_DEPT_LEVEL = #{logDeptLevel,jdbcType=VARCHAR}
+		, IP = #{ip,jdbcType=VARCHAR}
+		, LOG_TYPE = #{logType,jdbcType=VARCHAR}
+		, FUNCTION_ID = #{functionId,jdbcType=VARCHAR}
+		, MODEL_ID = #{modelId,jdbcType=VARCHAR}
+		, SUB_MODEL_ID = #{subModelId,jdbcType=VARCHAR}
+		, OPER_TYPE = #{operType,jdbcType=VARCHAR}
+		, LOG_TIME = #{logTime,jdbcType=TIMESTAMP}
+		, LOG_INFO = #{logInfo,jdbcType=VARCHAR}
+		, CUNITID = #{cunitid,jdbcType=VARCHAR}
+		, SUNITID = #{sunitid,jdbcType=VARCHAR}
+		, TUNITID = #{tunitid,jdbcType=VARCHAR}
+    where 
+    LOG_ID = #{logId,jdbcType=DECIMAL}
+  </update> 
+</mapper>

@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pkusoft.admin.dao.SysMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.pkusoft.admin.model.SysMenu" >
+    <id column="MENU_ID" property="menuId" jdbcType="DECIMAL" />
+    <result column="MENU_NAME" property="menuName" jdbcType="VARCHAR" />
+    <result column="MENU_URL" property="menuUrl" jdbcType="VARCHAR" />
+    <result column="ICON" property="icon" jdbcType="VARCHAR" />
+    <result column="MENU_LEVEL" property="menuLevel" jdbcType="VARCHAR" />
+    <result column="TREE_LEVEL" property="treeLevel" jdbcType="DECIMAL" />
+    <result column="TREE_PARENTID" property="treeParentid" jdbcType="DECIMAL" />
+    <result column="VISIABLE" property="visiable" jdbcType="VARCHAR" />
+    <result column="EXPAND" property="expand" jdbcType="VARCHAR" />
+    <result column="ORDER_FLAG" property="orderFlag" jdbcType="DECIMAL" />
+    <result column="RESERVE1" property="reserve1" jdbcType="VARCHAR" />
+    <result column="RESERVE2" property="reserve2" jdbcType="VARCHAR" />
+    <result column="RESERVE3" property="reserve3" jdbcType="VARCHAR" />
+    <result column="RESERVE4" property="reserve4" jdbcType="VARCHAR" />
+    <result column="RESERVE5" property="reserve5" jdbcType="VARCHAR" />
+    <result column="MEMO" property="memo" jdbcType="VARCHAR" />
+    <result column="ADD_TIME" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="ADD_USER_ID" property="addUserId" jdbcType="DECIMAL" />
+    <result column="ADD_USER_NAME" property="addUserName" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_USER_ID" property="modifyUserId" jdbcType="DECIMAL" />
+    <result column="MODIFY_USER_NAME" property="modifyUserName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="MiniResultMap" type="com.pkusoft.admin.model.SysMenuView" >
+    <id column="MENU_ID" property="menuId" jdbcType="DECIMAL" />
+    <result column="MENU_NAME" property="menuName" jdbcType="VARCHAR" />
+    <result column="ICON" property="icon" jdbcType="VARCHAR" />
+    <result column="TREE_LEVEL" property="treeLevel" jdbcType="DECIMAL" />
+    <result column="TREE_PARENT_ID" property="treeParentid" jdbcType="DECIMAL" />
+    <result column="CHECKED" property="checked" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="pageHeader">
+    select * from(select s_.*,rownum rn_ from(
+  </sql>
+  <sql id="pageRoot">
+      ) s_ where rownum &lt;= #{pager.limit}) where rn_ &gt; #{pager.start}
+  </sql>
+  <sql id="Criteria_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Criteria_Where_Clause" >
+    <where >
+      <foreach collection="criteria.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+  	MENU_ID
+  	, MENU_NAME
+  	, MENU_URL
+  	, ICON
+  	, MENU_LEVEL
+  	, TREE_LEVEL
+  	, TREE_PARENTID
+  	, VISIABLE
+  	, EXPAND
+  	, ORDER_FLAG
+  	, RESERVE1
+  	, RESERVE2
+  	, RESERVE3
+  	, RESERVE4
+  	, RESERVE5
+  	, MEMO
+  	, ADD_TIME
+  	, ADD_USER_ID
+  	, ADD_USER_NAME
+  	, MODIFY_TIME
+  	, MODIFY_USER_ID
+  	, MODIFY_USER_NAME
+  </sql>
+  <select id="getListByCriteria" resultMap="BaseResultMap" parameterType="com.pkusoft.framework.model.Criteria" >
+  	<if test="pager != null" >
+      <include refid="pageHeader" />
+    </if> 
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_MENU
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="pager != null" >
+      <include refid="pageRoot" />
+    </if>
+  </select>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_MENU
+    where 
+    MENU_ID = #{menuId,jdbcType=DECIMAL}
+  </select>
+  <delete id="delete" parameterType="java.lang.Object" >
+    delete from SYS_MENU
+    where 
+    MENU_ID = #{menuId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.pkusoft.framework.model.Criteria" >
+    delete from SYS_MENU
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pkusoft.admin.model.SysMenu" >
+    insert into SYS_MENU (
+  	MENU_ID
+  	, MENU_NAME
+  	, MENU_URL
+  	, ICON
+  	, MENU_LEVEL
+  	, TREE_LEVEL
+  	, TREE_PARENTID
+  	, VISIABLE
+  	, EXPAND
+  	, ORDER_FLAG
+  	, RESERVE1
+  	, RESERVE2
+  	, RESERVE3
+  	, RESERVE4
+  	, RESERVE5
+  	, MEMO
+  	, ADD_TIME
+  	, ADD_USER_ID
+  	, ADD_USER_NAME
+  	, MODIFY_TIME
+  	, MODIFY_USER_ID
+  	, MODIFY_USER_NAME
+      )
+    values (
+  	#{menuId,jdbcType=DECIMAL}
+  	, #{menuName,jdbcType=VARCHAR}
+  	, #{menuUrl,jdbcType=VARCHAR}
+  	, #{icon,jdbcType=VARCHAR}
+  	, #{menuLevel,jdbcType=VARCHAR}
+  	, #{treeLevel,jdbcType=DECIMAL}
+  	, #{treeParentid,jdbcType=DECIMAL}
+  	, #{visiable,jdbcType=VARCHAR}
+  	, #{expand,jdbcType=VARCHAR}
+  	, #{orderFlag,jdbcType=DECIMAL}
+  	, #{reserve1,jdbcType=VARCHAR}
+  	, #{reserve2,jdbcType=VARCHAR}
+  	, #{reserve3,jdbcType=VARCHAR}
+  	, #{reserve4,jdbcType=VARCHAR}
+  	, #{reserve5,jdbcType=VARCHAR}
+  	, #{memo,jdbcType=VARCHAR}
+  	, #{addTime,jdbcType=TIMESTAMP}
+  	, #{addUserId,jdbcType=DECIMAL}
+  	, #{addUserName,jdbcType=VARCHAR}
+  	, #{modifyTime,jdbcType=TIMESTAMP}
+  	, #{modifyUserId,jdbcType=DECIMAL}
+  	, #{modifyUserName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pkusoft.admin.model.SysMenu" >
+    insert into SYS_MENU
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="menuId != null" >
+	    MENU_ID,
+      </if>
+      <if test="menuName != null" >
+	    MENU_NAME,
+      </if>
+      <if test="menuUrl != null" >
+	    MENU_URL,
+      </if>
+      <if test="icon != null" >
+	    ICON,
+      </if>
+      <if test="menuLevel != null" >
+	    MENU_LEVEL,
+      </if>
+      <if test="treeLevel != null" >
+	    TREE_LEVEL,
+      </if>
+      <if test="treeParentid != null" >
+	    TREE_PARENTID,
+      </if>
+      <if test="visiable != null" >
+	    VISIABLE,
+      </if>
+      <if test="expand != null" >
+	    EXPAND,
+      </if>
+      <if test="orderFlag != null" >
+	    ORDER_FLAG,
+      </if>
+      <if test="reserve1 != null" >
+	    RESERVE1,
+      </if>
+      <if test="reserve2 != null" >
+	    RESERVE2,
+      </if>
+      <if test="reserve3 != null" >
+	    RESERVE3,
+      </if>
+      <if test="reserve4 != null" >
+	    RESERVE4,
+      </if>
+      <if test="reserve5 != null" >
+	    RESERVE5,
+      </if>
+      <if test="memo != null" >
+	    MEMO,
+      </if>
+      <if test="addTime != null" >
+	    ADD_TIME,
+      </if>
+      <if test="addUserId != null" >
+	    ADD_USER_ID,
+      </if>
+      <if test="addUserName != null" >
+	    ADD_USER_NAME,
+      </if>
+      <if test="modifyTime != null" >
+	    MODIFY_TIME,
+      </if>
+      <if test="modifyUserId != null" >
+	    MODIFY_USER_ID,
+      </if>
+      <if test="modifyUserName != null" >
+	    MODIFY_USER_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="menuId != null" >
+	    #{menuId,jdbcType=DECIMAL},
+      </if>
+      <if test="menuName != null" >
+	    #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUrl != null" >
+	    #{menuUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+	    #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="menuLevel != null" >
+	    #{menuLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="treeLevel != null" >
+	    #{treeLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="treeParentid != null" >
+	    #{treeParentid,jdbcType=DECIMAL},
+      </if>
+      <if test="visiable != null" >
+	    #{visiable,jdbcType=VARCHAR},
+      </if>
+      <if test="expand != null" >
+	    #{expand,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFlag != null" >
+	    #{orderFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="reserve1 != null" >
+	    #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+	    #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+	    #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+	    #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null" >
+	    #{reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+	    #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+	    #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserId != null" >
+	    #{addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="addUserName != null" >
+	    #{addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+	    #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+	    #{modifyUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyUserName != null" >
+	    #{modifyUserName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="getCountByCriteria" parameterType="com.pkusoft.framework.model.Criteria" resultType="java.lang.Integer" >
+    select count(*) from SYS_MENU
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteriaSelective" parameterType="map" >
+    update SYS_MENU
+    <set >
+      <if test="record.menuId != null" >
+	    MENU_ID = #{record.menuId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.menuName != null" >
+	    MENU_NAME = #{record.menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.menuUrl != null" >
+	    MENU_URL = #{record.menuUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.icon != null" >
+	    ICON = #{record.icon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.menuLevel != null" >
+	    MENU_LEVEL = #{record.menuLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.treeLevel != null" >
+	    TREE_LEVEL = #{record.treeLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="record.treeParentid != null" >
+	    TREE_PARENTID = #{record.treeParentid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.visiable != null" >
+	    VISIABLE = #{record.visiable,jdbcType=VARCHAR},
+      </if>
+      <if test="record.expand != null" >
+	    EXPAND = #{record.expand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderFlag != null" >
+	    ORDER_FLAG = #{record.orderFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="record.reserve1 != null" >
+	    RESERVE1 = #{record.reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve2 != null" >
+	    RESERVE2 = #{record.reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve3 != null" >
+	    RESERVE3 = #{record.reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve4 != null" >
+	    RESERVE4 = #{record.reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve5 != null" >
+	    RESERVE5 = #{record.reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memo != null" >
+	    MEMO = #{record.memo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTime != null" >
+	    ADD_TIME = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.addUserId != null" >
+	    ADD_USER_ID = #{record.addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.addUserName != null" >
+	    ADD_USER_NAME = #{record.addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyTime != null" >
+	    MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyUserId != null" >
+	    MODIFY_USER_ID = #{record.modifyUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.modifyUserName != null" >
+	    MODIFY_USER_NAME = #{record.modifyUserName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByCriteria" parameterType="map" >
+    update SYS_MENU
+    set 
+		MENU_ID = #{record.menuId,jdbcType=DECIMAL}
+		, MENU_NAME = #{record.menuName,jdbcType=VARCHAR}
+		, MENU_URL = #{record.menuUrl,jdbcType=VARCHAR}
+		, ICON = #{record.icon,jdbcType=VARCHAR}
+		, MENU_LEVEL = #{record.menuLevel,jdbcType=VARCHAR}
+		, TREE_LEVEL = #{record.treeLevel,jdbcType=DECIMAL}
+		, TREE_PARENTID = #{record.treeParentid,jdbcType=DECIMAL}
+		, VISIABLE = #{record.visiable,jdbcType=VARCHAR}
+		, EXPAND = #{record.expand,jdbcType=VARCHAR}
+		, ORDER_FLAG = #{record.orderFlag,jdbcType=DECIMAL}
+		, RESERVE1 = #{record.reserve1,jdbcType=VARCHAR}
+		, RESERVE2 = #{record.reserve2,jdbcType=VARCHAR}
+		, RESERVE3 = #{record.reserve3,jdbcType=VARCHAR}
+		, RESERVE4 = #{record.reserve4,jdbcType=VARCHAR}
+		, RESERVE5 = #{record.reserve5,jdbcType=VARCHAR}
+		, MEMO = #{record.memo,jdbcType=VARCHAR}
+		, ADD_TIME = #{record.addTime,jdbcType=TIMESTAMP}
+		, ADD_USER_ID = #{record.addUserId,jdbcType=DECIMAL}
+		, ADD_USER_NAME = #{record.addUserName,jdbcType=VARCHAR}
+		, MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP}
+		, MODIFY_USER_ID = #{record.modifyUserId,jdbcType=DECIMAL}
+		, MODIFY_USER_NAME = #{record.modifyUserName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateSelective" parameterType="com.pkusoft.admin.model.SysMenu" >
+    update SYS_MENU
+    <set >
+      <if test="menuId != null" >
+       MENU_ID = #{menuId,jdbcType=DECIMAL},
+      </if>
+      <if test="menuName != null" >
+       MENU_NAME = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUrl != null" >
+       MENU_URL = #{menuUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+       ICON = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="menuLevel != null" >
+       MENU_LEVEL = #{menuLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="treeLevel != null" >
+       TREE_LEVEL = #{treeLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="treeParentid != null" >
+       TREE_PARENTID = #{treeParentid,jdbcType=DECIMAL},
+      </if>
+      <if test="visiable != null" >
+       VISIABLE = #{visiable,jdbcType=VARCHAR},
+      </if>
+      <if test="expand != null" >
+       EXPAND = #{expand,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFlag != null" >
+       ORDER_FLAG = #{orderFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="reserve1 != null" >
+       RESERVE1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+       RESERVE2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+       RESERVE3 = #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+       RESERVE4 = #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null" >
+       RESERVE5 = #{reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+       MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+       ADD_TIME = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserId != null" >
+       ADD_USER_ID = #{addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="addUserName != null" >
+       ADD_USER_NAME = #{addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+       MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+       MODIFY_USER_ID = #{modifyUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyUserName != null" >
+       MODIFY_USER_NAME = #{modifyUserName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where 
+    MENU_ID = #{menuId,jdbcType=DECIMAL}
+  </update>
+  <update id="update" parameterType="com.pkusoft.admin.model.SysMenu" >
+    update SYS_MENU
+    set 
+		MENU_ID = #{menuId,jdbcType=DECIMAL}
+		, MENU_NAME = #{menuName,jdbcType=VARCHAR}
+		, MENU_URL = #{menuUrl,jdbcType=VARCHAR}
+		, ICON = #{icon,jdbcType=VARCHAR}
+		, MENU_LEVEL = #{menuLevel,jdbcType=VARCHAR}
+		, TREE_LEVEL = #{treeLevel,jdbcType=DECIMAL}
+		, TREE_PARENTID = #{treeParentid,jdbcType=DECIMAL}
+		, VISIABLE = #{visiable,jdbcType=VARCHAR}
+		, EXPAND = #{expand,jdbcType=VARCHAR}
+		, ORDER_FLAG = #{orderFlag,jdbcType=DECIMAL}
+		, RESERVE1 = #{reserve1,jdbcType=VARCHAR}
+		, RESERVE2 = #{reserve2,jdbcType=VARCHAR}
+		, RESERVE3 = #{reserve3,jdbcType=VARCHAR}
+		, RESERVE4 = #{reserve4,jdbcType=VARCHAR}
+		, RESERVE5 = #{reserve5,jdbcType=VARCHAR}
+		, MEMO = #{memo,jdbcType=VARCHAR}
+		, ADD_TIME = #{addTime,jdbcType=TIMESTAMP}
+		, ADD_USER_ID = #{addUserId,jdbcType=DECIMAL}
+		, ADD_USER_NAME = #{addUserName,jdbcType=VARCHAR}
+		, MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+		, MODIFY_USER_ID = #{modifyUserId,jdbcType=DECIMAL}
+		, MODIFY_USER_NAME = #{modifyUserName,jdbcType=VARCHAR}
+    where 
+    MENU_ID = #{menuId,jdbcType=DECIMAL}
+  </update> 
+  
+  <!-- 获取角色拥有的菜单列表 create by hey -->
+  <select id="getMenuListByRole" resultMap="MiniResultMap" parameterType="java.lang.Object" >
+    select
+       case NVL(rm.MENU_ID , 0) when 0 THEN '' else 'checked' end CHECKED
+     , m.MENU_ID
+     , m.MENU_NAME
+     , m.ICON
+     , m.TREE_LEVEL
+     , m.TREE_PARENTID
+     from SYS_MENU m
+     left join (select MENU_ID  from SYS_ROLE_MENU where ROLE_ID = #{roleId,jdbcType=DECIMAL}) rm
+     on m.MENU_ID = rm.MENU_ID
+    order by m.ORDER_FLAG  
+  </select>
+  
+  <!-- 获取角色拥有的菜单列表  create by hey -->
+  <select id="getSysMenuByUserId" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    select 
+      <include refid="Base_Column_List" />
+    from sys_menu m
+      where m.menu_id  
+    in 
+      (select 
+         menu_id
+       from 
+         sys_role_menu rm 
+       where 
+         rm.role_id 
+       in
+         (select 
+            role_id 
+          from 
+            sys_role_user
+          where
+            user_id = #{userId,jdbcType=DECIMAL}
+         )
+      )
+    order by m.TREE_LEVEL,m.ORDER_FLAG  
+  </select>
+</mapper>

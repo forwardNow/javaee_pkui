@@ -33,15 +33,10 @@
     <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="pageHeader">
-  	<!-- 
     select * from(select s_.*,rownum rn_ from(
-    -->
   </sql>
   <sql id="pageRoot">
-  	  <!-- 
       ) s_ where rownum &lt;= #{pager.limit}) where rn_ &gt; #{pager.start}
-      -->
-       limit #{pager.start}, #{pager.pageSize} 
   </sql>
   <sql id="Criteria_Where_Clause" >
     <where >
@@ -681,4 +676,74 @@
     where 
     DEPT_ID = #{deptId,jdbcType=VARCHAR}
   </update> 
+  
+  <!-- 获取有上下级关系的单位，子取父 create by tanggj-->
+  <select id="getReleDeptListBySub" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    <if test="pager != null" >
+      <include refid="pageHeader" />
+    </if> 
+    select
+    <include refid="Base_Column_List" />
+    from SYS_DEPT    
+    CONNECT BY PRIOR Parent_Dept_Id = Dept_Id start With Dept_Id=#{deptId,jdbcType=VARCHAR}
+    Order By dept_id
+    <if test="pager != null" >
+      <include refid="pageRoot" />
+    </if>
+  </select>
+  
+  <!-- 获取有上下级关系的单位，父取 子 create by tanggj-->
+  <select id="getReleDeptListByParent" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    <if test="pager != null" >
+      <include refid="pageHeader" />
+    </if> 
+    select
+    <include refid="Base_Column_List" />
+    from SYS_DEPT    
+    CONNECT BY PRIOR Dept_Id = Parent_Dept_Id start With Dept_Id=#{deptId,jdbcType=VARCHAR}
+    Order By dept_id
+    <if test="pager != null" >
+      <include refid="pageRoot" />
+    </if>
+  </select>
+  
+  <!-- 根据单位级别获取有上下级关系的单位，父取子 create by tanggj-->
+  <select id="getReleDeptListByLevel" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    <if test="pager != null" >
+      <include refid="pageHeader" />
+    </if> 
+    select
+    <include refid="Base_Column_List" />
+    from SYS_DEPT
+    where 
+    DEPT_LEVEL = #{deptLevel,jdbcType=VARCHAR} 
+    <if test="isMainDept != null" >
+   	and
+   	IS_MAIN_DEPT = #{isMainDept,jdbcType=VARCHAR} 
+   	</if>
+    <if test="deptLevelParent != null" >
+    	or
+    	(
+    	DEPT_LEVEL = #{deptLevelParent,jdbcType=VARCHAR} 
+    	<if test="isMainDeptParent != null" >
+    	and
+    	IS_MAIN_DEPT = #{isMainDeptParent,jdbcType=VARCHAR} 
+    	</if>
+    	)
+    </if>
+    CONNECT BY PRIOR Dept_Id = Parent_Dept_Id start With Dept_Id=#{deptId,jdbcType=VARCHAR}
+    Order By dept_id
+    <if test="pager != null" >
+      <include refid="pageRoot" />
+    </if>
+  </select>
+  
+  <!-- 根据id 取单位名称 字典-->
+  <select id="getSysDeptName" parameterType="java.lang.String" resultMap="BaseResultMap" >
+    select *
+    from SYS_DEPT
+    where 
+    DEPT_ID = #{deptId,jdbcType=DECIMAL}  
+  </select>
+  
 </mapper>
