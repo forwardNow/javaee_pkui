@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pkusoft.framework.dao.MaxIdMapper" >
+	<parameterMap id="PmGetMaxIdA" type="java.util.Map">
+       <parameter property="strIdType" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN" />
+       <parameter property="intMaxId" javaType="java.lang.Long" jdbcType="NUMERIC" mode="OUT"/>
+       <parameter property="strMaxId" javaType="java.lang.String" jdbcType="VARCHAR" mode="OUT"/>
+       <parameter property="strMaxFullId" javaType="java.lang.String" jdbcType="VARCHAR" mode="OUT"/>
+    </parameterMap>
+     <select id="getMaxIdA" parameterMap="PmGetMaxIdA" statementType="CALLABLE"> 
+	    { call PMAXID_A(?,?,?,?) }
+	 </select> 
+</mapper>

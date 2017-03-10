@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pkusoft.admin.dao.SysMaxIdMapper" >
+  <resultMap id="BaseResultMap" type="com.pkusoft.admin.model.SysMaxId" >
+    <id column="ID_TYPE" property="idType" jdbcType="VARCHAR" />
+    <id column="ID_PARA1" property="idPara1" jdbcType="VARCHAR" />
+    <id column="ID_PARA2" property="idPara2" jdbcType="VARCHAR" />
+    <result column="ID_CURR_VALUE" property="idCurrValue" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="pageHeader">
+  	<!-- 
+    select * from(select s_.*,rownum rn_ from(
+    -->
+  </sql>
+  <sql id="pageRoot">
+  	  <!-- 
+      ) s_ where rownum &lt;= #{pager.limit}) where rn_ &gt; #{pager.start}
+      -->
+       limit #{pager.start}, #{pager.pageSize} 
+  </sql>
+  <sql id="Criteria_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Criteria_Where_Clause" >
+    <where >
+      <foreach collection="criteria.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+  	ID_TYPE
+  	, ID_PARA1
+  	, ID_PARA2
+  	, ID_CURR_VALUE
+  </sql>
+  <select id="getListByCriteria" resultMap="BaseResultMap" parameterType="com.pkusoft.framework.model.Criteria" >
+  	<if test="pager != null" >
+      <include refid="pageHeader" />
+    </if> 
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_MAX_ID
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="pager != null" >
+      <include refid="pageRoot" />
+    </if>
+  </select>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_MAX_ID
+    where 
+    ID_TYPE = #{idType,jdbcType=VARCHAR}
+    ID_PARA1 = #{idPara1,jdbcType=VARCHAR}
+    ID_PARA2 = #{idPara2,jdbcType=VARCHAR}
+  </select>
+  <delete id="delete" parameterType="com.pkusoft.admin.model.SysMaxId" >
+    delete from SYS_MAX_ID
+    where 
+    ID_TYPE = #{idType,jdbcType=VARCHAR} AND
+    ID_PARA1 = #{idPara1,jdbcType=VARCHAR} AND
+    ID_PARA2 = #{idPara2,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.pkusoft.framework.model.Criteria" >
+    delete from SYS_MAX_ID
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pkusoft.admin.model.SysMaxId" >
+    insert into SYS_MAX_ID (
+  	ID_TYPE
+  	, ID_PARA1
+  	, ID_PARA2
+  	, ID_CURR_VALUE
+      )
+    values (
+  	#{idType,jdbcType=VARCHAR}
+  	, #{idPara1,jdbcType=VARCHAR}
+  	, #{idPara2,jdbcType=VARCHAR}
+  	, #{idCurrValue,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pkusoft.admin.model.SysMaxId" >
+    insert into SYS_MAX_ID
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idType != null" >
+	    ID_TYPE,
+      </if>
+      <if test="idPara1 != null" >
+	    ID_PARA1,
+      </if>
+      <if test="idPara2 != null" >
+	    ID_PARA2,
+      </if>
+      <if test="idCurrValue != null" >
+	    ID_CURR_VALUE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idType != null" >
+	    #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="idPara1 != null" >
+	    #{idPara1,jdbcType=VARCHAR},
+      </if>
+      <if test="idPara2 != null" >
+	    #{idPara2,jdbcType=VARCHAR},
+      </if>
+      <if test="idCurrValue != null" >
+	    #{idCurrValue,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="getCountByCriteria" parameterType="com.pkusoft.framework.model.Criteria" resultType="java.lang.Integer" >
+    select count(*) from SYS_MAX_ID
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteriaSelective" parameterType="map" >
+    update SYS_MAX_ID
+    <set >
+      <if test="record.idType != null" >
+	    ID_TYPE = #{record.idType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idPara1 != null" >
+	    ID_PARA1 = #{record.idPara1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idPara2 != null" >
+	    ID_PARA2 = #{record.idPara2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idCurrValue != null" >
+	    ID_CURR_VALUE = #{record.idCurrValue,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByCriteria" parameterType="map" >
+    update SYS_MAX_ID
+    set 
+		ID_TYPE = #{record.idType,jdbcType=VARCHAR}
+		, ID_PARA1 = #{record.idPara1,jdbcType=VARCHAR}
+		, ID_PARA2 = #{record.idPara2,jdbcType=VARCHAR}
+		, ID_CURR_VALUE = #{record.idCurrValue,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateSelective" parameterType="com.pkusoft.admin.model.SysMaxId" >
+    update SYS_MAX_ID
+    <set >
+      <if test="idType != null" >
+       ID_TYPE = #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="idPara1 != null" >
+       ID_PARA1 = #{idPara1,jdbcType=VARCHAR},
+      </if>
+      <if test="idPara2 != null" >
+       ID_PARA2 = #{idPara2,jdbcType=VARCHAR},
+      </if>
+      <if test="idCurrValue != null" >
+       ID_CURR_VALUE = #{idCurrValue,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where 
+    ID_TYPE = #{idType,jdbcType=VARCHAR} AND
+    ID_PARA1 = #{idPara1,jdbcType=VARCHAR} AND
+    ID_PARA2 = #{idPara2,jdbcType=VARCHAR}
+  </update>
+  <update id="update" parameterType="com.pkusoft.admin.model.SysMaxId" >
+    update SYS_MAX_ID
+    set 
+		ID_TYPE = #{idType,jdbcType=VARCHAR}
+		, ID_PARA1 = #{idPara1,jdbcType=VARCHAR}
+		, ID_PARA2 = #{idPara2,jdbcType=VARCHAR}
+		, ID_CURR_VALUE = #{idCurrValue,jdbcType=DECIMAL}
+    where 
+    ID_TYPE = #{idType,jdbcType=VARCHAR}
+    ID_PARA1 = #{idPara1,jdbcType=VARCHAR}
+    ID_PARA2 = #{idPara2,jdbcType=VARCHAR}
+  </update> 
+  
+  <select id="getByPara1" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_MAX_ID
+    where 
+    ID_TYPE = #{idType,jdbcType=VARCHAR} AND
+    ID_PARA1 like '%'||#{idPara1,jdbcType=VARCHAR}||'%' 
+  </select>
+    <select id="getSysMaxIdDetail" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_MAX_ID
+    where 
+    ID_TYPE = #{idType,jdbcType=VARCHAR} AND
+    ID_PARA1 = #{idPara1,jdbcType=VARCHAR} AND
+    ID_PARA2 = #{idPara2,jdbcType=VARCHAR} 
+  </select>
+</mapper>
