@@ -173,8 +173,7 @@ public class SysMenuController extends BaseController {
 	
 	/**
 	 * 列表数据-调用目录服务查询目录
-	 * @param sysRoleMenu
-	 * @param pager
+	 * @param roleId
 	 * @return
 	 */
 	@RequestMapping(value = AdminUrlRecource.SYS_ROLE_MENU_LIST_DATA)
@@ -218,4 +217,25 @@ public class SysMenuController extends BaseController {
 			return new JsonResult(false,e.getMessage());
 		}
 	}
+	
+	/**
+	 * 列表数据-所有目录
+	 * @return
+	 */
+	@RequestMapping(value = "/admin/allSysMenuListData")
+	@ResponseBody
+	public GridResult sysMenuListData() {
+		try {
+			Criteria<SysMenuCriteria> criteria = new Criteria<SysMenuCriteria>();
+			SysMenuCriteria sysMenuCriteria = criteria.createCriteria(SysMenuCriteria.class);
+			criteria.setOrderByClause( "ORDER_FLAG ASC" );
+			//sysMenuCriteria.addCriterion( "order by orderFlag asc" );
+            List<SysMenu> list = sysMenuService.getListByCriteria( criteria );
+			return new GridResult(true, list);
+		} catch (Exception e) {
+			logger.error("查询列表数据出错", e);
+			return new GridResult(false, null);
+		}
+	}
+	
 }
