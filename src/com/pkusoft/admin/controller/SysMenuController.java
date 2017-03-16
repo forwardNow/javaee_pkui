@@ -224,11 +224,10 @@ public class SysMenuController extends BaseController {
 	 */
 	@RequestMapping(value = "/admin/allSysMenuListData")
 	@ResponseBody
-	public GridResult sysMenuListData() {
+	public GridResult allSysMenuListData() {
 		try {
 			Criteria<SysMenuCriteria> criteria = new Criteria<SysMenuCriteria>();
-			SysMenuCriteria sysMenuCriteria = criteria.createCriteria(SysMenuCriteria.class);
-			criteria.setOrderByClause( "ORDER_FLAG ASC" );
+			criteria.setOrderByClause("TREE_LEVEL,ORDER_FLAG");
 			//sysMenuCriteria.addCriterion( "order by orderFlag asc" );
             List<SysMenu> list = sysMenuService.getListByCriteria( criteria );
 			return new GridResult(true, list);
