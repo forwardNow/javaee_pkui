@@ -534,7 +534,7 @@
 	select max(item_Id)from Sys_dic_item
   </select>
   
-  <select id="getListByDicNameAndItemValue" parameterType="com.pkusoft.admin.model.SysDicItem" resultType="com.pkusoft.admin.model.SysDicItem" >
+  <select id="getListByDicNameAndItemValue" parameterType="com.pkusoft.admin.model.SysDicItem" resultMap="BaseResultMap" >
     select 
     <include refid="Base_Column_List" />
     from SYS_DIC_ITEM where DIC_NAME = #{dicName,jdbcType=VARCHAR}  AND
