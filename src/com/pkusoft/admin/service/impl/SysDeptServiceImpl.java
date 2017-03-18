@@ -65,7 +65,7 @@ public class SysDeptServiceImpl extends BaseServiceImpl<SysDept> implements SysD
 	 */
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)
 	public List<SysDept> getSysDeptList(Criteria<?> criteria){
-		WebUtils.setUserDataPermit(DataPermitType.SYS_DEPT_LIST, criteria);
+//		WebUtils.setUserDataPermit(DataPermitType.SYS_DEPT_LIST, criteria);
 		
 		List<SysDept> list = this.getListByCriteria(criteria);
 		
