@@ -60,6 +60,12 @@ seajs.config( {
         // AOP
         "meld": "lib/meld/1.3.1.x/meld.js",
 
+        // 表格列宽，拖拽调整（被 bootgrid 依赖）
+        "colResizable": "lib/jquery/plugin/colResizable/1.6.0/colResizable",
+
+        // bootstrap dropdown menu（被 bootgrid 依赖）
+        "bootstrap-dropdown": "lib/jquery/plugin/bootstrap/3.3.6/dropdown",
+
         // bootgrid
         "bootgrid": "lib/bootgrid/1.3.1.x/jquery.bootgrid",
 
@@ -197,7 +203,7 @@ seajs.use( [ "jquery" ], function ( $ ) {
             // CTX路径
             ctxPath: ns.ctxPath,
             // 字典路径
-            dicPath: ns.ctxPath + "/dic/",
+            dicPath: ns.ctxPath + "/static/dic/",
             // 时间戳（版本控制）v=2012-1-1
             timestamp: ns.timestamp,
             // 组件容器
@@ -206,6 +212,12 @@ seajs.use( [ "jquery" ], function ( $ ) {
             render: function () {}
         }
         ;
+
+    if ( location.href.indexOf( "localhost" ) !== -1 ) {
+        PKUI.ctxPath = "http://localhost:8080/pkui";
+        PKUI.dicPath = "http://localhost:8080/pkui/static/dic/";
+    }
+
 
     /**
      * 通用功能
