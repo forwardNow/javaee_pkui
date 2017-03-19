@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="xianggang" DIC_SPELL="xg" DIC_TEXT="香港" DIC_CODE="1"/>
+    <row DIC_ASPELL="aomen" DIC_SPELL="am" DIC_TEXT="澳门" DIC_CODE="2"/>
+    <row DIC_ASPELL="taiwan" DIC_SPELL="tw" DIC_TEXT="台湾" DIC_CODE="3"/>
+</data>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="fanghuo" DIC_SPELL="fh" DIC_TEXT="防火" DIC_CODE="1"/>
+    <row DIC_ASPELL="fangdao" DIC_SPELL="fd" DIC_TEXT="防盗" DIC_CODE="2"/>
+    <row DIC_ASPELL="fangchao" DIC_SPELL="fc" DIC_TEXT="防潮" DIC_CODE="3"/>
+    <row DIC_ASPELL="fangzhu" DIC_SPELL="fz" DIC_TEXT="防蛀" DIC_CODE="4"/>
+    <row DIC_ASPELL="fangci" DIC_SPELL="fc" DIC_TEXT="防磁" DIC_CODE="5"/>
+    <row DIC_ASPELL="fangfushi" DIC_SPELL="ffs" DIC_TEXT="防腐蚀" DIC_CODE="6"/>
+</data>

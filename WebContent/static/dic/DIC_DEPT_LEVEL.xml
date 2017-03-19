@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="gonganbu" DIC_SPELL="gab" DIC_TEXT="公安部" DIC_CODE="0"/>
+    <row DIC_ASPELL="shengting" DIC_SPELL="st" DIC_TEXT="省厅" DIC_CODE="1"/>
+    <row DIC_ASPELL="dishi" DIC_SPELL="ds" DIC_TEXT="地市" DIC_CODE="2"/>
+    <row DIC_ASPELL="fenju" DIC_SPELL="fj" DIC_TEXT="分局" DIC_CODE="3"/>
+    <row DIC_ASPELL="paichusuo" DIC_SPELL="pcs" DIC_TEXT="派出所" DIC_CODE="4"/>
+</data>

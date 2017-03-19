@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="jundui" DIC_SPELL="jd" DIC_TEXT="军队" DIC_CODE="1"/>
+    <row DIC_ASPELL="zhengfa" DIC_SPELL="zf" DIC_TEXT="政法" DIC_CODE="2"/>
+    <row DIC_ASPELL="baoanguanli" DIC_SPELL="bagl" DIC_TEXT="保安管理" DIC_CODE="3"/>
+    <row DIC_ASPELL="zhianbaowei" DIC_SPELL="zabw" DIC_TEXT="治安保卫" DIC_CODE="4"/>
+    <row DIC_ASPELL="qita" DIC_SPELL="qt" DIC_TEXT="其他" DIC_CODE="9"/>
+</data>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="zhongguogongchandangdangyuan" DIC_SPELL="zggcddy" DIC_TEXT="中国共产党党员" DIC_CODE="01"/>
+    <row DIC_ASPELL="zhongguogongchandangyubeidangyuan" DIC_SPELL="zggcdybdy" DIC_TEXT="中国共产党预备党员" DIC_CODE="02"/>
+    <row DIC_ASPELL="wudangpaiminzhurenshi" DIC_SPELL="wdpmzrs" DIC_TEXT="无党派民主人士" DIC_CODE="12"/>
+    <row DIC_ASPELL="zhongguogongchanzhuyiqingniantuantuanyuan" DIC_SPELL="zggczyqntty" DIC_TEXT="中国共产主义青年团团员" DIC_CODE="03"/>
+    <row DIC_ASPELL="zhongguoguomindanggemingweiyuanhuihuiyuan" DIC_SPELL="zggmdgmwyhhy" DIC_TEXT="中国国民党革命委员会会员" DIC_CODE="04"/>
+    <row DIC_ASPELL="zhongguominzhutongmengmengyuan" DIC_SPELL="zgmztmmy" DIC_TEXT="中国民主同盟盟员" DIC_CODE="05"/>
+    <row DIC_ASPELL="zhongguominzhujianguohuihuiyuan" DIC_SPELL="zgmzjghhy" DIC_TEXT="中国民主建国会会员" DIC_CODE="06"/>
+    <row DIC_ASPELL="zhongguominzhucujinhuihuiyuan" DIC_SPELL="zgmzcjhhy" DIC_TEXT="中国民主促进会会员" DIC_CODE="07"/>
+    <row DIC_ASPELL="zhongguononggongminzhudangdangyuan" DIC_SPELL="zgngmzddy" DIC_TEXT="中国农工民主党党员" DIC_CODE="08"/>
+    <row DIC_ASPELL="zhongguozhigongdangdangyuan" DIC_SPELL="zgzgddy" DIC_TEXT="中国致公党党员" DIC_CODE="09"/>
+    <row DIC_ASPELL="jiusanxueshesheyuan" DIC_SPELL="jsxssy" DIC_TEXT="九三学社社员" DIC_CODE="10"/>
+    <row DIC_ASPELL="taiwanminzhuzizhitongmengmengyuan" DIC_SPELL="twmzzztmmy" DIC_TEXT="台湾民主自治同盟盟员" DIC_CODE="11"/>
+    <row DIC_ASPELL="qunzhong" DIC_SPELL="qz" DIC_TEXT="群众" DIC_CODE="13"/>
+</data>

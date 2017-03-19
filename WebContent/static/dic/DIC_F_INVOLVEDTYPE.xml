@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="weifafanzuisuodejiqizixi" DIC_SPELL="wffzsdjqzx" DIC_TEXT="违法犯罪所得及其孳息" DIC_CODE="10"/>
+    <row DIC_ASPELL="yongyushishiweifafanzuixingweidegongju" DIC_SPELL="yysswffzxwdgj" DIC_TEXT="用于实施违法犯罪行为的工具" DIC_CODE="20"/>
+    <row DIC_ASPELL="feifachiyoudeyinhuiwupindupindengweijinpin" DIC_SPELL="ffcydyhwp、dpdwjp" DIC_TEXT="非法持有的淫秽物品、毒品等违禁品" DIC_CODE="30"/>
+    <row DIC_ASPELL="qitakeyizhengmingweifafanzuixingweifashengweifafanzuixingweiqingjieqingzhongdewupinhewenjian" DIC_SPELL="qtkyzmwffzxwfs、wffzxwqjqzdwphwj" DIC_TEXT="其他可以证明违法犯罪行为发生、违法犯罪行为情节轻重的物品和文件" DIC_CODE="40"/>
+</data>

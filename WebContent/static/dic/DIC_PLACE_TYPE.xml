@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="sheancaiwuguanlizhongxin" DIC_SPELL="sacwglzx" DIC_TEXT="涉案财物管理中心" DIC_CODE="01"/>
+    <row DIC_ASPELL="paichusuosheancaiwubaoguanshi" DIC_SPELL="pcssacwbgs" DIC_TEXT="派出所涉案财物保管室" DIC_CODE="02"/>
+    <row DIC_ASPELL="tingchechang" DIC_SPELL="tcc" DIC_TEXT="停车场" DIC_CODE="03"/>
+    <row DIC_ASPELL="daxingwupinguanlizhongxin" DIC_SPELL="dxwpglzx" DIC_TEXT="大型物品管理中心" DIC_CODE="04"/>
+    <row DIC_ASPELL="fangshexingwupinguanlizhongxin" DIC_SPELL="fsxwpglzx" DIC_TEXT="放射性物品管理中心" DIC_CODE="05"/>
+    <row DIC_ASPELL="juduwupinguanlizhongxin" DIC_SPELL="jdwpglzx" DIC_TEXT="剧毒物品管理中心" DIC_CODE="06"/>
+    <row DIC_ASPELL="huangseyinhuiwupinguanlizhongxin" DIC_SPELL="hs、yhwpglzx" DIC_TEXT="黄色、淫秽物品管理中心" DIC_CODE="07"/>
+</data>

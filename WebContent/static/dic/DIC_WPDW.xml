@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="ba" DIC_SPELL="b" DIC_TEXT="把" DIC_CODE="1"/>
+    <row DIC_ASPELL="ge" DIC_SPELL="g" DIC_TEXT="个" DIC_CODE="2"/>
+    <row DIC_ASPELL="jian" DIC_SPELL="j" DIC_TEXT="件" DIC_CODE="3"/>
+    <row DIC_ASPELL="kun" DIC_SPELL="k" DIC_TEXT="捆" DIC_CODE="4"/>
+</data>

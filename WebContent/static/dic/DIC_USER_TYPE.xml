@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="putongyonghu" DIC_SPELL="ptyh" DIC_TEXT="普通用户" DIC_CODE="1"/>
+    <row DIC_ASPELL="teshuyonghu" DIC_SPELL="tsyh" DIC_TEXT="特殊用户" DIC_CODE="2"/>
+    <row DIC_ASPELL="gongzhongyonghu" DIC_SPELL="gzyh" DIC_TEXT="公众用户" DIC_CODE="3"/>
+</data>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="xunwen" DIC_SPELL="xw" DIC_TEXT="讯问" DIC_CODE="01"/>
+    <row DIC_ASPELL="jianding" DIC_SPELL="jd" DIC_TEXT="鉴定" DIC_CODE="02"/>
+    <row DIC_ASPELL="bianren" DIC_SPELL="br" DIC_TEXT="辨认" DIC_CODE="03"/>
+    <row DIC_ASPELL="jianyan" DIC_SPELL="jy" DIC_TEXT="检验" DIC_CODE="04"/>
+    <row DIC_ASPELL="jiancha" DIC_SPELL="jc" DIC_TEXT="检查" DIC_CODE="06"/>
+    <row DIC_ASPELL="qita" DIC_SPELL="qt" DIC_TEXT="其它" DIC_CODE="07"/>
+</data>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="diaoyongchukuqueren" DIC_SPELL="dyck（qr）" DIC_TEXT="调用出库（确认）" DIC_CODE="33"/>
+    <row DIC_ASPELL="dengjitiqu" DIC_SPELL="dj（tq）" DIC_TEXT="登记（提取）" DIC_CODE="00"/>
+    <row DIC_ASPELL="kouyatiqu" DIC_SPELL="ky（tq）" DIC_TEXT="扣押（提取）" DIC_CODE="01"/>
+    <row DIC_ASPELL="diaoqutiqu" DIC_SPELL="dq（tq）" DIC_TEXT="调取（提取）" DIC_CODE="02"/>
+    <row DIC_ASPELL="dongjietiqu" DIC_SPELL="dj（tq）" DIC_TEXT="冻结（提取）" DIC_CODE="03"/>
+    <row DIC_ASPELL="chafengtiqu" DIC_SPELL="cf（tq）" DIC_TEXT="查封（提取）" DIC_CODE="04"/>
+    <row DIC_ASPELL="fengcuntiqu" DIC_SPELL="fc（tq）" DIC_TEXT="封存（提取）" DIC_CODE="05"/>
+    <row DIC_ASPELL="xianxingdengjitiqu" DIC_SPELL="xxdj（tq）" DIC_TEXT="先行登记（提取）" DIC_CODE="06"/>
+    <row DIC_ASPELL="chouyangquzhengtiqu" DIC_SPELL="cyqz（tq）" DIC_TEXT="抽样取证（提取）" DIC_CODE="07"/>
+    <row DIC_ASPELL="shoujiaozhuijiaotiqu" DIC_SPELL="sj、zj（tq）" DIC_TEXT="收缴、追缴（提取）" DIC_CODE="08"/>
+    <row DIC_ASPELL="meishoutiqu" DIC_SPELL="ms（tq）" DIC_TEXT="没收（提取）" DIC_CODE="09"/>
+    <row DIC_ASPELL="zancuntiqu" DIC_SPELL="zc（tq）" DIC_TEXT="暂存（提取）" DIC_CODE="10"/>
+    <row DIC_ASPELL="baoguandaiguantiqu" DIC_SPELL="bg、dg（tq）" DIC_TEXT="保管、代管（提取）" DIC_CODE="11"/>
+    <row DIC_ASPELL="ruku" DIC_SPELL="rk" DIC_TEXT="入库" DIC_CODE="20"/>
+    <row DIC_ASPELL="yanqi" DIC_SPELL="yq" DIC_TEXT="延期" DIC_CODE="21"/>
+    <row DIC_ASPELL="diaoyong" DIC_SPELL="dy" DIC_TEXT="调用" DIC_CODE="22"/>
+    <row DIC_ASPELL="diaoyongchukushenqing" DIC_SPELL="dyck（sq）" DIC_TEXT="调用出库（申请）" DIC_CODE="30"/>
+    <row DIC_ASPELL="yijiaochuku" DIC_SPELL="yjck" DIC_TEXT="移交出库" DIC_CODE="31"/>
+    <row DIC_ASPELL="tuihai(chuli)" DIC_SPELL="th(cl)" DIC_TEXT="退还(处理)" DIC_CODE="40"/>
+    <row DIC_ASPELL="shangjiao(chuli)" DIC_SPELL="sj(cl)" DIC_TEXT="上缴(处理)" DIC_CODE="41"/>
+    <row DIC_ASPELL="xiaohui(chuli)" DIC_SPELL="xh(cl)" DIC_TEXT="销毁(处理)" DIC_CODE="42"/>
+    <row DIC_ASPELL="yijiao(chuli)" DIC_SPELL="yj(cl)" DIC_TEXT="移交(处理)" DIC_CODE="43"/>
+    <row DIC_ASPELL="fahai(chuli)" DIC_SPELL="fh(cl)" DIC_TEXT="发还(处理)" DIC_CODE="44"/>
+    <row DIC_ASPELL="meishou(chuli)" DIC_SPELL="ms(cl)" DIC_TEXT="没收(处理)" DIC_CODE="45"/>
+    <row DIC_ASPELL="paimai(chuli)" DIC_SPELL="pm(cl)" DIC_TEXT="拍卖(处理)" DIC_CODE="46"/>
+    <row DIC_ASPELL="bianmai(chuli)" DIC_SPELL="bm(cl)" DIC_TEXT="变卖(处理)" DIC_CODE="47"/>
+    <row DIC_ASPELL="kouya(chuli)" DIC_SPELL="ky(cl)" DIC_TEXT="扣押(处理)" DIC_CODE="48"/>
+    <row DIC_ASPELL="jiechu(chuli)" DIC_SPELL="jc(cl)" DIC_TEXT="解除(处理)" DIC_CODE="49"/>
+    <row DIC_ASPELL="diaoyongrukuqueren" DIC_SPELL="dyrk（qr）" DIC_TEXT="调用入库（确认）" DIC_CODE="34"/>
+    <row DIC_ASPELL="diaoyongrukushenqing" DIC_SPELL="dyrk（sq）" DIC_TEXT="调用入库（申请）" DIC_CODE="32"/>
+</data>

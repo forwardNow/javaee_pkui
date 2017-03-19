@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="weichuli" DIC_SPELL="wcl" DIC_TEXT="未处理" DIC_CODE="0"/>
+    <row DIC_ASPELL="xingshianjianyishouli" DIC_SPELL="xsajysl" DIC_TEXT="刑事案件已受理" DIC_CODE="1"/>
+    <row DIC_ASPELL="xingshianjianyilian" DIC_SPELL="xsajyla" DIC_TEXT="刑事案件已立案" DIC_CODE="2"/>
+    <row DIC_ASPELL="xingshibuyulian" DIC_SPELL="xsbyla" DIC_TEXT="刑事不予立案" DIC_CODE="3"/>
+    <row DIC_ASPELL="xingshianjianyizhuanweixingzhengzhiananjian" DIC_SPELL="xsajyzwxz（za）aj" DIC_TEXT="刑事案件已转为行政（治安）案件" DIC_CODE="4"/>
+    <row DIC_ASPELL="xingshianjianzhenchazhongjie" DIC_SPELL="xsajzczj" DIC_TEXT="刑事案件侦查终结" DIC_CODE="6"/>
+    <row DIC_ASPELL="xingshianjianyisonganjian" DIC_SPELL="xsajysaj" DIC_TEXT="刑事案件移送案件" DIC_CODE="7"/>
+    <row DIC_ASPELL="xingshianjianyisongqisu" DIC_SPELL="xsajysqs" DIC_TEXT="刑事案件移送起诉" DIC_CODE="8"/>
+    <row DIC_ASPELL="xingshianjianchexiaoanjian" DIC_SPELL="xsajcxaj" DIC_TEXT="刑事案件撤销案件" DIC_CODE="9"/>
+    <row DIC_ASPELL="xingzhenganjianshouli" DIC_SPELL="xzajsl" DIC_TEXT="行政案件受理" DIC_CODE="O"/>
+    <row DIC_ASPELL="xingzhenganjianbuyuchuli" DIC_SPELL="xzajbycl" DIC_TEXT="行政案件不予处理" DIC_CODE="P"/>
+    <row DIC_ASPELL="xingzhenganjianjiean" DIC_SPELL="xzajja" DIC_TEXT="行政案件结案" DIC_CODE="Q"/>
+    <row DIC_ASPELL="xingzhenganjianchexiaoanjian" DIC_SPELL="xzajcxaj" DIC_TEXT="行政案件撤销案件" DIC_CODE="R"/>
+    <row DIC_ASPELL="xingshianjianzhidingguanxia" DIC_SPELL="xsajzdgx" DIC_TEXT="刑事案件指定管辖" DIC_CODE="A"/>
+    <row DIC_ASPELL="xingshianjianyijiaowaidigonganjiguan" DIC_SPELL="xsajyjwdgajg" DIC_TEXT="刑事案件移交外地公安机关" DIC_CODE="B"/>
+    <row DIC_ASPELL="xingshianjianpoan" DIC_SPELL="xsajpa" DIC_TEXT="刑事案件破案" DIC_CODE="5"/>
+</data>

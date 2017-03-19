@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="qita" DIC_SPELL="qt" DIC_TEXT="其他" DIC_CODE="99"/>
+    <row DIC_ASPELL="tuihai" DIC_SPELL="th" DIC_TEXT="退还" DIC_CODE="40"/>
+    <row DIC_ASPELL="xiaohui" DIC_SPELL="xh" DIC_TEXT="销毁" DIC_CODE="42"/>
+    <row DIC_ASPELL="meishou" DIC_SPELL="ms" DIC_TEXT="没收" DIC_CODE="45"/>
+    <row DIC_ASPELL="bianmai" DIC_SPELL="bm" DIC_TEXT="变卖" DIC_CODE="47"/>
+    <row DIC_ASPELL="shangjiao" DIC_SPELL="sj" DIC_TEXT="上缴" DIC_CODE="41"/>
+    <row DIC_ASPELL="paimai" DIC_SPELL="pm" DIC_TEXT="拍卖" DIC_CODE="46"/>
+    <row DIC_ASPELL="fahai" DIC_SPELL="fh" DIC_TEXT="发还" DIC_CODE="44"/>
+    <row DIC_ASPELL="yijiao" DIC_SPELL="yj" DIC_TEXT="移交" DIC_CODE="43"/>
+</data>

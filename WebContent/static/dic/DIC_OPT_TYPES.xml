@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="menwei" DIC_SPELL="mw" DIC_TEXT="门卫" DIC_CODE="10"/>
+    <row DIC_ASPELL="xunluo" DIC_SPELL="xl" DIC_TEXT="巡逻" DIC_CODE="20"/>
+    <row DIC_ASPELL="shouhu" DIC_SPELL="sh" DIC_TEXT="守护" DIC_CODE="30"/>
+    <row DIC_ASPELL="yayun" DIC_SPELL="yy" DIC_TEXT="押运" DIC_CODE="40"/>
+    <row DIC_ASPELL="suishenhuwei" DIC_SPELL="sshw" DIC_TEXT="随身护卫" DIC_CODE="50"/>
+    <row DIC_ASPELL="anquanjiancha" DIC_SPELL="aqjc" DIC_TEXT="安全检查" DIC_CODE="60"/>
+    <row DIC_ASPELL="anquanjishufangfan" DIC_SPELL="aqjsff" DIC_TEXT="安全技术防范" DIC_CODE="70"/>
+    <row DIC_ASPELL="anquanfengxianpinggu" DIC_SPELL="aqfxpg" DIC_TEXT="安全风险评估" DIC_CODE="80"/>
+    <row DIC_ASPELL="zhixuweihu" DIC_SPELL="zxwh" DIC_TEXT="秩序维护" DIC_CODE="90"/>
+    <row DIC_ASPELL="baojingjiankongyunying" DIC_SPELL="bjjkyy" DIC_TEXT="报警监控运营" DIC_CODE="94"/>
+</data>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="fanhuiyijibianhao" DIC_SPELL="fhyjbh" DIC_TEXT="返回一级编号" DIC_CODE="00"/>
+    <row DIC_ASPELL="zhifanhuierjibianhao" DIC_SPELL="zfhejbh" DIC_TEXT="只返回二级编号" DIC_CODE="10"/>
+    <row DIC_ASPELL="fanhuiyijibianhaoerjibianhao" DIC_SPELL="fhyjbh＋ejbh" DIC_TEXT="返回一级编号＋二级编号" DIC_CODE="11"/>
+    <row DIC_ASPELL="zhifanhuisanjibianhao" DIC_SPELL="zfhsjbh" DIC_TEXT="只返回三级编号" DIC_CODE="20"/>
+    <row DIC_ASPELL="fanhuiyijibianhaoerjibianhaosanjibianhao" DIC_SPELL="fhyjbh＋ejbh＋sjbh" DIC_TEXT="返回一级编号＋二级编号＋三级编号" DIC_CODE="21"/>
+</data>

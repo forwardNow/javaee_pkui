@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="kaifazidian" DIC_SPELL="kfzd" DIC_TEXT="开发字典" DIC_CODE="0"/>
+    <row DIC_ASPELL="yonghuzidian" DIC_SPELL="yhzd" DIC_TEXT="用户字典" DIC_CODE="1"/>
+</data>

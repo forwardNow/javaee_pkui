@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="luruminjing" DIC_SPELL="lrmj" DIC_TEXT="录入民警" DIC_CODE="00"/>
+    <row DIC_ASPELL="kuguanyuan" DIC_SPELL="kgy" DIC_TEXT="库管员" DIC_CODE="10"/>
+    <row DIC_ASPELL="qita" DIC_SPELL="qt" DIC_TEXT="其他" DIC_CODE="99"/>
+</data>
