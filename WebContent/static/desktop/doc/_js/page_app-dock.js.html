@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>page/app-dock.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a><ul class='methods'><li data-type='method'><a href="App.html#.init">init</a></li><li data-type='method'><a href="App.html#show">show</a></li></ul></li><li><a href="AppDock.html">AppDock</a><ul class='methods'><li data-type='method'><a href="AppDock.html#show">show</a></li></ul></li><li><a href="AppWindow.html">AppWindow</a><ul class='methods'><li data-type='method'><a href="AppWindow.html#show">show</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-base_utils.html">base/utils</a><ul class='methods'><li data-type='method'><a href="module-base_utils.html#getOptionsFromTag">getOptionsFromTag</a></li><li data-type='method'><a href="module-base_utils.html#getPageWidth">getPageWidth</a></li></ul></li><li><a href="module-common_launchpad.html">common/launchpad</a></li><li><a href="module-common_template.html">common/template</a><ul class='methods'><li data-type='method'><a href="module-common_template.html#getTemplate">getTemplate</a></li><li data-type='method'><a href="module-common_template.html#setOptions">setOptions</a></li></ul></li><li><a href="module-main.html">main</a></li><li><a href="module-page_app.html">page/app</a></li><li><a href="module-page_app-dock.html">page/app-dock</a></li><li><a href="module-page_app-window.html">page/app-window</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">page/app-dock.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @fileOverview  应用（App）—— 页签（AppDock）
+ * @author 吴钦飞(wuqf@pkusoft.net)
+ *
+ * @module module:page/app-dock
+ * @requires module:jquery
+ * @requires module:common/template
+ */
+define( function ( require ) {
+    var $,
+        Template
+        ;
+
+    $ = require( "jquery" );
+    Template = require( "../common/template" );
+
+    /**
+     * @classDesc 页签（AppDock）类
+     * @exports module:page/app-dock
+     * @alias AppDock
+     * @constructor
+     * @param {Object} options 参数
+     */
+    function AppDock ( options ) {
+        if ( typeof this.$container === "string" ) {
+            this.$container = $( this.$container );
+        }
+        this._init( options );
+    }
+
+    /**
+     * 页签（AppDock）实例的默认参数
+     * @type {object}
+     * @property {string} icon 页签（dock）图标的URL（推荐使用绝对路径）
+     * @property {string} title 页签（dock）的标题
+     * @property {string} dockTemplateName 页签（dock）的模板文件名
+     */
+    AppDock.prototype.defaults = {
+        icon: "",
+        title: "",
+        dockTemplateName: ""
+    };
+
+    /**
+     * 包裹所有页签（AppDock）的容器的CSS选择器
+     * @type {string}
+     */
+    AppDock.prototype.$container = ".topbar-dock";
+
+
+
+    // @public
+    $.extend( AppDock.prototype, /** @lends AppDock.prototype */ {
+        /**
+         * 显示页签（AppDock） 即 让该dock处于active状态。
+         * @return {AppDock} 链式调用
+         */
+        show: function () {
+            this.$target.addClass( "active" ).siblings().removeClass( "active" );
+            return this;
+        }
+    } );
+
+    // @private
+    $.extend( AppDock.prototype, /** @lends AppDock.prototype */{
+        /**
+         * 初始化页签（AppDock）实例
+         * @private
+         * @param {Object} options 参数
+         * @return {AppDock} 链式调用
+         */
+        _init: function ( options ) {
+            // 1. 参数
+            this.options = $.extend( {}, this.defaults, options );
+
+            // 2. 创建target
+            this._createTarget();
+
+            return this;
+        },
+        /**
+         * 创建页签（AppDock）节点，并将其添加到页签（AppDock）容器。
+         *
+         * @private
+         * @return {AppDock} 链式调用
+         */
+        _createTarget: function () {
+            var html,
+                data,
+                $target
+                ;
+            // 1. 数据 和 模板
+            data = {
+                icon: this.options.icon,
+                title: this.options.title
+            };
+
+            // 2. 获取模板
+            html = Template.getTemplate( this.options.dockTemplateName, data );
+            $target = $( html );
+
+            // 3. 添加进 container
+            this.$container.append( $target );
+
+            this.$target = $target;
+
+            this.show();
+
+            return this;
+        }
+    } );
+
+
+
+    return AppDock;
+} );
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sat Feb 25 2017 12:06:07 GMT+0800 (CST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

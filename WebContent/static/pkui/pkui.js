@@ -69,8 +69,16 @@ seajs.config( {
         // bootgrid
         "bootgrid": "lib/bootgrid/1.3.1.x/jquery.bootgrid",
 
+        // loading
+        "loading": "lib/loading/1.2.0.x/loading.js",
+
+
         // 数据源
-        "dataSource": "component/common/dataSource/1.0.0/dataSource.js"
+        "dataSource": "component/common/dataSource/1.0.0/dataSource",
+
+        // 抽屉式弹窗
+        "drawer": "component/common/drawer/1.0.0/drawer"
+
     }
 } );
 
@@ -192,12 +200,20 @@ seajs.config( {
 }( window );
 
 /* function loadJS( src, callback ) { var script = document.createElement( 'script' ); var head = document.getElementsByTagName( 'head' )[ 0 ]; var isLoaded; script.src = src; script.charset = "utf-8"; script.onload = script.onreadystatechange = function () { if ( !isLoaded && (!script.readyState || /loaded|complete/.test( script.readyState )) ) { script.onload = script.onreadystatechange = null; isLoaded = true; callback(); } }; head.appendChild( script ); }*/
+// 引入字体图标样式文件
+seajs.use( "css/font/font-awesome/4.7.0/font-awesome.css" );
+
+// 配置
 seajs.use( [ "jquery" ], function ( $ ) {
 
     var
         ns = window[ "www.pkusoft.net" ],
 
         PKUI = {
+            // <div data-pkui-component>
+            componentMarkupProp: "pkui-component",
+            // <div data-pkui-component-options>
+            optionsMarkupProp: "pkui-component-options",
             // CTX路径
             ctxPath: ns.ctxPath,
             // pkui的基本路径
@@ -209,11 +225,13 @@ seajs.use( [ "jquery" ], function ( $ ) {
             // 组件容器
             component: {},
             // 渲染
-            render: function () {}
+            render: function () {
+            }
         }
         ;
 
-    if ( location.href.indexOf( "localhost" ) !== -1 ) {
+    // 如果是在WebStorm里跑 PKUI项目，则更改 ctxPath 和 dicPath
+    if ( location.href.indexOf( "localhost" ) !== -1 && ns.pkuiBasePath.indexOf( "static" ) === -1 ) {
         PKUI.ctxPath = "http://localhost:8080/pkui";
         PKUI.dicPath = "http://localhost:8080/pkui/static/dic/";
     }
@@ -353,6 +371,7 @@ seajs.use( [ "jquery" ], function ( $ ) {
  * 渲染的目标（在此列出全部可被自动渲染的组件）：
  *
  *      <div data-pkui-component="datagrid" data-pkui-component-options='{"key":"val",...}' >
+ *      <div data-pkui-component="drawer" data-pkui-component-options='{"key":"val",...}' >
  *
  * 已渲染的标志（添加 isrendered="true"）：
  *
@@ -382,30 +401,42 @@ seajs.use( [ "jquery", "meld" ], function ( $, AOP ) {
 
     function render() {
         var
-            $component = $( "[data-pkui-component]" )
+            $component = $( "[data-" + PKUI.componentMarkupProp + "]" )
         ;
         $component.each( function () {
             var
                 $this = $( this ),
-                componentName = $this.data( "pkui-component" ),
-                componentOptions = $this.data( "pkui-component-options" ) || null,
+                componentName = $this.data( PKUI.componentMarkupProp ),
+                componentOptions = $this.data( PKUI.optionsMarkupProp ) || null,
                 component = window.PKUI.component[ componentName ],
 
                 moduleId = componentName
-            ;
+                ;
 
-            // 如果没有，则载入，再初始化
+            // 如果没有注册该组件，则载入，再初始化
             if ( !component ) {
                 switch ( componentName ) {
-                    case "datagrid": moduleId = "bootgrid"; break;
+                    case "datagrid":
+                        moduleId = "bootgrid";
+                        break;
+                    case "drawer":
+                        moduleId = "drawer";
+                        break;
                 }
                 seajs.use( [ moduleId ], function () {
-                    window.PKUI.component[ componentName ].apply( $this, componentOptions );
+                    window.PKUI.component[ componentName ].call( $this, componentOptions );
                 } );
                 return;
             }
+            // 如果已经渲染过，则退出
+            if ( $this.attr( "isrendered" ) ) {
+                return;
+            }
 
+            // 如果没渲染过，则渲染；渲染完毕添加 isrendered="true" 标志
             component.apply( $this, componentOptions );
+            $this.attr( "isrendered", true );
+
         } );
     }
 

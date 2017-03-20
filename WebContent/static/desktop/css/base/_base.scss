@@ -1,0 +1,29 @@
+/**
+ * @file 该网站基本样式
+ */
+
+// 一屏
+html,
+body {
+    overflow: hidden;
+    height: 100%;
+    background: #007cef;
+}
+
+// 字体
+body {
+    color: #333;
+    font-size: 12px;
+    line-height: 1.35;
+    font-family: /*'QTS Font','Helvetica', */"Microsoft YaHei", 'Arial','Verdana','Tahoma', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+i {
+    font-style: normal;
+}
+b {
+    font-weight: normal;
+}
