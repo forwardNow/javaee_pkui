@@ -134,7 +134,7 @@ define( function( require ) {
 
             options.$drawer
                 .addClass( Drawer.clazz.open )
-                .animate( { left: "2%" }, function() {
+                .animate( { left: "0" }, function() {
                     var openCallback = options.onOpen
                     ;
                     if ( window[ openCallback ] && typeof window[ openCallback ] === "function" ) {
@@ -155,7 +155,8 @@ define( function( require ) {
                 } ).done( function( responseData ) {
                     options.$drawerContent.html( responseData );
                 } ).fail( function( jqXHR, textStatus ) {
-                    throw "/(ㄒoㄒ)/~~[ " + textStatus + " ]网络错误。";
+                    options.$drawerContent.html( "/(ㄒoㄒ)/~~[ " + textStatus + " ]网络错误。" );
+                    console.info(  "/(ㄒoㄒ)/~~[ " + textStatus + " ]网络错误。" );
                 } ).always( function() {
                     options.$drawer.isLoading( "hide" );
                 } );
