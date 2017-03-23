@@ -16,6 +16,16 @@
 	<!-- 开启注解 -->
 	<mvc:annotation-driven />
 
+	<mvc:interceptors>  
+		<mvc:interceptor> 
+			<mvc:mapping path="/**"/> 
+			<mvc:exclude-mapping path="/static/**"/> 
+			<mvc:exclude-mapping path="/doLogin"/> 
+			<mvc:exclude-mapping path="/login"/> 
+		    <bean class="com.pkusoft.framework.interceptor.AccessInterceptor"/>  
+		</mvc:interceptor> 
+	</mvc:interceptors>  
+
 	<!--
 		配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理，3.04新增功能，需要重新设置spring-mvc-3.0.xsd
 	-->

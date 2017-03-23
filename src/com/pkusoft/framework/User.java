@@ -94,7 +94,9 @@ public class User {
 	}
 
 	public static Object getValue(Object key) {
-		return getCurrent().map.get(key);
+		UserInfo current = getCurrent();
+		Map<String, Object> map = current.map;
+		return map.get(key);
 	}
 
 	public static Map<String,Object> getValues() {
