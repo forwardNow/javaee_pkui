@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pkusoft.admin.dao.SysMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.pkusoft.admin.model.SysMessage" >
+    <id column="MSG_ID" property="msgId" jdbcType="DECIMAL" />
+    <result column="MSG_TITLE" property="msgTitle" jdbcType="VARCHAR" />
+    <result column="MSG_CONTENT" property="msgContent" jdbcType="VARCHAR" />
+    <result column="MSG_TYPE" property="msgType" jdbcType="VARCHAR" />
+    <result column="SEND_USER_IP" property="sendUserIp" jdbcType="VARCHAR" />
+    <result column="SEND_USER_ID" property="sendUserId" jdbcType="DECIMAL" />
+    <result column="SEND_USER_NAME" property="sendUserName" jdbcType="VARCHAR" />
+    <result column="SEND_TIME" property="sendTime" jdbcType="TIMESTAMP" />
+    <result column="SEND_DEL_FLAG" property="sendDelFlag" jdbcType="VARCHAR" />
+    <result column="RECEIVE_DEL_FLAG" property="receiveDelFlag" jdbcType="VARCHAR" />
+    <result column="READ_FLAG" property="readFlag" jdbcType="VARCHAR" />
+    <result column="RECEIVE_USER_IP" property="receiveUserIp" jdbcType="VARCHAR" />
+    <result column="RECEIVE_USER_ID" property="receiveUserId" jdbcType="DECIMAL" />
+    <result column="RECEIVE_USER_NAME" property="receiveUserName" jdbcType="VARCHAR" />
+    <result column="RECEIVE_TIME" property="receiveTime" jdbcType="TIMESTAMP" />
+    <result column="RESERVE1" property="reserve1" jdbcType="VARCHAR" />
+    <result column="RESERVE2" property="reserve2" jdbcType="VARCHAR" />
+    <result column="RESERVE3" property="reserve3" jdbcType="VARCHAR" />
+    <result column="RESERVE4" property="reserve4" jdbcType="VARCHAR" />
+    <result column="RESERVE5" property="reserve5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="pageHeader">
+  	<!-- 
+    select * from(select s_.*,rownum rn_ from(
+    -->
+  </sql>
+  <sql id="pageRoot">
+  	  <!-- 
+      ) s_ where rownum &lt;= #{pager.limit}) where rn_ &gt; #{pager.start}
+      -->
+       limit #{pager.start}, #{pager.pageSize} 
+  </sql>
+  <sql id="Criteria_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Criteria_Where_Clause" >
+    <where >
+      <foreach collection="criteria.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+  	MSG_ID
+  	, MSG_TITLE
+  	, MSG_CONTENT
+  	, MSG_TYPE
+  	, SEND_USER_IP
+  	, SEND_USER_ID
+  	, SEND_USER_NAME
+  	, SEND_TIME
+  	, SEND_DEL_FLAG
+  	, RECEIVE_DEL_FLAG
+  	, READ_FLAG
+  	, RECEIVE_USER_IP
+  	, RECEIVE_USER_ID
+  	, RECEIVE_USER_NAME
+  	, RECEIVE_TIME
+  	, RESERVE1
+  	, RESERVE2
+  	, RESERVE3
+  	, RESERVE4
+  	, RESERVE5
+  </sql>
+  <select id="getListByCriteria" resultMap="BaseResultMap" parameterType="com.pkusoft.framework.model.Criteria" >
+  	<if test="pager != null" >
+      <include refid="pageHeader" />
+    </if> 
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_MESSAGE
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="pager != null" >
+      <include refid="pageRoot" />
+    </if>
+  </select>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_MESSAGE
+    where 
+    MSG_ID = #{msgId,jdbcType=DECIMAL}
+  </select>
+  <delete id="delete" parameterType="java.lang.Object" >
+    delete from SYS_MESSAGE
+    where 
+    MSG_ID = #{msgId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.pkusoft.framework.model.Criteria" >
+    delete from SYS_MESSAGE
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pkusoft.admin.model.SysMessage" >
+    insert into SYS_MESSAGE (
+  	MSG_ID
+  	, MSG_TITLE
+  	, MSG_CONTENT
+  	, MSG_TYPE
+  	, SEND_USER_IP
+  	, SEND_USER_ID
+  	, SEND_USER_NAME
+  	, SEND_TIME
+  	, SEND_DEL_FLAG
+  	, RECEIVE_DEL_FLAG
+  	, READ_FLAG
+  	, RECEIVE_USER_IP
+  	, RECEIVE_USER_ID
+  	, RECEIVE_USER_NAME
+  	, RECEIVE_TIME
+  	, RESERVE1
+  	, RESERVE2
+  	, RESERVE3
+  	, RESERVE4
+  	, RESERVE5
+      )
+    values (
+  	#{msgId,jdbcType=DECIMAL}
+  	, #{msgTitle,jdbcType=VARCHAR}
+  	, #{msgContent,jdbcType=VARCHAR}
+  	, #{msgType,jdbcType=VARCHAR}
+  	, #{sendUserIp,jdbcType=VARCHAR}
+  	, #{sendUserId,jdbcType=DECIMAL}
+  	, #{sendUserName,jdbcType=VARCHAR}
+  	, #{sendTime,jdbcType=TIMESTAMP}
+  	, #{sendDelFlag,jdbcType=VARCHAR}
+  	, #{receiveDelFlag,jdbcType=VARCHAR}
+  	, #{readFlag,jdbcType=VARCHAR}
+  	, #{receiveUserIp,jdbcType=VARCHAR}
+  	, #{receiveUserId,jdbcType=DECIMAL}
+  	, #{receiveUserName,jdbcType=VARCHAR}
+  	, #{receiveTime,jdbcType=TIMESTAMP}
+  	, #{reserve1,jdbcType=VARCHAR}
+  	, #{reserve2,jdbcType=VARCHAR}
+  	, #{reserve3,jdbcType=VARCHAR}
+  	, #{reserve4,jdbcType=VARCHAR}
+  	, #{reserve5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pkusoft.admin.model.SysMessage" >
+    insert into SYS_MESSAGE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="msgId != null" >
+	    MSG_ID,
+      </if>
+      <if test="msgTitle != null" >
+	    MSG_TITLE,
+      </if>
+      <if test="msgContent != null" >
+	    MSG_CONTENT,
+      </if>
+      <if test="msgType != null" >
+	    MSG_TYPE,
+      </if>
+      <if test="sendUserIp != null" >
+	    SEND_USER_IP,
+      </if>
+      <if test="sendUserId != null" >
+	    SEND_USER_ID,
+      </if>
+      <if test="sendUserName != null" >
+	    SEND_USER_NAME,
+      </if>
+      <if test="sendTime != null" >
+	    SEND_TIME,
+      </if>
+      <if test="sendDelFlag != null" >
+	    SEND_DEL_FLAG,
+      </if>
+      <if test="receiveDelFlag != null" >
+	    RECEIVE_DEL_FLAG,
+      </if>
+      <if test="readFlag != null" >
+	    READ_FLAG,
+      </if>
+      <if test="receiveUserIp != null" >
+	    RECEIVE_USER_IP,
+      </if>
+      <if test="receiveUserId != null" >
+	    RECEIVE_USER_ID,
+      </if>
+      <if test="receiveUserName != null" >
+	    RECEIVE_USER_NAME,
+      </if>
+      <if test="receiveTime != null" >
+	    RECEIVE_TIME,
+      </if>
+      <if test="reserve1 != null" >
+	    RESERVE1,
+      </if>
+      <if test="reserve2 != null" >
+	    RESERVE2,
+      </if>
+      <if test="reserve3 != null" >
+	    RESERVE3,
+      </if>
+      <if test="reserve4 != null" >
+	    RESERVE4,
+      </if>
+      <if test="reserve5 != null" >
+	    RESERVE5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="msgId != null" >
+	    #{msgId,jdbcType=DECIMAL},
+      </if>
+      <if test="msgTitle != null" >
+	    #{msgTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="msgContent != null" >
+	    #{msgContent,jdbcType=VARCHAR},
+      </if>
+      <if test="msgType != null" >
+	    #{msgType,jdbcType=VARCHAR},
+      </if>
+      <if test="sendUserIp != null" >
+	    #{sendUserIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sendUserId != null" >
+	    #{sendUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="sendUserName != null" >
+	    #{sendUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTime != null" >
+	    #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendDelFlag != null" >
+	    #{sendDelFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveDelFlag != null" >
+	    #{receiveDelFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="readFlag != null" >
+	    #{readFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveUserIp != null" >
+	    #{receiveUserIp,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveUserId != null" >
+	    #{receiveUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="receiveUserName != null" >
+	    #{receiveUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveTime != null" >
+	    #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserve1 != null" >
+	    #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+	    #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+	    #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+	    #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null" >
+	    #{reserve5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="getCountByCriteria" parameterType="com.pkusoft.framework.model.Criteria" resultType="java.lang.Integer" >
+    select count(*) from SYS_MESSAGE
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteriaSelective" parameterType="map" >
+    update SYS_MESSAGE
+    <set >
+      <if test="record.msgId != null" >
+	    MSG_ID = #{record.msgId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.msgTitle != null" >
+	    MSG_TITLE = #{record.msgTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.msgContent != null" >
+	    MSG_CONTENT = #{record.msgContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.msgType != null" >
+	    MSG_TYPE = #{record.msgType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendUserIp != null" >
+	    SEND_USER_IP = #{record.sendUserIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendUserId != null" >
+	    SEND_USER_ID = #{record.sendUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sendUserName != null" >
+	    SEND_USER_NAME = #{record.sendUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendTime != null" >
+	    SEND_TIME = #{record.sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sendDelFlag != null" >
+	    SEND_DEL_FLAG = #{record.sendDelFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveDelFlag != null" >
+	    RECEIVE_DEL_FLAG = #{record.receiveDelFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.readFlag != null" >
+	    READ_FLAG = #{record.readFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveUserIp != null" >
+	    RECEIVE_USER_IP = #{record.receiveUserIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveUserId != null" >
+	    RECEIVE_USER_ID = #{record.receiveUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receiveUserName != null" >
+	    RECEIVE_USER_NAME = #{record.receiveUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveTime != null" >
+	    RECEIVE_TIME = #{record.receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.reserve1 != null" >
+	    RESERVE1 = #{record.reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve2 != null" >
+	    RESERVE2 = #{record.reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve3 != null" >
+	    RESERVE3 = #{record.reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve4 != null" >
+	    RESERVE4 = #{record.reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve5 != null" >
+	    RESERVE5 = #{record.reserve5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByCriteria" parameterType="map" >
+    update SYS_MESSAGE
+    set 
+		MSG_ID = #{record.msgId,jdbcType=DECIMAL}
+		, MSG_TITLE = #{record.msgTitle,jdbcType=VARCHAR}
+		, MSG_CONTENT = #{record.msgContent,jdbcType=VARCHAR}
+		, MSG_TYPE = #{record.msgType,jdbcType=VARCHAR}
+		, SEND_USER_IP = #{record.sendUserIp,jdbcType=VARCHAR}
+		, SEND_USER_ID = #{record.sendUserId,jdbcType=DECIMAL}
+		, SEND_USER_NAME = #{record.sendUserName,jdbcType=VARCHAR}
+		, SEND_TIME = #{record.sendTime,jdbcType=TIMESTAMP}
+		, SEND_DEL_FLAG = #{record.sendDelFlag,jdbcType=VARCHAR}
+		, RECEIVE_DEL_FLAG = #{record.receiveDelFlag,jdbcType=VARCHAR}
+		, READ_FLAG = #{record.readFlag,jdbcType=VARCHAR}
+		, RECEIVE_USER_IP = #{record.receiveUserIp,jdbcType=VARCHAR}
+		, RECEIVE_USER_ID = #{record.receiveUserId,jdbcType=DECIMAL}
+		, RECEIVE_USER_NAME = #{record.receiveUserName,jdbcType=VARCHAR}
+		, RECEIVE_TIME = #{record.receiveTime,jdbcType=TIMESTAMP}
+		, RESERVE1 = #{record.reserve1,jdbcType=VARCHAR}
+		, RESERVE2 = #{record.reserve2,jdbcType=VARCHAR}
+		, RESERVE3 = #{record.reserve3,jdbcType=VARCHAR}
+		, RESERVE4 = #{record.reserve4,jdbcType=VARCHAR}
+		, RESERVE5 = #{record.reserve5,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateSelective" parameterType="com.pkusoft.admin.model.SysMessage" >
+    update SYS_MESSAGE
+    <set >
+      <if test="msgId != null" >
+       MSG_ID = #{msgId,jdbcType=DECIMAL},
+      </if>
+      <if test="msgTitle != null" >
+       MSG_TITLE = #{msgTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="msgContent != null" >
+       MSG_CONTENT = #{msgContent,jdbcType=VARCHAR},
+      </if>
+      <if test="msgType != null" >
+       MSG_TYPE = #{msgType,jdbcType=VARCHAR},
+      </if>
+      <if test="sendUserIp != null" >
+       SEND_USER_IP = #{sendUserIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sendUserId != null" >
+       SEND_USER_ID = #{sendUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="sendUserName != null" >
+       SEND_USER_NAME = #{sendUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTime != null" >
+       SEND_TIME = #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendDelFlag != null" >
+       SEND_DEL_FLAG = #{sendDelFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveDelFlag != null" >
+       RECEIVE_DEL_FLAG = #{receiveDelFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="readFlag != null" >
+       READ_FLAG = #{readFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveUserIp != null" >
+       RECEIVE_USER_IP = #{receiveUserIp,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveUserId != null" >
+       RECEIVE_USER_ID = #{receiveUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="receiveUserName != null" >
+       RECEIVE_USER_NAME = #{receiveUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveTime != null" >
+       RECEIVE_TIME = #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserve1 != null" >
+       RESERVE1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+       RESERVE2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+       RESERVE3 = #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+       RESERVE4 = #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null" >
+       RESERVE5 = #{reserve5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where 
+    MSG_ID = #{msgId,jdbcType=DECIMAL}
+  </update>
+  <update id="update" parameterType="com.pkusoft.admin.model.SysMessage" >
+    update SYS_MESSAGE
+    set 
+		MSG_ID = #{msgId,jdbcType=DECIMAL}
+		, MSG_TITLE = #{msgTitle,jdbcType=VARCHAR}
+		, MSG_CONTENT = #{msgContent,jdbcType=VARCHAR}
+		, MSG_TYPE = #{msgType,jdbcType=VARCHAR}
+		, SEND_USER_IP = #{sendUserIp,jdbcType=VARCHAR}
+		, SEND_USER_ID = #{sendUserId,jdbcType=DECIMAL}
+		, SEND_USER_NAME = #{sendUserName,jdbcType=VARCHAR}
+		, SEND_TIME = #{sendTime,jdbcType=TIMESTAMP}
+		, SEND_DEL_FLAG = #{sendDelFlag,jdbcType=VARCHAR}
+		, RECEIVE_DEL_FLAG = #{receiveDelFlag,jdbcType=VARCHAR}
+		, READ_FLAG = #{readFlag,jdbcType=VARCHAR}
+		, RECEIVE_USER_IP = #{receiveUserIp,jdbcType=VARCHAR}
+		, RECEIVE_USER_ID = #{receiveUserId,jdbcType=DECIMAL}
+		, RECEIVE_USER_NAME = #{receiveUserName,jdbcType=VARCHAR}
+		, RECEIVE_TIME = #{receiveTime,jdbcType=TIMESTAMP}
+		, RESERVE1 = #{reserve1,jdbcType=VARCHAR}
+		, RESERVE2 = #{reserve2,jdbcType=VARCHAR}
+		, RESERVE3 = #{reserve3,jdbcType=VARCHAR}
+		, RESERVE4 = #{reserve4,jdbcType=VARCHAR}
+		, RESERVE5 = #{reserve5,jdbcType=VARCHAR}
+    where 
+    MSG_ID = #{msgId,jdbcType=DECIMAL}
+  </update> 
+</mapper>

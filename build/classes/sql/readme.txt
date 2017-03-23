@@ -58,4 +58,7 @@ Oracle 转 MySQL 步骤：
 	MySQL ：IFNULL(待检测值, 如果是空值则使用的替代值)
 
 
+9. 
+	CONNECT BY PRIOR Dept_Id = Parent_Dept_Id start With Dept_Id=#{deptId,jdbcType=VARCHAR}
+	where FIND_IN_SET(DEPT_ID,getSubSysDeptList(#{deptId,jdbcType=VARCHAR}))
 		

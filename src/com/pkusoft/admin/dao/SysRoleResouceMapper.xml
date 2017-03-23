@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pkusoft.admin.dao.SysRoleResouceMapper" >
+  <resultMap id="BaseResultMap" type="com.pkusoft.admin.model.SysRoleResouce" >
+    <id column="ROLE_RESOURCE_ID" property="roleResourceId" jdbcType="DECIMAL" />
+    <result column="ROLE_ID" property="roleId" jdbcType="DECIMAL" />
+    <result column="RESOUCE_ID" property="resouceId" jdbcType="DECIMAL" />
+    <result column="ADD_USER_ID" property="addUserId" jdbcType="DECIMAL" />
+    <result column="ADD_USER_NAME" property="addUserName" jdbcType="VARCHAR" />
+    <result column="ADD_TIME" property="addTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="pageHeader">
+  	<!-- 
+    select * from(select s_.*,rownum rn_ from(
+    -->
+  </sql>
+  <sql id="pageRoot">
+  	  <!-- 
+      ) s_ where rownum &lt;= #{pager.limit}) where rn_ &gt; #{pager.start}
+      -->
+       limit #{pager.start}, #{pager.pageSize} 
+  </sql>
+  <sql id="Criteria_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Criteria_Where_Clause" >
+    <where >
+      <foreach collection="criteria.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+  	ROLE_RESOURCE_ID
+  	, ROLE_ID
+  	, RESOUCE_ID
+  	, ADD_USER_ID
+  	, ADD_USER_NAME
+  	, ADD_TIME
+  </sql>
+  <select id="getListByCriteria" resultMap="BaseResultMap" parameterType="com.pkusoft.framework.model.Criteria" >
+  	<if test="pager != null" >
+      <include refid="pageHeader" />
+    </if> 
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_ROLE_RESOUCE
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="pager != null" >
+      <include refid="pageRoot" />
+    </if>
+  </select>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_ROLE_RESOUCE
+    where 
+    ROLE_RESOURCE_ID = #{roleResourceId,jdbcType=DECIMAL}
+  </select>
+  <delete id="delete" parameterType="java.lang.Object" >
+    delete from SYS_ROLE_RESOUCE
+    where 
+    ROLE_RESOURCE_ID = #{roleResourceId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.pkusoft.framework.model.Criteria" >
+    delete from SYS_ROLE_RESOUCE
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pkusoft.admin.model.SysRoleResouce" >
+    insert into SYS_ROLE_RESOUCE (
+  	ROLE_RESOURCE_ID
+  	, ROLE_ID
+  	, RESOUCE_ID
+  	, ADD_USER_ID
+  	, ADD_USER_NAME
+  	, ADD_TIME
+      )
+    values (
+  	#{roleResourceId,jdbcType=DECIMAL}
+  	, #{roleId,jdbcType=DECIMAL}
+  	, #{resouceId,jdbcType=DECIMAL}
+  	, #{addUserId,jdbcType=DECIMAL}
+  	, #{addUserName,jdbcType=VARCHAR}
+  	, #{addTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pkusoft.admin.model.SysRoleResouce" >
+    insert into SYS_ROLE_RESOUCE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleResourceId != null" >
+	    ROLE_RESOURCE_ID,
+      </if>
+      <if test="roleId != null" >
+	    ROLE_ID,
+      </if>
+      <if test="resouceId != null" >
+	    RESOUCE_ID,
+      </if>
+      <if test="addUserId != null" >
+	    ADD_USER_ID,
+      </if>
+      <if test="addUserName != null" >
+	    ADD_USER_NAME,
+      </if>
+      <if test="addTime != null" >
+	    ADD_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleResourceId != null" >
+	    #{roleResourceId,jdbcType=DECIMAL},
+      </if>
+      <if test="roleId != null" >
+	    #{roleId,jdbcType=DECIMAL},
+      </if>
+      <if test="resouceId != null" >
+	    #{resouceId,jdbcType=DECIMAL},
+      </if>
+      <if test="addUserId != null" >
+	    #{addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="addUserName != null" >
+	    #{addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+	    #{addTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="getCountByCriteria" parameterType="com.pkusoft.framework.model.Criteria" resultType="java.lang.Integer" >
+    select count(*) from SYS_ROLE_RESOUCE
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteriaSelective" parameterType="map" >
+    update SYS_ROLE_RESOUCE
+    <set >
+      <if test="record.roleResourceId != null" >
+	    ROLE_RESOURCE_ID = #{record.roleResourceId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.roleId != null" >
+	    ROLE_ID = #{record.roleId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.resouceId != null" >
+	    RESOUCE_ID = #{record.resouceId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.addUserId != null" >
+	    ADD_USER_ID = #{record.addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.addUserName != null" >
+	    ADD_USER_NAME = #{record.addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTime != null" >
+	    ADD_TIME = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByCriteria" parameterType="map" >
+    update SYS_ROLE_RESOUCE
+    set 
+		ROLE_RESOURCE_ID = #{record.roleResourceId,jdbcType=DECIMAL}
+		, ROLE_ID = #{record.roleId,jdbcType=DECIMAL}
+		, RESOUCE_ID = #{record.resouceId,jdbcType=DECIMAL}
+		, ADD_USER_ID = #{record.addUserId,jdbcType=DECIMAL}
+		, ADD_USER_NAME = #{record.addUserName,jdbcType=VARCHAR}
+		, ADD_TIME = #{record.addTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateSelective" parameterType="com.pkusoft.admin.model.SysRoleResouce" >
+    update SYS_ROLE_RESOUCE
+    <set >
+      <if test="roleResourceId != null" >
+       ROLE_RESOURCE_ID = #{roleResourceId,jdbcType=DECIMAL},
+      </if>
+      <if test="roleId != null" >
+       ROLE_ID = #{roleId,jdbcType=DECIMAL},
+      </if>
+      <if test="resouceId != null" >
+       RESOUCE_ID = #{resouceId,jdbcType=DECIMAL},
+      </if>
+      <if test="addUserId != null" >
+       ADD_USER_ID = #{addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="addUserName != null" >
+       ADD_USER_NAME = #{addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+       ADD_TIME = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where 
+    ROLE_RESOURCE_ID = #{roleResourceId,jdbcType=DECIMAL}
+  </update>
+  <update id="update" parameterType="com.pkusoft.admin.model.SysRoleResouce" >
+    update SYS_ROLE_RESOUCE
+    set 
+		ROLE_RESOURCE_ID = #{roleResourceId,jdbcType=DECIMAL}
+		, ROLE_ID = #{roleId,jdbcType=DECIMAL}
+		, RESOUCE_ID = #{resouceId,jdbcType=DECIMAL}
+		, ADD_USER_ID = #{addUserId,jdbcType=DECIMAL}
+		, ADD_USER_NAME = #{addUserName,jdbcType=VARCHAR}
+		, ADD_TIME = #{addTime,jdbcType=TIMESTAMP}
+    where 
+    ROLE_RESOURCE_ID = #{roleResourceId,jdbcType=DECIMAL}
+  </update> 
+</mapper>

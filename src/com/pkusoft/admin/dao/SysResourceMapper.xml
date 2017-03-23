@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pkusoft.admin.dao.SysResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.pkusoft.admin.model.SysResource" >
+    <id column="RESOURCE_ID" property="resourceId" jdbcType="DECIMAL" />
+    <result column="RESOURCE_NAME" property="resourceName" jdbcType="VARCHAR" />
+    <result column="RESOURCE_URL" property="resourceUrl" jdbcType="VARCHAR" />
+    <result column="RESOURCE_DESC" property="resourceDesc" jdbcType="VARCHAR" />
+    <result column="RESOURCE_LEVEL" property="resourceLevel" jdbcType="VARCHAR" />
+    <result column="TREE_LEVEL" property="treeLevel" jdbcType="DECIMAL" />
+    <result column="MENU_ID" property="menuId" jdbcType="DECIMAL" />
+    <result column="ORDER_FLAG" property="orderFlag" jdbcType="DECIMAL" />
+    <result column="RESERVE1" property="reserve1" jdbcType="VARCHAR" />
+    <result column="RESERVE2" property="reserve2" jdbcType="VARCHAR" />
+    <result column="RESERVE3" property="reserve3" jdbcType="VARCHAR" />
+    <result column="RESERVE4" property="reserve4" jdbcType="VARCHAR" />
+    <result column="RESERVE5" property="reserve5" jdbcType="VARCHAR" />
+    <result column="ADD_USER_ID" property="addUserId" jdbcType="DECIMAL" />
+    <result column="ADD_USER_NAME" property="addUserName" jdbcType="VARCHAR" />
+    <result column="ADD_TIME" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_USER_ID" property="modifyUserId" jdbcType="DECIMAL" />
+    <result column="MODIFY_USER_NAME" property="modifyUserName" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="MiniResultMap" type="com.pkusoft.admin.model.SysResourceView" >
+    <id column="RESOURCE_ID" property="resourceId" jdbcType="DECIMAL" />
+    <result column="RESOURCE_NAME" property="resourceName" jdbcType="VARCHAR" />
+    <result column="RESOURCE_DESC" property="resourceDesc" jdbcType="VARCHAR" />
+    <result column="RESOURCE_LEVEL" property="resourceLevel" jdbcType="DECIMAL" />
+    <result column="MENU_ID" property="menuId" jdbcType="DECIMAL" />
+    <result column="MENU_NAME" property="menuName" jdbcType="VARCHAR" />
+    <result column="ORDER_FLAG" property="orderFlag" jdbcType="DECIMAL" />
+    <result column="CHECKED" property="checked" jdbcType="VARCHAR" />    
+  </resultMap>
+  <sql id="pageHeader">
+  	<!-- 
+    select * from(select s_.*,rownum rn_ from(
+    -->
+  </sql>
+  <sql id="pageRoot">
+  	  <!-- 
+      ) s_ where rownum &lt;= #{pager.limit}) where rn_ &gt; #{pager.start}
+      -->
+       limit #{pager.start}, #{pager.pageSize} 
+  </sql>
+  <sql id="Criteria_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Criteria_Where_Clause" >
+    <where >
+      <foreach collection="criteria.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+  	RESOURCE_ID
+  	, RESOURCE_NAME
+  	, RESOURCE_URL
+  	, RESOURCE_DESC
+  	, RESOURCE_LEVEL
+  	, TREE_LEVEL
+  	, MENU_ID
+  	, ORDER_FLAG
+  	, RESERVE1
+  	, RESERVE2
+  	, RESERVE3
+  	, RESERVE4
+  	, RESERVE5
+  	, ADD_USER_ID
+  	, ADD_USER_NAME
+  	, ADD_TIME
+  	, MODIFY_USER_ID
+  	, MODIFY_USER_NAME
+  	, MODIFY_TIME
+  </sql>
+  <select id="getListByCriteria" resultMap="BaseResultMap" parameterType="com.pkusoft.framework.model.Criteria" >
+  	<if test="pager != null" >
+      <include refid="pageHeader" />
+    </if> 
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_RESOURCE
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="pager != null" >
+      <include refid="pageRoot" />
+    </if>
+  </select>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_RESOURCE
+    where 
+    RESOURCE_ID = #{resourceId,jdbcType=DECIMAL}
+  </select>
+  <delete id="delete" parameterType="java.lang.Object" >
+    delete from SYS_RESOURCE
+    where 
+    RESOURCE_ID = #{resourceId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.pkusoft.framework.model.Criteria" >
+    delete from SYS_RESOURCE
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pkusoft.admin.model.SysResource" >
+    insert into SYS_RESOURCE (
+  	RESOURCE_ID
+  	, RESOURCE_NAME
+  	, RESOURCE_URL
+  	, RESOURCE_DESC
+  	, RESOURCE_LEVEL
+  	, TREE_LEVEL
+  	, MENU_ID
+  	, ORDER_FLAG
+  	, RESERVE1
+  	, RESERVE2
+  	, RESERVE3
+  	, RESERVE4
+  	, RESERVE5
+  	, ADD_USER_ID
+  	, ADD_USER_NAME
+  	, ADD_TIME
+  	, MODIFY_USER_ID
+  	, MODIFY_USER_NAME
+  	, MODIFY_TIME
+      )
+    values (
+  	#{resourceId,jdbcType=DECIMAL}
+  	, #{resourceName,jdbcType=VARCHAR}
+  	, #{resourceUrl,jdbcType=VARCHAR}
+  	, #{resourceDesc,jdbcType=VARCHAR}
+  	, #{resourceLevel,jdbcType=VARCHAR}
+  	, #{treeLevel,jdbcType=DECIMAL}
+  	, #{menuId,jdbcType=DECIMAL}
+  	, #{orderFlag,jdbcType=DECIMAL}
+  	, #{reserve1,jdbcType=VARCHAR}
+  	, #{reserve2,jdbcType=VARCHAR}
+  	, #{reserve3,jdbcType=VARCHAR}
+  	, #{reserve4,jdbcType=VARCHAR}
+  	, #{reserve5,jdbcType=VARCHAR}
+  	, #{addUserId,jdbcType=DECIMAL}
+  	, #{addUserName,jdbcType=VARCHAR}
+  	, #{addTime,jdbcType=TIMESTAMP}
+  	, #{modifyUserId,jdbcType=DECIMAL}
+  	, #{modifyUserName,jdbcType=VARCHAR}
+  	, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pkusoft.admin.model.SysResource" >
+    insert into SYS_RESOURCE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resourceId != null" >
+	    RESOURCE_ID,
+      </if>
+      <if test="resourceName != null" >
+	    RESOURCE_NAME,
+      </if>
+      <if test="resourceUrl != null" >
+	    RESOURCE_URL,
+      </if>
+      <if test="resourceDesc != null" >
+	    RESOURCE_DESC,
+      </if>
+      <if test="resourceLevel != null" >
+	    RESOURCE_LEVEL,
+      </if>
+      <if test="treeLevel != null" >
+	    TREE_LEVEL,
+      </if>
+      <if test="menuId != null" >
+	    MENU_ID,
+      </if>
+      <if test="orderFlag != null" >
+	    ORDER_FLAG,
+      </if>
+      <if test="reserve1 != null" >
+	    RESERVE1,
+      </if>
+      <if test="reserve2 != null" >
+	    RESERVE2,
+      </if>
+      <if test="reserve3 != null" >
+	    RESERVE3,
+      </if>
+      <if test="reserve4 != null" >
+	    RESERVE4,
+      </if>
+      <if test="reserve5 != null" >
+	    RESERVE5,
+      </if>
+      <if test="addUserId != null" >
+	    ADD_USER_ID,
+      </if>
+      <if test="addUserName != null" >
+	    ADD_USER_NAME,
+      </if>
+      <if test="addTime != null" >
+	    ADD_TIME,
+      </if>
+      <if test="modifyUserId != null" >
+	    MODIFY_USER_ID,
+      </if>
+      <if test="modifyUserName != null" >
+	    MODIFY_USER_NAME,
+      </if>
+      <if test="modifyTime != null" >
+	    MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resourceId != null" >
+	    #{resourceId,jdbcType=DECIMAL},
+      </if>
+      <if test="resourceName != null" >
+	    #{resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceUrl != null" >
+	    #{resourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceDesc != null" >
+	    #{resourceDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceLevel != null" >
+	    #{resourceLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="treeLevel != null" >
+	    #{treeLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="menuId != null" >
+	    #{menuId,jdbcType=DECIMAL},
+      </if>
+      <if test="orderFlag != null" >
+	    #{orderFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="reserve1 != null" >
+	    #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+	    #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+	    #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+	    #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null" >
+	    #{reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="addUserId != null" >
+	    #{addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="addUserName != null" >
+	    #{addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+	    #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+	    #{modifyUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyUserName != null" >
+	    #{modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+	    #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="getCountByCriteria" parameterType="com.pkusoft.framework.model.Criteria" resultType="java.lang.Integer" >
+    select count(*) from SYS_RESOURCE
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteriaSelective" parameterType="map" >
+    update SYS_RESOURCE
+    <set >
+      <if test="record.resourceId != null" >
+	    RESOURCE_ID = #{record.resourceId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.resourceName != null" >
+	    RESOURCE_NAME = #{record.resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourceUrl != null" >
+	    RESOURCE_URL = #{record.resourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourceDesc != null" >
+	    RESOURCE_DESC = #{record.resourceDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourceLevel != null" >
+	    RESOURCE_LEVEL = #{record.resourceLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.treeLevel != null" >
+	    TREE_LEVEL = #{record.treeLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="record.menuId != null" >
+	    MENU_ID = #{record.menuId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.orderFlag != null" >
+	    ORDER_FLAG = #{record.orderFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="record.reserve1 != null" >
+	    RESERVE1 = #{record.reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve2 != null" >
+	    RESERVE2 = #{record.reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve3 != null" >
+	    RESERVE3 = #{record.reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve4 != null" >
+	    RESERVE4 = #{record.reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve5 != null" >
+	    RESERVE5 = #{record.reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addUserId != null" >
+	    ADD_USER_ID = #{record.addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.addUserName != null" >
+	    ADD_USER_NAME = #{record.addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTime != null" >
+	    ADD_TIME = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyUserId != null" >
+	    MODIFY_USER_ID = #{record.modifyUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.modifyUserName != null" >
+	    MODIFY_USER_NAME = #{record.modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyTime != null" >
+	    MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByCriteria" parameterType="map" >
+    update SYS_RESOURCE
+    set 
+		RESOURCE_ID = #{record.resourceId,jdbcType=DECIMAL}
+		, RESOURCE_NAME = #{record.resourceName,jdbcType=VARCHAR}
+		, RESOURCE_URL = #{record.resourceUrl,jdbcType=VARCHAR}
+		, RESOURCE_DESC = #{record.resourceDesc,jdbcType=VARCHAR}
+		, RESOURCE_LEVEL = #{record.resourceLevel,jdbcType=VARCHAR}
+		, TREE_LEVEL = #{record.treeLevel,jdbcType=DECIMAL}
+		, MENU_ID = #{record.menuId,jdbcType=DECIMAL}
+		, ORDER_FLAG = #{record.orderFlag,jdbcType=DECIMAL}
+		, RESERVE1 = #{record.reserve1,jdbcType=VARCHAR}
+		, RESERVE2 = #{record.reserve2,jdbcType=VARCHAR}
+		, RESERVE3 = #{record.reserve3,jdbcType=VARCHAR}
+		, RESERVE4 = #{record.reserve4,jdbcType=VARCHAR}
+		, RESERVE5 = #{record.reserve5,jdbcType=VARCHAR}
+		, ADD_USER_ID = #{record.addUserId,jdbcType=DECIMAL}
+		, ADD_USER_NAME = #{record.addUserName,jdbcType=VARCHAR}
+		, ADD_TIME = #{record.addTime,jdbcType=TIMESTAMP}
+		, MODIFY_USER_ID = #{record.modifyUserId,jdbcType=DECIMAL}
+		, MODIFY_USER_NAME = #{record.modifyUserName,jdbcType=VARCHAR}
+		, MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateSelective" parameterType="com.pkusoft.admin.model.SysResource" >
+    update SYS_RESOURCE
+    <set >
+      <if test="resourceId != null" >
+       RESOURCE_ID = #{resourceId,jdbcType=DECIMAL},
+      </if>
+      <if test="resourceName != null" >
+       RESOURCE_NAME = #{resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceUrl != null" >
+       RESOURCE_URL = #{resourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceDesc != null" >
+       RESOURCE_DESC = #{resourceDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceLevel != null" >
+       RESOURCE_LEVEL = #{resourceLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="treeLevel != null" >
+       TREE_LEVEL = #{treeLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="menuId != null" >
+       MENU_ID = #{menuId,jdbcType=DECIMAL},
+      </if>
+      <if test="orderFlag != null" >
+       ORDER_FLAG = #{orderFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="reserve1 != null" >
+       RESERVE1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+       RESERVE2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+       RESERVE3 = #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+       RESERVE4 = #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null" >
+       RESERVE5 = #{reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="addUserId != null" >
+       ADD_USER_ID = #{addUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="addUserName != null" >
+       ADD_USER_NAME = #{addUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+       ADD_TIME = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+       MODIFY_USER_ID = #{modifyUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="modifyUserName != null" >
+       MODIFY_USER_NAME = #{modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+       MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where 
+    RESOURCE_ID = #{resourceId,jdbcType=DECIMAL}
+  </update>
+  <update id="update" parameterType="com.pkusoft.admin.model.SysResource" >
+    update SYS_RESOURCE
+    set 
+		RESOURCE_ID = #{resourceId,jdbcType=DECIMAL}
+		, RESOURCE_NAME = #{resourceName,jdbcType=VARCHAR}
+		, RESOURCE_URL = #{resourceUrl,jdbcType=VARCHAR}
+		, RESOURCE_DESC = #{resourceDesc,jdbcType=VARCHAR}
+		, RESOURCE_LEVEL = #{resourceLevel,jdbcType=VARCHAR}
+		, TREE_LEVEL = #{treeLevel,jdbcType=DECIMAL}
+		, MENU_ID = #{menuId,jdbcType=DECIMAL}
+		, ORDER_FLAG = #{orderFlag,jdbcType=DECIMAL}
+		, RESERVE1 = #{reserve1,jdbcType=VARCHAR}
+		, RESERVE2 = #{reserve2,jdbcType=VARCHAR}
+		, RESERVE3 = #{reserve3,jdbcType=VARCHAR}
+		, RESERVE4 = #{reserve4,jdbcType=VARCHAR}
+		, RESERVE5 = #{reserve5,jdbcType=VARCHAR}
+		, ADD_USER_ID = #{addUserId,jdbcType=DECIMAL}
+		, ADD_USER_NAME = #{addUserName,jdbcType=VARCHAR}
+		, ADD_TIME = #{addTime,jdbcType=TIMESTAMP}
+		, MODIFY_USER_ID = #{modifyUserId,jdbcType=DECIMAL}
+		, MODIFY_USER_NAME = #{modifyUserName,jdbcType=VARCHAR}
+		, MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
+    where 
+    RESOURCE_ID = #{resourceId,jdbcType=DECIMAL}
+  </update> 
+  
+  <!-- 获取角色拥有的资源列表  create by hey-->
+  <select id="getResourceListByRole" resultMap="MiniResultMap" parameterType="java.lang.Object" >    
+    select
+      case NVL(rm.RESOUCE_ID , 0) when 0 THEN '' else 'checked' end CHECKED
+    , r.RESOURCE_ID
+    , r.RESOURCE_NAME
+    , r.RESOURCE_DESC
+    , r.RESOURCE_LEVEL
+    , m.MENU_ID
+    , m.MENU_NAME
+    , m.ORDER_FLAG
+    from SYS_MENU m,SYS_RESOURCE r
+    left join (select RESOUCE_ID from SYS_ROLE_RESOUCE where ROLE_ID = #{roleId,jdbcType=DECIMAL}) rm
+    on r.RESOURCE_ID = rm.RESOUCE_ID
+    where m.MENU_ID = r.MENU_ID
+    order by m.ORDER_FLAG
+  </select>
+  
+  <!-- 获取用户拥有的资源列表  create by tanggj-->
+  <select id="getResourceListByUserId" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+	  SELECT 
+	   t.Resource_Id,
+       t.Resource_Name,
+       t.Resource_Url,
+       t.Resource_Desc,
+       t.Resource_Level,
+       t.Tree_Level,
+       t.Tree_Parentid,
+       t.Menu_Id,
+       t.Order_Flag,
+       t.Reserve1,
+       t.Reserve2,
+       t.Reserve3,
+       t.Reserve4,
+       t.Reserve5,
+       t.Add_User_Id,
+       t.Add_User_Name,
+       t.Add_Time,
+       t.Modify_User_Id,
+       t.Modify_User_Name,
+       t.Modify_Time
+	FROM Sys_Resource t, Sys_Role_Resouce s, Sys_Role_User m, Sys_User n
+	WHERE t.Resource_Id = s.Resouce_Id AND s.Role_Id = m.Role_Id AND
+	      m.User_Id = n.User_Id And n.User_Id=#{userId,jdbcType=DECIMAL}
+  </select>
+  
+</mapper>

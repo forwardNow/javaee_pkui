@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache updateCheck="false" name="appCache">
+	<diskStore path="java.io.tmpdir" />
+	<!--
+	  搜索某个网段上的缓存
+	  timeToLive:
+	      0是限制在同一个服务器
+	      1是限制在同一个子网
+	      32是限制在同一个网站
+	      64是限制在同一个region
+	      128是限制在同一个大洲
+	      255是不限制
+	 -->
+	<cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory" properties="peerDiscovery=automatic,multicastGroupAddress=230.0.0.1,multicastGroupPort=4446,timeToLive=1" />
+	<cacheManagerPeerListenerFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory" />
+	
+	<!--
+	  cache配置：
+	  name:缓存名称 defaultCache不需要,cache配置必需
+	  maxElementsInMemory maxEntriesLocalHeap：缓存最大个数
+	  overflowToDisk：当内存中对象数量达到maxElementsInMemory时，Ehcache将会把对象写到磁盘中。
+	  maxElementsOnDisk maxEntriesLocalDisk：硬盘最大缓存个数
+	  eternal:对象是否永久有效，一但设置了，timeout将不起作用。
+	  timeToIdleSeconds：设置对象在失效前的允许闲置时间（单位：秒）。仅当eternal=false对象不是永久有效时使用，可选属性，默认值是0，也就是可闲置时间无穷大。
+	  timeToLiveSeconds：设置对象在失效前允许存活时间（单位：秒）。最大时间介于创建时间和失效时间之间。仅当eternal=false对象不是永久有效时使用，默认是0.，也就是对象存活时间无穷大。
+	  (例:timeToIdleSeconds=120;timeToLiveSeconds=180;此缓存最多可以存活3分钟,期间超过2分钟未访问,缓存失效！)
+	  diskSpoolBufferSizeMB：这个参数设置DiskStore（磁盘缓存）的缓存区大小。默认是30MB。每个Cache都应该有自己的一个缓冲区。
+	  diskPersistent：是否缓存虚拟机重启期数据 Whether the disk store persists between restarts of the Virtual Machine. The default value is false.
+	  diskExpiryThreadIntervalSeconds：磁盘失效线程运行时间间隔，默认是120秒。
+	  memoryStoreEvictionPolicy：当达到maxElementsInMemory限制时，Ehcache将会根据指定的策略去清理内存。默认策略是LRU（最近最少使用）。你可以设置为FIFO（先进先出）或是LFU（较少使用）。
+	  clearOnFlush：内存数量最大时是否清除。
+	 -->
+ 	<!--
+        RMI缓存分布同步查找 class使用net.sf.ehcache.distribution.RMICacheReplicatorFactory
+  这个工厂支持以下属性：
+        replicateAsynchronously=true | false – 复制方式是异步的(true)还是同步的(false)。默认是true，异步是定时，同步是实时
+        asynchronousReplicationIntervalMillis=1000 异步时参数有效replicateAsynchronously=true，异步复制的时间间隔
+       
+        replicatePuts=true | false – 当一个新元素增加到缓存中的时候是否要复制到其他的peers。默认是true。
+        replicatePutsViaCopy=true | false – 当一个新增元素被拷贝到其他的cache中时是否进行复制指定为true时为复制，默认是true。
+       
+        replicateUpdates=true | false – 当一个已经在缓存中存在的元素被覆盖时是否要进行复制。默认是true。
+        replicateUpdatesViaCopy=true | false – 当一个元素被拷贝到其他的cache中时是否进行复制指定为true时为复制，默认是true。
+        replicateRemovals= true | false – 当元素移除的时候是否进行复制。默认是true。
+       
+           关于同步与通知    replicatePuts添加 replicateUpdates更新
+        replicatePuts 为false，则添加不通知，不复制
+        replicatePuts=true replicatePutsViaCopy=false 添加时通知,只发送key,不发送数据,不复制,节点失效
+        replicatePuts=true replicatePutsViaCopy=true 添加时通知,并发送送数据,节点复制
+       
+        replicateRemovals=true 通知发送key节点遂删除，false不通知，删除不需要发数据所以没有copy参数
+    -->
+    
+	<!-- DefaultCache setting. -->
+	<defaultCache eternal="false" overflowToDisk="false" timeToIdleSeconds="120" timeToLiveSeconds="120" maxEntriesLocalHeap="100000" memoryStoreEvictionPolicy="LRU" />
+    
+    <!-- Special objects setting. -->
+	<cache name="dicCache" eternal="true" overflowToDisk="true" maxEntriesLocalHeap="10000">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="replicateAsynchronously=false,replicatePuts=true,replicatePutsViaCopy=true,replicateUpdates=true,replicateUpdatesViaCopy=true,replicateRemovals=true"/>
+	</cache>
+	<cache name="sysParaCache" eternal="true" overflowToDisk="true" maxEntriesLocalHeap="10000">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="replicateAsynchronously=false,replicatePuts=true,replicatePutsViaCopy=true,replicateUpdates=true,replicateUpdatesViaCopy=true,replicateRemovals=true"/>
+	</cache>
+	<cache name="functionIdCache" eternal="true" overflowToDisk="true" maxEntriesLocalHeap="10000">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="replicateAsynchronously=false,replicatePuts=true,replicatePutsViaCopy=true,replicateUpdates=true,replicateUpdatesViaCopy=true,replicateRemovals=true"/>
+	</cache>
+	<cache name="errorCodeCache" eternal="true" overflowToDisk="true" maxEntriesLocalHeap="10000">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="replicateAsynchronously=false,replicatePuts=true,replicatePutsViaCopy=true,replicateUpdates=true,replicateUpdatesViaCopy=true,replicateRemovals=true"/>
+	</cache>
+	<cache name="userCache" eternal="true" overflowToDisk="true" maxEntriesLocalHeap="10000">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="replicateAsynchronously=false,replicatePuts=true,replicatePutsViaCopy=true,replicateUpdates=true,replicateUpdatesViaCopy=true,replicateRemovals=true"/>
+	</cache>
+	<cache name="deptCache" eternal="true" overflowToDisk="true" maxEntriesLocalHeap="10000">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="replicateAsynchronously=false,replicatePuts=true,replicatePutsViaCopy=true,replicateUpdates=true,replicateUpdatesViaCopy=true,replicateRemovals=true"/>
+	</cache>
+</ehcache>

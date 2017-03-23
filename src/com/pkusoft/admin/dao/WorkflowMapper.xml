@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pkusoft.workflow.dao.WorkflowMapper" >
+  <!-- 获取用户id列表 -->
+  <select id="getUserIdsByRole" resultType="String" parameterType="java.lang.Object" >
+    select 
+    USER_ID
+    from SYS_USER
+    where 
+    (USER_ID in (select USER_ID from SYS_ROLE_USER where ROLE_ID = #{roleId,jdbcType=DECIMAL}))
+  </select>
+  <!-- 获取指定角色和单位对应市局用户id列表 -->
+  <select id="getCunitUserIdsByRoleUnit" resultType="String" parameterType="java.lang.Object" >
+    select 
+    USER_ID
+    from SYS_USER
+    where 
+    (USER_ID in (select USER_ID from SYS_ROLE_USER where ROLE_ID = #{roleId,jdbcType=DECIMAL}))
+    And CUNITID = (Select d.CUNITID from SYS_DEPT d Where d.Dept_Id= #{deptId,jdbcType=VARCHAR})
+  </select>
+  <!-- 获取指定角色和单位对应分局用户id列表 -->
+  <select id="getSunitUserIdsByRoleUnit" resultType="String" parameterType="java.lang.Object" >
+    select 
+    USER_ID
+    from SYS_USER
+    where 
+    (USER_ID in (select USER_ID from SYS_ROLE_USER where ROLE_ID = #{roleId,jdbcType=DECIMAL}))
+    And SUNITID = (Select d.SUNITID from SYS_DEPT d Where d.Dept_Id= #{deptId,jdbcType=VARCHAR})
+  </select>
+  <!-- 获取指定角色和单位对应派出所用户id列表 -->
+  <select id="getTunitUserIdsByRoleUnit" resultType="String" parameterType="java.lang.Object" >
+    select 
+    USER_ID
+    from SYS_USER
+    where 
+    (USER_ID in (select USER_ID from SYS_ROLE_USER where ROLE_ID = #{roleId,jdbcType=DECIMAL}))
+    And TUNITID = (Select d.TUNITID from SYS_DEPT d Where d.Dept_Id= #{deptId,jdbcType=VARCHAR})
+  </select>
+  
+</mapper>

@@ -690,7 +690,8 @@
     select
     <include refid="Base_Column_List" />
     from SYS_DEPT    
-    CONNECT BY PRIOR Parent_Dept_Id = Dept_Id start With Dept_Id=#{deptId,jdbcType=VARCHAR}
+    <!-- CONNECT BY PRIOR Parent_Dept_Id = Dept_Id start With Dept_Id=#{deptId,jdbcType=VARCHAR} -->
+    where FIND_IN_SET(DEPT_ID,getSubSysDeptList(#{deptId,jdbcType=VARCHAR}))
     Order By dept_id
     <if test="pager != null" >
       <include refid="pageRoot" />
@@ -705,7 +706,8 @@
     select
     <include refid="Base_Column_List" />
     from SYS_DEPT    
-    CONNECT BY PRIOR Dept_Id = Parent_Dept_Id start With Dept_Id=#{deptId,jdbcType=VARCHAR}
+    <!-- CONNECT BY PRIOR Dept_Id = Parent_Dept_Id start With Dept_Id=#{deptId,jdbcType=VARCHAR} -->
+    where FIND_IN_SET(DEPT_ID,getSubSysDeptList(#{deptId,jdbcType=VARCHAR}))
     Order By dept_id
     <if test="pager != null" >
       <include refid="pageRoot" />
@@ -736,7 +738,8 @@
     	</if>
     	)
     </if>
-    CONNECT BY PRIOR Dept_Id = Parent_Dept_Id start With Dept_Id=#{deptId,jdbcType=VARCHAR}
+    <!-- CONNECT BY PRIOR Dept_Id = Parent_Dept_Id start With Dept_Id=#{deptId,jdbcType=VARCHAR} -->
+    and FIND_IN_SET(DEPT_ID,getSubSysDeptList(#{deptId,jdbcType=VARCHAR}))
     Order By dept_id
     <if test="pager != null" >
       <include refid="pageRoot" />
