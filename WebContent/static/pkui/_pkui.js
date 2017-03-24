@@ -15,6 +15,8 @@ define( function ( require ) {
 
         ns = window[ "www.pkusoft.net" ],
 
+        $doc = $( window.document ),
+
         PKUI = {
             // <div data-pkui-component>
             componentMarkupProp: "pkui-component",
@@ -68,7 +70,10 @@ define( function ( require ) {
 
         // 处理所有Ajax请求
         fmtAjaxUrl();
-        
+
+        // 全局的简单事件处理
+        regGlobalEventHandler();
+
         // 设置自动渲染
         this.setAutoRender( this.isAutoRender );
 
@@ -331,19 +336,37 @@ define( function ( require ) {
      * 格式化 $.ajax 的 url，如果包含“__CTX__” 则，替换为 PKUI.ctxPath
      */
     function fmtAjaxUrl () {
-    	AOP.before( $, "ajax", function ( url, options ) {
-    		// If url is an object, simulate pre-1.5 signature
-    		if ( typeof url === "object" ) {
-    			options = url;
-    			url = undefined;
-    		}
-    		
-    		if ( options.url.indexOf( "__CTX__" ) !== -1 ) {
-    			options.url = options.url.replace( "__CTX__", PKUI.ctxPath );
-    		}
-    	} );
+        AOP.before( $, "ajax", function ( url, options ) {
+            // If url is an object, simulate pre-1.5 signature
+            if ( typeof url === "object" ) {
+                options = url;
+                url = undefined;
+            }
+
+            if ( options.url.indexOf( "__CTX__" ) !== -1 ) {
+                options.url = options.url.replace( "__CTX__", PKUI.ctxPath );
+            }
+        } );
     }
-    
+
+    /**
+     * 全局的事件处理，通过类名。
+     * 类名格式：名称空间-事件类型-处理后的结果
+     * @example
+     *  <div class="pkui-click-hide">
+     */
+    function regGlobalEventHandler() {
+        var
+            eventNs = ".pkui.global"
+        ;
+        // 点击后，隐藏
+        $doc.on( "click" + eventNs, ".pkui-click-hide", function () {
+            $( this ).hide();
+        } );
+
+    }
+
+
     PKUI._init();
 
 } );
