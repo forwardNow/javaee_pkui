@@ -70,6 +70,7 @@
 			MapperScannerConigurer实际是在解析加载bean定义阶段的，这个时候要是设置sqlSessionFactory的话，会导致提前初始化一些类，
 			这个时候，PropertyPlaceholderConfigurer还没来得及替换定义中的变量，导致把表达式当作字符串复制了（直接使用字符串"${jdbc.url}"，而非对应的占位符的值）
 			使用sqlSessionFactoryBeanName注入，不会立即初始化sqlSessionFactory, 所以不会引发提前初始化问题。
+			另外：技术类的问题建议使用谷歌搜索，百度确实不行。
 		-->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 		<property name="annotationClass" value="org.springframework.stereotype.Repository"/>
