@@ -155,9 +155,11 @@
 		<error-code>401</error-code>
 		<location>/WEB-INF/views/error/403.jsp</location>
 	</error-page>
+	<!-- 已在 spring mvc 中指定
 	<welcome-file-list>
 		<welcome-file>/login</welcome-file>
 	</welcome-file-list>
+	 -->
 	<!-- 配置标签库及JSP页面编码 -->
 	<jsp-config>
 		<taglib>

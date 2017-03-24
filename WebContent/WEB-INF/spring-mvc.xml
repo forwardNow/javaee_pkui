@@ -1,48 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-	http://www.springframework.org/schema/beans/spring-beans.xsd
-	http://www.springframework.org/schema/context
-	http://www.springframework.org/schema/context/spring-context-4.0.xsd
-	http://www.springframework.org/schema/mvc
-	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 	<!-- 注解扫描包 -->
+	<!-- 
 	<context:component-scan base-package="net.pkusoft" />
 	<context:component-scan base-package="com.pkusoft.admin" />
-
+ 	-->
+ 	<!-- 自动扫描且只扫描@Controller -->
+	<context:component-scan base-package="net.pkusoft,com.pkusoft.admin" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+ 	
 	<!-- 开启注解 -->
 	<mvc:annotation-driven />
-
-	<mvc:interceptors>  
-		<mvc:interceptor> 
-			<mvc:mapping path="/**"/> 
-			<mvc:exclude-mapping path="/static/**"/> 
-			<mvc:exclude-mapping path="/doLogin"/> 
-			<mvc:exclude-mapping path="/login"/> 
-		    <bean class="com.pkusoft.framework.interceptor.AccessInterceptor"/>  
-		</mvc:interceptor> 
-	</mvc:interceptors>  
 
 	<!--
 		配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理，3.04新增功能，需要重新设置spring-mvc-3.0.xsd
 	-->
-	<!-- 
-	<mvc:resources mapping="/img/**" location="/img/" />
-	<mvc:resources mapping="/js/**" location="/js/" />
-	<mvc:resources mapping="/css/**" location="/css/" />
-	<mvc:resources mapping="/html/**" location="/html/" />
- 	-->
  	<mvc:resources mapping="/static/**" location="/static/" />
 
+	<!-- 定义首页 -->
+	<mvc:view-controller path="/" view-name="redirect:/main/index" />
 
-	<!-- 定义跳转的文件的前后缀 ，视图模式配置-->
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->
+
+	<!-- 拦截器 -->
+	<!-- 
+	<mvc:interceptors>    
+		向当前线程中绑定 UserInfo
+	    <bean class="com.pkusoft.framework.interceptor.AccessInterceptor" />    
+	</mvc:interceptors>  
+	-->
+	<mvc:interceptors>  
+		<mvc:interceptor> 
+			<mvc:mapping path="/**"/> 
+			<mvc:exclude-mapping path="/static/**"/> 
+		    <bean class="com.pkusoft.framework.interceptor.AccessInterceptor"/>  
+		</mvc:interceptor> 
+	</mvc:interceptors>  
+
+
+	<!-- jsp视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
+	<!-- 定义消息解析器器
+		 使用@ResponseBody将会跳过视图处理部分，而是调用适合HttpMessageConverter，将返回值写入输出流（HTTP response body）。-->
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"
+		p:messageConverters-ref="messageConverters"></bean>
+
+	<util:list id="messageConverters">
+	
+		<!-- that can read and write BufferedImages（java.awt.image.BufferedImage）.
+			 By default, this converter can read all media types that are supported by the registered image readers, 
+			 and writes using the media type of the first available registered image writer. 
+			 This behavior can be overriden by setting the #setContentType(org.springframework.http.MediaType) contentType} properties.-->
+		<bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter" />
+		
+		<!-- that can read and write byte arrays from the HTTP request and response.
+			 By default, this converter supports all media types (&#42;&#47;&#42;), 
+			 and writes with a Content-Type of application/octet-stream. 
+			 This can be overridden by setting the supportedMediaTypes property.
+			 拥有@ResponseBody 注解的方法，其返回值类型为byte[]，
+			 spring mvc会选中ByteArrayHttpMessageConverter 对返回值进行处理，即将图片数据流输出到客户端 -->
+		<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+		
+		<!-- that can read and write Strings from the HTTP request and response. 
+			 By default, this converter supports all media types (&#42;&#47;&#42;), 
+			 and writes with a Content-Type of text/plain. 
+			 This can be overridden by setting the supportedMediaTypes property.-->
+		<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
+		
+		<!-- that can read and write JSON using Jackson 1.x's ObjectMapper.
+			 This converter can be used to bind to typed beans, or untyped HashMap instances,
+			 By default, this converter supports application/json. 
+			 This can be overridden by setting the supportedMediaTypes property. -->
+		<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" >
+			<property name="supportedMediaTypes">
+				<list>
+					<value>apolication/json; charset=UTF-8</value>
+				</list>
+			</property>
+		</bean>
+	</util:list>
+	
+	<!-- 支持上传文件 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="resolveLazily" value="true" />  
+		<property name="maxUploadSize" value="20971520" />
+	</bean>
+	
+	
+	
+	 <!-- 全局异常配置 start -->  
+     <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+         <property name="exceptionMappings">  
+             <props>  
+                 <prop key="java.lang.Exception">error/500</prop>  
+                 <prop key="java.lang.Throwable">error/500</prop>
+                 <prop key="org.apache.shiro.authz.UnauthorizedException">error/403</prop>  
+                 <prop key="com.pkusoft.framework.exception.BizException">error/biz</prop>  
+             </props>  
+         </property>  
+         <property name="statusCodes">  
+             <props>  
+                 <prop key="500">500</prop>  
+                 <prop key="404">404</prop>
+                 <prop key="403">403</prop>  
+             </props>  
+         </property>  
+         <!-- 设置日志输出级别，不定义则默认不输出警告等错误日志信息 -->  
+         <property name="warnLogCategory" value="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"/>  
+         <!-- 默认错误页面，当找不到上面mappings中指定的异常对应视图时，使用本默认配置 -->  
+         <property name="defaultErrorView" value="error/500"/>  
+         <!-- 默认HTTP状态码 -->  
+         <property name="defaultStatusCode" value="500"/>  
+     </bean>  
+     <!-- 全局异常配置 end -->	
+	
 </beans>
