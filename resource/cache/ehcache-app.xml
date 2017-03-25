@@ -11,7 +11,8 @@
 	      128是限制在同一个大洲
 	      255是不限制
 	 -->
-	<cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory" properties="peerDiscovery=automatic,multicastGroupAddress=230.0.0.1,multicastGroupPort=4446,timeToLive=1" />
+	<!-- <cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory" properties="peerDiscovery=automatic,multicastGroupAddress=230.0.0.1,multicastGroupPort=4446,timeToLive=1" /> -->
+	<cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory" properties="peerDiscovery=automatic,multicastGroupAddress=230.0.0.1,multicastGroupPort=4446,timeToLive=32" />
 	<cacheManagerPeerListenerFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory" />
 	
 	<!--
