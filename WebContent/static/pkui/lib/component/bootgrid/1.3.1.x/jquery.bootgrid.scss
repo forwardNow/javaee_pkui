@@ -48,26 +48,29 @@
     * {
         @extend .border-box;
     }
-    thead {
+    > thead {
         font-size: 14px;
         color: #333;
         th {
             font-weight: bold;
         }
     }
-    td {
-        background-color: #f9f9f9;
-        border-bottom: solid 2px #fff;
-    }
-    th,
-    td {
-        //padding: 12px;
-    }
-    tr:hover {
-        td {
-            //color: #fff;
-            //background-color: #455469;
-            background-color: #e5e5e5;
+    > tbody {
+        > tr {
+            background-color: #f9f9f9;
+            > td {
+                border-bottom: solid 2px #fff;
+            }
+            &:hover,
+            &.active {
+                background-color: #e5e5e5;
+            }
+            &.deleted {
+                text-decoration: line-through;
+                color: #aaa;
+                cursor: not-allowed;
+                background-color: #f2dede;
+            }
         }
     }
 }
@@ -226,12 +229,15 @@
 }
 .pkui-grid-selectCell {
 }
-th.pkui-grid-selectCell,
+
+.pkui-grid-selectLabel,
 .pkui-grid-columnHeaderAnchor,
 .pkui-grid-cell {
     padding: 12px 6px;
 }
-
+.pkui-grid-cell > .pkui-grid-selectLabel {
+    padding: 0;
+}
 .pkui-grid-cell {
     overflow: hidden;
     -ms-text-overflow: ellipsis;
@@ -239,4 +245,5 @@ th.pkui-grid-selectCell,
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 
