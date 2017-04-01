@@ -35,8 +35,8 @@
 		    data-fail-callback="doLoginFailCallback"
 		    data-always-callback="doLoginAlwaysCallback" >
 		    
-            <input type="text" name="loginName" placeholder="登陆名"/>
-            <input type="password" name="password" placeholder="密码"/>
+            <input type="text" name="loginName" placeholder="用户名（admin）"/>
+            <input type="password" name="password" placeholder="密码（a）"/>
             <button type="submit">登陆</button>
         </form>
     </div>

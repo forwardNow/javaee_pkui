@@ -591,7 +591,7 @@ define( function( require ) {
                         selectBox = tpl.select.resolve( getParams.call( that,
                             { type: "checkbox", value: row[ that.identifier ], checked: selected } ) );
                     //FIX 给checkbox的cell设置width=20px，title="";
-                    cells += tpl.cell.resolve( getParams.call( that, { content: selectBox, css: css.selectCell, style: "width: 20px;", title: "" } ) );
+                    cells += tpl.cell.resolve( getParams.call( that, { content: selectBox, css: css.selectCell, style: "width: 32px;", title: "" } ) );
                     allRowsSelected = (allRowsSelected && selected);
                     if ( selected ) {
                         rowCss += css.selected;
@@ -758,7 +758,7 @@ define( function( require ) {
                 content: selectBox,
                 css: css.selectCell,
                 //FIX 给checkbox的cell设置width=20px;
-                style: "width: 20px;"
+                style: "width: 32px;"
             } ) );
         }
 
@@ -1908,7 +1908,12 @@ define( function( require ) {
                     $this.attr( "isrendered", "true" );
 
                     // FIX 列宽可拖拽调整
-                    $this.colResizable();
+                    $this.colResizable( {
+                        // 实时显示拖拽后的表格
+                        liveDrag:true,
+                        // 设置拖拽的标志
+                        gripInnerHtml:"<div class='pkui-grid-colresizable-grip' title='可拖拽调整列宽'></div>"
+                    } );
                 }
                 if ( typeof option === "string" ) {
                     if ( option.indexOf( "get" ) === 0 && index === 0 ) {
