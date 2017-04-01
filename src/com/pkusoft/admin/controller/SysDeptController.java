@@ -97,6 +97,23 @@ public class SysDeptController extends BaseController {
 		}
 	}
 
+	@RequestMapping("/admin/sysDeptModel")
+	@ResponseBody
+	public JsonResult sysDeptModel(String deptId) {
+		JsonResult jsonResult = new JsonResult();
+		try {
+			SysDept sysDept = sysDeptService.get(deptId);
+			jsonResult.setSuccess( true );
+			jsonResult.setData( sysDept );
+			return jsonResult;
+		} catch (Exception e) {
+			jsonResult.setSuccess( false );
+			jsonResult.setMessage( "获取部门信息失败" );
+			return jsonResult;
+		}
+	}
+
+	
 	/**
 	 * 保存单位信息
 	 * 
