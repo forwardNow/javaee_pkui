@@ -36,7 +36,7 @@
 	<!-- Filter 定义 -->
 	
 	
-    <!-- 实现跨域
+    <!-- 实现跨域 -->
     <filter>
         <filter-name>CORS</filter-name>
         <filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
@@ -65,7 +65,7 @@
         <filter-name>CORS</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-	 -->
+    
 	<!-- Character Encoding filter -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
