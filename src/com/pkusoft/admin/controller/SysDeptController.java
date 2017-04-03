@@ -216,7 +216,7 @@ public class SysDeptController extends BaseController {
 	public JsonResult sysDeptCreateDic(String dicName) {
 		try {
 			sysDeptService.createDeptDic(dicName);
-			LogUtils.log(AdminFunctionId.SYS_DEPT_CREATE_DIC, "生成单位字典失败");
+			LogUtils.log(AdminFunctionId.SYS_DEPT_CREATE_DIC, "生成单位字典成功");
 			return new JsonResult(true);
 		} catch (Exception e) {
 			logger.error("生成单位字典出错", e);

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <row DIC_ASPELL="PKUSOFT" DIC_SPELL="PKUSOFT" DIC_TEXT="PKUSOFT" DIC_CODE="100000000000"/>
+    <row DIC_ASPELL="hubeishenggonganting" DIC_SPELL="hbsgat" DIC_TEXT="湖北省公安厅" DIC_CODE="420000000000"/>
+    <row DIC_ASPELL="wuhanshigonganju" DIC_SPELL="whsgaj" DIC_TEXT="武汉市公安局" DIC_CODE="420100000000"/>
+    <row DIC_ASPELL="shijufazhizhidui" DIC_SPELL="sjfzzd" DIC_TEXT="市局法制支队" DIC_CODE="420100210100"/>
+    <row DIC_ASPELL="wuhanshigonganjuhanyangfenju" DIC_SPELL="whsgajhyfj" DIC_TEXT="武汉市公安局汉阳分局" DIC_CODE="420105000000"/>
+    <row DIC_ASPELL="wuhanshigonganjuhanyangfenjuqingchuanjiepaichusuo" DIC_SPELL="whsgajhyfjqcjpcs" DIC_TEXT="武汉市公安局汉阳分局晴川街派出所" DIC_CODE="420105630000"/>
+    <row DIC_ASPELL="wuhanshigonganjuhongshanfenju" DIC_SPELL="whsgajhsfj" DIC_TEXT="武汉市公安局洪山分局" DIC_CODE="420111000000"/>
+    <row DIC_ASPELL="add_dept_test" DIC_SPELL="add_dept_test" DIC_TEXT="add_dept_test" DIC_CODE="420111010000"/>
+    <row DIC_ASPELL="add_dept_test" DIC_SPELL="add_dept_test" DIC_TEXT="add_dept_test" DIC_CODE="420111010002"/>
+    <row DIC_ASPELL="wuhanshigonganjuhongshanfenjuhongshanpaichusuo" DIC_SPELL="whsgajhsfjhspcs" DIC_TEXT="武汉市公安局洪山分局洪山派出所" DIC_CODE="420111620000"/>
+</data>
