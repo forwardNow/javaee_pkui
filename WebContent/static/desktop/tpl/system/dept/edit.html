@@ -82,8 +82,8 @@
         <button type="submit" class="btn btn-success-2">确定</button>
     </div>
 </form>
-<script>
 
+<script>
     // 请求发送成功，对服务器端返回的数据进行处理
     function editSysDeptDoneCallback($form, jsonResult) {
         console.info( jsonResult );
@@ -95,7 +95,7 @@
             layer.alert( '修改单位成功！', { icon: 1 }, function ( index ) {
                 layer.close( index );
                 // 关闭抽屉层
-                //$( "#addSysDeptBtn" ).drawer( "destroy" );
+                $form.closest( ".pkui-drawer" ).find( ".pkui-drawer-button" ).trigger( "click" );
             } );
         }
         // 服务器端处理失败
