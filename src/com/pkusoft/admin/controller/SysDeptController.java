@@ -275,7 +275,7 @@ public class SysDeptController extends BaseController {
 		try {
 			fieldValue = java.net.URLDecoder.decode(fieldValue, "utf-8");
 			boolean b = sysDeptService.checkDeptInfo(deptId, fieldName, fieldValue);
-			return new JsonResult(b);
+			return new JsonResult(b, "单位唯一性验证");
 		} catch (Exception e) {
 			logger.error("单位唯一性验证出错", e);
 			return new JsonResult(false, this.getMessage(e));
