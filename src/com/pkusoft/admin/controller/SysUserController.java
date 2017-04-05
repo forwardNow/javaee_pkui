@@ -1,6 +1,9 @@
 package com.pkusoft.admin.controller;
 
+import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -107,6 +110,44 @@ public class SysUserController extends BaseController {
 		}
 	}
 
+	/**
+	 * SysUser model
+	 * 
+	 * @param sysUser
+	 * @return
+	 */
+	@RequestMapping("/admin/sysUserRole")
+	@ResponseBody
+	public JsonResult sysUserModel(Long userId, HttpSession session) {
+		JsonResult jsonResult = new JsonResult(true);
+		HashMap<String, Object> data = new HashMap<String, Object>(); 
+		try {
+			// 获取提供用户选择的角色列表
+			List<SysRole> roleList = sysRoleService.getAllSysRoleList();
+			data.put("roleList", roleList);
+			
+			// 将 UserInfo 放入 data
+			data.put( "_pku_user", session.getAttribute( "_pku_user" ) );
+			
+			//如果是修改
+			if (userId != null) {
+				//用户基本信息
+				SysUser sysUser = sysUserService.get(userId);
+				//用户角色信息
+				List<SysRoleUser> checkedRoleList = sysUserService.getSysRoleUserListByUserId(userId);
+				
+				data.put("sysUser", sysUser);
+				data.put("checkedRoleList", checkedRoleList);
+			}
+			jsonResult.setData( data );
+			return jsonResult;
+		} catch (Exception e) {
+			jsonResult.setSuccess( false );
+			jsonResult.setMessage( "获取数据失败" );
+			return jsonResult;
+		}
+	}
+	
 	/**
 	 * 保存用户信息
 	 * 

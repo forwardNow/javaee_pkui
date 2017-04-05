@@ -121,7 +121,7 @@ a.text-primary:focus {
 }
 
 .text-success {
-  color: #3c763d;
+  color: #2cb663;
 }
 
 a.text-success:hover,
@@ -148,7 +148,7 @@ a.text-warning:focus {
 }
 
 .text-danger {
-  color: #a94442;
+  color: #c24f4e;
 }
 
 a.text-danger:hover,
@@ -5927,6 +5927,11 @@ b {
   color: #888;
 }
 
+.required:before {
+  content: "*";
+  color: #eb5252;
+}
+
 /*
  * Swiper - Mobile Touch Slider CSS
  * http://www.idangero.us/sliders/swiper
@@ -6817,6 +6822,10 @@ Pagination Styles
   min-height: 100%;
   height: 100%;
   overflow: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-bottom: 50px;
 }
 
 .win-btnGroup {

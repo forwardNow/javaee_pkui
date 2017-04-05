@@ -4,7 +4,7 @@
             id="addSysDeptBtn"
             data-pkui-component="drawer"
             data-pkui-component-options='{
-                "url":"./tpl/system/dept/add.html",
+                "url":"__CTX__/static/desktop/tpl/system/dept/add.html",
                 "container": ".da-win-main"}'
             ><i class="fa fa-plus"></i> 添加</button>
     <!--<button type="button" class="btn btn-info-2"><i class="fa fa-pencil"></i> 修改</button>-->
@@ -57,7 +57,7 @@
         <th data-column-id="deptName" data-sortable="false" data-width="30%">部门名称</th>
         <th data-column-id="deptLevel" data-sortable="true" data-dic="DIC_DEPT_LEVEL" data-width="10%">部门级别</th>
         <th data-column-id="addTime" data-sortable="false" data-formatter="dateFormatter" data-width="20%">录入时间</th>
-        <th data-column-id="__" data-sortable="false" data-formatter="ope">操作</th>
+        <th data-column-id="__" data-sortable="false" data-formatter="sysDeptOpe">操作</th>
     </tr>
     </thead>
 
@@ -68,7 +68,7 @@
     /**
      * 操作
      */
-    function ope(column, row) {
+    function sysDeptOpe(column, row) {
         return '<a href="javascript:void(0)" '
         +           ' id=viewSysDept_' + row.deptId
         +           ' data-pkui-component="drawer"'
