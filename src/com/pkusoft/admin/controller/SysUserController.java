@@ -116,7 +116,7 @@ public class SysUserController extends BaseController {
 	 * @param sysUser
 	 * @return
 	 */
-	@RequestMapping("/admin/sysUserRole")
+	@RequestMapping("/admin/sysUserModel")
 	@ResponseBody
 	public JsonResult sysUserModel(Long userId, HttpSession session) {
 		JsonResult jsonResult = new JsonResult(true);
