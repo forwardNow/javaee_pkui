@@ -29,7 +29,7 @@ public class MainController {
 	
 	@RequestMapping("/main/index")
 	public String index(ModelAndView model){
-		return "/main/index";
+		return "redirect:/static/desktop/index.html";
 	}
 	
 	@RequestMapping("/main/menu")

@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,9 +18,11 @@ import com.pkusoft.common.constants.AdminFunctionId;
 import com.pkusoft.common.constants.AdminUrlRecource;
 import com.pkusoft.common.util.LogUtils;
 import com.pkusoft.framework.controller.BaseController;
+import com.pkusoft.framework.model.Criteria;
 import com.pkusoft.framework.model.GridResult;
 import com.pkusoft.framework.model.JsonResult;
 import com.pkusoft.framework.model.Pager;
+import com.pkusoft.framework.util.WebUtils;
 
 /**
  * 控制器
@@ -50,17 +53,15 @@ public class SysParaController extends BaseController {
 	/**
 	 * 列表数据
 	 * 
-	 * @param sysPara
-	 * @param pager
-	 * @return
 	 */
 	@RequestMapping(value = AdminUrlRecource.SYS_PARA_LIST_DATA)
 	@ResponseBody	  
-	public GridResult getSysParaListData(SysPara sysPara,Pager pager) {
+	public GridResult getSysParaListData(String txtQuery) {
 		try {
-			List<SysPara> list = sysParaService.getSysParaList(sysPara, pager);
-
-			return new GridResult(true, list, pager.getTotalRecords());
+			Criteria<?> criteria = WebUtils.toCriteria(txtQuery);
+			List<SysPara> list = sysParaService.getSysParaList(criteria);
+			int count = criteria.getPager() == null ? list.size() : criteria.getPager().getTotalRecords();
+			return new GridResult(true, list, count);
 		} catch (Exception e) {
 			logger.error("查询列表数据出错", e);
 			return new GridResult(false, null);
@@ -87,6 +88,27 @@ public class SysParaController extends BaseController {
 			logger.error("访问表单页面出错", e);
 			throw new RuntimeException(this.getMessage(e));
 		}
+	}
+	
+	/**
+	 * model
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/admin/sysParaModel")
+	@ResponseBody
+	public JsonResult sysParaModel(java.lang.String paraCode) {
+		JsonResult jsonResult = new JsonResult( true );
+		try {
+			Assert.hasText( paraCode );
+			SysPara sysPara = sysParaService.get(paraCode);
+			jsonResult.setData( sysPara );
+		} catch (Exception e) {
+			jsonResult.setSuccess( false ); 
+			jsonResult.setMessage( "获取模型失败" );
+		}
+		return jsonResult;
 	}
 
 	/**
@@ -142,12 +164,16 @@ public class SysParaController extends BaseController {
 	 */
 	@RequestMapping(AdminUrlRecource.CHECK_SYS_PARA_FORM)
 	@ResponseBody
-	public JsonResult checkSysParaForm(java.lang.String paraCode) {
+	public JsonResult checkSysParaForm(java.lang.String paraCode, String oldParaCode) {
 		try {
-			return new JsonResult(sysParaService.checkSysParaForm(paraCode));
+			if ( oldParaCode != null && oldParaCode.equals( paraCode ) ) {
+				return new JsonResult(true, "参数名称唯一");
+			}
+			boolean checkSysParaForm = ! sysParaService.checkSysParaForm(paraCode);
+			return new JsonResult(checkSysParaForm,"参数名称唯一");
 		} catch (Exception e) {
 			logger.error("参数名称唯一性验证出错", e);
-			return new JsonResult(false, this.getMessage(e));
+			return new JsonResult(false, "唯一性校验失败");
 		}
 	}
 	

@@ -3,6 +3,7 @@ package com.pkusoft.admin.service;
 import java.util.List;
 
 import com.pkusoft.framework.service.BaseService;
+import com.pkusoft.framework.model.Criteria;
 import com.pkusoft.framework.model.Pager;
 import com.pkusoft.admin.model.SysPara;
 
@@ -15,11 +16,9 @@ public interface SysParaService extends BaseService<SysPara>{
 	/**
 	 * 查询列表
 	 * 
-	 * @param sysPara
-	 * @param pager
 	 * @return
 	 */
-	List<SysPara> getSysParaList(SysPara sysPara, Pager pager);
+	List<SysPara> getSysParaList(Criteria<?> criteria);
 
 	/**
 	 * 新增信息

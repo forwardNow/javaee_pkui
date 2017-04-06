@@ -12,6 +12,7 @@ import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
 import com.pkusoft.admin.dao.SysParaMapper;
+import com.pkusoft.admin.model.SysDept;
 import com.pkusoft.admin.model.SysPara;
 import com.pkusoft.admin.model.SysParaCriteria;
 import com.pkusoft.admin.service.SysParaService;
@@ -48,20 +49,13 @@ public class SysParaServiceImpl extends BaseServiceImpl<SysPara> implements SysP
 	 * @see com.pkusoft.admin.service.SysParaService#getSysParaList(com.pkusoft.admin.model.SysPara, com.pkusoft.framework.model.Pager)
 	 */
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)
-	public List<SysPara> getSysParaList(SysPara sysPara, Pager pager) {
-		Criteria<SysParaCriteria> criteria = new Criteria<SysParaCriteria>();
-		criteria.setPager(pager);
-		SysParaCriteria sysParaCriteria = criteria.createCriteria(SysParaCriteria.class);
+	public List<SysPara> getSysParaList(Criteria<?> criteria) {
 		List<SysPara> list = this.getListByCriteria(criteria);
-
-		if(StringUtils.hasText(sysPara.getParaName())){
-			sysParaCriteria.andParaNameLike("%"+sysPara.getParaName()+"%");
-			return this.getListByCriteria(criteria);
+		Pager pager = criteria.getPager();
+		if(pager != null){
+			int count = this.getCountByCriteria(criteria);
+			pager.setTotalRecords(count);
 		}
-		list = this.getListByCriteria(criteria);	
-		int count = this.getCountByCriteria(criteria);
-		pager.setTotalRecords(count);
-		
 		return list;
 	}
 	
