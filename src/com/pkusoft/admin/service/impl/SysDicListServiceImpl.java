@@ -4,12 +4,14 @@ package com.pkusoft.admin.service.impl;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
+
 import com.pkusoft.framework.dao.BaseMapper;
 import com.pkusoft.framework.model.Criteria;
 import com.pkusoft.framework.User;
@@ -17,8 +19,10 @@ import com.pkusoft.framework.model.Pager;
 import com.pkusoft.framework.util.DicUtils;
 import com.pkusoft.framework.util.MapUtils;
 import com.pkusoft.framework.util.StringUtils;
+import com.pkusoft.framework.util.WebUtils;
 import com.pkusoft.framework.service.impl.BaseServiceImpl;
 import com.pkusoft.admin.dao.SysDicListMapper;
+import com.pkusoft.admin.model.SysDept;
 import com.pkusoft.admin.model.SysDicItem;
 import com.pkusoft.admin.model.SysDicList;
 import com.pkusoft.admin.model.SysDicListCriteria;
@@ -26,6 +30,7 @@ import com.pkusoft.admin.model.SysPara;
 import com.pkusoft.admin.service.SysDicItemService;
 import com.pkusoft.admin.service.SysDicListService;
 import com.pkusoft.common.cache.DicCache;
+import com.pkusoft.common.constants.DataPermitType;
 
 /**
  * 服务实现类
@@ -73,6 +78,22 @@ public class SysDicListServiceImpl extends BaseServiceImpl<SysDicList> implement
 		int count = this.getCountByCriteria(criteria);
 		pager.setTotalRecords(count);
 		
+		return list;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.pkusoft.admin.service.SysDicListService#getSysDicListList(com.pkusoft.admin.model.SysDicList, com.pkusoft.framework.model.Pager)
+	 */
+	@Transactional(propagation=Propagation.NOT_SUPPORTED)
+	public List<SysDicList> getSysDicListList(Criteria<?> criteria) {
+		
+		List<SysDicList> list = this.getListByCriteria(criteria);
+		
+		Pager pager = criteria.getPager();
+		if(pager != null){
+			int count = this.getCountByCriteria(criteria);
+			pager.setTotalRecords(count);
+		}
 		return list;
 	}
 	
@@ -137,6 +158,19 @@ public class SysDicListServiceImpl extends BaseServiceImpl<SysDicList> implement
 		if(dicName != null && !"".equals(dicName)){
 			List<SysDicItem> dicDataList = sysDicItemService.getSysDicItemXmlByDicname(dicName);
 			DicUtils.createDicXml(dicName, dicDataList);
+		}
+	}
+	/* (non-Javadoc)
+	 * @see com.pkusoft.admin.service.SysDicListService#deleteSysDicList(java.lang.String)
+	 */
+	@Transactional(propagation=Propagation.NOT_SUPPORTED)
+	public void createDicFile(String[] dicName){
+		for ( int i = 0, len = dicName.length; i < len; i++ ) {
+			String dicname = dicName[ i ];
+			if(dicname != null && !"".equals(dicname)){
+				List<SysDicItem> dicDataList = sysDicItemService.getSysDicItemXmlByDicname(dicname);
+				DicUtils.createDicXml(dicname, dicDataList);
+			}
 		}
 	}
 	/* (non-Javadoc)

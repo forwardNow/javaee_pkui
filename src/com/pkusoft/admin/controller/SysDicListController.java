@@ -6,11 +6,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pkusoft.admin.model.SysDept;
 import com.pkusoft.admin.model.SysDicList;
+import com.pkusoft.admin.model.SysPara;
 import com.pkusoft.admin.service.SysDicListService;
 import com.pkusoft.common.cache.DicCache;
 import com.pkusoft.common.cache.SysParaCache;
@@ -18,9 +21,11 @@ import com.pkusoft.common.constants.AdminFunctionId;
 import com.pkusoft.common.constants.AdminUrlRecource;
 import com.pkusoft.common.util.LogUtils;
 import com.pkusoft.framework.controller.BaseController;
+import com.pkusoft.framework.model.Criteria;
 import com.pkusoft.framework.model.GridResult;
 import com.pkusoft.framework.model.JsonResult;
 import com.pkusoft.framework.model.Pager;
+import com.pkusoft.framework.util.WebUtils;
 
 /**
  * 字典控制器
@@ -67,6 +72,26 @@ public class SysDicListController extends BaseController {
 			return new GridResult(false, null);
 		}
 	}
+	/**
+	 * 列表数据
+	 * 
+	 * @param sysDicList
+	 * @param pager
+	 * @return
+	 */
+	@RequestMapping( "/admin/sysDicListListDataExt" )
+	@ResponseBody
+	public GridResult sysDicListListDataExt(String txtQuery) {
+		try {
+			Criteria<?> criteria = WebUtils.toCriteria(txtQuery);
+			List<SysDicList> list = sysDicListService.getSysDicListList(criteria);
+			int count = criteria.getPager() == null ? list.size() : criteria.getPager().getTotalRecords();
+			return new GridResult(true, list, count);
+		} catch (Exception e) {
+			logger.error("查询单位列表数据出错", e);
+			return new GridResult(false, null);
+		}
+	}
 	
 	/**
 	 * 表单页面
@@ -88,6 +113,28 @@ public class SysDicListController extends BaseController {
 			logger.error("访问表单页面出错", e);
 			throw new RuntimeException(this.getMessage(e));
 		}
+	}
+	
+	
+	/**
+	 * model
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/admin/sysDicListModel")
+	@ResponseBody
+	public JsonResult sysDicListModel(java.lang.String dicName) {
+		JsonResult jsonResult = new JsonResult( true );
+		try {
+			Assert.hasText( dicName );
+			SysDicList sysDicList = sysDicListService.get(dicName);
+			jsonResult.setData( sysDicList );
+		} catch (Exception e) {
+			jsonResult.setSuccess( false ); 
+			jsonResult.setMessage( "获取模型失败" );
+		}
+		return jsonResult;
 	}
 	
 	/**
@@ -206,6 +253,32 @@ public class SysDicListController extends BaseController {
 			throw new RuntimeException(this.getMessage(e));
 		}
 	}
+	/**
+	 * 生成字典文件
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/admin/sysDicCreateXml")
+	@ResponseBody
+	public JsonResult sysDicCreateXml(String[] dicName) {
+		try {
+			//生成指定字典文件
+			if( dicName != null && dicName.length > 0){
+				sysDicListService.createDicFile( dicName );
+				LogUtils.log(AdminFunctionId.SYS_DIC_LIST_XML_FILE, dicName + "生成指定字典文件");
+			}else{
+				//生成全部字典文件
+				sysDicListService.createAllDicFile();
+				LogUtils.log(AdminFunctionId.SYS_DIC_LIST_XML_FILE, "生成字典文件成功");
+			}
+			
+			return new JsonResult(true);
+		} catch (Exception e) {
+			logger.error("生成字典失败", e);
+			throw new RuntimeException(this.getMessage(e));
+		}
+	}
 	
 	/**
 	 * 检查字典名称
@@ -218,6 +291,38 @@ public class SysDicListController extends BaseController {
 	public JsonResult checkSysDicListForm(java.lang.String dicName) {
 		try {
 			return new JsonResult(sysDicListService.checkSysDicListForm(dicName));
+		} catch (Exception e) {
+			logger.error("检查字典名称失败", e);
+			throw new RuntimeException(this.getMessage(e));
+		}
+	}
+	
+	/**
+	 * 字典名称唯一性检测
+	 * 
+	 * @param SysDicList
+	 * @return 
+	 */
+	@RequestMapping("/admin/checkDicNameUnique")
+	@ResponseBody
+	public JsonResult checkDicNameUnique(String dicName, String oldDicName) {
+		try {
+			boolean isUnique = true;
+			// 新增
+			if ( oldDicName == null ) {
+				isUnique = ! sysDicListService.checkSysDicListForm(dicName);
+			}
+			// 修改
+			else {
+				if ( oldDicName.equals( dicName ) ) {
+					isUnique = true;
+				}
+				else {
+					isUnique = ! sysDicListService.checkSysDicListForm(dicName);
+				}
+			}
+			
+			return new JsonResult(isUnique, "字典名称唯一");
 		} catch (Exception e) {
 			logger.error("检查字典名称失败", e);
 			throw new RuntimeException(this.getMessage(e));

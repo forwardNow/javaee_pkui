@@ -3,6 +3,7 @@ package com.pkusoft.admin.service;
 import java.util.List;
 
 import com.pkusoft.framework.service.BaseService;
+import com.pkusoft.framework.model.Criteria;
 import com.pkusoft.framework.model.Pager;
 import com.pkusoft.admin.model.SysDicList;
 
@@ -20,6 +21,12 @@ public interface SysDicListService extends BaseService<SysDicList>{
 	 * @return
 	 */
 	List<SysDicList> getSysDicListList(SysDicList sysDicList, Pager pager);
+	/**
+	 * 查询列表
+	 * 
+	 * @return
+	 */
+	List<SysDicList> getSysDicListList(Criteria<?> criteria);
 
 	/**
 	 * 新增信息
@@ -52,6 +59,14 @@ public interface SysDicListService extends BaseService<SysDicList>{
 	 * @return XML文件
 	 */
 	void createDicFile(java.lang.String dicName);
+	
+	/**
+	 * 生成多个字典文件
+	 * 
+	 * @param dicName
+	 * @return XML文件
+	 */
+	void createDicFile(String[] dicName);
 	
 	/**
 	 * 生成单个字典文件
