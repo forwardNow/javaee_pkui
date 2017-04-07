@@ -81,7 +81,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/pager-taglib-2.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/persistence-api-1.0.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/pinyin4j-2.5.0.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/pku-framework-1.0.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/powermock-api-mockito-1.4.12.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/powermock-api-support-1.4.12.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/powermock-core-1.4.12.jar"/>
@@ -122,5 +121,9 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/activiti-spring-5.13.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/cors-filter-2.5.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/java-property-utils-1.9.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/poi-3.15.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/poi-ooxml-3.15.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/poi-ooxml-schemas-3.15.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/xmlbeans-2.6.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
