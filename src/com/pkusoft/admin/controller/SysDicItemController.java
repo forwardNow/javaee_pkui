@@ -7,9 +7,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.pkusoft.admin.model.SysDicItem;
 import com.pkusoft.admin.model.SysDicList;
 import com.pkusoft.admin.service.SysDicItemService;
@@ -19,9 +21,11 @@ import com.pkusoft.common.constants.AdminFunctionId;
 import com.pkusoft.common.constants.AdminUrlRecource;
 import com.pkusoft.common.util.LogUtils;
 import com.pkusoft.framework.controller.BaseController;
+import com.pkusoft.framework.model.Criteria;
 import com.pkusoft.framework.model.GridResult;
 import com.pkusoft.framework.model.JsonResult;
 import com.pkusoft.framework.model.Pager;
+import com.pkusoft.framework.util.WebUtils;
 
 /**
  * 字典条目控制器
@@ -78,6 +82,28 @@ public class SysDicItemController extends BaseController {
 		}
 	}
 	
+	
+	/**
+	 * 列表数据
+	 * 
+	 * @param sysDicList
+	 * @param pager
+	 * @return
+	 */
+	@RequestMapping( "/admin/sysDicItemListDataExt" )
+	@ResponseBody
+	public GridResult sysDicItemListDataExt(String txtQuery) {
+		try {
+			Criteria<?> criteria = WebUtils.toCriteria(txtQuery);
+			List<SysDicItem> list = sysDicItemService.getSysDicItemList(criteria);
+			int count = criteria.getPager() == null ? list.size() : criteria.getPager().getTotalRecords();
+			return new GridResult(true, list, count);
+		} catch (Exception e) {
+			logger.error("查询单位列表数据出错", e);
+			return new GridResult(false, null);
+		}
+	}
+	
 	/**
 	 * 表单页面
 	 * 
@@ -98,6 +124,27 @@ public class SysDicItemController extends BaseController {
 			logger.error("访问表单页面出错", e);
 			throw new RuntimeException(this.getMessage(e));
 		}
+	}
+	
+	/**
+	 * model
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/admin/sysDicItemModel")
+	@ResponseBody
+	public JsonResult sysDicItemModel(Long itemId) {
+		JsonResult jsonResult = new JsonResult( true );
+		try {
+			Assert.notNull( itemId );
+			SysDicItem sysDicItem = sysDicItemService.get(itemId);
+			jsonResult.setData( sysDicItem );
+		} catch (Exception e) {
+			jsonResult.setSuccess( false ); 
+			jsonResult.setMessage( "获取模型失败" );
+		}
+		return jsonResult;
 	}
 	
 	/**

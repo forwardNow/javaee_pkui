@@ -23,6 +23,7 @@ import com.pkusoft.framework.service.impl.BaseServiceImpl;
 import com.pkusoft.admin.dao.SysDicItemMapper;
 import com.pkusoft.admin.model.SysDicItem;
 import com.pkusoft.admin.model.SysDicItemCriteria;
+import com.pkusoft.admin.model.SysDicList;
 import com.pkusoft.admin.service.SysDicItemService;
 import com.pkusoft.common.constants.IdType;
 
@@ -67,6 +68,22 @@ public class SysDicItemServiceImpl extends BaseServiceImpl<SysDicItem> implement
 		int count = this.getCountByCriteria(criteria);
 		pager.setTotalRecords(count);
 		
+		return list;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.pkusoft.admin.service.SysDicListService#getSysDicListList(com.pkusoft.admin.model.SysDicList, com.pkusoft.framework.model.Pager)
+	 */
+	@Transactional(propagation=Propagation.NOT_SUPPORTED)
+	public List<SysDicItem> getSysDicItemList(Criteria<?> criteria) {
+		
+		List<SysDicItem> list = this.getListByCriteria(criteria);
+		
+		Pager pager = criteria.getPager();
+		if(pager != null){
+			int count = this.getCountByCriteria(criteria);
+			pager.setTotalRecords(count);
+		}
 		return list;
 	}
 	

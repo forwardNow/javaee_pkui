@@ -3,8 +3,10 @@ package com.pkusoft.admin.service;
 import java.util.List;
 
 import com.pkusoft.framework.service.BaseService;
+import com.pkusoft.framework.model.Criteria;
 import com.pkusoft.framework.model.Pager;
 import com.pkusoft.admin.model.SysDicItem;
+import com.pkusoft.admin.model.SysDicList;
 
 /**
  * 服务接口
@@ -20,6 +22,14 @@ public interface SysDicItemService extends BaseService<SysDicItem>{
 	 * @return
 	 */
 	List<SysDicItem> getSysDicItemList(SysDicItem sysDicItem, Pager pager);
+	
+	/**
+	 * 查询列表
+	 * 
+	 * @return
+	 */
+	List<SysDicItem> getSysDicItemList(Criteria<?> criteria);
+	
 	/**
 	 * 查询列表
 	 * 
