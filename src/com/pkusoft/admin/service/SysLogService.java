@@ -3,6 +3,7 @@ package com.pkusoft.admin.service;
 import java.util.List;
 
 import com.pkusoft.framework.service.BaseService;
+import com.pkusoft.framework.model.Criteria;
 import com.pkusoft.framework.model.Pager;
 import com.pkusoft.admin.model.SysLog;
 
@@ -60,4 +61,6 @@ public interface SysLogService extends BaseService<SysLog>{
 	 * @return
 	 */
 	int deleteAllSysLog();
+
+	List<SysLog> getSysLogList( Criteria<?> criteria );
 }

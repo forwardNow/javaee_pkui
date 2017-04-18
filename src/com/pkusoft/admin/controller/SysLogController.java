@@ -12,15 +12,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
+
+import com.pkusoft.admin.model.SysDicItem;
 import com.pkusoft.admin.model.SysLog;
 import com.pkusoft.admin.service.SysLogService;
 import com.pkusoft.common.constants.AdminFunctionId;
 import com.pkusoft.common.constants.AdminUrlRecource;
 import com.pkusoft.common.util.LogUtils;
 import com.pkusoft.framework.controller.BaseController;
+import com.pkusoft.framework.model.Criteria;
 import com.pkusoft.framework.model.GridResult;
 import com.pkusoft.framework.model.JsonResult;
 import com.pkusoft.framework.model.Pager;
+import com.pkusoft.framework.util.WebUtils;
 
 /**
  * 日志页面控制器
@@ -63,7 +67,19 @@ public class SysLogController extends BaseController {
 			return new GridResult(false, null);
 		}
 	}
-	
+	@RequestMapping( "/admin/sysLogListDataExt" )
+	@ResponseBody
+	public GridResult sysLogListDataExt(String txtQuery) {
+		try {
+			Criteria<?> criteria = WebUtils.toCriteria(txtQuery);
+			List<SysLog> list = sysLogService.getSysLogList(criteria);
+			int count = criteria.getPager() == null ? list.size() : criteria.getPager().getTotalRecords();
+			return new GridResult(true, list, count);
+		} catch (Exception e) {
+			logger.error("查询单位列表数据出错", e);
+			return new GridResult(false, null);
+		}
+	}
 	/**
 	 * 日志表单页面
 	 * @param model

@@ -13,19 +13,19 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
-import com.pkusoft.framework.User;
-import com.pkusoft.framework.dao.BaseMapper;
-import com.pkusoft.framework.model.Criteria;
-import com.pkusoft.framework.model.Pager;
-import com.pkusoft.framework.util.MapUtils;
-import com.pkusoft.framework.util.StringUtils;
-import com.pkusoft.framework.util.WebUtils;
-import com.pkusoft.framework.service.impl.BaseServiceImpl;
 import com.pkusoft.admin.dao.SysLogMapper;
 import com.pkusoft.admin.model.SysLog;
 import com.pkusoft.admin.model.SysLogCriteria;
 import com.pkusoft.admin.service.SysLogService;
 import com.pkusoft.common.constants.DataPermitType;
+import com.pkusoft.framework.User;
+import com.pkusoft.framework.dao.BaseMapper;
+import com.pkusoft.framework.model.Criteria;
+import com.pkusoft.framework.model.Pager;
+import com.pkusoft.framework.service.impl.BaseServiceImpl;
+import com.pkusoft.framework.util.MapUtils;
+import com.pkusoft.framework.util.StringUtils;
+import com.pkusoft.framework.util.WebUtils;
 
 /**
  * 服务实现类
@@ -182,5 +182,17 @@ public class SysLogServiceImpl extends BaseServiceImpl<SysLog> implements SysLog
 	public int deleteAllSysLog() {
 		Criteria<SysLogCriteria> criteria = new Criteria<SysLogCriteria>();
 		return this.deleteByCriteria(criteria);
+	}
+
+	@Override
+	public List<SysLog> getSysLogList( Criteria<?> criteria ) {
+		List<SysLog> list = this.getListByCriteria(criteria);
+		
+		Pager pager = criteria.getPager();
+		if(pager != null){
+			int count = this.getCountByCriteria(criteria);
+			pager.setTotalRecords(count);
+		}
+		return list;
 	}	
 }
