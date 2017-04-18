@@ -46,6 +46,14 @@ public interface SysDicItemService extends BaseService<SysDicItem>{
 	int insertSysDicItem(SysDicItem sysDicItem);
 	
 	/**
+	 * 新增信息
+	 * 
+	 * @param sysDicItemList
+	 * @return
+	 */
+	int insertSysDicItem(List<SysDicItem> sysDicItemList);
+	
+	/**
 	 * 修改信息
 	 * 
 	 * @param sysDicItem

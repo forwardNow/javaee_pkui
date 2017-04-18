@@ -115,6 +115,38 @@ public class SysDicItemServiceImpl extends BaseServiceImpl<SysDicItem> implement
 		return sysDicItemMapper.insert(sysDicItem);
 	}
 
+	@Override
+	public int insertSysDicItem( List<SysDicItem> sysDicItemList ) {
+		Assert.notNull( sysDicItemList );
+		for ( int i = 0; i < sysDicItemList.size(); i++ ) {
+			SysDicItem sysDicItem = sysDicItemList.get( i );
+			Assert.notNull(sysDicItem);
+			
+			//字典条目标识号
+			long ItemId = MaxIdUtils.getLongMaxIdA(IdType.SYS_DIC_ITEM);
+			sysDicItem.setItemId(ItemId);
+			
+			//字典显示顺序,暂时固定 1
+			long orderFlag=1;
+			sysDicItem.setOrderFlag(orderFlag);
+			
+			//拼音头
+			String itemHeadpell = PinyinUtils.getHeadPinyin(sysDicItem.getItemValue());
+			String itemAspell = PinyinUtils.getPinyin(sysDicItem.getItemValue());
+			sysDicItem.setItemSpell(itemHeadpell);
+			sysDicItem.setItemAspell(itemAspell);
+
+			//录入用户信息
+			sysDicItem.setAddUserId(User.getUserId());
+			sysDicItem.setAddUserName(User.getUserName());
+			sysDicItem.setAddTime(new Date());
+			
+			sysDicItemMapper.insert(sysDicItem);
+		}
+		
+		return 0;
+	}
+
 	/* (non-Javadoc)
 	 * @see com.pkusoft.admin.service.SysDicItemService#updateSysDicItem(com.pkusoft.admin.model.SysDicItem)
 	 */

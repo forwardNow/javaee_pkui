@@ -25,7 +25,11 @@
     </button>
 
     <button type="button" class="btn btn-success-2"
-            onclick="importDicExcel(this)"
+            id="importSysDicListBtn"
+            data-pkui-component="drawer"
+            data-pkui-component-options='{
+                "url":"__CTX__/static/desktop/tpl/system/dic/list/import.html",
+                "container": ".da-win-main"}'
             title="上传excel文件：文件名为字典名（如 DIC_GENDER.xls、DIC_CODE.xls），文件内容格式请参考导出的字典文件。"
     ><i class="fa fa-upload"></i> 导入字典
     </button>
@@ -118,7 +122,7 @@
             + '"model":"__CTX__/admin/sysDicListModel?dicName=' + row.dicName + '",'
             + '"container": ".da-win-main"}\'><i class="fa fa-edit"></i> 编辑</a>　'
 
-            + '<a href="__CTX__/admin/sysDeptDownload?dicName=' + row.dicName + '" target="_self"><i class="fa fa-download"></i> 下载</a>　'
+            + '<a href="__CTX__/admin/sysDicDownload?dicName=' + row.dicName + '" target="_self"><i class="fa fa-download"></i> 下载</a>　'
 
             + '<a href="javascript:void(0)" '
             + ' id=listSysDicItem_' + row.dicName
@@ -208,7 +212,4 @@
         } );
     }
 
-    function importDicExcel( button ) {
-
-    }
 </script>

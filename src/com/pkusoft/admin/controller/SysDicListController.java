@@ -1,24 +1,20 @@
 package com.pkusoft.admin.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pkusoft.admin.model.SysDicItem;
@@ -31,6 +27,7 @@ import com.pkusoft.common.constants.AdminUrlRecource;
 import com.pkusoft.common.util.ExcelUtil;
 import com.pkusoft.common.util.LogUtils;
 import com.pkusoft.framework.controller.BaseController;
+import com.pkusoft.framework.exception.ExcelException;
 import com.pkusoft.framework.model.Criteria;
 import com.pkusoft.framework.model.GridResult;
 import com.pkusoft.framework.model.JsonResult;
@@ -349,8 +346,8 @@ public class SysDicListController extends BaseController {
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping( "/admin/sysDeptDownload" )
-	public void downloadFile( String dicName, HttpServletResponse response ) {
+	@RequestMapping( "/admin/sysDicDownload" )
+	public void sysDicDownload( String dicName, HttpServletResponse response ) {
 		try {
 			Assert.hasText( dicName );
 			//response.setCharacterEncoding("utf-8");  
@@ -362,10 +359,62 @@ public class SysDicListController extends BaseController {
 			List<SysDicItem> sysDicItemList = sysDicItemService.getListByProperty( "dicName", dicName );
 			String[] header = { "条目编号(itemCode)", "条目名称(itemValue)", "是否有效(visiable)" };
 			String[] propertyName = { "itemCode", "itemValue", "visiable" };
-			ExcelUtil.fillData( sysDicItemList, outputStream, header, propertyName );
+			ExcelUtil.fillData( sysDicItemList, outputStream, header, propertyName, SysDicItem.class );
 
 		} catch ( Exception e ) {
 			throw new RuntimeException( e );
 		}
+	}
+	
+	
+	/**
+	 * 字典文件导入
+	 */
+	@ResponseBody
+	@RequestMapping( value = "/admin/sysDicImport", method = RequestMethod.POST )
+	public JsonResult sysDicImport( MultipartFile file, HttpSession session ) {
+		JsonResult jsonResult = new JsonResult();
+		String message = null;
+		try {
+			Assert.notNull( file );
+			String fileName = file.getOriginalFilename();// 文件原名称
+			String fileType = fileName.indexOf( "." ) != -1 ? fileName.substring( fileName.lastIndexOf( "." ) + 1, fileName.length() ) : null;
+			String dicName = fileName.replace( "." + fileType, "" );
+			SysDicList sysDicList = sysDicListService.get( dicName );
+
+			if ( !"xls".equals( fileType ) ) {
+				message = "文件类型不符合要求";
+				throw new Exception( message );
+			}
+			
+			if ( sysDicList == null ) {
+				message = "不存在该字典（"+ dicName +"）";
+				throw new Exception( message );
+			}
+			
+		    String[] header = { "条目编号(itemCode)", "条目名称(itemValue)", "是否有效(visiable)" };
+		    String[] propertyName = { "itemCode", "itemValue", "visiable" };
+			List<SysDicItem> sysDicItemList = ExcelUtil.readData( SysDicItem.class, file.getInputStream(), header, propertyName );
+			
+			if ( sysDicItemList != null ) {
+				for ( int i = 0; i < sysDicItemList.size(); i++ ) {
+					sysDicItemList.get( i ).setDicName( dicName );
+				}
+			}
+			
+			sysDicItemService.insertSysDicItem( sysDicItemList );
+			
+			jsonResult.setSuccess( true );
+			
+		} catch ( Exception e ) {
+			e.printStackTrace();
+			if ( message == null ) {
+				message = e.getMessage();
+			}
+			jsonResult.setSuccess( false );
+			jsonResult.setMessage( message );
+			logger.error( "字典文件导入失败", e );
+		}
+		return jsonResult;
 	}
 }

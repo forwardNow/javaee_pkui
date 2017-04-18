@@ -26,6 +26,7 @@ import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.junit.Test;
 
 import com.pkusoft.admin.model.SysDicItem;
+import com.pkusoft.framework.exception.ExcelException;
 
 /**
  * 
@@ -41,7 +42,7 @@ public class ExcelUtil {
 	 * @param propertyName 要填充的bean属性名，跟表头一一对应，如 { "itemCode", "itemValue", "visiable" }
 	 * @return 是否成功
 	 */
-	public static <T> boolean fillData( List<T> beanList, OutputStream outputStream, String[] header, String[] propertyName ) {
+	public static <T> boolean fillData( List<T> beanList, OutputStream outputStream, String[] header, String[] propertyName, Class<T> beanClass ) {
 		HSSFWorkbook wb = null;
 		Sheet sheet = null;
 		// String[] header = { "条目编号(itemCode)", "条目名称(itemValue)", "是否有效(visiable)" };
@@ -49,7 +50,6 @@ public class ExcelUtil {
 		Field[] fields = new Field[ propertyName.length ];
 
 		try {
-			Class<?> beanClass = beanList.get( 0 ).getClass();
 			for ( int i = 0; i < propertyName.length; i++ ) {
 				Field field = beanClass.getDeclaredField( propertyName[ i ] );
 				field.setAccessible( true );
@@ -106,6 +106,9 @@ public class ExcelUtil {
 			}
 
 			/************** 内容 **************/ 
+			if ( beanList == null ) {
+				beanList = new ArrayList<T>();
+			}
 			for ( int i = 0; i < beanList.size(); i++ ) {
 				short rowNum = ( short ) ( i + 1 );
 				Row contentRow = sheet.createRow( rowNum );
@@ -205,9 +208,9 @@ public class ExcelUtil {
 	 * @param header 表头，如 { "条目编号(itemCode)", "条目名称(itemValue)", "是否有效(visiable)" }
 	 * @param propertyName 要填充的bean属性名，跟表头一一对应，如 { "itemCode", "itemValue", "visiable" }
 	 * @return 读取后的 List<T>
-	 * @throws RuntimeException 错误异常，通过 e.getMessage() 获取是哪行哪列出错
+	 * @throws ExcelException 
 	 */
-	public static <T> List<T> readData( Class<T> beanClass, InputStream inputStream, String[] header,String[] propertyName  ) {
+	public static <T> List<T> readData( Class<T> beanClass, InputStream inputStream, String[] header,String[] propertyName  ) throws ExcelException {
 		List<T> beanList = new ArrayList<T>();
 		
 		HSSFWorkbook wb = null;
@@ -272,7 +275,7 @@ public class ExcelUtil {
 			
 		} catch ( Exception e ) {
 			e.printStackTrace();
-			throw new RuntimeException( "处理 第[" + ( rowNum + 1 ) + "]行 第[" + ( columnNum + 1 ) + "]列 时出错。" );
+			throw new ExcelException( "处理 第[" + ( rowNum + 1 ) + "]行 第[" + ( columnNum + 1 ) + "]列 时出错，详情：" + e.getMessage() + "。" );
 		}
 		
 		return beanList;
@@ -308,7 +311,7 @@ public class ExcelUtil {
 		String[] propertyName = { "itemCode", "itemValue", "visiable" };
 		OutputStream outputStream = new FileOutputStream( new File( "/Users/forwardNow/Desktop/test.xls" ) );
 		
-		ExcelUtil.fillData( beanList, outputStream, header, propertyName );
+		ExcelUtil.fillData( beanList, outputStream, header, propertyName, SysDicItem.class );
 		
 		outputStream.close();
 	}
