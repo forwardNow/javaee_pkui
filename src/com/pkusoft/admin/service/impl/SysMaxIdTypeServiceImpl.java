@@ -19,6 +19,7 @@ import com.pkusoft.framework.util.MaxIdUtils;
 import com.pkusoft.framework.util.StringUtils;
 import com.pkusoft.framework.service.impl.BaseServiceImpl;
 import com.pkusoft.admin.dao.SysMaxIdTypeMapper;
+import com.pkusoft.admin.model.SysLog;
 import com.pkusoft.admin.model.SysMaxIdType;
 import com.pkusoft.admin.model.SysMaxIdTypeCriteria;
 import com.pkusoft.admin.model.SysPara;
@@ -132,6 +133,18 @@ public class SysMaxIdTypeServiceImpl extends BaseServiceImpl<SysMaxIdType> imple
 		}
 		return false;
 		
+	}
+
+	@Override
+	public List<SysMaxIdType> getSysMaxIdTypeList( Criteria<?> criteria ) {
+		List<SysMaxIdType> list = this.getListByCriteria(criteria);
+		
+		Pager pager = criteria.getPager();
+		if(pager != null){
+			int count = this.getCountByCriteria(criteria);
+			pager.setTotalRecords(count);
+		}
+		return list;
 	}
 	
 

@@ -10,15 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pkusoft.admin.model.SysDept;
+import com.pkusoft.admin.model.SysLog;
 import com.pkusoft.admin.model.SysMaxIdType;
 import com.pkusoft.admin.service.SysMaxIdTypeService;
 import com.pkusoft.common.constants.AdminFunctionId;
 import com.pkusoft.common.constants.AdminUrlRecource;
 import com.pkusoft.common.util.LogUtils;
 import com.pkusoft.framework.controller.BaseController;
+import com.pkusoft.framework.model.Criteria;
 import com.pkusoft.framework.model.GridResult;
 import com.pkusoft.framework.model.JsonResult;
 import com.pkusoft.framework.model.Pager;
+import com.pkusoft.framework.util.WebUtils;
 
 /**
  * 控制器
@@ -63,6 +67,34 @@ public class SysMaxIdTypeController extends BaseController {
 		} catch (Exception e) {
 			logger.error("查询列表数据出错", e);
 			return new GridResult(false, null);
+		}
+	}
+	@RequestMapping( "/admin/sysMaxIdTypeListDataExt" )
+	@ResponseBody
+	public GridResult sysMaxIdTypeListDataExt(String txtQuery) {
+		try {
+			Criteria<?> criteria = WebUtils.toCriteria(txtQuery);
+			List<SysMaxIdType> list = sysMaxIdTypeService.getSysMaxIdTypeList(criteria);
+			int count = criteria.getPager() == null ? list.size() : criteria.getPager().getTotalRecords();
+			return new GridResult(true, list, count);
+		} catch (Exception e) {
+			logger.error("查询列表数据出错", e);
+			return new GridResult(false, null);
+		}
+	}
+	@RequestMapping("/admin/sysMaxIdTypeModel")
+	@ResponseBody
+	public JsonResult sysMaxIdTypeModel(String idType) {
+		JsonResult jsonResult = new JsonResult();
+		try {
+			SysMaxIdType sysMaxIdType = sysMaxIdTypeService.get(idType);
+			jsonResult.setSuccess( true );
+			jsonResult.setData( sysMaxIdType );
+			return jsonResult;
+		} catch (Exception e) {
+			jsonResult.setSuccess( false );
+			jsonResult.setMessage( "获取最大ID类型信息失败" );
+			return jsonResult;
 		}
 	}
 	
@@ -183,6 +215,35 @@ public class SysMaxIdTypeController extends BaseController {
 		} catch (Exception e) {
 			logger.error("检查编号类型唯一性出错", e);
 			return new JsonResult(false, this.getMessage(e));
+		}
+	}
+	/**
+	 * 唯一性检测
+	 * 
+	 * @return
+	 */
+	@RequestMapping( "/admin/checkTypeIdUnique" )
+	@ResponseBody
+	public JsonResult checkTypeIdUnique( String idType, String oldIdType ) {
+		try {
+			boolean isUnique = true;
+			// 新增
+			if ( oldIdType == null ) {
+				isUnique = !sysMaxIdTypeService.checkSysMaxIdType( idType );
+			}
+			// 修改
+			else {
+				if ( oldIdType.equals( idType ) ) {
+					isUnique = true;
+				} else {
+					isUnique = !sysMaxIdTypeService.checkSysMaxIdType( idType );
+				}
+			}
+
+			return new JsonResult( isUnique, "编号类型唯一" );
+		} catch ( Exception e ) {
+			logger.error( "检查编号类型失败", e );
+			throw new RuntimeException( this.getMessage( e ) );
 		}
 	}
 }
