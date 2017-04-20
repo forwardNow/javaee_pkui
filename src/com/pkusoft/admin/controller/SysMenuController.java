@@ -6,11 +6,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pkusoft.admin.model.SysDeptLevel;
+import com.pkusoft.admin.model.SysDicList;
 import com.pkusoft.admin.model.SysMenu;
 import com.pkusoft.admin.model.SysMenuCriteria;
 import com.pkusoft.admin.model.SysMenuIcon;
@@ -50,6 +52,21 @@ public class SysMenuController extends BaseController {
 	public ModelAndView sysMenuList(ModelAndView model) {
 		model.setViewName(AdminUrlRecource.SYS_MENU_LIST);
 		return model;
+	}
+	
+	@RequestMapping( "/admin/sysMenuModel" )
+	@ResponseBody
+	public JsonResult sysMenuModel( Long menuId ) {
+		JsonResult jsonResult = new JsonResult( true );
+		try {
+			Assert.notNull( menuId );
+			SysMenu sysMenu = sysMenuService.get( menuId );
+			jsonResult.setData( sysMenu );
+		} catch ( Exception e ) {
+			jsonResult.setSuccess( false );
+			jsonResult.setMessage( "获取模型失败" );
+		}
+		return jsonResult;
 	}
 	
 	/**
