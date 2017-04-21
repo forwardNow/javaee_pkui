@@ -58,5 +58,13 @@ public class GridResult {
 		this.data = data;
 	}
 
+	public boolean isSuccess() {
+		return success;
+	}
+
+	public void setSuccess( boolean success ) {
+		this.success = success;
+	}
+
 	
 }

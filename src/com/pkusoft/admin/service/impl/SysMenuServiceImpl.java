@@ -88,8 +88,10 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu> implements SysM
 		sysMenu.setMenuId(menuId);
 		
 		//排序--随单位标识号从小到大排列,可以直接将MenuId赋值给orderFlag
-		long orderFlag = menuId;
-		sysMenu.setOrderFlag(orderFlag);	
+		if ( sysMenu.getOrderFlag() == null ) {
+			long orderFlag = menuId;
+			sysMenu.setOrderFlag(orderFlag);	
+		}
 		
 		//录入用户信息
 		sysMenu.setAddUserId(User.getUserId());
@@ -341,6 +343,24 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu> implements SysM
 			return 0;
 		}else{
 			return list.get(0).getOrderFlag().intValue();
+		}
+	}
+
+	@Override
+	public void updateSysMenu( List<SysMenu> sysMenuList ) {
+		for ( int i = 0; i < sysMenuList.size(); i++ ) {
+			SysMenu sysMenu = sysMenuList.get( i );
+			SysMenu oldSysMenu = this.get(sysMenu.getMenuId());
+			
+			Map<String,Object> sysMenuMap = MapUtils.toMapTrimNull(sysMenu);
+			MapUtils.apply(sysMenuMap, oldSysMenu);
+			
+			// 修改用户信息
+			oldSysMenu.setModifyUserId(User.getUserId());
+			oldSysMenu.setModifyUserName(User.getUserName());
+			oldSysMenu.setModifyTime(new Date());
+			
+			this.update(oldSysMenu);		
 		}
 	}
 

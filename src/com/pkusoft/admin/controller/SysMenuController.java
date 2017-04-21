@@ -28,6 +28,7 @@ import com.pkusoft.framework.model.DicXmlResult;
 import com.pkusoft.framework.model.GridResult;
 import com.pkusoft.framework.model.JsonResult;
 import com.pkusoft.framework.model.Pager;
+import com.pkusoft.framework.util.JsonUtils;
 import com.pkusoft.framework.util.MapUtils;
 
 /**
@@ -160,6 +161,21 @@ public class SysMenuController extends BaseController {
 	public JsonResult sysMenuUpdate(SysMenu sysMenu) {
 		try {
 			sysMenuService.updateSysMenu(sysMenu);
+			LogUtils.log(AdminFunctionId.SYS_MENU_UPDATE, "菜单修改成功");
+			return new JsonResult(true);
+		} catch (Exception e) {
+			logger.error("保存信息出错", e);
+			LogUtils.log(AdminFunctionId.SYS_MENU_UPDATE, "菜单修改失败");
+			return new JsonResult(false, this.getMessage(e));
+		}
+	}
+	
+	@RequestMapping("/admin/sysMenuSave")
+	@ResponseBody
+	public JsonResult sysMenuSave(String sysMenuList) {
+		try {
+			List<SysMenu> sysMenuList_ = JsonUtils.jsonToList( sysMenuList, SysMenu.class );
+			sysMenuService.updateSysMenu(sysMenuList_);
 			LogUtils.log(AdminFunctionId.SYS_MENU_UPDATE, "菜单修改成功");
 			return new JsonResult(true);
 		} catch (Exception e) {
