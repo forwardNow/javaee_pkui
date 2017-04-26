@@ -215,6 +215,33 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu> implements SysM
 
 		return iconList;
 	}
+	@Transactional(propagation=Propagation.NOT_SUPPORTED)
+	public List<SysMenuIcon> getMenuIcons( String iconDir ) {
+		
+		List<SysMenuIcon> iconList = new ArrayList<SysMenuIcon>();
+		/*
+		String path = this.getClass().getClassLoader().getResource("/")
+				.getPath().replace("/WEB-INF/classes/", "/static/images/icons/16x16");
+		*/
+		String path = this.getClass().getClassLoader().getResource("/")
+				.getPath().replace("/WEB-INF/classes/", iconDir);
+		
+		File file = new File(path);
+		if ( !file.exists() ) {
+			path = path.substring(1, path.length());
+			file = new File( path );
+		}
+		File icons[] = file.listFiles();
+		SysMenuIcon smi;
+		for (int i = 0;i < icons.length;i++) {
+			if ( icons[i].getName().endsWith("png") ) {
+				smi = new SysMenuIcon(i, icons[i].getName());
+				iconList.add(smi);
+			}
+		}
+		
+		return iconList;
+	}
 
 	/* (non-Javadoc)
 	 * @see com.pkusoft.admin.service.SysMenuService#updateNode(java.lang.String, java.lang.String, java.lang.String)

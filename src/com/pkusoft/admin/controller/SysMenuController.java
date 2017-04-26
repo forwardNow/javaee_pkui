@@ -1,6 +1,9 @@
 package com.pkusoft.admin.controller;
 
+import java.io.FileOutputStream;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,10 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pkusoft.admin.model.SysDeptLevel;
+import com.pkusoft.admin.model.SysDicItem;
 import com.pkusoft.admin.model.SysDicList;
 import com.pkusoft.admin.model.SysMenu;
 import com.pkusoft.admin.model.SysMenuCriteria;
@@ -19,6 +25,8 @@ import com.pkusoft.admin.model.SysMenuIcon;
 import com.pkusoft.admin.service.SysMenuService;
 import com.pkusoft.common.constants.AdminFunctionId;
 import com.pkusoft.common.constants.AdminUrlRecource;
+import com.pkusoft.common.util.ExcelUtil;
+import com.pkusoft.common.util.ImageUtils;
 import com.pkusoft.common.util.LogUtils;
 import com.pkusoft.framework.User;
 import com.pkusoft.framework.constants.General;
@@ -242,6 +250,20 @@ public class SysMenuController extends BaseController {
 	}
 	
 	/**
+	 * 菜单图标
+	 */
+	@RequestMapping(value = "/admin/sysMenuIconsDataExt")
+	@ResponseBody
+	public GridResult sysMenuIconsDataExt() {
+		try {
+			List<SysMenuIcon> iconsList = sysMenuService.getMenuIcons( "/static/desktop/images/icon/24x24" );
+			return new GridResult(true, iconsList);
+		} catch (Exception e) {
+			return new GridResult(false, null);
+		}
+	}
+	
+	/**
 	 * 菜单order
 	 */
 	@RequestMapping(value = AdminUrlRecource.SYS_MENU_UPDATE_NODE)
@@ -254,4 +276,58 @@ public class SysMenuController extends BaseController {
 			return new JsonResult(false,e.getMessage());
 		}
 	}
+	
+	/**
+	 * 上传图标
+	 * @param file
+	 * @param session
+	 * @return 返回新文件名
+	 */
+	@ResponseBody
+	@RequestMapping( value = "/admin/sysMenuIconUpload", method = RequestMethod.POST )
+	public JsonResult sysMenuIconUpload( MultipartFile file, HttpSession session ) {
+		JsonResult jsonResult = new JsonResult();
+		String message = null;
+		try {
+			Assert.notNull( file );
+			String newFileName;
+			String iconDir = session.getServletContext().getRealPath( "/static/desktop/images/icon" );
+			String iconDir_24x24 = iconDir + "/24x24/";
+			String iconDir_76x76 = iconDir + "/76x76/";
+			String fileName = file.getOriginalFilename();// 文件原名称
+			String fileType = fileName.indexOf( "." ) != -1 ? fileName.substring( fileName.lastIndexOf( "." ) + 1, fileName.length() ) : null;
+
+			
+			
+			if ( !"png".equals( fileType ) ) {
+				message = "图片类型不符合要求";
+				throw new Exception( message );
+			}
+			
+			if ( file.getSize() > 50 * 1024 ) {
+				message = "图片大小超过50KB";
+				throw new Exception( message );
+			}
+			
+			newFileName = User.getLoginName() + "_" +( new java.util.Date().getTime() ) + "." + fileType;
+			
+			// 写入
+			ImageUtils.compressImage( file.getInputStream(), new FileOutputStream( iconDir_24x24 + newFileName ), fileType, 24, 24 );
+			ImageUtils.compressImage( file.getInputStream(), new FileOutputStream( iconDir_76x76 + newFileName ), fileType, 76, 76 );
+			
+			jsonResult.setData( fileName );
+			jsonResult.setSuccess( true );
+			
+		} catch ( Exception e ) {
+			e.printStackTrace();
+			if ( message == null ) {
+				message = e.getMessage();
+			}
+			jsonResult.setSuccess( false );
+			jsonResult.setMessage( message );
+			logger.error( "图标上传失败失败", e );
+		}
+		return jsonResult;
+	}
+	
 }

@@ -83,6 +83,8 @@ public interface SysMenuService extends BaseService<SysMenu>{
 	 * @return
 	 */
 	List<SysMenuIcon> getMenuIcons();
+	
+	List<SysMenuIcon> getMenuIcons( String iconDir );
 
 	void updateNode(String sourceMenuId,String targetMenuId,String point);
 
