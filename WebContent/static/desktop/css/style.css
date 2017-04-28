@@ -5534,7 +5534,8 @@ select[multiple].input-lg,
   background-color: #428bca;
 }
 
-.bootgrid-footer .infoBar .btn-group > .btn-group .dropdown-menu, .bootgrid-header .actionBar .btn-group > .btn-group .dropdown-menu {
+.bootgrid-footer .infoBar .btn-group > .btn-group .dropdown-menu,
+.bootgrid-header .actionBar .btn-group > .btn-group .dropdown-menu {
   text-align: left;
 }
 
@@ -5542,6 +5543,8 @@ select[multiple].input-lg,
   width: 100%;
   max-width: 100%;
   border-collapse: collapse;
+  border: solid 1px #ddd;
+  table-layout: fixed;
 }
 .pkui-grid-table .loading,
 .pkui-grid-table .no-results {
@@ -5558,18 +5561,34 @@ select[multiple].input-lg,
 .pkui-grid-table > thead {
   font-size: 14px;
   color: #333;
+  background-color: #efefef;
+  background: -webkit-linear-gradient(top, #F9F9F9 0, #efefef 100%);
+  background: -moz-linear-gradient(top, #F9F9F9 0, #efefef 100%);
+  background: -o-linear-gradient(top, #F9F9F9 0, #efefef 100%);
+  background: linear-gradient(to bottom, #F9F9F9 0, #efefef 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#F9F9F9,endColorstr=#efefef,GradientType=0);
+  border-bottom: solid 1px #ddd;
 }
 .pkui-grid-table > thead th {
   font-weight: bold;
+  border-right: dotted 1px #ccc;
 }
 .pkui-grid-table > tbody > tr {
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 .pkui-grid-table > tbody > tr > td {
-  border-bottom: solid 2px #fff;
+  border-bottom: none 0;
+  border-right: dotted 1px #ccc;
 }
-.pkui-grid-table > tbody > tr:hover, .pkui-grid-table > tbody > tr.active {
-  background-color: #e5e5e5;
+.pkui-grid-table > tbody > tr:nth-of-type(odd) {
+  background-color: #fafafa;
+}
+.pkui-grid-table > tbody > tr:hover {
+  background-color: #eaf2ff;
+}
+.pkui-grid-table > tbody > tr.active {
+  background-color: #fff5d4;
 }
 .pkui-grid-table > tbody > tr.deleted {
   text-decoration: line-through;
@@ -5620,6 +5639,12 @@ select[multiple].input-lg,
   bottom: -40px;
   right: 0;
   padding: 10px;
+}
+
+.pkui-grid-actions {
+  position: absolute;
+  right: 0;
+  top: -20px;
 }
 
 .pkui-grid-input-group {
@@ -6459,12 +6484,12 @@ Pagination Styles
 }
 
 .pkui-dialog-header {
-  background-color: #33a6e7;
+  background-color: #0a396f;
   border-bottom: none 0;
 }
 
 .pkui-dialog-title {
-  padding: 6px 12px;
+  padding: 12px 12px;
   color: #fff;
 }
 
@@ -6481,7 +6506,7 @@ Pagination Styles
   right: auto;
   border: 0;
   padding: 0;
-  margin: 8px 12px 0 0;
+  margin: 14px 12px 0 0;
   background-color: transparent;
   cursor: pointer;
   -webkit-appearance: none;
@@ -7114,12 +7139,11 @@ Pagination Styles
 
 .da-win-sidebar {
   position: absolute;
-  top: 40px;
+  top: 0;
   left: 0;
   bottom: 0;
-  width: 239px;
-  border-right: solid 1px #dedede;
-  background-color: white;
+  width: 240px;
+  background-color: #f6f7fb;
   -webkit-transition: left 0.3s;
   -o-transition: left 0.3s;
   transition: left 0.3s;
@@ -7200,7 +7224,7 @@ Pagination Styles
 
 .da-win-main {
   position: absolute;
-  top: 40px;
+  top: 0;
   left: 240px;
   bottom: 0;
   right: 0;
@@ -7216,9 +7240,8 @@ Pagination Styles
   left: 0;
   width: 100%;
   padding: 10px 10px 6px 12px;
-  border-bottom: solid 3px #fbfbfb;
   color: #455469;
-  background-color: #fff;
+  background-color: #e2e5ec;
 }
 .win-main-heading .main-heading-icon {
   display: inline-block;
@@ -7233,7 +7256,7 @@ Pagination Styles
 }
 
 .win-main-body {
-  padding: 43px 12px 0 12px;
+  padding: 40px 12px 0 12px;
   height: 100%;
   overflow: auto;
   overflow-x: hidden;
@@ -7253,7 +7276,7 @@ Pagination Styles
 .win-btnGroup:after {
   clear: both;
 }
-.win-btnGroup .btn {
+.win-btnGroup > .btn {
   float: left;
   margin-right: 6px;
 }
@@ -7277,7 +7300,7 @@ Pagination Styles
 
 .sysmenu-treeOpe {
   position: absolute;
-  top: 43px;
+  top: 40px;
   left: 0;
   z-index: 10;
   width: 240px;

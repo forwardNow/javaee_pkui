@@ -25,7 +25,8 @@
     outline: 0;
     background-color: #428bca;
 }
-.bootgrid-footer .infoBar .btn-group>.btn-group .dropdown-menu, .bootgrid-header .actionBar .btn-group>.btn-group .dropdown-menu {
+.bootgrid-footer .infoBar .btn-group>.btn-group .dropdown-menu,
+.bootgrid-header .actionBar .btn-group>.btn-group .dropdown-menu {
     text-align: left;
 }
 
@@ -33,7 +34,8 @@
     width: 100%;
     max-width: 100%;
     border-collapse: collapse;
-
+    border: solid 1px #ddd;
+    table-layout: fixed;
     .loading,
     .no-results {
         text-indent: 92px;
@@ -52,19 +54,36 @@
     > thead {
         font-size: 14px;
         color: #333;
+        background-color: #efefef;
+        background: -webkit-linear-gradient(top,#F9F9F9 0,#efefef 100%);
+        background: -moz-linear-gradient(top,#F9F9F9 0,#efefef 100%);
+        background: -o-linear-gradient(top,#F9F9F9 0,#efefef 100%);
+        background: linear-gradient(to bottom,#F9F9F9 0,#efefef 100%);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#F9F9F9,endColorstr=#efefef,GradientType=0);
+
+        border-bottom: solid 1px #ddd;
         th {
             font-weight: bold;
+            border-right: dotted 1px #ccc;
         }
     }
     > tbody {
         > tr {
-            background-color: #f9f9f9;
+            //background-color: #f9f9f9;
+            background-color: #fff;
             > td {
-                border-bottom: solid 2px #fff;
+                border-bottom: none 0;
+                border-right: dotted 1px #ccc;
             }
-            &:hover,
+            &:nth-of-type(odd) {
+                background-color: #fafafa;
+            }
+            &:hover {
+                background-color: #eaf2ff;
+            }
             &.active {
-                background-color: #e5e5e5;
+                background-color: #fff5d4;
             }
             &.deleted {
                 text-decoration: line-through;
@@ -72,6 +91,7 @@
                 cursor: not-allowed;
                 background-color: #f2dede;
             }
+
         }
     }
 }
