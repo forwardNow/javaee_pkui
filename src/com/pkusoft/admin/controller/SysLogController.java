@@ -13,17 +13,23 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
+
+
+
 import com.pkusoft.admin.model.SysDicItem;
 import com.pkusoft.admin.model.SysLog;
+import com.pkusoft.admin.model.SysLogCriteria;
 import com.pkusoft.admin.service.SysLogService;
 import com.pkusoft.common.constants.AdminFunctionId;
 import com.pkusoft.common.constants.AdminUrlRecource;
 import com.pkusoft.common.util.LogUtils;
 import com.pkusoft.framework.controller.BaseController;
 import com.pkusoft.framework.model.Criteria;
+import com.pkusoft.framework.model.Criteria.BaseCriteria;
 import com.pkusoft.framework.model.GridResult;
 import com.pkusoft.framework.model.JsonResult;
 import com.pkusoft.framework.model.Pager;
+import com.pkusoft.framework.util.StringUtils;
 import com.pkusoft.framework.util.WebUtils;
 
 /**
@@ -185,4 +191,74 @@ public class SysLogController extends BaseController {
 		}
 	}
 
+	
+	@RequestMapping( "/admin/sysLogListData_old_noTotalRecords" )
+	@ResponseBody
+	public GridResult sysLogListData_old_noTotalRecords(String txtQuery) {
+		try {
+			Criteria<?> criteria = WebUtils.toCriteria(txtQuery);
+			List<SysLog> list = sysLogService.getListByCriteria(criteria);
+			int count = 0;
+			return new GridResult(true, list, count);
+		} catch (Exception e) {
+			logger.error("查询列表数据出错", e);
+			return new GridResult(false, null);
+		}
+	}
+	
+	@RequestMapping( "/admin/sysLogListData_old_totalRecords" )
+	@ResponseBody
+	public GridResult sysLogListData_old_totalRecords(String txtQuery) {
+		try {
+			Criteria<?> criteria = WebUtils.toCriteria(txtQuery);
+			List<SysLog> list = sysLogService.getListByCriteria(criteria);
+			int count = sysLogService.getCountByCriteria(criteria);
+			return new GridResult(true, list, count);
+		} catch (Exception e) {
+			logger.error("查询列表数据出错", e);
+			return new GridResult(false, null);
+		}
+	}
+
+	@RequestMapping( "/admin/sysLogListData_new_getPage" )
+	@ResponseBody
+	public List<?> sysLogListData_new_getPage(String txtQuery, SysLog sysLog, int pageIndex, int size) {
+		try {
+			Criteria<?> criteria = WebUtils.toCriteria(txtQuery);
+			List<SysLog> list = sysLogService.getListByCriteria(criteria);
+			return list;
+		} catch (Exception e) {
+			logger.error("查询列表数据出错", e);
+			return null;
+		}
+	}
+	
+	@RequestMapping( "/admin/sysLogListData_new_getCount" )
+	@ResponseBody
+	public int sysLogListData_new_getCount(SysLog sysLog) {
+		try {
+			Criteria<SysLogCriteria> criteria = new Criteria<SysLogCriteria>();
+			SysLogCriteria sysLogCriteria = criteria.createCriteria(SysLogCriteria.class);
+			if (StringUtils.hasText(sysLog.getLoginName())) {	
+				sysLogCriteria.andLoginNameLike("%" + sysLog.getLoginName() + "%");
+			}
+			if (StringUtils.hasText(sysLog.getDeptName())) {
+				sysLogCriteria.andDeptNameEqualTo(sysLog.getDeptName());
+			}
+			if (StringUtils.hasText(sysLog.getLogType())) {
+				sysLogCriteria.andLogTypeEqualTo(sysLog.getLogType());
+			}
+			if (StringUtils.hasText(sysLog.getFunctionId())) {
+				sysLogCriteria.andFunctionIdEqualTo(sysLog.getFunctionId());
+			}
+			if (StringUtils.hasText(sysLog.getOperType())) {
+				sysLogCriteria.andOperTypeEqualTo(sysLog.getOperType());
+			}
+			int count = sysLogService.getCountByCriteria(criteria);
+			return count;
+		} catch (Exception e) {
+			logger.error("获取总数失败", e);
+			return -1;
+		}
+	}
 }

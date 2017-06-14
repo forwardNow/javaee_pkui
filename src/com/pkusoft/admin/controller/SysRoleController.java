@@ -1,8 +1,6 @@
 package com.pkusoft.admin.controller;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pkusoft.admin.model.SysDept;
 import com.pkusoft.admin.model.SysRole;
 import com.pkusoft.admin.service.SysRoleService;
-import com.pkusoft.common.cache.DicCache;
 import com.pkusoft.common.constants.AdminFunctionId;
 import com.pkusoft.common.constants.AdminUrlRecource;
-import com.pkusoft.common.constants.Common;
+import com.pkusoft.common.util.CriteriaExt;
+import com.pkusoft.common.util.CriteriaUtil;
 import com.pkusoft.common.util.LogUtils;
-import com.pkusoft.framework.User;
 import com.pkusoft.framework.controller.BaseController;
 import com.pkusoft.framework.model.GridResult;
 import com.pkusoft.framework.model.JsonResult;
@@ -74,6 +72,26 @@ public class SysRoleController extends BaseController {
 			return new GridResult(false, null);
 		}
 	}
+	/**
+	 * 列表数据
+	 * 
+	 * @param sysRole
+	 * @param pager
+	 * @return
+	 */
+	@RequestMapping(value = "/admin/sysRoleListDataExt")
+	@ResponseBody
+	public GridResult sysRoleListDataExt(String txtQuery) {
+		try {
+			CriteriaExt CriteriaExt = CriteriaUtil.toCriteriaExt( txtQuery );
+			Pager pager = CriteriaExt.getPager();
+			List<SysRole> list = sysRoleService.getSysRoleList(null, pager );
+			return new GridResult(true, list, pager.getTotalRecords());
+		} catch (Exception e) {
+			logger.error("查询列表数据出错", e);
+			return new GridResult(false, null);
+		}
+	}
 	
 	
 	/**
@@ -114,7 +132,7 @@ public class SysRoleController extends BaseController {
 				sysRoleService.updateSysRole(sysRole);
 				LogUtils.log(AdminFunctionId.SYS_ROLE_SAVE_UPDATE, "修改角色信息成功");
 			}
-			return new JsonResult(true);
+			return new JsonResult(true, sysRole);
 		} catch (Exception e) {
 			logger.error("保存信息出错", e);
 			LogUtils.log(AdminFunctionId.SYS_ROLE_SAVE, "保存角色失败");
@@ -165,4 +183,19 @@ public class SysRoleController extends BaseController {
 		}
 	}
 
+	@RequestMapping("/admin/getAllSysRole")
+	@ResponseBody
+	public JsonResult getAllSysRole(String deptId) {
+		JsonResult jsonResult = new JsonResult();
+		try {
+			List<SysRole> roleList = sysRoleService.getAllSysRoleList();
+			jsonResult.setSuccess( true );
+			jsonResult.setData( roleList );
+			return jsonResult;
+		} catch (Exception e) {
+			jsonResult.setSuccess( false );
+			return jsonResult;
+		}
+	}
+	
 }

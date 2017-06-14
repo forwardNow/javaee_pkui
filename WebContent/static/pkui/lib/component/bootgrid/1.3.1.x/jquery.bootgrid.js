@@ -2003,10 +2003,13 @@ define( function( require ) {
 
         // this = options
         requestHandler: function ( request ) {
+
+            var params = {};
+
             var txtQuery = {
-                "oredCriteria": _getOredCriteria( this.queryFormSelector ),
+                "oredCriteria": _getOredCriteria( this.queryFormSelector, params ),
                 "orderByClause": "", // "USER_ID"
-                "pager": { "start": 0, "limit": 20, "pageSize": 20 }
+                "pager": { "start": 0, "limit": 20, "pageSize": 20, "totalRecords": 0 }
             };
             var originRequest = {
                 current: 1, // 请求的页数
@@ -2018,6 +2021,7 @@ define( function( require ) {
 
             var start,
                 pageSize,
+                totalRecords,
                 limit,
                 current,
                 rowCount,
@@ -2033,6 +2037,14 @@ define( function( require ) {
             start = rowCount * ( current - 1 );
             limit = current * rowCount;
             pageSize = rowCount;
+
+            if ( current === 1 ) {
+                totalRecords = 0;
+            }
+            // 请求非第1页时，才携带总数
+            else {
+                totalRecords = this.$element.bootgrid("getTotalRowCount");
+            }
 
             this.requestPage = current;
 
@@ -2055,15 +2067,23 @@ define( function( require ) {
             txtQuery.pager = {
                 "start": start,
                 "limit": limit,
-                "pageSize": pageSize
+                "pageSize": pageSize,
+                "totalRecords": totalRecords
             };
 
             request = {
                 start: start,
                 limit: limit,
                 pageSize: pageSize,
+                totalRecords: totalRecords,
                 txtQuery: JSON.stringify( txtQuery )
             };
+
+            // 兼容新接口方式
+            request = $.extend( params, request, {
+                pageIndex: current,
+                size: pageSize
+            } );
 
             return request;
         },
@@ -2080,25 +2100,97 @@ define( function( require ) {
             };
 
             var
-                requestPage
+                requestPage = this.requestPage,
+                totalRecordsUrl = this.totalRecordsUrl,
+                gridData,
+                rowCount,
+                totalRecords,
+                $element = this.$element,
+                gridId = $element.get( 0 ).id,
+                $footer = $( "#" + gridId + "-footer" )
                 ;
 
-            //
-            if ( ! response.data ) {
+
+            // 老式接口（GridResult）：处理成功
+            if ( response.hasOwnProperty( "data" ) && $.isArray( response.data ) ) {
+                console.info( "使用 老式接口（GridResult）" );
+            }
+            // 新式接口（[{...},{...},...]）：处理成功
+            else if ( $.isArray( response ) ) {
+                console.info( "使用 新式接口（[{...},{...},...]）" );
+            }
+            // 请求成功，但处理失败
+            else {
                 // FIX 当数据获取失败时的提示
                 window.layer && window.layer.msg( "获取数据失败，请刷新数据表格！" );
-                this.$element.trigger( "failload" + namespace );
+                $element.trigger( "failload" + namespace );
                 throw  "获取数据失败!" ;
                 //console.info( "获取数据失败!" );
             }
 
-            requestPage = this.requestPage;
+            rowCount = $element.bootgrid( "getRowCount" ) || 10;
+
+            totalRecords = response.totalRecords;
+
+            // 对于不计数（没有 totalRecords）的情况
+            if ( totalRecords === 0 || ( totalRecords === undefined && ! totalRecordsUrl ) ) {
+                // 隐藏“最有一页” “共xx条”
+                $footer.addClass( "no-totalRecords" );
+
+                gridData = response.data || response;
+
+                // 如果是最后一页
+                if ( gridData.length < rowCount ) {
+                    totalRecords = ( requestPage - 1 ) * rowCount + gridData.length;
+                }
+                // 设置 totalRecords 为一个很大的值(1千万)
+                else {
+                    totalRecords = 1e8;
+                }
+
+            }
+            // 有总数：老式接口
+            else if ( totalRecords > 0 || totalRecordsUrl) {
+                // 显示“最有一页” “共xx条”
+                $footer.removeClass( "no-totalRecords" );
+            }
+
+            // 有总数：新式接口（总数单独请求）
+            if ( totalRecords === undefined ) {
+                // 请求第1页时才去请求总数
+                if ( requestPage === 1 ) {
+                    $.ajax( {
+                        url: totalRecordsUrl,
+                        data: $( this.queryFormSelector ).serialize(),
+                        async: false
+                    } ).done( function ( response ) {
+                        try {
+                            totalRecords = parseInt( response );
+                        } catch ( e ) {
+                            console.info( e );
+                        }
+
+                        if ( isNaN( totalRecords ) || totalRecords < 0 ) {
+                            window.layer && window.layer.msg( "获取总数失败：500。" );
+                            throw  "获取总数失败：500。" ;
+                        }
+
+                    } ).fail( function () {
+                        window.layer && window.layer.msg( "获取总数失败：网络原因/路径错误" );
+                        throw  "获取总数失败：网络原因/路径错误" ;
+                    } );
+                }
+                // 对于非第1页，则直接使用请求第1页时获取的总数
+                else {
+                    totalRecords = this.$element.bootgrid("getTotalRowCount");
+                }
+            }
 
             _response = {
                 "current": requestPage,
-                "rowCount": 10,
-                "rows": response.data,
-                "total": response.totalRecords
+                "rowCount": rowCount,
+                "rows": response.data || response,
+                "total": totalRecords
             };
 
             return _response;
@@ -2246,7 +2338,7 @@ define( function( require ) {
      {"property":"deptName","operator":"like","value":"%hub%","datatype":"0"}
      ]]
      */
-    function _getOredCriteria( queryFormSelector ) {
+    function _getOredCriteria( queryFormSelector, params ) {
 
         var $form,
             oredCriteria,
@@ -2272,6 +2364,11 @@ define( function( require ) {
                 ;
             $this = $( this );
 
+            // 针对 radio（":radio:not(:checked)"）
+            if ( $this.is( ":radio" ) && !$this.is( ":checked" ) ) {
+                return;
+            }
+
             property = $this.data( "property" ) || $this.attr( "name" );
             operator = $this.data( "operator" ) || "=";
             value = $this.data( "value" ) || $this.val();
@@ -2282,6 +2379,8 @@ define( function( require ) {
             if ( ! value ) {
                 return;
             }
+
+            params[ property ] = value;
 
             if ( operator === "like" ) {
                 value = "%" + value + "%";
@@ -2362,7 +2461,7 @@ define( function( require ) {
     };
 
     // FIX 将该插件挂载到 PKUI
-    window.PKUI.component.datagrid = jQuery.fn.bootgrid;
+    window.PKUI.component.datagrid = $.fn.bootgrid;
 
 }( jQuery, window );
 

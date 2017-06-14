@@ -2,6 +2,7 @@ package com.pkusoft.admin.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -20,6 +21,8 @@ import com.pkusoft.admin.service.SysRoleService;
 import com.pkusoft.admin.service.SysUserService;
 import com.pkusoft.common.constants.AdminFunctionId;
 import com.pkusoft.common.constants.AdminUrlRecource;
+import com.pkusoft.common.util.CriteriaExt;
+import com.pkusoft.common.util.CriteriaUtil;
 import com.pkusoft.common.util.LogUtils;
 import com.pkusoft.framework.controller.BaseController;
 import com.pkusoft.framework.exception.BizException;
@@ -242,6 +245,50 @@ public class SysUserController extends BaseController {
 	@ResponseBody
 	public GridResult getSysUserListByRole(Long roleId,  String roleIdOper, String userName, Pager pager) {
 		try {
+			List<SysUser> list = sysUserService.getSysUserListByRole(roleId, roleIdOper, userName, pager);
+			return new GridResult(true, list, pager.getTotalRecords());
+		} catch (Exception e) {
+			logger.error("查询列表数据出错", e);
+			return new GridResult(false, null);
+		}
+	}
+	/**
+	 * 按角色查用户数据
+	 * 
+	 * @param roleId
+	 * @param roleIdOper
+	 * @param userName
+	 * @return pager
+	 */
+	@RequestMapping(value = "/admin/sysRoleUserListDataExt")
+	@ResponseBody
+	public GridResult getSysUserListByRoleExt(String txtQuery) {
+		Long roleId = null;  
+		String roleIdOper = null; 
+		String userName = null; 
+		Pager pager = null;
+		Object value = null;
+		try {
+			
+			CriteriaExt criteriaExt = CriteriaUtil.toCriteriaExt( txtQuery );
+			
+			pager = criteriaExt.getPager();
+			
+			Map<String, Object> oredCriteria = criteriaExt.getOredCriteria();
+			
+			value = oredCriteria.get( "roleId" );
+			if ( value != null ) {
+				roleId = new Long( value.toString() );
+			}
+			value = oredCriteria.get( "roleIdOper" );
+			if ( value != null ) {
+				roleIdOper = ( String ) value;
+			}
+			value = oredCriteria.get( "userName" );
+			if ( value != null ) {
+				userName = ( String ) value;
+			}
+			
 			List<SysUser> list = sysUserService.getSysUserListByRole(roleId, roleIdOper, userName, pager);
 			return new GridResult(true, list, pager.getTotalRecords());
 		} catch (Exception e) {

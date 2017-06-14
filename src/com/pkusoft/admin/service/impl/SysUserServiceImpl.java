@@ -133,7 +133,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements SysU
 	public List<SysUser> getSysUserListByRole(Long roleId, String roleIdOper, String userName, Pager pager) {
 		Assert.notNull(roleId);
 		Assert.notNull(roleIdOper);
-		Assert.notNull(userName);
+//		Assert.notNull(userName);
 		
 		Map<String, Object> params = new HashMap<String, Object>();
 		//查询条件
