@@ -12,7 +12,7 @@
         data-main：当前应用的入口js文件
         data-timestamp: 时间戳（dev为开发模式），比如 data-timestamp="v=2017-02-27"
     -->
-    <script data-main="./js/main.js" data-timestamp="2017-06-15" src="../../src/pkui.js"></script>
+    <script data-main="./js/main.js" data-timestamp="2017-06-15" src="../pkui/pkui.js"></script>
 </head>
 <body>
 
@@ -116,6 +116,17 @@
                                      "mode": "default"}'>
                                 <img class="launchpad-shortcut-icon" src="./images/apps/gear.png" alt="">
                                 <p class="launchpad-shortcut-title">系统管理</p></div>
+
+                            <div class="launchpad-shortcut" data-pkui-app="true"
+                                 data-pkui-app-options='{
+                                     "icon": "./images/apps/start.png",
+                                     "title": "单位管理",
+                                     "src": "./tpl/system/index.html",
+                                     "menuId": "2",
+                                     "mode": "default"}'>
+                                <img class="launchpad-shortcut-icon" src="./images/apps/start.png" alt="">
+                                <p class="launchpad-shortcut-title">单位管理</p></div>
+
 
                             <!--
                             <div class="launchpad-shortcut" data-pkui-app="true"
