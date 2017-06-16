@@ -6507,6 +6507,11 @@ Pagination Styles
   vertical-align: middle;
 }
 
+.pkui-dialog-title-fonticon {
+  margin: -1px 10px 0 0;
+  line-height: 20px;
+}
+
 .pkui-dialog-header > button {
   float: right;
   position: static;
@@ -6844,6 +6849,10 @@ Pagination Styles
   width: 76px;
   height: 76px;
   margin: 10px auto 0 auto;
+  line-height: 76px;
+  text-align: center;
+  font-size: 60px;
+  color: #d4dae0;
 }
 
 .launchpad-shortcut-title {
@@ -6992,6 +7001,11 @@ Pagination Styles
   margin-left: 10px;
 }
 
+.dock-item-fonticon {
+  vertical-align: -2px;
+  font-size: 18px;
+}
+
 .dock-item-title {
   overflow: hidden;
   display: inline-block;
@@ -7087,6 +7101,97 @@ Pagination Styles
 }
 .toolbar-item-menu:hover .pkui-menu {
   display: block;
+}
+
+.topbar-toolbar-item {
+  padding-top: 15px;
+}
+
+.topbar-toolbar-item > .fa {
+  font-size: 16px;
+  color: #fff;
+}
+
+.topbar-toolbar-item > .fa:hover {
+  opacity: .8;
+}
+
+.topbar-toolbar-msgItem {
+  position: relative;
+}
+
+.toolbar-msgItem-label {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  padding: 2px 3px;
+  text-align: center;
+  font-size: 10px;
+  line-height: .9;
+  color: #fff;
+  background-color: #00a65a;
+  border-radius: 1px;
+}
+
+.pkui-search-popup {
+  display: none;
+  z-index: 20000;
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  width: 600px;
+  margin-left: -300px;
+  border-radius: 4px;
+  background: #d8e0ea;
+  box-shadow: 1px 1px 50px rgba(0, 0, 0, 0.3);
+  font-size: 16px;
+  color: #333;
+  padding: 10px 0 10px 0;
+}
+
+.pkui-search-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 16px 10px 0 10px;
+}
+
+.pkui-search-input {
+  width: 500px;
+  height: 30px;
+  line-height: 30px;
+  border: none 0;
+  background: none;
+  text-indent: 36px;
+}
+
+.pkui-search-input:focus {
+  outline: none;
+}
+
+.pkui-search-popup .ui-autocomplete {
+  border-top: solid 1px #c9c6c3;
+}
+
+.pkui-search-popup .ui-menu-item {
+  line-height: 24px;
+  font-size: 14px;
+  color: #666;
+}
+
+.pkui-search-popup .ui-state-active {
+  color: #fff;
+  background-color: #115ebf;
+}
+
+.pkui-search-popup .ui-menu-item .fa {
+  width: 26px;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.pkui-search-popup .ui-menu-item strong {
+  color: #ff8000;
 }
 
 .da-win {
