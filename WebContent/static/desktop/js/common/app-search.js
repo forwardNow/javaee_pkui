@@ -11,11 +11,12 @@ define( function ( require ) {
     var
         $ = require( "jquery" ),
         layer = window.layer,
-        App = require( "../page/app" ),
+        App = require( "./app" ),
         namespace = "pkui.search"
         ;
 
     Search.prototype.defaults = {
+        targetSelector: null,
         menuUrl: "",
         template: '<div class="pkui-search-popup" id="pkui-search-popup">'
             +       '<i class="fa fa-search pkui-search-icon"></i>'
@@ -23,9 +24,9 @@ define( function ( require ) {
             +     '</div>'
     };
 
-    function Search( target, opts ) {
+    function Search( opts ) {
         this.opts = $.extend( true, {}, this.defaults, opts );
-        this.$target = target.jquery ? target : $( target );
+        this.$target = $( this.opts.targetSelector );
         this.init();
     }
 
@@ -143,13 +144,13 @@ define( function ( require ) {
             url: this.opts.menuUrl
         } ).done( function ( gridResult ) {
             if ( !gridResult || gridResult && ( gridResult.success === false || gridResult.data == null ) ) {
-                layer.alert( ( gridResult && gridResult.message ) || "获取菜单数据失败！", { icon: 2 } );
+                layer.alert( ( gridResult && gridResult.message ) || "【应用搜索模块】获取菜单数据失败：服务器内部错误！", { icon: 2 } );
                 return;
             }
             _this.data = fmtData( gridResult.data );
         } ).fail( function () {
             // 提示网络错误
-            layer.alert( '网络错误！', { icon: 0 } );
+            layer.alert( '【应用搜索模块】获取菜单数据失败：网络错误/登陆失效。', { icon: 0 } );
         } ).always( function () {
             _this.isPending = false;
         } );

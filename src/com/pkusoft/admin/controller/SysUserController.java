@@ -24,6 +24,7 @@ import com.pkusoft.common.constants.AdminUrlRecource;
 import com.pkusoft.common.util.CriteriaExt;
 import com.pkusoft.common.util.CriteriaUtil;
 import com.pkusoft.common.util.LogUtils;
+import com.pkusoft.framework.User;
 import com.pkusoft.framework.controller.BaseController;
 import com.pkusoft.framework.exception.BizException;
 import com.pkusoft.framework.model.Criteria;
@@ -316,6 +317,37 @@ public class SysUserController extends BaseController {
 			logger.error("用户唯一性验证出错", e);
 			LogUtils.log(AdminFunctionId.SYS_USER_CKECK_INFO, "用户信息验证失败");
 			return new JsonResult(false, this.getMessage(e));
+		}
+	}
+	
+	
+	@RequestMapping("/admin/oftenUsedSysMenu")
+	@ResponseBody
+	public JsonResult oftenUsedSysMenu() {
+		JsonResult jsonResult = new JsonResult(true);
+		try {
+			SysUser sysUser = sysUserService.get( User.getUserId() );
+			jsonResult.setData( sysUser.getReserve1() );
+			return jsonResult;
+		} catch (Exception e) {
+			jsonResult.setSuccess( false );
+			jsonResult.setMessage( "获取数据失败" );
+			return jsonResult;
+		}
+	}
+	
+	@RequestMapping("/admin/recentUsedSysMenu")
+	@ResponseBody
+	public JsonResult recentUsedSysMenu() {
+		JsonResult jsonResult = new JsonResult(true);
+		try {
+			SysUser sysUser = sysUserService.get( User.getUserId() );
+			jsonResult.setData( sysUser.getReserve2() );
+			return jsonResult;
+		} catch (Exception e) {
+			jsonResult.setSuccess( false );
+			jsonResult.setMessage( "获取数据失败" );
+			return jsonResult;
 		}
 	}
 }

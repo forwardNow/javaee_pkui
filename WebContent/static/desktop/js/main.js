@@ -5,15 +5,16 @@
  * @requires jquery
  * @requires module:common/launchpad
  * @requires module:common/template
- * @requires module:page/app
+ * @requires module:common/app
  */
 define( function ( require ) {
     var
         $ = require( "jquery" ),
         Launchpad = require( "./common/launchpad" ),
-        App = require( "./page/app" ),
+        App = require( "./common/app" ),
         Template = require( "template" ),
-        Search = require( "./common/search" )
+        AppSearch = require( "./common/app-search" ),
+        AppSidebar = require( "./common/app-sidebar" )
     ;
 
     if ( window.isIE8 ) {
@@ -30,8 +31,20 @@ define( function ( require ) {
         App.init();
 
         // 启动搜索功能
-        new Search( $( "#topbar-toolbar-search" ),
-            { menuUrl: "__CTX__/admin/sysMenuListData" } );
+        new AppSearch( {
+            targetSelector: "#topbar-toolbar-search",
+            menuUrl: "__CTX__/admin/sysMenuListData"
+        } );
+
+        // 启动应用侧边栏
+        new AppSidebar( {
+            toggleSelector: "#topbar-history",
+            sidebarSelector: "#daSidebar",
+            menuUrl: "__CTX__/admin/sysMenuListData",
+            oftenUsedUrl: "__CTX__/admin/oftenUsedSysMenu",
+            recentUsedUrl: "__CTX__/admin/recentUsedSysMenu",
+            saveUsedMenuUrl: ""
+        } );
 
     } );
 } );
