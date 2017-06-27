@@ -13,18 +13,27 @@ define( function ( require ) {
 
 
     AppSidebar.prototype.defaults = {
-        oftenUsedUrl: "",
-        recentUsedUrl: "",
-        saveUsedMenuUrl: "",
-        toggleSelector: "",
-        sidebarSelector: "",
+        oftenUsedUrl: null,
+        recentUsedUrl: null,
+        saveUsedMenuUrl: null,
+        toggleSelector: null,
+        sidebarSelector: null,
+        closeBtnSelector: ".da-sidebar-closeBtn",
         // 一旦内容改变，三分钟后发送请求进行保存
         saveDelayTime: 3 * 60 * 1000,
-        template:
-        '   <dl class="use-group use-group-often">'
+        // 显示的最常使用的最大数
+        maxOftenUsedItemNum: 6,
+        // 显示的最近使用的最大数
+        maxRecentUsedItemNum: 10,
+
+        template: null
+    };
+
+    AppSidebar.prototype.defaults.template = '<i class="da-sidebar-closeBtn fa fa-close"></i>'
+        +   '<dl class="use-group use-group-often">'
         +   '    <dt class="use-group-header">常用功能</dt>'
         +   '    {{each oftenUsedMenuList }}'
-        +   '        {{if $index < 6}}'
+        +   '        {{if $index < '+ AppSidebar.prototype.defaults.maxOftenUsedItemNum +'}}'
         +   '        <dd class="use-group-item" '
         +               'data-menu-id="{{$value.menuId}}" '
         +               'data-menu-name="{{$value.menuName}}" '
@@ -36,7 +45,7 @@ define( function ( require ) {
         +   '<dl class="use-group use-group-recent">'
         +   '    <dt class="use-group-header">最近使用</dt>'
         +   '    {{each recentUsedMenuList }}'
-        +   '        {{if $index < 8}}'
+        +   '        {{if $index < '+ AppSidebar.prototype.defaults.maxRecentUsedItemNum +'}}'
         +   '        <dd class="use-group-item" '
         +               'data-menu-id="{{$value.menuId}}" '
         +               'data-menu-name="{{$value.menuName}}" '
@@ -44,10 +53,7 @@ define( function ( require ) {
         +   '            <a href="#"><i class="{{$value.icon}}"></i> {{$value.menuName}}</a></dd>'
         +   '        {{/if}}'
         +   '    {{/each}}'
-        +   '</dl>'
-
-
-    };
+        +   '</dl>';
 
     /**
      * 构造函数
@@ -104,6 +110,11 @@ define( function ( require ) {
             }
         } );
 
+        // 点击关闭按钮
+        this.$sidebar.on( "click." + namespace, this.opts.closeBtnSelector, function () {
+            _this.hide();
+        } );
+
         // 点击app条目，打开app
         this.$sidebar.on( "click." + namespace, ".use-group-item", function () {
 
@@ -119,11 +130,10 @@ define( function ( require ) {
         } );
 
         // 监听 在 $document 上触发的 inited.app 事件
-        $( document ).on( "inited.app", function ( event, menuId ) {
-            if ( ! menuId ) {
-                return;
+        $( document ).on( "inited.app", function ( event, appOptions ) {
+            if ( appOptions && appOptions.menuId != null && appOptions.mode === "default" ) {
+                _this.redraw( appOptions.menuId );
             }
-            _this.redraw( menuId );
         } );
 
 
@@ -229,7 +239,7 @@ define( function ( require ) {
      */
     AppSidebar.prototype.hide = function () {
         var $sidebar = this.$sidebar;
-        $sidebar.stop().animate( { left: -$sidebar.width() }, function () {
+        $sidebar.stop().animate( { left: -$sidebar.outerWidth() }, function () {
             $sidebar.removeClass( "app-sidebar-showed" );
         } );
     };
