@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -347,6 +348,24 @@ public class SysUserController extends BaseController {
 		} catch (Exception e) {
 			jsonResult.setSuccess( false );
 			jsonResult.setMessage( "获取数据失败" );
+			return jsonResult;
+		}
+	}
+	@RequestMapping("/admin/saveUsedMenu")
+	@ResponseBody
+	public JsonResult saveUsedMenu( String often, String recent ) {
+		JsonResult jsonResult = new JsonResult(true);
+		try {
+			Assert.hasText( often );
+			Assert.hasText( recent );
+			SysUser sysUser = sysUserService.get( User.getUserId() );
+			sysUser.setReserve1( often );
+			sysUser.setReserve2( recent );
+			sysUserService.updateSysUser(sysUser, null);
+			return jsonResult;
+		} catch (Exception e) {
+			jsonResult.setSuccess( false );
+			jsonResult.setMessage( "保存失败" );
 			return jsonResult;
 		}
 	}

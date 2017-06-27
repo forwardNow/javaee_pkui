@@ -10,6 +10,7 @@ define( function ( require ) {
         ArtTemplate = require( "artTemplate" )
     ;
 
+
     AppSidebar.prototype.defaults = {
         menuUrl: "",
         oftenUsedUrl: "",
@@ -17,6 +18,8 @@ define( function ( require ) {
         saveUsedMenuUrl: "",
         toggleSelector: "",
         sidebarSelector: "",
+        // 一旦内容改变，三分钟后发送请求进行保存
+        saveDelayTime: 3 * 60 * 1000,
         template:
         '   <dl class="use-group use-group-often">'
         +   '    <dt class="use-group-header">常用功能</dt>'
@@ -46,11 +49,19 @@ define( function ( require ) {
 
     };
 
+    /**
+     * 构造函数
+     * @param opts
+     * @constructor
+     */
     function AppSidebar( opts ) {
         this.opts = $.extend( true, {}, this.defaults, opts );
         this.init();
     }
 
+    /**
+     * 初始化方法
+     */
     AppSidebar.prototype.init = function () {
         var _this = this;
         this.render();
@@ -59,18 +70,29 @@ define( function ( require ) {
         this.templateRender = ArtTemplate.compile( this.opts.template );
 
         this.getData( function () {
-            _this.create();
+            _this._fmtData();
+            _this.draw();
         } );
     };
 
+    /**
+     * 准备数据
+     */
     AppSidebar.prototype.render = function () {
         this.$toggle = $( this.opts.toggleSelector );
         this.$sidebar = $( this.opts.sidebarSelector );
     };
 
+    /**
+     * 绑定事件
+     */
     AppSidebar.prototype.bind = function () {
-        var _this = this;
+        var
+            _this = this,
+            timerId
+        ;
 
+        // 点击开关时，显示/隐藏 侧边栏
         this.$toggle.on( "click." + namespace, function () {
             var $sidebar = _this.$sidebar;
 
@@ -82,6 +104,7 @@ define( function ( require ) {
             }
         } );
 
+        // 点击app条目，打开app
         this.$sidebar.on( "click." + namespace, ".use-group-item", function () {
 
             var $item = $( this );
@@ -95,6 +118,7 @@ define( function ( require ) {
                 "mode": "default"})
         } );
 
+        // 监听 在 $document 上触发的 inited.app 事件
         $( document ).on( "inited.app", function ( event, menuId ) {
             if ( ! menuId ) {
                 return;
@@ -102,12 +126,30 @@ define( function ( require ) {
             _this.redraw( menuId );
         } );
 
+
+        // 内容改变后，进行保存
+        this.$sidebar.on( "changed." + namespace, function () {
+            // 取消前一个计时任务
+            if ( timerId ) {
+                window.clearTimeout( timerId );
+            }
+            // 开始计时任务
+            timerId = window.setTimeout( function () {
+                _this.save();
+                timerId = null;
+            }, _this.saveDelayTime )
+        } );
     };
 
     /**
+     * 获取数据
      * 1. 菜单数据
      * 2. 常用菜单数据
+     *      { 'menuId':使用次数,... }
+     *      {'1':12,'2':8,'3':7,'4':6,'5':5,'6':4,'7':3,'8':2}
      * 3. 最近使用菜单数据
+     *      { menuId1, menuId2 }
+     *      1,2,3,4,5,6,7,8,9,10
      */
     AppSidebar.prototype.getData = function ( callback ) {
         var
@@ -118,11 +160,11 @@ define( function ( require ) {
             refresh();
         } );
         this._getData( this.opts.oftenUsedUrl, function ( jsonResult ) {
-            _this.oftenUsedMenuList = jsonResult.data;
+            _this.oftenUsedMenuList = jsonResult.data || [];
             refresh();
         } );
         this._getData( this.opts.recentUsedUrl, function ( jsonResult ) {
-            _this.recentUsedMenuList = jsonResult.data;
+            _this.recentUsedMenuList = jsonResult.data || [];
             refresh();
         } );
 
@@ -138,6 +180,12 @@ define( function ( require ) {
         }
     };
 
+    /**
+     * 获取数据的公共方法
+     * @param url
+     * @param callback
+     * @private
+     */
     AppSidebar.prototype._getData = function ( url, callback ) {
         $.ajax( {
             url: url
@@ -155,12 +203,18 @@ define( function ( require ) {
         } );
     };
 
+    /**
+     * 显示侧边栏
+     */
     AppSidebar.prototype.show = function () {
         var $sidebar = this.$sidebar;
         $sidebar.stop().animate( { left: 0 }, function () {
             $sidebar.addClass( "app-sidebar-showed" )
         } );
     };
+    /**
+     * 隐藏侧边栏
+     */
     AppSidebar.prototype.hide = function () {
         var $sidebar = this.$sidebar;
         $sidebar.stop().animate( { left: -$sidebar.width() }, function () {
@@ -168,12 +222,13 @@ define( function ( require ) {
         } );
     };
 
-    AppSidebar.prototype.create = function () {
+    /**
+     * 绘制侧边栏的内容
+     */
+    AppSidebar.prototype.draw = function () {
         var
             html
         ;
-
-        this._fmtData();
 
         html = this.templateRender( {
             oftenUsedMenuList: this.oftenUsedMenuList,
@@ -183,6 +238,10 @@ define( function ( require ) {
         this.$sidebar.html( html );
     };
 
+    /**
+     * 格式化数据
+     * @private
+     */
     AppSidebar.prototype._fmtData = function () {
         var temp,
             _this = this,
@@ -190,6 +249,9 @@ define( function ( require ) {
             str,
             menuId, sysMenu
         ;
+
+        removeUndefinedValue( this.oftenUsedMenuList );
+        removeUndefinedValue( this.recentUsedMenuList );
 
         if ( this.sysMenuList ) {
             temp = {};
@@ -243,12 +305,19 @@ define( function ( require ) {
         }
     };
 
+    /**
+     * 当打开一个新的app时，重新绘制侧边栏内容，并产生一个 changed 事件
+     * @param menuId
+     */
     AppSidebar.prototype.redraw = function ( menuId ) {
         var
             _this = this,
-            sysMenu,
-            html
+            sysMenu
         ;
+
+        removeUndefinedValue( this.oftenUsedMenuList );
+        removeUndefinedValue( this.recentUsedMenuList );
+
         /* 最近使用 */
         // 1. 若存在列表中，则删除
         if ( this.isInRecentUsedList( menuId ) ) {
@@ -260,9 +329,7 @@ define( function ( require ) {
             } );
         }
         // 2. 将其添加列表第一位
-        else {
-            this.recentUsedMenuList.unshift( this.sysMenuList[ menuId ] );
-        }
+        this.recentUsedMenuList.unshift( this.sysMenuList[ menuId ] );
 
         /* 最常使用 */
         // 1. 若存在，则自增，并排序
@@ -270,12 +337,16 @@ define( function ( require ) {
             $.each( this.oftenUsedMenuList, function ( index, item ) {
                 if ( item && item.menuId == menuId ) {
                     item.count++;
-                    if ( index !== 0 && item.count > _this.oftenUsedMenuList[ index - 1 ].count ) {
-                        _this.oftenUsedMenuList.splice( index, 1 );
-                        _this.oftenUsedMenuList.splice( index - 1, 0, item );
-                    }
                     return true;
                 }
+            } );
+            this.oftenUsedMenuList.sort( function ( prevMenu, nextMenu ) {
+                var
+                    prevCount = prevMenu.count || 1,
+                    nextCount = nextMenu.count || 1
+                ;
+                // 倒序
+                return nextCount - prevCount;
             } );
         }
         // 2. 若不存在，则追加到末尾
@@ -286,12 +357,13 @@ define( function ( require ) {
         }
 
         // 重新绘制
-        html = this.templateRender( {
-            oftenUsedMenuList: this.oftenUsedMenuList,
-            recentUsedMenuList: this.recentUsedMenuList
-        } );
+        this.draw();
 
-        this.$sidebar.html( html );
+        /**
+         * 内容改变后执行
+         * @event changed.pkui.sidebar
+         */
+        this.$sidebar.trigger( "changed." + namespace );
     };
 
     AppSidebar.prototype.isInOftenUsedList =  function ( menuId, list ) {
@@ -308,5 +380,82 @@ define( function ( require ) {
     AppSidebar.prototype.isInRecentUsedList =  function ( menuId ) {
         return this.isInOftenUsedList( menuId, this.recentUsedMenuList );
     };
+
+    /**
+     * 保存，发送的数据
+     * @example
+        {
+            recent: "1,2,3,4,5,6,7,8,9,10",
+            often: "{'1':12,'2':8,'3':7,'4':6,'5':5,'6':4,'7':3,'8':2}"
+        }
+     */
+    AppSidebar.prototype.save = function () {
+        var
+            data,
+            recent = "",
+            often = ""
+        ;
+
+
+        $.each( this.recentUsedMenuList, function ( index, menu ) {
+            if ( ! (menu && menu.hasOwnProperty( "menuId" ) ) ) {
+                return;
+            }
+            recent += menu.menuId + ",";
+        } );
+        if ( recent.indexOf( "," ) !== -1 ) {
+            recent = recent.substring( 0, recent.length - 1 );
+        }
+
+        $.each( this.oftenUsedMenuList, function ( index, menu ) {
+            var
+                menuId,
+                count
+            ;
+            if ( ! (menu && menu.hasOwnProperty( "menuId" ) ) ) {
+                return;
+            }
+            menuId = menu.menuId;
+            count = menu.count || 1;
+            often += "'" + menuId + "':" + count + ",";
+        } );
+        if ( often.indexOf( "," ) !== -1 ) {
+            often = "{" + often.substring( 0, often.length - 1 ) + "}";
+        }
+
+        data = {
+            recent: recent,
+            often: often
+        };
+
+        $.ajax( {
+            url: this.opts.saveUsedMenuUrl,
+            data: data
+        } ).done( function ( jsonResult ) {
+            if ( jsonResult && jsonResult.success ) {
+                console.info( "侧边栏数据保存成功" );
+            }
+            else {
+                layer.alert( "侧边栏数据保存失败：服务器内部错误。", { icon: 2 } );
+            }
+        } );
+
+    };
+    /**
+     * 去除数组中的undefined值
+     * @param arr {Array}
+     */
+    function removeUndefinedValue( arr ) {
+        if ( !arr ) {
+            return;
+        }
+        for ( var len = arr.length, i = len - 1; i >= 0; i-- ) {
+            if ( arr[ i ] === undefined ) {
+                arr.splice( i, 1 );
+            }
+        }
+    }
+
+
     return AppSidebar;
 } );
