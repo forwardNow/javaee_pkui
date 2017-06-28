@@ -403,10 +403,19 @@ define( function ( require ) {
                     var
                         $this = $( this ),
                         componentName = $this.data( PKUI.componentHtmlAttr ),
-                        // jQuery自动转为JSON对象了
-                        componentOptions = $this.data( PKUI.componentOptionsHtmlAttr ) || {},
+                        // string
+                        componentOptions = $this.attr( "data-" + PKUI.componentOptionsHtmlAttr ) || null,
                         componentNameList
                         ;
+
+                    // 替换 __CTX__
+                    if ( componentOptions ) {
+                        componentOptions = componentOptions.replace( /__CTX__/gm, PKUI.ctxPath );
+                    }
+
+                    // json
+                    componentOptions = $.parseJSON( componentOptions ) || {};
+
                     if ( $.trim( componentName ) === "" ) {
                         return ;
                     }
@@ -456,6 +465,9 @@ define( function ( require ) {
                                     break;
                                 case "Intro":
                                     moduleId = "Intro";
+                                    break;
+                                case "loadContent":
+                                    moduleId = "loadContent";
                                     break;
                                 default:
                                     var errorMessage = "未被注册的组件[" + componentName + "]";

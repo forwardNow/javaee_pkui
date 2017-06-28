@@ -210,9 +210,13 @@ public class SysLogController extends BaseController {
 	@ResponseBody
 	public GridResult sysLogListData_old_totalRecords(String txtQuery) {
 		try {
+			int count = 0;
 			Criteria<?> criteria = WebUtils.toCriteria(txtQuery);
 			List<SysLog> list = sysLogService.getListByCriteria(criteria);
-			int count = sysLogService.getCountByCriteria(criteria);
+			count = criteria.getPager().getTotalRecords();
+			if ( count == 0 ) {
+				count = sysLogService.getCountByCriteria(criteria);
+			}
 			return new GridResult(true, list, count);
 		} catch (Exception e) {
 			logger.error("查询列表数据出错", e);
