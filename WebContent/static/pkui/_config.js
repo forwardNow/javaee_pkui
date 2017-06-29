@@ -3,8 +3,11 @@
  * @author 吴钦飞(wuqf@pkusoft.net)
  */
 
-// namespace
-window[ "www.pkusoft.net" ] = {};
+
+// namespace，如果未创建则新建
+if ( ! window[ "www.pkusoft.net" ] ) {
+    window[ "www.pkusoft.net" ] = {};
+}
 
 // 组件别名（模块ID）
 seajs.config( {
@@ -110,6 +113,9 @@ seajs.config( {
 
         //【component/common 】对 artTemplate 的封装
         "loadContent": "component/common/loadContent/1.0.0/loadContent",
+
+        //【component/common 】处理占位符
+        "placeholderHandler": "component/common/placeholderHandler/1.0.0/placeholderHandler",
 
         //【component/logic 】datagrid的扩展
         "datagrid-delete": "component/logic/datagridExt/1.0.0/datagrid-delete"
