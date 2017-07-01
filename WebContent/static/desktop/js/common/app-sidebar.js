@@ -1,7 +1,13 @@
 /**
- * sidebar 相关功能
+ * @fileoverview 主页侧边栏相关
+ *
+ *      1. 常用功能 的记录及计数
+ *      2. 最近使用的功能 的记录
+ *
+ * @author 吴钦飞（wuqf@pkusoft.net）
  */
 define( function ( require ) {
+    "use strict";
     var
         $ = require( "jquery" ),
         layer = window.layer,
@@ -11,14 +17,23 @@ define( function ( require ) {
         ArtTemplate = require( "artTemplate" )
     ;
 
-
+    /**
+     * 默认参数
+     */
     AppSidebar.prototype.defaults = {
+        // 获取“常用”功能数据的URL
         oftenUsedUrl: null,
+        // 获取“最近使用”功能数据的URL
         recentUsedUrl: null,
+        // 保存 “常用”、“最近使用” 的URL
         saveUsedMenuUrl: null,
+        // 切换侧边栏状态（展开/隐藏）的元素的CSS选择器
         toggleSelector: null,
+        // 侧边栏容器 的元素的CSS选择器
         sidebarSelector: null,
+        // 侧边栏内容 的元素的CSS选择器
         sidebarBodySelecotr: null,
+        // 关闭（隐藏）侧边栏 的元素的CSS选择器
         closeBtnSelector: ".da-sidebar-closeBtn",
         // 一旦内容改变，三分钟后发送请求进行保存
         saveDelayTime: 3 * 60 * 1000,
@@ -27,9 +42,14 @@ define( function ( require ) {
         // 显示的最近使用的最大数
         maxRecentUsedItemNum: 10,
 
+        // 侧边栏HTML模板
         template: null
     };
 
+    /**
+     * 侧边栏ArtTemplate模板
+     * @type {string}
+     */
     AppSidebar.prototype.defaults.template =
             '<dl class="use-group use-group-often">'
         +   '    <dt class="use-group-header">常用功能</dt>'
@@ -63,20 +83,21 @@ define( function ( require ) {
      */
     function AppSidebar( opts ) {
         this.opts = $.extend( true, {}, this.defaults, opts );
-        this.init();
+        this._init();
     }
 
     /**
      * 初始化方法
+     * @private
      */
-    AppSidebar.prototype.init = function () {
+    AppSidebar.prototype._init = function () {
         var _this = this;
-        this.render();
-        this.bind();
+        this._render();
+        this._bind();
 
         this.templateRender = ArtTemplate.compile( this.opts.template );
 
-        this.getData( function () {
+        this._getData( function () {
             _this._fmtData();
             _this.draw();
         } );
@@ -84,8 +105,9 @@ define( function ( require ) {
 
     /**
      * 准备数据
+     * @private
      */
-    AppSidebar.prototype.render = function () {
+    AppSidebar.prototype._render = function () {
         this.$toggle = $( this.opts.toggleSelector );
         this.$sidebar = $( this.opts.sidebarSelector );
         this.$sidebarBody = $( this.opts.sidebarBodySelecotr );
@@ -93,8 +115,9 @@ define( function ( require ) {
 
     /**
      * 绑定事件
+     * @private
      */
-    AppSidebar.prototype.bind = function () {
+    AppSidebar.prototype._bind = function () {
         var
             _this = this,
             timerId
@@ -132,18 +155,33 @@ define( function ( require ) {
 
         // 监听 在 $document 上触发的 inited.app 事件
         $( document ).on( "inited.app", function ( event, appOptions ) {
-            if ( appOptions && appOptions.menuId != null && appOptions.mode === "default" ) {
-                _this.redraw( appOptions.menuId );
+            var
+                menuId,
+                mode
+            ;
+            if ( ! appOptions ) {
+                return;
             }
+
+            menuId = appOptions.menuId;
+
+            if ( menuId === null || menuId === undefined ) {
+                return;
+            }
+
+            mode = appOptions.mode;
+
+            if ( mode !== "default" ) {
+                return;
+            }
+
+            _this.redraw( appOptions.menuId );
+
         } );
 
 
         // 内容改变后，进行保存
-        this.$sidebar.on( "changed." + namespace, function ( event, isRefresh ) {
-            // 立马更新（）如果有更新）
-            if ( isRefresh && timerId ) {
-                _this.save();
-            }
+        this.$sidebar.on( "changed." + namespace, function ( event ) {
             // 取消前一个计时任务
             if ( timerId ) {
                 window.clearTimeout( timerId );
@@ -155,9 +193,13 @@ define( function ( require ) {
             }, _this.opts.saveDelayTime )
         } );
 
-        // 关闭（刷新）网页前进行保存
+        // 关闭（刷新）网页前，同步Aajx请求保存数据
         $( window ).unload( function () {
-            _this.$sidebar.trigger( "changed." + namespace, true );
+            // 有更改，且未保存
+            if ( timerId ) {
+                _this.save( true );
+                window.clearTimeout( timerId );
+            }
         } );
     };
 
@@ -170,24 +212,25 @@ define( function ( require ) {
      * 3. 最近使用菜单数据
      *      { menuId1, menuId2 }
      *      1,2,3,4,5,6,7,8,9,10
+     * @private
      */
-    AppSidebar.prototype.getData = function ( callback ) {
+    AppSidebar.prototype._getData = function ( callback ) {
         var
             _this = this
         ;
         /*
-        this._getData( this.opts.menuUrl, function ( jsonResult ) {
+        this._request( this.opts.menuUrl, function ( jsonResult ) {
             refresh();
             _this.sysMenuList = jsonResult.data;
         } );
         */
         this.sysMenuList = MenuSource.getList();
 
-        this._getData( this.opts.oftenUsedUrl, function ( jsonResult ) {
+        this._request( this.opts.oftenUsedUrl, function ( jsonResult ) {
             _this.oftenUsedMenuList = jsonResult.data || [];
             refresh();
         } );
-        this._getData( this.opts.recentUsedUrl, function ( jsonResult ) {
+        this._request( this.opts.recentUsedUrl, function ( jsonResult ) {
             _this.recentUsedMenuList = jsonResult.data || [];
             refresh();
         } );
@@ -204,12 +247,12 @@ define( function ( require ) {
     };
 
     /**
-     * 获取数据的公共方法
+     * 请求
      * @param url
      * @param callback
      * @private
      */
-    AppSidebar.prototype._getData = function ( url, callback ) {
+    AppSidebar.prototype._request = function ( url, callback ) {
         $.ajax( {
             url: url
         } ).done( function ( jsonResult ) {
@@ -375,7 +418,7 @@ define( function ( require ) {
         /* 最近使用 */
         // 1. 若存在列表中，则删除
         $.each( this.recentUsedMenuList, function ( index, item ) {
-            if ( item.menuId == menuId ) {
+            if ( item.menuId === menuId ) {
                 _this.recentUsedMenuList.splice( index, 1 );
                 return false;
             }
@@ -385,9 +428,9 @@ define( function ( require ) {
 
         /* 最常使用 */
         // 1. 若存在，则自增
-        if ( this.isInOftenUsedList( menuId ) ) {
+        if ( this._isInOftenUsedList( menuId ) ) {
             $.each( this.oftenUsedMenuList, function ( index, item ) {
-                if ( item.menuId == menuId ) {
+                if ( item.menuId === menuId ) {
                     item.count++;
                     return false;
                 }
@@ -413,11 +456,11 @@ define( function ( require ) {
         this.$sidebar.trigger( "changed." + namespace );
     };
 
-    AppSidebar.prototype.isInOftenUsedList =  function ( menuId, list ) {
+    AppSidebar.prototype._isInOftenUsedList =  function ( menuId, list ) {
         var isExist = false;
         list = list || this.oftenUsedMenuList;
         $.each( list, function ( index, item ) {
-            if ( item.menuId == menuId ) {
+            if ( item.menuId === menuId ) {
                 isExist = true;
                 return false;
             }
@@ -425,18 +468,19 @@ define( function ( require ) {
         return isExist;
     };
     AppSidebar.prototype.isInRecentUsedList =  function ( menuId ) {
-        return this.isInOftenUsedList( menuId, this.recentUsedMenuList );
+        return this._isInOftenUsedList( menuId, this.recentUsedMenuList );
     };
 
     /**
      * 保存，发送的数据
+     * @param isSync{boolean?} 是否同步发送请求
      * @example
         {
             recent: "1,2,3,4,5,6,7,8,9,10",
             often: "{'1':12,'2':8,'3':7,'4':6,'5':5,'6':4,'7':3,'8':2}"
         }
      */
-    AppSidebar.prototype.save = function () {
+    AppSidebar.prototype.save = function ( isSync ) {
         var
             data,
             recent = "",
@@ -477,7 +521,8 @@ define( function ( require ) {
 
         $.ajax( {
             url: this.opts.saveUsedMenuUrl,
-            data: data
+            data: data,
+            async: !isSync
         } ).done( function ( jsonResult ) {
             if ( jsonResult && jsonResult.success ) {
                 console.info( "侧边栏数据保存成功" );

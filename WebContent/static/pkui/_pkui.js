@@ -1,5 +1,11 @@
-
-// PKUI 核心模块
+/**
+ * @fileoverview PKUI 核心模块
+ *
+ *      1. 预加载必须的模块和样式文件
+ *      2. 其他的处理
+ *
+ * @author 吴钦飞（wuqf@pkusoft.net）
+ */
 define( function ( require ) {
     "use strict";
 
@@ -483,7 +489,7 @@ define( function ( require ) {
                                     break;
                                 default:
                                     var errorMessage = "未被注册的组件[" + componentName + "]";
-                                    PKUI.console.info( moment().format("YYYY年MM月DD日 HH:MM:SS") + " " + errorMessage );
+                                    console.info( moment().format("YYYY年MM月DD日 HH:MM:SS") + " " + errorMessage );
                                     window.layer.msg( errorMessage );
                                     $this.attr( "notrecognized", "not reg" );
                                     return;
@@ -644,17 +650,24 @@ define( function ( require ) {
                 ;
 
             // 如果没有指定根节点的ID，则将所有 treeParentId == null 的节点作为根节点
-            if ( rootId == null ) {
+            if ( rootId === null || rootId === undefined ) {
                 // rootId = data[ 0 ][ idName ];
                 $.each( data, function ( index, elt ) {
-                    if ( elt[ parentIdName ] == null || elt[ parentIdName ] == -1 ) {
+                    var parentId = elt[ parentIdName ];
+                    if ( parentId === null
+                         || parentId === undefined
+                         || parentId === -1
+                         || parentId === "-1") {
                         rootList.push( elt );
                     }
                 } );
             }
             else {
                 $.each( data, function ( index, elt ) {
-                    if ( elt[ idName ] === rootId ) {
+                    var
+                        id = elt[ idName ]
+                    ;
+                    if ( id === rootId ) {
                         rootList.push( elt );
                         return false;
                     }
@@ -663,7 +676,7 @@ define( function ( require ) {
 
 
             $.each( data, function ( index, elt ) {
-                if ( elt == null ) {
+                if ( elt === null || elt === undefined ) {
                     return;
                 }
                 parentId = elt[ parentIdName ];
