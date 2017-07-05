@@ -6,11 +6,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pkusoft.admin.model.SysDept;
+import com.pkusoft.admin.model.SysMenu;
 import com.pkusoft.admin.model.SysRole;
 import com.pkusoft.admin.service.SysRoleService;
 import com.pkusoft.common.constants.AdminFunctionId;
@@ -196,6 +198,20 @@ public class SysRoleController extends BaseController {
 			jsonResult.setSuccess( false );
 			return jsonResult;
 		}
+	}
+	@RequestMapping( "/admin/sysRoleModel" )
+	@ResponseBody
+	public JsonResult sysRoleModel( Long roleId ) {
+		JsonResult jsonResult = new JsonResult( true );
+		try {
+			Assert.notNull( roleId );
+			SysRole sysRole = sysRoleService.get( roleId );
+			jsonResult.setData( sysRole );
+		} catch ( Exception e ) {
+			jsonResult.setSuccess( false );
+			jsonResult.setMessage( "获取角色模型失败" );
+		}
+		return jsonResult;
 	}
 	
 }
