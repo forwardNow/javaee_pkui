@@ -243,6 +243,9 @@ public class SysLogController extends BaseController {
 		try {
 			Criteria<SysLogCriteria> criteria = new Criteria<SysLogCriteria>();
 			SysLogCriteria sysLogCriteria = criteria.createCriteria(SysLogCriteria.class);
+			if ( sysLog.getLogTime() != null ) {	
+				sysLogCriteria.andLogTimeGreaterThan( sysLog.getLogTime() );
+			}
 			if (StringUtils.hasText(sysLog.getLoginName())) {	
 				sysLogCriteria.andLoginNameLike("%" + sysLog.getLoginName() + "%");
 			}
