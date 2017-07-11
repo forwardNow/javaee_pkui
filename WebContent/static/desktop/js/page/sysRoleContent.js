@@ -17,6 +17,11 @@ define( function ( require ) {
     // 页签
     require( "bootstrap-tab" );
 
+    /*
+     *  @event show
+     *      页签显示
+     */
+
     /**
      * 默认参数
      */
@@ -24,7 +29,18 @@ define( function ( require ) {
 
         containerSelector: "#sysrole-container",
 
+        sysroleContentSelector: "#sysroleContent",
+
         sysRoleTablistSelector: "#sysRoleTablist"
+    };
+
+
+    /**
+     * 工厂方法
+     * @returns {SysRoleContent}
+     */
+    SysRoleContent.init = function ( options ) {
+        return new SysRoleContent( options );
     };
 
     /**
@@ -56,6 +72,7 @@ define( function ( require ) {
             opts = this.opts
         ;
         this.$container = $( opts.containerSelector );
+        this.$sysroleContent = $( opts.sysroleContentSelector );
         this.$tablist = $( opts.sysRoleTablistSelector );
     };
 
@@ -70,7 +87,60 @@ define( function ( require ) {
 
         // 页签
         this.$tablist.on( "click." + namespace, "a", function ( event ) {
+            var
+                $this = $( this ),
+                $parent = $this.parent(),
+                tabpanelSelector = $this.attr( "href" )
+            ;
+            event.preventDefault();
+
+            // 页签 active状态
+            $parent.addClass( "active" )
+                .siblings().removeClass( "active" );
+
+            // 面板 active状态
+            $( tabpanelSelector ).addClass( "active" )
+                .siblings().removeClass( "active" );
+
+            /**
+             * @event show
+             */
+            _this.$container.trigger( "show." + namespace, tabpanelSelector );
 
         } );
+
+        // 点击 radio（“用户是否已关联”），切换按钮
+        this.$sysroleContent.on( "click." + namespace, "input[name=roleIdOper]", function () {
+            var
+                $this = $( this ),
+                $addBtn = $( "#sysRoleUser-addBtn" ),
+                $removeBtn = $( "#sysRoleUser-removeBtn" )
+            ;
+
+            // 如果点击的是已经选中的radio，则返回
+            if ( $this.is( ".checked" ) ) {
+                return;
+            }
+
+            $( ".roleIdOper" ).removeClass( "checked" );
+            $this.addClass( "checked" );
+
+            // 查询关联用户（显示“删除”）
+            if ( $( this ).val() === "in" ) {
+                $addBtn.addClass( "hidden" );
+                $removeBtn.removeClass( "hidden" );
+            }
+            // 查询未关联用户（显示“添加”）
+            else {
+                $removeBtn.addClass( "hidden" );
+                $addBtn.removeClass( "hidden" );
+            }
+
+            // 查询
+            $( "#sysRoleUserDatagrid-reloadBtn" ).trigger( "click" );
+        } );
+
     };
+
+    return SysRoleContent;
 } );

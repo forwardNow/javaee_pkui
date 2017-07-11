@@ -43,19 +43,23 @@
                     <button type="button" id="sysRoleUser-removeBtn" class="btn btn-danger-2"><i class="fa fa-trash-o"></i> 从角色中删除用户</button>
 
                     <form id="sysRoleUserQueryForm">
+
+                        <button class="btn btn-default-2 pull-right" style="margin-left: 6px;" type="button"
+                                onclick='jQuery( "#sysRoleUserDatagrid" ).bootgrid( "reload" );'><i class="fa fa-refresh"></i></button>
+
                         <div class="input-group pull-right" style="width: 280px;">
                             <input type="text" class="da-form-control" placeholder="真实姓名" name="userName" data-operator="like" value="">
                             <input type="hidden" id="sysRoleUser-roleId" name="roleId" value="25"/>
                             <span class="input-group-btn">
-                                <button class="btn btn-info-2" type="button"
+                                <button class="btn btn-info-2" type="button" id="sysRoleUserDatagrid-reloadBtn"
                                         onclick='jQuery( "#sysRoleUserDatagrid" ).bootgrid( "reload" )'><i class="fa fa-search"></i></button>
                             </span>
                         </div>
                         <div class="da-form-radio pull-right" style="margin: 5px 12px 0 0;">
                             <!-- in / notIn -->
-                            <span>用户是否已关联：</span>
-                            <label><input type="radio" name="roleIdOper" value="in" checked/>是</label>
-                            <label><input type="radio" name="roleIdOper" value="notIn" />否</label>
+                            <span>是否拥有该角色：</span>
+                            <label><input type="radio" name="roleIdOper" value="in" class="roleIdOper checked" checked/>是</label>
+                            <label><input type="radio" name="roleIdOper" value="notIn" class="roleIdOper"/>否</label>
                         </div>
                     </form>
                 </div>
@@ -67,7 +71,7 @@
                             "selection": true,
                             "multiSelect": true
                        }'
-                       data-url="__CTX__/admin/sysRoleUserListDataExt"
+                       data-url="__CTX__/admin/sysRoleUserListData"
                        data-query-form-selector="#sysRoleUserQueryForm">
                     <thead>
                     <tr>
@@ -198,7 +202,11 @@
 
 </style>
 <script>
-    seajs.use( "__CTX__/static/desktop/js/page/sysRoleTree", function ( SysRoleTree ) {
+    seajs.use( [
+        "__CTX__/static/desktop/js/page/sysRoleTree",
+        "__CTX__/static/desktop/js/page/sysRoleContent" ], function ( SysRoleTree, SysRoleContent ) {
+
         SysRoleTree.init();
+        SysRoleContent.init();
     } );
 </script>

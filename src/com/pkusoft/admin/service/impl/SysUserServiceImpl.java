@@ -162,7 +162,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements SysU
 			//提供选择的用户的级别必须与所选角色级别一致
 			//params.put("userLevel", User.getUserLevel());
 			//所选角色级别
-			params.put("roleLevel", sysRoleService.get(roleId).getRoleLevel());
+//			params.put("roleLevel", sysRoleService.get(roleId).getRoleLevel());
 			list = sysUserMapper.getListNotInRole(params);
 		}
 		return list;

@@ -16,6 +16,12 @@ define( function ( require ) {
         namespace = "pkui.sysrole.tree"
     ;
 
+    /*
+     * @event clickSysRoleTreeItem
+     *      点击菜单树条目
+     *
+     */
+
     /**
      * 工厂方法
      * @returns {SysRoleTree}
@@ -155,8 +161,10 @@ define( function ( require ) {
             // 高亮状态
             $this.addClass( "active" ).siblings().removeClass( "active" );
 
-            // 事件通知
-            _this.$sysRoleTree.trigger( "clickSysRoleTreeItem." + namespace, { roleId: $this.attr( "roleid" ) } )
+            /**
+             * @event clickSysRoleTreeItem
+             */
+            _this.$container.trigger( "clickSysRoleTreeItem." + namespace, { roleId: $this.attr( "roleid" ) } )
 
         } );
 
