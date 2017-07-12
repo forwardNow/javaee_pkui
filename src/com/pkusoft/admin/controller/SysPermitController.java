@@ -6,11 +6,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pkusoft.admin.model.SysPermit;
+import com.pkusoft.admin.model.SysRole;
 import com.pkusoft.admin.service.SysPermitService;
 import com.pkusoft.common.constants.AdminUrlRecource;
 import com.pkusoft.framework.controller.BaseController;
@@ -124,6 +126,21 @@ public class SysPermitController extends BaseController {
 			logger.error("删除信息出错", e);
 			return new JsonResult(false, this.getMessage(e));
 		}
+	}
+	
+	@RequestMapping( "/admin/sysPermitModel" )
+	@ResponseBody
+	public JsonResult sysPermitModel( Long permitId ) {
+		JsonResult jsonResult = new JsonResult( true );
+		try {
+			Assert.notNull( permitId );
+			SysPermit sysPermit = sysPermitService.get( permitId );
+			jsonResult.setData( sysPermit );
+		} catch ( Exception e ) {
+			jsonResult.setSuccess( false );
+			jsonResult.setMessage( "获取权限模型失败" );
+		}
+		return jsonResult;
 	}
 
 }
