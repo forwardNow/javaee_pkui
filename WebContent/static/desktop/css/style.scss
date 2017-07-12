@@ -59,6 +59,9 @@
 //【pkui/lib/component】datepicker
 @import "../../../src/lib/component/datepicker/1.7.0.x/datepicker";
 
+//【pkui/lib/component】datetimepicker
+@import "../../../src/lib/component/datetimepicker/2.5.4.x/datetimepicker";
+
 //【app/desktop】工具类
 @import "base/utilities";
 
@@ -101,8 +104,11 @@
 //【app/desktop】窗口相关
 @import "page/win";
 
-//【app/desktop】sysMenu菜单管理
+//【app/desktop】sysMenu 菜单管理
 @import "page/sysMenu";
+
+//【app/desktop】sysRole 角色管理
+@import "page/sysRole";
 
 
 //【app/desktop】雪碧图（置于最下面，否则@extend的样式会提前）
