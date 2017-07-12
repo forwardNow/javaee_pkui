@@ -515,7 +515,7 @@
   <!-- 获取角色拥有的资源列表  create by hey-->
   <select id="getResourceListByRole" resultMap="MiniResultMap" parameterType="java.lang.Object" >    
     select
-      case NVL(rm.RESOUCE_ID , 0) when 0 THEN '' else 'checked' end CHECKED
+      case IFNULL(rm.RESOUCE_ID , 0) when 0 THEN '' else 'checked' end CHECKED
     , r.RESOURCE_ID
     , r.RESOURCE_NAME
     , r.RESOURCE_DESC

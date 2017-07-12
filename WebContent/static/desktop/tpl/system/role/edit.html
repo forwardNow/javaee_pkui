@@ -50,11 +50,17 @@
                     containerId = $( "#editSysRoleLayer" ).closest( ".layui-layer" ).attr( "id" ),
                     containerIndex = containerId.replace( "layui-layer", "" )
                 ;
+                /**
+                 * @event saved.pkui.sysrole.tree
+                 *      保存成功
+                 */
+                $( "#sysrole-container" ).trigger( "saved.pkui.sysrole.tree" );
 
                 // 关闭提示
                 layer.close( index );
                 // 关闭容器
                 layer.close( parseInt( containerIndex ) );
+
             } );
         }
         // 服务器端处理失败
