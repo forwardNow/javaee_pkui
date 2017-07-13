@@ -3,6 +3,10 @@
   position: relative;
 }
 
+.blur {
+  filter: blur(20px);
+}
+
 /*
 YUI 3.18.1 (build f7e7bcb)
 Copyright 2014 Yahoo! Inc. All rights reserved.
@@ -8133,9 +8137,50 @@ Pagination Styles
   background-color: #fff;
 }
 
+.da-theme-light .launchpad-shortcut-icon {
+  -webkit-box-reflect: below 2px -webkit-linear-gradient(top, rgba(250, 250, 250, 0), rgba(250, 250, 250, 0) 40%, rgba(250, 250, 250, 0.2));
+  box-reflect: below 2px -webkit-linear-gradient(top, rgba(250, 250, 250, 0), rgba(250, 250, 250, 0) 40%, rgba(250, 250, 250, 0.2));
+}
 .da-theme-light .launchpad-shortcut-fonticon {
   border-radius: 4px;
   text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.25);
+}
+.da-theme-light .launchpad-shortcut {
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  position: relative;
+  overflow: hidden;
+  -webkit-transition-property: color, border-color;
+  transition-property: color, border-color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.da-theme-light .launchpad-shortcut:hover {
+  border-color: transparent;
+  background-color: transparent;
+}
+.da-theme-light .launchpad-shortcut:hover:before {
+  -webkit-transform: scale(2);
+  transform: scale(2);
+}
+.da-theme-light .launchpad-shortcut:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 100%;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
 }
 
 .fonticon-default {
@@ -8709,25 +8754,88 @@ Pagination Styles
   box-sizing: border-box;
 }
 
-.win-btnGroup {
+.win-main-topbar {
   padding: 12px 0;
   border-bottom: solid 1px #fbfbfb;
 }
-.win-btnGroup:before, .win-btnGroup:after {
+.win-main-topbar:before, .win-main-topbar:after {
   content: " ";
   display: table;
 }
-.win-btnGroup:after {
+.win-main-topbar:after {
   clear: both;
 }
-.win-btnGroup > .btn {
-  float: left;
-  margin-right: 6px;
-}
-.win-btnGroup * {
+.win-main-topbar * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+.win-main-topbar:after {
+  display: table;
+  content: " ";
+  clear: both;
+}
+
+.main-topbar-func {
+  float: left;
+}
+
+.main-topbar-query {
+  float: right;
+}
+
+.main-topbar-query .input-group-addon {
+  color: #108cee;
+  border-color: #d2ecfd;
+  background: #eaf6fe;
+}
+
+.main-topbar-query .da-form-control {
+  border-color: #d2ecfd;
+}
+
+.main-topbar-query .da-form-control:focus,
+.main-topbar-query .da-form-control:active,
+.main-topbar-query .da-form-control:hover {
+  border-color: #66afe9;
+}
+
+.main-topbar-query > form > .input-group {
+  float: left;
+  width: 280px;
+  margin-left: 6px;
+}
+.main-topbar-query > form > .btn {
+  float: left;
+  margin-left: 6px;
+}
+.main-topbar-query > form > input {
+  margin-left: 6px;
+}
+.main-topbar-query > form .da-form-radio {
+  height: 28px;
+  float: left;
+  border: solid 1px #d2ecfd;
+}
+.main-topbar-query > form .da-form-radio .da-form-radio-label {
+  border-right: solid 1px #d2ecfd;
+  color: #108cee;
+  background: #eaf6fe;
+  padding: 6px 12px;
+  line-height: 1;
+  font-size: 14px;
+  height: 26px;
+  display: inline-block;
+}
+.main-topbar-query > form .da-form-radio label {
+  margin-right: 6px;
+  margin-left: 6px;
+}
+
+.main-topbar-query-ext {
+  margin-top: 12px;
+  clear: both;
 }
 
 .pkui-icon-image {
