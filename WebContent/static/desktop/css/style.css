@@ -7421,13 +7421,24 @@ b {
   background: url(../images/da_bg.png) 0 0 repeat-x #fff;
 }
 .da-theme-light .da-topbar {
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#3F7E9FC2', endColorstr='#3F7E9FC2');
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#BF7E9FC2', endColorstr='#BF7E9FC2');
+  top: auto;
+  bottom: 0;
+}
+.da-theme-light .da-desktop {
+  bottom: 46px;
+  top: 0;
+}
+.da-theme-light .da-sidebar {
+  top: 0;
+  bottom: 46px;
+  overflow: hidden;
 }
 
 :root .da-theme-light .da-topbar {
   filter: none;
   /*处理IE9浏览器中的滤镜效果*/
-  background-color: rgba(126, 159, 194, 0.25);
+  background-color: rgba(126, 159, 194, 0.75);
 }
 
 .da-form {
@@ -7731,6 +7742,30 @@ Pagination Styles
 .pkui-popup-focus .pkui-dialog,
 .pkui-dialog {
   box-shadow: 1px 1px 50px rgba(0, 0, 0, 0.3);
+}
+
+.da-theme-light .pkui-dialog {
+  background-color: transparent;
+}
+.da-theme-light .pkui-dialog-header {
+  border-radius: 4px 4px 0 0;
+  border-bottom: solid 1px #b1b1b1;
+  background-color: whitesmoke;
+  background-image: -moz-linear-gradient(top, #f6f6f6, #d4d4d4);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f6f6f6), to(#d4d4d4));
+  background-image: -webkit-linear-gradient(top, #f6f6f6, #d4d4d4);
+  background-image: -o-linear-gradient(top, #f6f6f6, #d4d4d4);
+  background-image: linear-gradient(to bottom, #f6f6f6, #d4d4d4);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF6F6F6', endColorstr='#FFD4D4D4', GradientType=0);
+}
+.da-theme-light .pkui-dialog-header > button {
+  margin-top: 8px;
+}
+.da-theme-light .pkui-dialog-title {
+  padding: 6px 12px;
+  color: #4f4f4f;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
 .ui-resizable {
@@ -8624,6 +8659,23 @@ Pagination Styles
   color: #33a6e7;
 }
 
+.da-win.collapsed .da-win-sidebar {
+  left: -250px;
+}
+.da-win.collapsed .da-win-sidebar-toggle {
+  width: 36px;
+}
+.da-win.collapsed .da-win-main {
+  left: 0;
+}
+.da-win.collapsed.only-one-node .win-main-heading {
+  display: none;
+}
+.da-win.collapsed.only-one-node .win-main-body {
+  padding-top: 0;
+  background-color: #fafafa;
+}
+
 .da-win-sidebar {
   position: absolute;
   top: 0;
@@ -8636,9 +8688,6 @@ Pagination Styles
   -o-transition: left 0.3s;
   transition: left 0.3s;
   overflow: auto;
-}
-.da-win-sidebar.collapsed {
-  left: -250px;
 }
 
 .da-win-sidebar-toggle {
@@ -8657,9 +8706,6 @@ Pagination Styles
   -webkit-transition: width 0.3s;
   -o-transition: width 0.3s;
   transition: width 0.3s;
-}
-.da-win-sidebar-toggle.collapsed {
-  width: 36px;
 }
 
 .sidebar-menuItem {
@@ -8717,9 +8763,6 @@ Pagination Styles
   left: 240px;
   bottom: 0;
   right: 0;
-}
-.da-win-main.collapsed {
-  left: 0;
 }
 
 .win-main-heading {
@@ -8841,6 +8884,10 @@ Pagination Styles
 .pkui-icon-image {
   display: inline-block;
   background: no-repeat center center;
+}
+
+.ui-resizable-se {
+  background: no-repeat 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjdBN0VCNUU5NjA4OTExRTdCOUVDRjZEMUUyRjgxQjFFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjdBN0VCNUVBNjA4OTExRTdCOUVDRjZEMUUyRjgxQjFFIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6N0E3RUI1RTc2MDg5MTFFN0I5RUNGNkQxRTJGODFCMUUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6N0E3RUI1RTg2MDg5MTFFN0I5RUNGNkQxRTJGODFCMUUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5uAignAAAAZUlEQVR42qTRUQqAMAwDUM11nVeou4O489rChDHUrU0h0J/3EbKKyELcAQZrMhhsDxisd4HBmh1BXAx7KvQ41f8EgzUbGDyqMMR/K8zg8rXCLE5vFVy4X8GN2xVC+KkQxna3AAMAyQoxaEGHSvcAAAAASUVORK5CYII=);
 }
 
 .sysmenu-container {
@@ -9078,7 +9125,7 @@ Pagination Styles
 }
 
 .desktop-sprite, .icon-home, .topbar-home, .icon-history, .topbar-history, .icon-close, .dock-item-btn, .icon-dashboard, .icon-logout, .icon-message, .icon-more, .icon-search, .icon-user, .icon-triangle-down, .toolbar-item-indicator, .icon-add, .icon-setting, .icon-arrow-left, .launchpad-pagination-previous, .icon-arrow-right, .launchpad-pagination-next, .icon-arrow-light-left, .da-theme-light .launchpad-pagination-previous, .icon-arrow-light-right, .da-theme-light .launchpad-pagination-next, .icon-circle-1, .icon-circle-2, .icon-win-close, .pkui-dialog-close, .icon-win-close-hover, .icon-win-max, .pkui-dialog-max, .icon-win-max-hover, .icon-win-maxmin, .pkui-dialog-restore, .icon-win-maxmin-hover, .icon-win-min, .pkui-dialog-min, .icon-win-min-hover, .icon-dock-dropmenu-indicator, .dock-dropmenu-indicator, .icon-sidebar-toggle-on, .icon-sidebar-toggle-off {
-  background-image: url('../images/desktop-s304c9f8e21.png');
+  background-image: url('../images/desktop-sac1ba4ec60.png');
   background-repeat: no-repeat;
 }
 

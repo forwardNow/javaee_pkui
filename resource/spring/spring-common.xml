@@ -23,16 +23,14 @@
 	</context:component-scan>
 	
 	<!-- 1. 数据源 : DriverManagerDataSource -->
-	<!-- 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://mysql.rdsmr4gvgm5y7lk.rds.bj.baidubce.com:3306/pkui?useUnicode=true&amp;characterEncoding=utf8" />
-		<property name="username" value="pku" />
-		<property name="password" value="pku123456" />
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
 	</bean>
-	 -->
  	<!-- 数据源配置, 使用DBCP数据库连接池 -->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+	<bean id="_dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<!-- Connection Info -->
 		<property name="driverClass" value="${jdbc.driver}" />
 		<property name="jdbcUrl" value="${jdbc.url}" />
