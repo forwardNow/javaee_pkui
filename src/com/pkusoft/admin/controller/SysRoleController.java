@@ -1,7 +1,9 @@
 package com.pkusoft.admin.controller;
 
 import java.util.List;
+import java.util.Map;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -214,4 +216,44 @@ public class SysRoleController extends BaseController {
 		return jsonResult;
 	}
 	
+	
+	@RequestMapping("/admin/sysRoleNewPermitSave")
+	@ResponseBody
+	public JsonResult sysRoleNewPermitSave(Long roleId, String data) {
+		JsonResult jsonResult = new JsonResult();
+		try {
+			Assert.notNull( roleId );
+			Assert.hasText( data );
+			SysRole sysRole = sysRoleService.get( roleId );
+			sysRole.setReserve3( data );
+			
+			ObjectMapper mapper = new ObjectMapper();
+			List<Map<String, Object>> list = mapper.readValue( data, List.class );
+			
+			
+			sysRoleService.update( sysRole );
+			
+			jsonResult.setSuccess( true );
+			return jsonResult;
+		} catch (Exception e) {
+			jsonResult.setSuccess( false );
+			return jsonResult;
+		}
+	}
+	@RequestMapping("/admin/sysRoleNewPermitListData")
+	@ResponseBody
+	public GridResult sysRoleNewPermitListData(Long roleId) {
+		try {
+			Assert.notNull( roleId );
+			SysRole sysRole = sysRoleService.get( roleId );
+			String data = sysRole.getReserve3();
+			
+			ObjectMapper mapper = new ObjectMapper();
+			List<Map<String, Object>> list = mapper.readValue( data, List.class );
+			
+			return new GridResult( true, list );
+		} catch (Exception e) {
+			return new GridResult( false, null );
+		}
+	}
 }
