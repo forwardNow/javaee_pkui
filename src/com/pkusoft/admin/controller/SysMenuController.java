@@ -1,10 +1,13 @@
 package com.pkusoft.admin.controller;
 
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,28 +19,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.pkusoft.admin.model.SysDeptLevel;
-import com.pkusoft.admin.model.SysDicItem;
-import com.pkusoft.admin.model.SysDicList;
 import com.pkusoft.admin.model.SysMenu;
 import com.pkusoft.admin.model.SysMenuCriteria;
 import com.pkusoft.admin.model.SysMenuIcon;
 import com.pkusoft.admin.service.SysMenuService;
 import com.pkusoft.common.constants.AdminFunctionId;
 import com.pkusoft.common.constants.AdminUrlRecource;
-import com.pkusoft.common.util.ExcelUtil;
 import com.pkusoft.common.util.ImageUtils;
 import com.pkusoft.common.util.LogUtils;
 import com.pkusoft.framework.User;
 import com.pkusoft.framework.constants.General;
 import com.pkusoft.framework.controller.BaseController;
 import com.pkusoft.framework.model.Criteria;
-import com.pkusoft.framework.model.DicXmlResult;
 import com.pkusoft.framework.model.GridResult;
 import com.pkusoft.framework.model.JsonResult;
 import com.pkusoft.framework.model.Pager;
 import com.pkusoft.framework.util.JsonUtils;
-import com.pkusoft.framework.util.MapUtils;
 
 /**
  * 菜单控制器
@@ -149,6 +146,25 @@ public class SysMenuController extends BaseController {
 	@ResponseBody
 	public JsonResult sysMenuAdd(SysMenu sysMenu) {
 		try {
+			if ( sysMenu.getSysId() != null ) {
+				
+				String json = 
+						    "{"
+						  + "    \"subsys_01\": \"执法监督综合应用门户\" ,"
+						  + "    \"subsys_02\": \"执法问题动态跟踪子系统\" ,"
+						  + "    \"subsys_03\": \"如实受立案监督子系统\" ,"
+						  + "    \"subsys_04\": \"执法时限预警子系统\" ,"
+						  + "    \"subsys_05\": \"电子屏动态监督子系统\" ,"
+						  + "    \"subsys_06\": \"问题模型管理子系统\" "
+						  + "}";
+				
+				ObjectMapper mapper = new ObjectMapper();
+				Map<String, String> set = mapper.readValue( json, Map.class );
+				sysMenu.setSysName( set.get( sysMenu.getSysId() ) );
+				
+			}
+			
+			
 			sysMenuService.insertSysMenu(sysMenu);
 			LogUtils.log(AdminFunctionId.SYS_MENU_ADD, "菜单新增成功");
 			return new JsonResult(true);
@@ -168,6 +184,23 @@ public class SysMenuController extends BaseController {
 	@ResponseBody
 	public JsonResult sysMenuUpdate(SysMenu sysMenu) {
 		try {
+			if ( sysMenu.getSysId() != null ) {
+				
+				String json = 
+						    "{"
+						  + "    \"subsys_01\": \"执法监督综合应用门户\" ,"
+						  + "    \"subsys_02\": \"执法问题动态跟踪子系统\" ,"
+						  + "    \"subsys_03\": \"如实受立案监督子系统\" ,"
+						  + "    \"subsys_04\": \"执法时限预警子系统\" ,"
+						  + "    \"subsys_05\": \"电子屏动态监督子系统\" ,"
+						  + "    \"subsys_06\": \"问题模型管理子系统\" "
+						  + "}";
+				
+				ObjectMapper mapper = new ObjectMapper();
+				Map<String, String> set = mapper.readValue( json, Map.class );
+				sysMenu.setSysName( set.get( sysMenu.getSysId() ) );
+				
+			}
 			sysMenuService.updateSysMenu(sysMenu);
 			LogUtils.log(AdminFunctionId.SYS_MENU_UPDATE, "菜单修改成功");
 			return new JsonResult(true);
@@ -329,5 +362,30 @@ public class SysMenuController extends BaseController {
 		}
 		return jsonResult;
 	}
+	
+	@RequestMapping("/admin/subSysListData")
+	@ResponseBody
+	public GridResult subSysListData(){
+		try {
+			String json = 
+					  "["
+					+ "    { \"value\": \"subsys_01\", \"text\": \"执法监督综合应用门户\" },"
+					+ "    { \"value\": \"subsys_02\", \"text\": \"执法问题动态跟踪子系统\" },"
+					+ "    { \"value\": \"subsys_03\", \"text\": \"如实受立案监督子系统\" },"
+					+ "    { \"value\": \"subsys_04\", \"text\": \"执法时限预警子系统\" },"
+					+ "    { \"value\": \"subsys_05\", \"text\": \"电子屏动态监督子系统\" },"
+					+ "    { \"value\": \"subsys_06\", \"text\": \"问题模型管理子系统\" }"
+					+ "]";
+			
+			ObjectMapper mapper = new ObjectMapper();
+			List<Map<String, String>> list = mapper.readValue( json, List.class );
+			
+			return new GridResult(true,list);
+		} catch (Exception e) {
+			return new GridResult( false, null );
+		}
+		
+	}
+	
 	
 }

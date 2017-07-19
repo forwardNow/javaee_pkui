@@ -57,6 +57,24 @@ public class SysMenu extends BaseModel  implements Serializable {
 	private java.lang.Long modifyUserId;
 	/**修改用户姓名*/
 	private java.lang.String modifyUserName;
+	private String sysId;
+	private String sysName;
+	
+	public String getSysId() {
+		return sysId;
+	}
+
+	public void setSysId( String sysId ) {
+		this.sysId = sysId;
+	}
+
+	public String getSysName() {
+		return sysName;
+	}
+
+	public void setSysName( String sysName ) {
+		this.sysName = sysName;
+	}
 
 	/**
 	 * 取得菜单标识号

@@ -24,6 +24,8 @@
     <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
     <result column="MODIFY_USER_ID" property="modifyUserId" jdbcType="DECIMAL" />
     <result column="MODIFY_USER_NAME" property="modifyUserName" jdbcType="VARCHAR" />
+    <result column="SYS_ID" property="sysId" jdbcType="VARCHAR" />
+    <result column="SYS_NAME" property="sysName" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="MiniResultMap" type="com.pkusoft.admin.model.SysMenuView" >
     <id column="MENU_ID" property="menuId" jdbcType="DECIMAL" />
@@ -125,6 +127,8 @@
   	, MODIFY_TIME
   	, MODIFY_USER_ID
   	, MODIFY_USER_NAME
+  	, SYS_ID
+  	, SYS_NAME
   </sql>
   <select id="getListByCriteria" resultMap="BaseResultMap" parameterType="com.pkusoft.framework.model.Criteria" >
   	<if test="pager != null" >
@@ -188,6 +192,8 @@
   	, MODIFY_TIME
   	, MODIFY_USER_ID
   	, MODIFY_USER_NAME
+  	, SYS_ID
+  	, SYS_NAME
       )
     values (
   	#{menuId,jdbcType=DECIMAL}
@@ -212,6 +218,8 @@
   	, #{modifyTime,jdbcType=TIMESTAMP}
   	, #{modifyUserId,jdbcType=DECIMAL}
   	, #{modifyUserName,jdbcType=VARCHAR}
+  	, #{sysId,jdbcType=VARCHAR}
+  	, #{sysName,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.pkusoft.admin.model.SysMenu" >
@@ -283,6 +291,12 @@
       <if test="modifyUserName != null" >
 	    MODIFY_USER_NAME,
       </if>
+      <if test="sysId != null" >
+	    SYS_ID,
+      </if>
+      <if test="sysName != null" >
+	    SYS_NAME,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="menuId != null" >
@@ -350,6 +364,12 @@
       </if>
       <if test="modifyUserName != null" >
 	    #{modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="sysId != null" >
+	    #{sysId,jdbcType=VARCHAR},
+      </if>
+      <if test="sysName != null" >
+	    #{sysName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -428,6 +448,12 @@
       <if test="record.modifyUserName != null" >
 	    MODIFY_USER_NAME = #{record.modifyUserName,jdbcType=VARCHAR},
       </if>
+      <if test="record.sysId != null" >
+	    SYS_ID = #{record.sysId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sysName != null" >
+	    SYS_NAME = #{record.sysName,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Criteria_Where_Clause" />
@@ -458,6 +484,8 @@
 		, MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP}
 		, MODIFY_USER_ID = #{record.modifyUserId,jdbcType=DECIMAL}
 		, MODIFY_USER_NAME = #{record.modifyUserName,jdbcType=VARCHAR}
+		, SYS_ID = #{record.sysId,jdbcType=VARCHAR}
+		, SYS_NAME = #{record.sysName,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Criteria_Where_Clause" />
     </if>
@@ -531,6 +559,12 @@
       <if test="modifyUserName != null" >
        MODIFY_USER_NAME = #{modifyUserName,jdbcType=VARCHAR},
       </if>
+      <if test="sysId != null" >
+       SYS_ID = #{sysId,jdbcType=VARCHAR},
+      </if>
+      <if test="sysName != null" >
+       SYS_NAME = #{sysName,jdbcType=VARCHAR},
+      </if>
     </set>
     where 
     MENU_ID = #{menuId,jdbcType=DECIMAL}
@@ -560,6 +594,8 @@
 		, MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP}
 		, MODIFY_USER_ID = #{modifyUserId,jdbcType=DECIMAL}
 		, MODIFY_USER_NAME = #{modifyUserName,jdbcType=VARCHAR}
+		, SYS_ID = #{sysId,jdbcType=VARCHAR}
+		, SYS_NAME = #{sysName,jdbcType=VARCHAR}
     where 
     MENU_ID = #{menuId,jdbcType=DECIMAL}
   </update> 

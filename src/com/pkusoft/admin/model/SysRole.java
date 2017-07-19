@@ -46,6 +46,25 @@ public class SysRole extends BaseModel  implements Serializable {
 	/**修改时间*/
 	private java.util.Date modifyTime;
 
+	private String sysId;
+	private String sysName;
+	
+	public String getSysId() {
+		return sysId;
+	}
+
+	public void setSysId( String sysId ) {
+		this.sysId = sysId;
+	}
+
+	public String getSysName() {
+		return sysName;
+	}
+
+	public void setSysName( String sysName ) {
+		this.sysName = sysName;
+	}
+
 	/**
 	 * 取得角色标识号
 	 *@return java.lang.Long 角色标识号
