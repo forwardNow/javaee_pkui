@@ -129,6 +129,23 @@ public class SysRoleController extends BaseController {
 	@ResponseBody
 	public JsonResult sysRoleSave(SysRole sysRole) {
 		try {			
+			if ( sysRole.getSysId() != null ) {
+				
+				String json = 
+						    "{"
+						  + "    \"subsys_01\": \"执法监督综合应用门户\" ,"
+						  + "    \"subsys_02\": \"执法问题动态跟踪子系统\" ,"
+						  + "    \"subsys_03\": \"如实受立案监督子系统\" ,"
+						  + "    \"subsys_04\": \"执法时限预警子系统\" ,"
+						  + "    \"subsys_05\": \"电子屏动态监督子系统\" ,"
+						  + "    \"subsys_06\": \"问题模型管理子系统\" "
+						  + "}";
+				
+				ObjectMapper mapper = new ObjectMapper();
+				Map<String, String> set = mapper.readValue( json, Map.class );
+				sysRole.setSysName( set.get( sysRole.getSysId() ) );
+				
+			}
 			if(sysRole.getRoleId() == null){
 				sysRoleService.insertSysRole(sysRole);
 				LogUtils.log(AdminFunctionId.SYS_ROLE_SAVE_ADD, "新增角色成功");
