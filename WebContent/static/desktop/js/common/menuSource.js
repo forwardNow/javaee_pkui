@@ -19,6 +19,7 @@ define( function ( require ) {
     };
 
     Menu.originData = null;
+    Menu.originSet = null;
 
     Menu.init = function ( options ) {
         this.opts = $.extend( true, {}, this.opts, options );
@@ -108,7 +109,46 @@ define( function ( require ) {
         return set;
     };
 
+    /**
+     * 根据菜单ID获取菜单对象
+     * @param menuId {string|number}
+     * @param isClone {boolean?} 是否为副本
+     * @returns {{}|null}
+     */
+    Menu.getSysMenuById = function ( menuId, isClone ) {
+        var
+            sysMenu
+        ;
+        if ( ! this.originSet ) {
+            this.originSet = this.getSet( true );
+        }
+        sysMenu = this.originSet[ menuId ];
+        if ( ! sysMenu ) {
+            return null;
+        }
+        if ( isClone ) {
+            return $.extend( true, {}, sysMenu );
+        }
+        return sysMenu;
+    };
+
+    /**
+     * 根据ID获取name
+     * @param menuId {string|number}
+     */
+    Menu.getSysMenuNameById = function ( menuId ) {
+        var
+            sysMenu = this.getSysMenuById( menuId )
+        ;
+        if ( !sysMenu ) {
+            return "";
+        }
+        return sysMenu.menuName || "";
+    };
+
     Menu.init();
+
+    PKUI.MenuSource = Menu;
 
     return Menu;
 } );

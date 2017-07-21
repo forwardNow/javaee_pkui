@@ -6,10 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pkusoft.admin.model.SysPara;
 import com.pkusoft.admin.model.SysResource;
 import com.pkusoft.admin.service.SysResourceService;
 import com.pkusoft.common.constants.AdminFunctionId;
@@ -173,5 +175,24 @@ public class SysResourceController extends BaseController {
 			return new GridResult(false, null);
 		}
 	}
-
+	/**
+	 * model
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/admin/sysResourceModel")
+	@ResponseBody
+	public JsonResult sysResourceModel(Long resourceId) {
+		JsonResult jsonResult = new JsonResult( true );
+		try {
+			Assert.notNull( resourceId );
+			SysResource sysResource = sysResourceService.get(resourceId);
+			jsonResult.setData( sysResource );
+		} catch (Exception e) {
+			jsonResult.setSuccess( false ); 
+			jsonResult.setMessage( "获取模型失败" );
+		}
+		return jsonResult;
+	}
 }
