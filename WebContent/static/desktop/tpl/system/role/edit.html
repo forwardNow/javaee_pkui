@@ -22,9 +22,14 @@
                             data-pkui-component="chosen"
                             data-pkui-component-options='{
                                 "url":"{% system.accessSystemlistData %}",
-                                "selectedValue": "{{sysId}}"
+                                "selectedValue": "{{sysId}}",
+                                "optionMapping": {
+                                    "value": "sysId",
+                                    "text": "sysName"
+                                }
                             }'
                             data-rule="“所属系统”: required"
+                            {{if roleId && sysId}} disabled {{/if}}
                     ></select>
                 </td>
             </tr>

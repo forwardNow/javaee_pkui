@@ -369,12 +369,12 @@ public class SysMenuController extends BaseController {
 		try {
 			String json = 
 					  "["
-					+ "    { \"value\": \"subsys_01\", \"text\": \"执法监督综合应用门户\" },"
-					+ "    { \"value\": \"subsys_02\", \"text\": \"执法问题动态跟踪子系统\" },"
-					+ "    { \"value\": \"subsys_03\", \"text\": \"如实受立案监督子系统\" },"
-					+ "    { \"value\": \"subsys_04\", \"text\": \"执法时限预警子系统\" },"
-					+ "    { \"value\": \"subsys_05\", \"text\": \"电子屏动态监督子系统\" },"
-					+ "    { \"value\": \"subsys_06\", \"text\": \"问题模型管理子系统\" }"
+					+ "    { \"sysId\": \"subsys_01\", \"sysName\": \"执法监督综合应用门户\" },"
+					+ "    { \"sysId\": \"subsys_02\", \"sysName\": \"执法问题动态跟踪子系统\" },"
+					+ "    { \"sysId\": \"subsys_03\", \"sysName\": \"如实受立案监督子系统\" },"
+					+ "    { \"sysId\": \"subsys_04\", \"sysName\": \"执法时限预警子系统\" },"
+					+ "    { \"sysId\": \"subsys_05\", \"sysName\": \"电子屏动态监督子系统\" },"
+					+ "    { \"sysId\": \"subsys_06\", \"sysName\": \"问题模型管理子系统\" }"
 					+ "]";
 			
 			ObjectMapper mapper = new ObjectMapper();
