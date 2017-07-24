@@ -146,6 +146,7 @@ public class SysMenuController extends BaseController {
 	@ResponseBody
 	public JsonResult sysMenuAdd(SysMenu sysMenu) {
 		try {
+			/*
 			if ( sysMenu.getSysId() != null ) {
 				
 				String json = 
@@ -163,7 +164,7 @@ public class SysMenuController extends BaseController {
 				sysMenu.setSysName( set.get( sysMenu.getSysId() ) );
 				
 			}
-			
+			*/
 			
 			sysMenuService.insertSysMenu(sysMenu);
 			LogUtils.log(AdminFunctionId.SYS_MENU_ADD, "菜单新增成功");
@@ -363,6 +364,7 @@ public class SysMenuController extends BaseController {
 		return jsonResult;
 	}
 	
+	/*
 	@RequestMapping("/admin/subSysListData")
 	@ResponseBody
 	public GridResult subSysListData(){
@@ -380,6 +382,7 @@ public class SysMenuController extends BaseController {
 			ObjectMapper mapper = new ObjectMapper();
 			List<Map<String, String>> list = mapper.readValue( json, List.class );
 			
+			
 			return new GridResult(true,list);
 		} catch (Exception e) {
 			return new GridResult( false, null );
@@ -387,5 +390,6 @@ public class SysMenuController extends BaseController {
 		
 	}
 	
+	 */
 	
 }

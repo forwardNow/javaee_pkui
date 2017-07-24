@@ -129,6 +129,7 @@ public class SysRoleController extends BaseController {
 	@ResponseBody
 	public JsonResult sysRoleSave(SysRole sysRole) {
 		try {			
+			/*
 			if ( sysRole.getSysId() != null ) {
 				
 				String json = 
@@ -146,6 +147,7 @@ public class SysRoleController extends BaseController {
 				sysRole.setSysName( set.get( sysRole.getSysId() ) );
 				
 			}
+			*/
 			if(sysRole.getRoleId() == null){
 				sysRoleService.insertSysRole(sysRole);
 				LogUtils.log(AdminFunctionId.SYS_ROLE_SAVE_ADD, "新增角色成功");

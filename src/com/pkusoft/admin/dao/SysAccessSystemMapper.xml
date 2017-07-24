@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pkusoft.admin.dao.SysAccessSystemMapper" >
+  <!-- 结果集映射 -->
+  <resultMap id="BaseResultMap" type="com.pkusoft.admin.model.SysAccessSystem" >
+    <id column="SYS_ID" property="sysId" jdbcType="VARCHAR" />
+    <result column="SYS_NAME" property="sysName" jdbcType="VARCHAR" />
+    <result column="SYS_TYPE" property="sysType" jdbcType="VARCHAR" />
+    <result column="URL" property="url" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="MODIFY_USER_ID" property="modifyUserId" jdbcType="VARCHAR" />
+    <result column="MODIFY_USER_NAME" property="modifyUserName" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="RESERVE1" property="reserve1" jdbcType="VARCHAR" />
+    <result column="RESERVE2" property="reserve2" jdbcType="VARCHAR" />
+    <result column="RESERVE4" property="reserve4" jdbcType="VARCHAR" />
+    <result column="RESERVE3" property="reserve3" jdbcType="VARCHAR" />
+    <result column="RESERVE5" property="reserve5" jdbcType="VARCHAR" />
+    <result column="ICON" property="icon" jdbcType="VARCHAR" />
+  </resultMap>
+  <!-- MySQL分页SQL片段 -->
+  <sql id="pageHeader">
+    
+  </sql>
+  <sql id="pageRoot">
+      limit #{pager.start}, #{pager.pageSize}
+  </sql>
+  <!-- 查询操作的查询标准SQL片段 -->
+  <sql id="Criteria_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!-- 更新操作的查询标准SQL片段 -->
+  <sql id="Update_By_Criteria_Where_Clause" >
+    <where >
+      <foreach collection="criteria.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!-- 查询字段SQL片段 -->
+  <sql id="Base_Column_List" >
+  	SYS_ID,
+  	SYS_NAME,
+  	SYS_TYPE,
+  	URL,
+  	DESCRIPTION,
+  	MODIFY_USER_ID,
+  	MODIFY_USER_NAME,
+  	MODIFY_TIME,
+  	RESERVE1,
+  	RESERVE2,
+  	RESERVE4,
+  	RESERVE3,
+  	RESERVE5,
+  	ICON
+  </sql>
+  <!-- 根据查询标准获取列表数据-->
+  <select id="getListByCriteria" resultMap="BaseResultMap" parameterType="com.pkusoft.framework.model.Criteria" >
+  	<if test="pager != null" >
+      <include refid="pageHeader" />
+    </if> 
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_ACCESS_SYSTEM
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="pager != null" >
+      <include refid="pageRoot" />
+    </if>
+  </select>
+  <!-- 根据主键获取对象信息 -->
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_ACCESS_SYSTEM
+    where 
+    SYS_ID = #{sysId,jdbcType=VARCHAR}
+  </select>
+  <!-- 根据主键删除记录 -->
+  <delete id="delete" parameterType="java.lang.Object" >
+    delete from SYS_ACCESS_SYSTEM
+    where 
+    SYS_ID = #{sysId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.pkusoft.framework.model.Criteria" >
+    delete from SYS_ACCESS_SYSTEM
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </delete>
+  <!-- 全字段插入 -->
+  <insert id="insert" parameterType="com.pkusoft.admin.model.SysAccessSystem" >
+    insert into SYS_ACCESS_SYSTEM (
+    SYS_ID,
+    SYS_NAME,
+    SYS_TYPE,
+    URL,
+    DESCRIPTION,
+    MODIFY_USER_ID,
+    MODIFY_USER_NAME,
+    MODIFY_TIME,
+    RESERVE1,
+    RESERVE2,
+    RESERVE4,
+    RESERVE3,
+    RESERVE5,
+    ICON
+      )
+    values (
+    #{sysId,jdbcType=VARCHAR},
+    #{sysName,jdbcType=VARCHAR},
+    #{sysType,jdbcType=VARCHAR},
+    #{url,jdbcType=VARCHAR},
+    #{description,jdbcType=VARCHAR},
+    #{modifyUserId,jdbcType=VARCHAR},
+    #{modifyUserName,jdbcType=VARCHAR},
+    #{modifyTime,jdbcType=TIMESTAMP},
+    #{reserve1,jdbcType=VARCHAR},
+    #{reserve2,jdbcType=VARCHAR},
+    #{reserve4,jdbcType=VARCHAR},
+    #{reserve3,jdbcType=VARCHAR},
+    #{reserve5,jdbcType=VARCHAR},
+    #{icon,jdbcType=VARCHAR}
+      )
+  </insert>
+  <!-- 选择值不为空的字段插入 -->
+  <insert id="insertSelective" parameterType="com.pkusoft.admin.model.SysAccessSystem" >
+    insert into SYS_ACCESS_SYSTEM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sysId != null" >
+	    SYS_ID,
+      </if>
+      <if test="sysName != null" >
+	    SYS_NAME,
+      </if>
+      <if test="sysType != null" >
+	    SYS_TYPE,
+      </if>
+      <if test="url != null" >
+	    URL,
+      </if>
+      <if test="description != null" >
+	    DESCRIPTION,
+      </if>
+      <if test="modifyUserId != null" >
+	    MODIFY_USER_ID,
+      </if>
+      <if test="modifyUserName != null" >
+	    MODIFY_USER_NAME,
+      </if>
+      <if test="modifyTime != null" >
+	    MODIFY_TIME,
+      </if>
+      <if test="reserve1 != null" >
+	    RESERVE1,
+      </if>
+      <if test="reserve2 != null" >
+	    RESERVE2,
+      </if>
+      <if test="reserve4 != null" >
+	    RESERVE4,
+      </if>
+      <if test="reserve3 != null" >
+	    RESERVE3,
+      </if>
+      <if test="reserve5 != null" >
+	    RESERVE5,
+      </if>
+      <if test="icon != null" >
+	    ICON,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sysId != null" >
+	    #{sysId,jdbcType=VARCHAR},
+      </if>
+      <if test="sysName != null" >
+	    #{sysName,jdbcType=VARCHAR},
+      </if>
+      <if test="sysType != null" >
+	    #{sysType,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+	    #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+	    #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUserId != null" >
+	    #{modifyUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUserName != null" >
+	    #{modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+	    #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserve1 != null" >
+	    #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+	    #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+	    #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+	    #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null" >
+	    #{reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+	    #{icon,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- 根据查询标准获取记录数 -->
+  <select id="getCountByCriteria" parameterType="com.pkusoft.framework.model.Criteria" resultType="java.lang.Integer" >
+    select count(*) from SYS_ACCESS_SYSTEM
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </select>
+  <!-- 根据查询标准更新 ，选择字段值不为空的更新 -->
+  <update id="updateByCriteriaSelective" parameterType="map" >
+    update SYS_ACCESS_SYSTEM
+    <set >
+      <if test="record.sysId != null" >
+	    SYS_ID = #{record.sysId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sysName != null" >
+	    SYS_NAME = #{record.sysName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sysType != null" >
+	    SYS_TYPE = #{record.sysType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null" >
+	    URL = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null" >
+	    DESCRIPTION = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyUserId != null" >
+	    MODIFY_USER_ID = #{record.modifyUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyUserName != null" >
+	    MODIFY_USER_NAME = #{record.modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyTime != null" >
+	    MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.reserve1 != null" >
+	    RESERVE1 = #{record.reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve2 != null" >
+	    RESERVE2 = #{record.reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve4 != null" >
+	    RESERVE4 = #{record.reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve3 != null" >
+	    RESERVE3 = #{record.reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve5 != null" >
+	    RESERVE5 = #{record.reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.icon != null" >
+	    ICON = #{record.icon,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <!-- 根据查询标准全字段更新 -->
+  <update id="updateByCriteria" parameterType="map" >
+    update SYS_ACCESS_SYSTEM
+    set 
+		SYS_ID = #{record.sysId,jdbcType=VARCHAR},
+		SYS_NAME = #{record.sysName,jdbcType=VARCHAR},
+		SYS_TYPE = #{record.sysType,jdbcType=VARCHAR},
+		URL = #{record.url,jdbcType=VARCHAR},
+		DESCRIPTION = #{record.description,jdbcType=VARCHAR},
+		MODIFY_USER_ID = #{record.modifyUserId,jdbcType=VARCHAR},
+		MODIFY_USER_NAME = #{record.modifyUserName,jdbcType=VARCHAR},
+		MODIFY_TIME = #{record.modifyTime,jdbcType=TIMESTAMP},
+		RESERVE1 = #{record.reserve1,jdbcType=VARCHAR},
+		RESERVE2 = #{record.reserve2,jdbcType=VARCHAR},
+		RESERVE4 = #{record.reserve4,jdbcType=VARCHAR},
+		RESERVE3 = #{record.reserve3,jdbcType=VARCHAR},
+		RESERVE5 = #{record.reserve5,jdbcType=VARCHAR},
+		ICON = #{record.icon,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <!-- 根据主键更新 ，选择字段值不为空的更新 -->
+  <update id="updateSelective" parameterType="com.pkusoft.admin.model.SysAccessSystem" >
+    update SYS_ACCESS_SYSTEM
+    <set >
+      <if test="sysId != null" >
+       SYS_ID = #{sysId,jdbcType=VARCHAR},
+      </if>
+      <if test="sysName != null" >
+       SYS_NAME = #{sysName,jdbcType=VARCHAR},
+      </if>
+      <if test="sysType != null" >
+       SYS_TYPE = #{sysType,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+       URL = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+       DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUserId != null" >
+       MODIFY_USER_ID = #{modifyUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUserName != null" >
+       MODIFY_USER_NAME = #{modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+       MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserve1 != null" >
+       RESERVE1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+       RESERVE2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+       RESERVE4 = #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+       RESERVE3 = #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null" >
+       RESERVE5 = #{reserve5,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+       ICON = #{icon,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where 
+    SYS_ID = #{sysId,jdbcType=VARCHAR}
+  </update>
+  <!-- 根据主键全字段更新 -->
+  <update id="update" parameterType="com.pkusoft.admin.model.SysAccessSystem" >
+    update SYS_ACCESS_SYSTEM
+    set 
+		SYS_ID = #{sysId,jdbcType=VARCHAR},
+		SYS_NAME = #{sysName,jdbcType=VARCHAR},
+		SYS_TYPE = #{sysType,jdbcType=VARCHAR},
+		URL = #{url,jdbcType=VARCHAR},
+		DESCRIPTION = #{description,jdbcType=VARCHAR},
+		MODIFY_USER_ID = #{modifyUserId,jdbcType=VARCHAR},
+		MODIFY_USER_NAME = #{modifyUserName,jdbcType=VARCHAR},
+		MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+		RESERVE1 = #{reserve1,jdbcType=VARCHAR},
+		RESERVE2 = #{reserve2,jdbcType=VARCHAR},
+		RESERVE4 = #{reserve4,jdbcType=VARCHAR},
+		RESERVE3 = #{reserve3,jdbcType=VARCHAR},
+		RESERVE5 = #{reserve5,jdbcType=VARCHAR},
+		ICON = #{icon,jdbcType=VARCHAR}
+    where 
+    SYS_ID = #{sysId,jdbcType=VARCHAR}
+  </update> 
+  
+  <!-- 在以下扩展数据操作接口 -->
+  
+</mapper>
