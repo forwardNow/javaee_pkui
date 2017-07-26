@@ -26,6 +26,7 @@ import com.pkusoft.common.util.CriteriaExt;
 import com.pkusoft.common.util.CriteriaUtil;
 import com.pkusoft.common.util.LogUtils;
 import com.pkusoft.framework.User;
+import com.pkusoft.framework.User.UserInfo;
 import com.pkusoft.framework.controller.BaseController;
 import com.pkusoft.framework.exception.BizException;
 import com.pkusoft.framework.model.Criteria;
@@ -367,6 +368,24 @@ public class SysUserController extends BaseController {
 			jsonResult.setSuccess( false );
 			jsonResult.setMessage( "保存失败" );
 			return jsonResult;
+		}
+	}
+	
+	@RequestMapping("/admin/getCurrentSysUser")
+	@ResponseBody
+	public JsonResult getCurrentSysUser(Long userId, HttpSession session) {
+		try {
+			UserInfo userInfo = (UserInfo) session.getAttribute( "_pku_user" );
+			
+			SysUser sysUser = new SysUser();
+			
+			sysUser.setUserId( userInfo.getUserId() );
+			sysUser.setLoginName( userInfo.getLoginName() );
+			sysUser.setUserName( userInfo.getUserName() );
+			
+			return new JsonResult( true, sysUser );
+		} catch (Exception e) {
+			return new JsonResult( false, "获取数据失败" );
 		}
 	}
 }

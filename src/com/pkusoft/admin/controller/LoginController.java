@@ -149,4 +149,20 @@ public class LoginController {
 		}
 	}
 
+	
+	/**
+	 * 退出登录页面
+	 * 
+	 * @return
+	 */
+	@RequestMapping( "/doLogout" )
+	@ResponseBody
+	public JsonResult doLogout() {
+		try {
+			this.logout();
+		} catch ( Exception e ) {
+			return new JsonResult( false );
+		}
+		return new JsonResult( true );
+	}
 }
