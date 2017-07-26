@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>系统登陆</title>
     <link rel="shortcut icon" href="images/favicon.ico" />
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="${ ctx }/static/desktop/css/style.css">
     <!--
         data-main：当前应用的入口js文件
         data-timestamp: 时间戳（dev为开发模式），比如 data-timestamp="v=2017-02-27"
@@ -24,7 +24,9 @@
      .form input { outline: 0; background: #f2f2f2; width: 100%; border: 0; margin: 0 0 15px; padding: 15px; box-sizing: border-box; font-size: 14px; }
      .form button { outline: 0; background: #33a6e7; width: 100%; border: 0; padding: 15px; color: #FFFFFF; font-size: 14px; -webkit-transition: all 0.3s ease; transition: all 0.3s ease; cursor: pointer; }
      .form button:hover,
-     .form button:active,.form button:focus { background: #43A047; }
+     .form button:active,
+     .form button:focus,
+     .form button[disabled] { background: #43A047; }
 </style>
 <body>
 <div class="login-page">
@@ -42,20 +44,6 @@
     </div>
 </div>	
 <script>
-+function() {
-	var 
-		doc = document,
-		submitBtn = document.getElementById( "submitBtn" ),
-		loginForm = document.getElementById( "loginForm" )
-	;
-	loginForm.addEventListener( "submit", doSubmit, false );
-
-}();
-
-	function doSubmit () {
-		submitBtn.innerHTML = "登陆中...";
-		submitBtn.disabled = true;
-	}
 
     // 请求发送成功，对服务器端返回的数据进行处理
     function doLoginDoneCallback($form, jsonResult) {
@@ -86,7 +74,7 @@
 
     // 无论请求发送成功与否
     function doLoginAlwaysCallback($form) {
-    	jQuery( "#submitBtn" ).html( "登陆" ).removeAttr( "disabled" );
+
     }
 </script>
 </body>
