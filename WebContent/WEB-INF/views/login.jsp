@@ -15,7 +15,7 @@
         data-main：当前应用的入口js文件
         data-timestamp: 时间戳（dev为开发模式），比如 data-timestamp="v=2017-02-27"
      -->
-    <script data-main="${ ctx }/static/js/main.js" data-timestamp="2017-03-22" src="${ ctx }/static/pkui/pkui.js"></script>
+    <script data-main="${ ctx }/static/js/main.js" data-timestamp="2017-07-26" src="${ ctx }/static/pkui/pkui.js"></script>
 </head>
 <style>
      body { background: #33a6e7; }
@@ -28,8 +28,8 @@
 </style>
 <body>
 <div class="login-page">
-    <div class="form">
-        <form class="login-form" action="${ ctx }/doLogin"
+    <div class="form" id="loginForm">
+        <form class="login-form" action="${ ctx }/doLogin" method="post"
 		    data-pkui-component="validator|form"
 		    data-done-callback="doLoginDoneCallback"
 		    data-fail-callback="doLoginFailCallback"
@@ -37,23 +37,39 @@
 		    
             <input type="text" name="loginName"  value="admin"/>
             <input type="text" name="password" value="a"/>
-            <button type="submit">登陆</button>
+            <button type="submit" id="submitBtn">登陆</button>
         </form>
     </div>
 </div>	
 <script>
++function() {
+	var 
+		doc = document,
+		submitBtn = document.getElementById( "submitBtn" ),
+		loginForm = document.getElementById( "loginForm" )
+	;
+	loginForm.addEventListener( "submit", doSubmit, false );
+
+}();
+
+	function doSubmit () {
+		submitBtn.innerHTML = "登陆中...";
+		submitBtn.disabled = true;
+	}
 
     // 请求发送成功，对服务器端返回的数据进行处理
     function doLoginDoneCallback($form, jsonResult) {
-        console.info( jsonResult );
         jsonResult = window.PKUI.handleJsonResult( jsonResult );
-        console.info( jsonResult );
         // 服务器端处理成功
         if ( jsonResult.success ) {
             // 提示
-            layer.alert( jsonResult.message, { icon: 1 }, function ( index ) {
-            	location = "${ ctx }/static/desktop/index.html";
-            } );
+            layer.msg( jsonResult.message || "登陆成功，即将跳转。", { 
+            	icon: 1,
+            	time: 1000,
+            	end: function () {
+            		location = "${ ctx }/static/desktop/index.html";
+            	}
+           	});
         }
         // 服务器端处理失败
         else {
@@ -70,7 +86,7 @@
 
     // 无论请求发送成功与否
     function doLoginAlwaysCallback($form) {
-        // 无论
+    	jQuery( "#submitBtn" ).html( "登陆" ).removeAttr( "disabled" );
     }
 </script>
 </body>
