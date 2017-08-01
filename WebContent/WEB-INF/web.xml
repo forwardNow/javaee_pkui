@@ -131,7 +131,7 @@
 
 	<!-- session超时定义,单位为分钟 -->
 	<session-config>
-		<session-timeout>3</session-timeout>
+		<session-timeout>30</session-timeout>
 	</session-config>
 
 	<!-- 出错页面定义 -->
