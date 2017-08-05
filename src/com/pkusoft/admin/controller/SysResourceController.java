@@ -18,9 +18,11 @@ import com.pkusoft.common.constants.AdminFunctionId;
 import com.pkusoft.common.constants.AdminUrlRecource;
 import com.pkusoft.common.util.LogUtils;
 import com.pkusoft.framework.controller.BaseController;
+import com.pkusoft.framework.model.Criteria;
 import com.pkusoft.framework.model.GridResult;
 import com.pkusoft.framework.model.JsonResult;
 import com.pkusoft.framework.model.Pager;
+import com.pkusoft.framework.util.WebUtils;
 
 /**
  * 资源控制器
@@ -76,6 +78,30 @@ public class SysResourceController extends BaseController {
 			return new GridResult(false, null);
 		}
 	}
+	
+	/**
+	 * 资源列表数据
+	 * @param sysResource
+	 * @param pager
+	 * @return
+	 */
+	@RequestMapping("/admin/sysResourceListDataExt")
+	@ResponseBody
+	public GridResult sysResourceListDataExt(String txtQuery) {
+		try {
+			Criteria<?> criteria = WebUtils.toCriteria(txtQuery);
+			List<SysResource> list = sysResourceService.getListByCriteria( criteria);
+			int count = criteria.getPager().getTotalRecords();
+			if ( count == 0 ) {
+				count = sysResourceService.getCountByCriteria( criteria );
+			}
+			return new GridResult(true, list, count);
+		} catch (Exception e) {
+			logger.error("查询列表数据出错", e);
+			return new GridResult(false, null);
+		}
+	}
+	
 	
 	/**
 	 * 资源表单页面

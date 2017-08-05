@@ -69,6 +69,29 @@ public class SysParaController extends BaseController {
 	}
 	
 	/**
+	 * 列表数据
+	 * 
+	 * @param sysPara
+	 * @param pager
+	 * @return
+	 */
+	@RequestMapping("/admin/sysParaListDataExt")
+	@ResponseBody	  
+	public GridResult getSysParaListDataExt(String txtQuery) {
+		try {
+			Criteria<?> criteria = WebUtils.toCriteria(txtQuery);
+			List<SysPara> list = sysParaService.getListByCriteria( criteria);
+			int count = criteria.getPager().getTotalRecords();
+			if ( count == 0 ) {
+				count = sysParaService.getCountByCriteria( criteria );
+			}
+			return new GridResult(true, list, count);
+		} catch (Exception e) {
+			logger.error("查询列表数据出错", e);
+			return new GridResult(false, null);
+		}
+	}	
+	/**
 	 * 表单页面
 	 * 
 	 * @param model
@@ -165,6 +188,27 @@ public class SysParaController extends BaseController {
 	@RequestMapping(AdminUrlRecource.CHECK_SYS_PARA_FORM)
 	@ResponseBody
 	public JsonResult checkSysParaForm(java.lang.String paraCode, String oldParaCode) {
+		try {
+			if ( oldParaCode != null && oldParaCode.equals( paraCode ) ) {
+				return new JsonResult(true, "参数名称唯一");
+			}
+			boolean checkSysParaForm = ! sysParaService.checkSysParaForm(paraCode);
+			return new JsonResult(checkSysParaForm,"参数名称唯一");
+		} catch (Exception e) {
+			logger.error("参数名称唯一性验证出错", e);
+			return new JsonResult(false, "唯一性校验失败");
+		}
+	}
+	
+	/**
+	 * 检查是否有同名参数名称
+	 * 
+	 * @param paraCode
+	 * @return
+	 */
+	@RequestMapping( "/admin/checksysParaFormExt" )
+	@ResponseBody
+	public JsonResult checksysParaFormExt(java.lang.String paraCode, String oldParaCode) {
 		try {
 			if ( oldParaCode != null && oldParaCode.equals( paraCode ) ) {
 				return new JsonResult(true, "参数名称唯一");

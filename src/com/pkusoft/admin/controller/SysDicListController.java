@@ -27,7 +27,6 @@ import com.pkusoft.common.constants.AdminUrlRecource;
 import com.pkusoft.common.util.ExcelUtil;
 import com.pkusoft.common.util.LogUtils;
 import com.pkusoft.framework.controller.BaseController;
-import com.pkusoft.framework.exception.ExcelException;
 import com.pkusoft.framework.model.Criteria;
 import com.pkusoft.framework.model.GridResult;
 import com.pkusoft.framework.model.JsonResult;
@@ -85,9 +84,6 @@ public class SysDicListController extends BaseController {
 	/**
 	 * 列表数据
 	 * 
-	 * @param sysDicList
-	 * @param pager
-	 * @return
 	 */
 	@RequestMapping( "/admin/sysDicListListDataExt" )
 	@ResponseBody
