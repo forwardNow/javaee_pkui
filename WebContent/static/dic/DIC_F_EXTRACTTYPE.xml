@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="chafeng" DIC_SPELL="cf" DIC_TEXT="查封" DIC_CODE="10"/>
-    <row DIC_ASPELL="kouya" DIC_SPELL="ky" DIC_TEXT="扣押" DIC_CODE="20"/>
-    <row DIC_ASPELL="dongjie" DIC_SPELL="dj" DIC_TEXT="冻结" DIC_CODE="30"/>
-    <row DIC_ASPELL="kouliu" DIC_SPELL="kl" DIC_TEXT="扣留" DIC_CODE="40"/>
+    <row DIC_ASPELL="chafeng" DIC_SPELL="cf" DIC_TEXT="查封" DIC_CODE="10" DIC_PERM="1"/>
+    <row DIC_ASPELL="kouya" DIC_SPELL="ky" DIC_TEXT="扣押" DIC_CODE="20" DIC_PERM="1"/>
+    <row DIC_ASPELL="dongjie" DIC_SPELL="dj" DIC_TEXT="冻结" DIC_CODE="30" DIC_PERM="1"/>
+    <row DIC_ASPELL="kouliu" DIC_SPELL="kl" DIC_TEXT="扣留" DIC_CODE="40" DIC_PERM="1"/>
 </data>

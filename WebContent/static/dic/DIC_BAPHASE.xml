@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="jiya" DIC_SPELL="jy" DIC_TEXT="羁押" DIC_CODE="0"/>
-    <row DIC_ASPELL="qubaohoushen" DIC_SPELL="qbhs" DIC_TEXT="取保候审" DIC_CODE="1"/>
-    <row DIC_ASPELL="jianshijuzhu" DIC_SPELL="jsjz" DIC_TEXT="监视居住" DIC_CODE="2"/>
-    <row DIC_ASPELL="juchuan" DIC_SPELL="jc" DIC_TEXT="拘传" DIC_CODE="3"/>
-    <row DIC_ASPELL="chuanhuan" DIC_SPELL="ch" DIC_TEXT="传唤" DIC_CODE="4"/>
-    <row DIC_ASPELL="zhixingxingfa" DIC_SPELL="zxxf" DIC_TEXT="执行刑法" DIC_CODE="5"/>
-    <row DIC_ASPELL="zanyujianwaizhixing" DIC_SPELL="zyjwzx" DIC_TEXT="暂予监外执行" DIC_CODE="6"/>
-    <row DIC_ASPELL="huanxing" DIC_SPELL="hx" DIC_TEXT="缓刑" DIC_CODE="7"/>
-    <row DIC_ASPELL="jiashi" DIC_SPELL="js" DIC_TEXT="假释" DIC_CODE="8"/>
+    <row DIC_ASPELL="jiya" DIC_SPELL="jy" DIC_TEXT="羁押" DIC_CODE="0" DIC_PERM="1"/>
+    <row DIC_ASPELL="qubaohoushen" DIC_SPELL="qbhs" DIC_TEXT="取保候审" DIC_CODE="1" DIC_PERM="1"/>
+    <row DIC_ASPELL="jianshijuzhu" DIC_SPELL="jsjz" DIC_TEXT="监视居住" DIC_CODE="2" DIC_PERM="1"/>
+    <row DIC_ASPELL="juchuan" DIC_SPELL="jc" DIC_TEXT="拘传" DIC_CODE="3" DIC_PERM="1"/>
+    <row DIC_ASPELL="chuanhuan" DIC_SPELL="ch" DIC_TEXT="传唤" DIC_CODE="4" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhixingxingfa" DIC_SPELL="zxxf" DIC_TEXT="执行刑法" DIC_CODE="5" DIC_PERM="1"/>
+    <row DIC_ASPELL="zanyujianwaizhixing" DIC_SPELL="zyjwzx" DIC_TEXT="暂予监外执行" DIC_CODE="6" DIC_PERM="1"/>
+    <row DIC_ASPELL="huanxing" DIC_SPELL="hx" DIC_TEXT="缓刑" DIC_CODE="7" DIC_PERM="1"/>
+    <row DIC_ASPELL="jiashi" DIC_SPELL="js" DIC_TEXT="假释" DIC_CODE="8" DIC_PERM="1"/>
 </data>

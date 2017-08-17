@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="xingzhenganjian" DIC_SPELL="xzaj" DIC_TEXT="行政案件" DIC_CODE="1"/>
-    <row DIC_ASPELL="xingshianjian" DIC_SPELL="xsaj" DIC_TEXT="刑事案件" DIC_CODE="2"/>
-    <row DIC_ASPELL="qita" DIC_SPELL="qt" DIC_TEXT="其他" DIC_CODE="9"/>
-    <row DIC_ASPELL="laojiaoanjian" DIC_SPELL="ljaj" DIC_TEXT="劳教案件" DIC_CODE="3"/>
-    <row DIC_ASPELL="shaojiaoanjian" DIC_SPELL="sjaj" DIC_TEXT="少教案件" DIC_CODE="4"/>
-    <row DIC_ASPELL="zibananjian" DIC_SPELL="zbaj" DIC_TEXT="自办案件" DIC_CODE="5"/>
+    <row DIC_ASPELL="xingzhenganjian" DIC_SPELL="xzaj" DIC_TEXT="行政案件" DIC_CODE="1" DIC_PERM="1"/>
+    <row DIC_ASPELL="xingshianjian" DIC_SPELL="xsaj" DIC_TEXT="刑事案件" DIC_CODE="2" DIC_PERM="1"/>
+    <row DIC_ASPELL="laojiaoanjian" DIC_SPELL="ljaj" DIC_TEXT="劳教案件" DIC_CODE="3" DIC_PERM="1"/>
+    <row DIC_ASPELL="shaojiaoanjian" DIC_SPELL="sjaj" DIC_TEXT="少教案件" DIC_CODE="4" DIC_PERM="1"/>
+    <row DIC_ASPELL="zibananjian" DIC_SPELL="zbaj" DIC_TEXT="自办案件" DIC_CODE="5" DIC_PERM="1"/>
+    <row DIC_ASPELL="qita" DIC_SPELL="qt" DIC_TEXT="其他" DIC_CODE="9" DIC_PERM="1"/>
 </data>

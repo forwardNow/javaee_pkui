@@ -610,6 +610,12 @@ define(function( require ) {
           return;
         }
         if (!(chosen instanceof Chosen)) {
+
+          // FIX 限制option数量
+          if ( !options.max_shown_results || options.max_shown_results > 300) {
+              options.max_shown_results = 50;
+          }
+
           // FIX 标志已注册
           $this.attr( "isrendered", true );
 
@@ -1341,21 +1347,40 @@ define(function( require ) {
       var
           dataList,
           defaultCode = options.defaultCode + "",
-          optionsHtml = "<option></option>"
+          optionsHtml = "<option></option>",
+          displayInvisibleOptions = options.displayInvisibleOptions || false,
+          disableInvisibleOptions = options.disableInvisibleOptions || false
 
       ;
       // 获取字典
       dataList = DataSource.getDataList( options.dic );
+
+      /*
+       情形1 - displayInvisibleOptions = true, disableInvisibleOptions = false：不可见的选项，可显示且可以选择
+       情形2 - displayInvisibleOptions = true, disableInvisibleOptions = true：不可见的选项，可显示且不可以选择
+       情形3 - displayInvisibleOptions = false, disableInvisibleOptions = true/false：不可见的选项，不可显示
+       */
 
       // 构造options
       $.each( dataList, function ( index, item ) {
           var
               code = item.code + "",
               spell = item.spell,
-              text = item.text
+              text = item.text,
+              visible = item.visible,
+              isDisabled
           ;
+
+          if ( visible === "0" ) {
+              if ( !displayInvisibleOptions ) {
+                  return;
+              }
+              isDisabled = disableInvisibleOptions;
+          }
+
           optionsHtml += '<option ' +
-              (defaultCode === code ? 'selected ' : ' ') +
+              ( defaultCode === code ? 'selected ' : ' ') +
+              ( isDisabled ? 'disabled ' : ' ') +
               'value="' + code + '" ' +
               'data-code="' + code + '" ' +
               'data-spell="' + spell + '" ' +

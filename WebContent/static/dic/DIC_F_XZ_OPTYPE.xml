@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="shoujiaoxingzheng" DIC_SPELL="sj（xz）" DIC_TEXT="收缴（行政）" DIC_CODE="23"/>
-    <row DIC_ASPELL="kouyaxingzheng" DIC_SPELL="ky（xz）" DIC_TEXT="扣押（行政）" DIC_CODE="20"/>
-    <row DIC_ASPELL="meishouxingzheng" DIC_SPELL="ms（xz）" DIC_TEXT="没收（行政）" DIC_CODE="25"/>
-    <row DIC_ASPELL="chouyangquzhengxingzheng" DIC_SPELL="cyqz（xz）" DIC_TEXT="抽样取证（行政）" DIC_CODE="22"/>
-    <row DIC_ASPELL="zhuijiaoxingzheng" DIC_SPELL="zj（xz）" DIC_TEXT="追缴（行政）" DIC_CODE="24"/>
-    <row DIC_ASPELL="xianxingdengjixingzheng" DIC_SPELL="xxdj（xz）" DIC_TEXT="先行登记（行政）" DIC_CODE="21"/>
+    <row DIC_ASPELL="kouyaxingzheng" DIC_SPELL="kyxz" DIC_TEXT="扣押（行政）" DIC_CODE="20" DIC_PERM="1"/>
+    <row DIC_ASPELL="xianxingdengjixingzheng" DIC_SPELL="xxdjxz" DIC_TEXT="先行登记（行政）" DIC_CODE="21" DIC_PERM="1"/>
+    <row DIC_ASPELL="chouyangquzhengxingzheng" DIC_SPELL="cyqzxz" DIC_TEXT="抽样取证（行政）" DIC_CODE="22" DIC_PERM="1"/>
+    <row DIC_ASPELL="shoujiaoxingzheng" DIC_SPELL="sjxz" DIC_TEXT="收缴（行政）" DIC_CODE="23" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhuijiaoxingzheng" DIC_SPELL="zjxz" DIC_TEXT="追缴（行政）" DIC_CODE="24" DIC_PERM="1"/>
+    <row DIC_ASPELL="meishouxingzheng" DIC_SPELL="msxz" DIC_TEXT="没收（行政）" DIC_CODE="25" DIC_PERM="1"/>
 </data>

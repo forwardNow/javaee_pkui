@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="weizhidexingbie" DIC_SPELL="wzdxb" DIC_TEXT="未知的性别" DIC_CODE="0"/>
-    <row DIC_ASPELL="nan" DIC_SPELL="n" DIC_TEXT="男" DIC_CODE="1"/>
-    <row DIC_ASPELL="nu:" DIC_SPELL="n" DIC_TEXT="女" DIC_CODE="2"/>
-    <row DIC_ASPELL="weishuomingdexingbie" DIC_SPELL="wsmdxb" DIC_TEXT="未说明的性别" DIC_CODE="9"/>
+    <row DIC_ASPELL="nan" DIC_SPELL="n" DIC_TEXT="男" DIC_CODE="1" DIC_PERM="1"/>
+    <row DIC_ASPELL="nv" DIC_SPELL="n" DIC_TEXT="女" DIC_CODE="2" DIC_PERM="1"/>
+    <row DIC_ASPELL="weizhidexingbie" DIC_SPELL="wzdxb" DIC_TEXT="未知的性别" DIC_CODE="0" DIC_PERM="0"/>
+    <row DIC_ASPELL="weishuomingdexingbie" DIC_SPELL="wsmdxb" DIC_TEXT="未说明的性别" DIC_CODE="9" DIC_PERM="0"/>
 </data>

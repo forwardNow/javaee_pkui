@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="konggao" DIC_SPELL="kg" DIC_TEXT="控告" DIC_CODE="120"/>
-    <row DIC_ASPELL="lairenkonggao" DIC_SPELL="lrkg" DIC_TEXT="来人控告" DIC_CODE="121"/>
-    <row DIC_ASPELL="laixinkonggao" DIC_SPELL="lxkg" DIC_TEXT="来信控告" DIC_CODE="122"/>
-    <row DIC_ASPELL="laidiankonggao" DIC_SPELL="ldkg" DIC_TEXT="来电控告" DIC_CODE="123"/>
-    <row DIC_ASPELL="lairenjubao" DIC_SPELL="lrjb" DIC_TEXT="来人举报" DIC_CODE="131"/>
-    <row DIC_ASPELL="laixinjubao" DIC_SPELL="lxjb" DIC_TEXT="来信举报" DIC_CODE="133"/>
-    <row DIC_ASPELL="laidianjubao" DIC_SPELL="ldjb" DIC_TEXT="来电举报" DIC_CODE="132"/>
-    <row DIC_ASPELL="qitabaoan" DIC_SPELL="qtba" DIC_TEXT="其他报案" DIC_CODE="190"/>
-    <row DIC_ASPELL="touanzishou" DIC_SPELL="tazs" DIC_TEXT="投案自首" DIC_CODE="200"/>
-    <row DIC_ASPELL="jiaoban" DIC_SPELL="jb" DIC_TEXT="交办" DIC_CODE="300"/>
-    <row DIC_ASPELL="zhongyangjiaoban" DIC_SPELL="zyjb" DIC_TEXT="中央交办" DIC_CODE="301"/>
-    <row DIC_ASPELL="gonganbujiaoban" DIC_SPELL="gabjb" DIC_TEXT="公安部交办" DIC_CODE="302"/>
-    <row DIC_ASPELL="shiweishifujiaoban" DIC_SPELL="swsfjb" DIC_TEXT="市委市府交办" DIC_CODE="303"/>
-    <row DIC_ASPELL="shijujiaoban" DIC_SPELL="sjjb" DIC_TEXT="市局交办" DIC_CODE="304"/>
-    <row DIC_ASPELL="qitajiaoban" DIC_SPELL="qtjb" DIC_TEXT="其他交办" DIC_CODE="305"/>
-    <row DIC_ASPELL="rendazhengxiegerentian" DIC_SPELL="rdzxgrta" DIC_TEXT="人大政协个人提案" DIC_CODE="400"/>
-    <row DIC_ASPELL="gongzuofaxian" DIC_SPELL="gzfx" DIC_TEXT="工作发现" DIC_CODE="500"/>
-    <row DIC_ASPELL="jubao" DIC_SPELL="jb" DIC_TEXT="举报" DIC_CODE="130"/>
-    <row DIC_ASPELL="anjiandaichu" DIC_SPELL="ajdc" DIC_TEXT="案件带出" DIC_CODE="501"/>
-    <row DIC_ASPELL="xiebanfaxian" DIC_SPELL="xbfx" DIC_TEXT="协办发现" DIC_CODE="502"/>
-    <row DIC_ASPELL="jichushouduan" DIC_SPELL="jcsd" DIC_TEXT="基础手段" DIC_CODE="503"/>
-    <row DIC_ASPELL="zhuahuoxianxing" DIC_SPELL="zhxx" DIC_TEXT="抓获现行" DIC_CODE="504"/>
-    <row DIC_ASPELL="tanbaijiaodai" DIC_SPELL="tbjd" DIC_TEXT="坦白交代" DIC_CODE="505"/>
-    <row DIC_ASPELL="qicaibaojing" DIC_SPELL="qcbj" DIC_TEXT="器材报警" DIC_CODE="506"/>
-    <row DIC_ASPELL="jiankongfaxian" DIC_SPELL="jkfx" DIC_TEXT="监控发现" DIC_CODE="507"/>
-    <row DIC_ASPELL="xunluofaxian" DIC_SPELL="xlfx" DIC_TEXT="巡逻发现" DIC_CODE="508"/>
-    <row DIC_ASPELL="jizhongxingdongchahuo" DIC_SPELL="jzxdch" DIC_TEXT="集中行动查获" DIC_CODE="509"/>
-    <row DIC_ASPELL="waixitongyiru" DIC_SPELL="wxtyr" DIC_TEXT="外系统移入" DIC_CODE="600"/>
-    <row DIC_ASPELL="qita" DIC_SPELL="qt" DIC_TEXT="其他" DIC_CODE="900"/>
-    <row DIC_ASPELL="baoan" DIC_SPELL="ba" DIC_TEXT="报案" DIC_CODE="100"/>
-    <row DIC_ASPELL="niusongxianxing" DIC_SPELL="nsxx" DIC_TEXT="扭送现行" DIC_CODE="110"/>
+    <row DIC_ASPELL="baoan" DIC_SPELL="ba" DIC_TEXT="报案" DIC_CODE="100" DIC_PERM="1"/>
+    <row DIC_ASPELL="niusongxianxing" DIC_SPELL="nsxx" DIC_TEXT="扭送现行" DIC_CODE="110" DIC_PERM="1"/>
+    <row DIC_ASPELL="konggao" DIC_SPELL="kg" DIC_TEXT="控告" DIC_CODE="120" DIC_PERM="1"/>
+    <row DIC_ASPELL="lairenkonggao" DIC_SPELL="lrkg" DIC_TEXT="来人控告" DIC_CODE="121" DIC_PERM="1"/>
+    <row DIC_ASPELL="laixinkonggao" DIC_SPELL="lxkg" DIC_TEXT="来信控告" DIC_CODE="122" DIC_PERM="1"/>
+    <row DIC_ASPELL="laidiankonggao" DIC_SPELL="ldkg" DIC_TEXT="来电控告" DIC_CODE="123" DIC_PERM="1"/>
+    <row DIC_ASPELL="jubao" DIC_SPELL="jb" DIC_TEXT="举报" DIC_CODE="130" DIC_PERM="1"/>
+    <row DIC_ASPELL="lairenjubao" DIC_SPELL="lrjb" DIC_TEXT="来人举报" DIC_CODE="131" DIC_PERM="1"/>
+    <row DIC_ASPELL="laidianjubao" DIC_SPELL="ldjb" DIC_TEXT="来电举报" DIC_CODE="132" DIC_PERM="1"/>
+    <row DIC_ASPELL="laixinjubao" DIC_SPELL="lxjb" DIC_TEXT="来信举报" DIC_CODE="133" DIC_PERM="1"/>
+    <row DIC_ASPELL="qitabaoan" DIC_SPELL="qtba" DIC_TEXT="其他报案" DIC_CODE="190" DIC_PERM="1"/>
+    <row DIC_ASPELL="touanzishou" DIC_SPELL="tazs" DIC_TEXT="投案自首" DIC_CODE="200" DIC_PERM="1"/>
+    <row DIC_ASPELL="jiaoban" DIC_SPELL="jb" DIC_TEXT="交办" DIC_CODE="300" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhongyangjiaoban" DIC_SPELL="zyjb" DIC_TEXT="中央交办" DIC_CODE="301" DIC_PERM="1"/>
+    <row DIC_ASPELL="gonganbujiaoban" DIC_SPELL="gabjb" DIC_TEXT="公安部交办" DIC_CODE="302" DIC_PERM="1"/>
+    <row DIC_ASPELL="shiweishifujiaoban" DIC_SPELL="swsfjb" DIC_TEXT="市委市府交办" DIC_CODE="303" DIC_PERM="1"/>
+    <row DIC_ASPELL="shijujiaoban" DIC_SPELL="sjjb" DIC_TEXT="市局交办" DIC_CODE="304" DIC_PERM="1"/>
+    <row DIC_ASPELL="qitajiaoban" DIC_SPELL="qtjb" DIC_TEXT="其他交办" DIC_CODE="305" DIC_PERM="1"/>
+    <row DIC_ASPELL="rendazhengxiegerentian" DIC_SPELL="rdzxgrta" DIC_TEXT="人大政协个人提案" DIC_CODE="400" DIC_PERM="1"/>
+    <row DIC_ASPELL="gongzuofaxian" DIC_SPELL="gzfx" DIC_TEXT="工作发现" DIC_CODE="500" DIC_PERM="1"/>
+    <row DIC_ASPELL="anjiandaichu" DIC_SPELL="ajdc" DIC_TEXT="案件带出" DIC_CODE="501" DIC_PERM="1"/>
+    <row DIC_ASPELL="xiebanfaxian" DIC_SPELL="xbfx" DIC_TEXT="协办发现" DIC_CODE="502" DIC_PERM="1"/>
+    <row DIC_ASPELL="jichushouduan" DIC_SPELL="jcsd" DIC_TEXT="基础手段" DIC_CODE="503" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhuahuoxianxing" DIC_SPELL="zhxx" DIC_TEXT="抓获现行" DIC_CODE="504" DIC_PERM="1"/>
+    <row DIC_ASPELL="tanbaijiaodai" DIC_SPELL="tbjd" DIC_TEXT="坦白交代" DIC_CODE="505" DIC_PERM="1"/>
+    <row DIC_ASPELL="qicaibaojing" DIC_SPELL="qcbj" DIC_TEXT="器材报警" DIC_CODE="506" DIC_PERM="1"/>
+    <row DIC_ASPELL="jiankongfaxian" DIC_SPELL="jkfx" DIC_TEXT="监控发现" DIC_CODE="507" DIC_PERM="1"/>
+    <row DIC_ASPELL="xunluofaxian" DIC_SPELL="xlfx" DIC_TEXT="巡逻发现" DIC_CODE="508" DIC_PERM="1"/>
+    <row DIC_ASPELL="jizhongxingdongchahuo" DIC_SPELL="jzxdch" DIC_TEXT="集中行动查获" DIC_CODE="509" DIC_PERM="1"/>
+    <row DIC_ASPELL="waixitongyiru" DIC_SPELL="wxtyr" DIC_TEXT="外系统移入" DIC_CODE="600" DIC_PERM="1"/>
+    <row DIC_ASPELL="qita" DIC_SPELL="qt" DIC_TEXT="其他" DIC_CODE="900" DIC_PERM="1"/>
 </data>

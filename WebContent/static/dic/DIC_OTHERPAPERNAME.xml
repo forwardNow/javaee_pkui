@@ -1,117 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="linshishenfenzheng" DIC_SPELL="lssfz" DIC_TEXT="临时身份证" DIC_CODE="0102"/>
-    <row DIC_ASPELL="juzhuzheng" DIC_SPELL="jzz" DIC_TEXT="居住证" DIC_CODE="0103"/>
-    <row DIC_ASPELL="changyonglei" DIC_SPELL="cyl" DIC_TEXT="常用类" DIC_CODE="0100"/>
-    <row DIC_ASPELL="zhonghuarenmingongheguolu:xingzheng" DIC_SPELL="zhrmghglxz" DIC_TEXT="中华人民共和国旅行证" DIC_CODE="0601"/>
-    <row DIC_ASPELL="churuzheng" DIC_SPELL="crz" DIC_TEXT="出入证" DIC_CODE="0563"/>
-    <row DIC_ASPELL="fangwuchanquanzheng" DIC_SPELL="fwcqz" DIC_TEXT="房屋产权证" DIC_CODE="0571"/>
-    <row DIC_ASPELL="tudishiyongzheng" DIC_SPELL="tdsyz" DIC_TEXT="土地使用证" DIC_CODE="0572"/>
-    <row DIC_ASPELL="yangquanxukezheng" DIC_SPELL="yqxkz" DIC_TEXT="养犬许可证" DIC_CODE="0598"/>
-    <row DIC_ASPELL="tezhongxingyejingyingxukezheng" DIC_SPELL="tzxyjyxkz" DIC_TEXT="特种行业经营许可证" DIC_CODE="0599"/>
-    <row DIC_ASPELL="churujinglei" DIC_SPELL="crjl" DIC_TEXT="出入境类" DIC_CODE="0600"/>
-    <row DIC_ASPELL="wanglaigangaotongxingzheng" DIC_SPELL="wlgatxz" DIC_TEXT="往来港澳通行证" DIC_CODE="0604"/>
-    <row DIC_ASPELL="qianwanggangaotongxingzheng" DIC_SPELL="qwgatxz" DIC_TEXT="前往港澳通行证" DIC_CODE="0605"/>
-    <row DIC_ASPELL="gangaotongbaohuixiangzhenggangaojuminlaiwangneiditongxingzheng" DIC_SPELL="gatbhxz（gajmlwndtxz）" DIC_TEXT="港澳同胞回乡证（港澳居民来往内地通行证）" DIC_CODE="0606"/>
-    <row DIC_ASPELL="dalujuminwanglaitaiwantongxingzheng" DIC_SPELL="dljmwltwtxz" DIC_TEXT="大陆居民往来台湾通行证" DIC_CODE="0607"/>
-    <row DIC_ASPELL="wanglaixianggangaomentebiexingzhengqutongxingzheng" DIC_SPELL="wlxgamtbxzqtxz" DIC_TEXT="往来香港澳门特别行政区通行证" DIC_CODE="0608"/>
-    <row DIC_ASPELL="huaqiaohuiguodingjuzheng" DIC_SPELL="hqhgdjz" DIC_TEXT="华侨回国定居证" DIC_CODE="0609"/>
-    <row DIC_ASPELL="taiwantongbaodingjuzheng" DIC_SPELL="twtbdjz" DIC_TEXT="台湾同胞定居证" DIC_CODE="0610"/>
-    <row DIC_ASPELL="waiguorenchurujingzheng" DIC_SPELL="wgrcrjz" DIC_TEXT="外国人出入境证" DIC_CODE="0611"/>
-    <row DIC_ASPELL="waiguorenlu:xingzheng" DIC_SPELL="wgrlxz" DIC_TEXT="外国人旅行证" DIC_CODE="0612"/>
-    <row DIC_ASPELL="waiguorenjuliuzheng" DIC_SPELL="wgrjlz" DIC_TEXT="外国人居留证" DIC_CODE="0613"/>
-    <row DIC_ASPELL="waiguorenlinshijuliuzheng" DIC_SPELL="wgrlsjlz" DIC_TEXT="外国人临时居留证" DIC_CODE="0614"/>
-    <row DIC_ASPELL="rujizhengshu" DIC_SPELL="rjzs" DIC_TEXT="入籍证书" DIC_CODE="0615"/>
-    <row DIC_ASPELL="chujizhengshu" DIC_SPELL="cjzs" DIC_TEXT="出籍证书" DIC_CODE="0616"/>
-    <row DIC_ASPELL="bianjingtongxingzheng" DIC_SPELL="bjtxz" DIC_TEXT="边境通行证" DIC_CODE="0618"/>
-    <row DIC_ASPELL="maoyizheng" DIC_SPELL="myz" DIC_TEXT="贸易证" DIC_CODE="0619"/>
-    <row DIC_ASPELL="qianzheng" DIC_SPELL="qz" DIC_TEXT="签证" DIC_CODE="0698"/>
-    <row DIC_ASPELL="qianzhu" DIC_SPELL="qz" DIC_TEXT="签注" DIC_CODE="0697"/>
-    <row DIC_ASPELL="qitachurujingzhengjian" DIC_SPELL="qtcrjzj" DIC_TEXT="其他出入境证件" DIC_CODE="0699"/>
-    <row DIC_ASPELL="paizhaolei" DIC_SPELL="pzl" DIC_TEXT="牌照类" DIC_CODE="0700"/>
-    <row DIC_ASPELL="qichehaopai" DIC_SPELL="qchp" DIC_TEXT="汽车号牌" DIC_CODE="0701"/>
-    <row DIC_ASPELL="tuolajipai" DIC_SPELL="tljp" DIC_TEXT="拖拉机牌" DIC_CODE="0702"/>
-    <row DIC_ASPELL="motuochepai" DIC_SPELL="mtcp" DIC_TEXT="摩托车牌" DIC_CODE="0703"/>
-    <row DIC_ASPELL="chuanbopai" DIC_SPELL="cbp" DIC_TEXT="船舶牌" DIC_CODE="0704"/>
-    <row DIC_ASPELL="sanlunchepai" DIC_SPELL="slcp" DIC_TEXT="三轮车牌" DIC_CODE="0705"/>
-    <row DIC_ASPELL="zixingchepai" DIC_SPELL="zxcp" DIC_TEXT="自行车牌" DIC_CODE="0706"/>
-    <row DIC_ASPELL="zhudongchepai" DIC_SPELL="zdcp" DIC_TEXT="助动车牌" DIC_CODE="0708"/>
-    <row DIC_ASPELL="qitapaizhaoleizhengjian" DIC_SPELL="qtpzlzj" DIC_TEXT="其他牌照类证件" DIC_CODE="0799"/>
-    <row DIC_ASPELL="yinzhanglei" DIC_SPELL="yzl" DIC_TEXT="印章类" DIC_CODE="0800"/>
-    <row DIC_ASPELL="sizhang" DIC_SPELL="sz" DIC_TEXT="私章" DIC_CODE="0801"/>
-    <row DIC_ASPELL="gongzhang" DIC_SPELL="gz" DIC_TEXT="公章" DIC_CODE="0802"/>
-    <row DIC_ASPELL="qitayinzhangleizhengjian" DIC_SPELL="qtyzlzj" DIC_TEXT="其他印章类证件" DIC_CODE="0899"/>
-    <row DIC_ASPELL="jingguanzheng" DIC_SPELL="jgz" DIC_TEXT="警官证" DIC_CODE="0203"/>
-    <row DIC_ASPELL="shibingzheng" DIC_SPELL="sbz" DIC_TEXT="士兵证" DIC_CODE="0207"/>
-    <row DIC_ASPELL="zhuanyeganbuzheng" DIC_SPELL="zygbz" DIC_TEXT="转业干部证" DIC_CODE="0209"/>
-    <row DIC_ASPELL="tieluyuangongzheng" DIC_SPELL="tlygz" DIC_TEXT="铁路员工证" DIC_CODE="0213"/>
-    <row DIC_ASPELL="juminshenfenzheng" DIC_SPELL="jmsfz" DIC_TEXT="居民身份证" DIC_CODE="0110"/>
-    <row DIC_ASPELL="fujizhengshu" DIC_SPELL="fjzs" DIC_TEXT="复籍证书" DIC_CODE="0617"/>
-    <row DIC_ASPELL="gangyin" DIC_SPELL="gy" DIC_TEXT="钢印" DIC_CODE="0803"/>
-    <row DIC_ASPELL="hukoubu" DIC_SPELL="hkb" DIC_TEXT="户口簿" DIC_CODE="0105"/>
-    <row DIC_ASPELL="shebaoka" DIC_SPELL="sbk" DIC_TEXT="社保卡" DIC_CODE="0106"/>
-    <row DIC_ASPELL="zhengmingxin" DIC_SPELL="zmx" DIC_TEXT="证明信" DIC_CODE="0107"/>
-    <row DIC_ASPELL="huzhao" DIC_SPELL="hz" DIC_TEXT="护照" DIC_CODE="0108"/>
-    <row DIC_ASPELL="hujizhengming" DIC_SPELL="hjzm" DIC_TEXT="户籍证明" DIC_CODE="0109"/>
-    <row DIC_ASPELL="zhiyelei" DIC_SPELL="zyl" DIC_TEXT="职业类" DIC_CODE="0200"/>
-    <row DIC_ASPELL="xueshengzheng" DIC_SPELL="xsz" DIC_TEXT="学生证" DIC_CODE="0201"/>
-    <row DIC_ASPELL="jizhezheng" DIC_SPELL="jzz" DIC_TEXT="记者证" DIC_CODE="0202"/>
-    <row DIC_ASPELL="jianchaguanzheng" DIC_SPELL="jcgz" DIC_TEXT="检察官证" DIC_CODE="0204"/>
-    <row DIC_ASPELL="junguanzheng" DIC_SPELL="jgz" DIC_TEXT="军官证" DIC_CODE="0205"/>
-    <row DIC_ASPELL="wenzhiganbuzheng" DIC_SPELL="wzgbz" DIC_TEXT="文职干部证" DIC_CODE="0208"/>
-    <row DIC_ASPELL="lu:shizheng" DIC_SPELL="lsz" DIC_TEXT="律师证" DIC_CODE="0210"/>
-    <row DIC_ASPELL="haiyuanzheng" DIC_SPELL="hyz" DIC_TEXT="海员证" DIC_CODE="0211"/>
-    <row DIC_ASPELL="jizurenyuanzheng" DIC_SPELL="jzryz" DIC_TEXT="机组人员证" DIC_CODE="0212"/>
-    <row DIC_ASPELL="huiyuanzheng" DIC_SPELL="hyz" DIC_TEXT="会员证" DIC_CODE="0214"/>
-    <row DIC_ASPELL="jiaohuizheng" DIC_SPELL="jhz" DIC_TEXT="教会证" DIC_CODE="0215"/>
-    <row DIC_ASPELL="qitazhiyezhengjian" DIC_SPELL="qtzyzj" DIC_TEXT="其他职业证件" DIC_CODE="0299"/>
-    <row DIC_ASPELL="xueyejinenglei" DIC_SPELL="xy、jnl" DIC_TEXT="学业、技能类" DIC_CODE="0300"/>
-    <row DIC_ASPELL="biyezheng" DIC_SPELL="byz" DIC_TEXT="毕业证" DIC_CODE="0301"/>
-    <row DIC_ASPELL="jieyezheng" DIC_SPELL="jyz" DIC_TEXT="结业证" DIC_CODE="0302"/>
-    <row DIC_ASPELL="yiyezheng" DIC_SPELL="yyz" DIC_TEXT="肄业证" DIC_CODE="0303"/>
-    <row DIC_ASPELL="xueweizheng" DIC_SPELL="xwz" DIC_TEXT="学位证" DIC_CODE="0304"/>
-    <row DIC_ASPELL="gangweijinengzheng" DIC_SPELL="gwjnz" DIC_TEXT="岗位技能证" DIC_CODE="0305"/>
-    <row DIC_ASPELL="feijijiashizheng" DIC_SPELL="fjjsz" DIC_TEXT="飞机驾驶证" DIC_CODE="0306"/>
-    <row DIC_ASPELL="jidongchejiashizheng" DIC_SPELL="jdcjsz" DIC_TEXT="机动车驾驶证" DIC_CODE="0307"/>
-    <row DIC_ASPELL="feijidongchejiashizheng" DIC_SPELL="fjdcjsz" DIC_TEXT="非机动车驾驶证" DIC_CODE="0308"/>
-    <row DIC_ASPELL="chuanbojiashizheng" DIC_SPELL="cbjsz" DIC_TEXT="船舶驾驶证" DIC_CODE="0309"/>
-    <row DIC_ASPELL="qitaxueyejinengzhengshu" DIC_SPELL="qtxy、jnzs" DIC_TEXT="其他学业、技能证书" DIC_CODE="0399"/>
-    <row DIC_ASPELL="zhuangkuanglei" DIC_SPELL="zkl" DIC_TEXT="状况类" DIC_CODE="0400"/>
-    <row DIC_ASPELL="jiehunzheng" DIC_SPELL="jhz" DIC_TEXT="结婚证" DIC_CODE="0401"/>
-    <row DIC_ASPELL="lihunzheng" DIC_SPELL="lhz" DIC_TEXT="离婚证" DIC_CODE="0402"/>
-    <row DIC_ASPELL="tuiwuzheng" DIC_SPELL="twz" DIC_TEXT="退伍证" DIC_CODE="0403"/>
-    <row DIC_ASPELL="lituixiuzheng" DIC_SPELL="ltxz" DIC_TEXT="离退休证" DIC_CODE="0404"/>
-    <row DIC_ASPELL="laonianzheng" DIC_SPELL="lnz" DIC_TEXT="老年证" DIC_CODE="0405"/>
-    <row DIC_ASPELL="chushengyixuezhengming" DIC_SPELL="csyxzm" DIC_TEXT="出生医学证明" DIC_CODE="0406"/>
-    <row DIC_ASPELL="dushengzinu:zheng" DIC_SPELL="dsznz" DIC_TEXT="独生子女证" DIC_CODE="0407"/>
-    <row DIC_ASPELL="daiyezheng" DIC_SPELL="dyz" DIC_TEXT="待业证" DIC_CODE="0408"/>
-    <row DIC_ASPELL="canjizheng" DIC_SPELL="cjz" DIC_TEXT="残疾证" DIC_CODE="0409"/>
-    <row DIC_ASPELL="zanzhuzheng" DIC_SPELL="zzz" DIC_TEXT="暂住证" DIC_CODE="0410"/>
-    <row DIC_ASPELL="zhusuzheng" DIC_SPELL="zsz" DIC_TEXT="住宿证" DIC_CODE="0411"/>
-    <row DIC_ASPELL="xianxuezheng" DIC_SPELL="xxz" DIC_TEXT="献血证" DIC_CODE="0412"/>
-    <row DIC_ASPELL="qitazhuangkuangzhengjian" DIC_SPELL="qtzkzj" DIC_TEXT="其他状况证件" DIC_CODE="0499"/>
-    <row DIC_ASPELL="quanyilei" DIC_SPELL="qyl" DIC_TEXT="权益类" DIC_CODE="0500"/>
-    <row DIC_ASPELL="caifangzheng" DIC_SPELL="cfz" DIC_TEXT="采访证" DIC_CODE="0501"/>
-    <row DIC_ASPELL="yiliaozheng" DIC_SPELL="ylz" DIC_TEXT="医疗证" DIC_CODE="0502"/>
-    <row DIC_ASPELL="laobaozheng" DIC_SPELL="lbz" DIC_TEXT="劳保证" DIC_CODE="0503"/>
-    <row DIC_ASPELL="chengchezheng" DIC_SPELL="ccz" DIC_TEXT="乘车证" DIC_CODE="0504"/>
-    <row DIC_ASPELL="baoxiandan" DIC_SPELL="bxd" DIC_TEXT="保险单" DIC_CODE="0505"/>
-    <row DIC_ASPELL="zhunyunzheng" DIC_SPELL="zyz" DIC_TEXT="准运证" DIC_CODE="0511"/>
-    <row DIC_ASPELL="yingyunzheng" DIC_SPELL="yyz" DIC_TEXT="营运证" DIC_CODE="0512"/>
-    <row DIC_ASPELL="zhungouzheng" DIC_SPELL="zgz" DIC_TEXT="准购证" DIC_CODE="0514"/>
-    <row DIC_ASPELL="yingyezhizhao" DIC_SPELL="yyzz" DIC_TEXT="营业执照" DIC_CODE="0521"/>
-    <row DIC_ASPELL="shuiwudengjizheng" DIC_SPELL="swdjz" DIC_TEXT="税务登记证" DIC_CODE="0522"/>
-    <row DIC_ASPELL="goumeizheng" DIC_SPELL="gmz" DIC_TEXT="购煤证" DIC_CODE="0531"/>
-    <row DIC_ASPELL="goumeiqizheng" DIC_SPELL="gmqz" DIC_TEXT="购煤气证" DIC_CODE="0532"/>
-    <row DIC_ASPELL="qiangzheng" DIC_SPELL="qz" DIC_TEXT="枪证" DIC_CODE="0541"/>
-    <row DIC_ASPELL="qiangzhidanyaoxieyunxukezheng" DIC_SPELL="qz（dy）xyxkz" DIC_TEXT="枪支（弹药）携运许可证" DIC_CODE="0542"/>
-    <row DIC_ASPELL="jidongchexingshizheng" DIC_SPELL="jdcxsz" DIC_TEXT="机动车行驶证" DIC_CODE="0551"/>
-    <row DIC_ASPELL="feijidongchezheng" DIC_SPELL="fjdcz" DIC_TEXT="非机动车证" DIC_CODE="0552"/>
-    <row DIC_ASPELL="chuanboxingshizheng" DIC_SPELL="cbxsz" DIC_TEXT="船舶行驶证" DIC_CODE="0553"/>
-    <row DIC_ASPELL="junrentongxingzheng" DIC_SPELL="jrtxz" DIC_TEXT="军人通行证" DIC_CODE="0561"/>
-    <row DIC_ASPELL="cheliangtongxingzheng" DIC_SPELL="cltxz" DIC_TEXT="车辆通行证" DIC_CODE="0562"/>
-    <row DIC_ASPELL="gongzuozheng" DIC_SPELL="gzz" DIC_TEXT="工作证" DIC_CODE="0104"/>
-    <row DIC_ASPELL="taiwanjuminwanglaidalutongxingzheng" DIC_SPELL="twjmwldltxz" DIC_TEXT="台湾居民往来大陆通行证" DIC_CODE="0602"/>
-    <row DIC_ASPELL="zhonghuarenmingongheguoruchujingtongxingzheng" DIC_SPELL="zhrmghgrcjtxz" DIC_TEXT="中华人民共和国入出境通行证" DIC_CODE="0603"/>
+    <row DIC_ASPELL="changyonglei" DIC_SPELL="cyl" DIC_TEXT="常用类" DIC_CODE="0100" DIC_PERM="1"/>
+    <row DIC_ASPELL="linshishenfenzheng" DIC_SPELL="lssfz" DIC_TEXT="临时身份证" DIC_CODE="0102" DIC_PERM="1"/>
+    <row DIC_ASPELL="juzhuzheng" DIC_SPELL="jzz" DIC_TEXT="居住证" DIC_CODE="0103" DIC_PERM="1"/>
+    <row DIC_ASPELL="gongzuozheng" DIC_SPELL="gzz" DIC_TEXT="工作证" DIC_CODE="0104" DIC_PERM="1"/>
+    <row DIC_ASPELL="hukoubu" DIC_SPELL="hkb" DIC_TEXT="户口簿" DIC_CODE="0105" DIC_PERM="1"/>
+    <row DIC_ASPELL="shebaoka" DIC_SPELL="sbk" DIC_TEXT="社保卡" DIC_CODE="0106" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhengmingxin" DIC_SPELL="zmx" DIC_TEXT="证明信" DIC_CODE="0107" DIC_PERM="1"/>
+    <row DIC_ASPELL="huzhao" DIC_SPELL="hz" DIC_TEXT="护照" DIC_CODE="0108" DIC_PERM="1"/>
+    <row DIC_ASPELL="hujizhengming" DIC_SPELL="hjzm" DIC_TEXT="户籍证明" DIC_CODE="0109" DIC_PERM="1"/>
+    <row DIC_ASPELL="juminshenfenzheng" DIC_SPELL="jmsfz" DIC_TEXT="居民身份证" DIC_CODE="0110" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhiyelei" DIC_SPELL="zyl" DIC_TEXT="职业类" DIC_CODE="0200" DIC_PERM="1"/>
+    <row DIC_ASPELL="xueshengzheng" DIC_SPELL="xsz" DIC_TEXT="学生证" DIC_CODE="0201" DIC_PERM="1"/>
+    <row DIC_ASPELL="jizhezheng" DIC_SPELL="jzz" DIC_TEXT="记者证" DIC_CODE="0202" DIC_PERM="1"/>
+    <row DIC_ASPELL="jingguanzheng" DIC_SPELL="jgz" DIC_TEXT="警官证" DIC_CODE="0203" DIC_PERM="1"/>
+    <row DIC_ASPELL="jianchaguanzheng" DIC_SPELL="jcgz" DIC_TEXT="检察官证" DIC_CODE="0204" DIC_PERM="1"/>
+    <row DIC_ASPELL="junguanzheng" DIC_SPELL="jgz" DIC_TEXT="军官证" DIC_CODE="0205" DIC_PERM="1"/>
+    <row DIC_ASPELL="shibingzheng" DIC_SPELL="sbz" DIC_TEXT="士兵证" DIC_CODE="0207" DIC_PERM="1"/>
+    <row DIC_ASPELL="wenzhiganbuzheng" DIC_SPELL="wzgbz" DIC_TEXT="文职干部证" DIC_CODE="0208" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhuanyeganbuzheng" DIC_SPELL="zygbz" DIC_TEXT="转业干部证" DIC_CODE="0209" DIC_PERM="1"/>
+    <row DIC_ASPELL="lvshizheng" DIC_SPELL="lsz" DIC_TEXT="律师证" DIC_CODE="0210" DIC_PERM="1"/>
+    <row DIC_ASPELL="haiyuanzheng" DIC_SPELL="hyz" DIC_TEXT="海员证" DIC_CODE="0211" DIC_PERM="1"/>
+    <row DIC_ASPELL="jizurenyuanzheng" DIC_SPELL="jzryz" DIC_TEXT="机组人员证" DIC_CODE="0212" DIC_PERM="1"/>
+    <row DIC_ASPELL="tieluyuangongzheng" DIC_SPELL="tlygz" DIC_TEXT="铁路员工证" DIC_CODE="0213" DIC_PERM="1"/>
+    <row DIC_ASPELL="huiyuanzheng" DIC_SPELL="hyz" DIC_TEXT="会员证" DIC_CODE="0214" DIC_PERM="1"/>
+    <row DIC_ASPELL="jiaohuizheng" DIC_SPELL="jhz" DIC_TEXT="教会证" DIC_CODE="0215" DIC_PERM="1"/>
+    <row DIC_ASPELL="qitazhiyezhengjian" DIC_SPELL="qtzyzj" DIC_TEXT="其他职业证件" DIC_CODE="0299" DIC_PERM="1"/>
+    <row DIC_ASPELL="xueyejinenglei" DIC_SPELL="xyjnl" DIC_TEXT="学业、技能类" DIC_CODE="0300" DIC_PERM="1"/>
+    <row DIC_ASPELL="biyezheng" DIC_SPELL="byz" DIC_TEXT="毕业证" DIC_CODE="0301" DIC_PERM="1"/>
+    <row DIC_ASPELL="jieyezheng" DIC_SPELL="jyz" DIC_TEXT="结业证" DIC_CODE="0302" DIC_PERM="1"/>
+    <row DIC_ASPELL="yiyezheng" DIC_SPELL="yyz" DIC_TEXT="肄业证" DIC_CODE="0303" DIC_PERM="1"/>
+    <row DIC_ASPELL="xueweizheng" DIC_SPELL="xwz" DIC_TEXT="学位证" DIC_CODE="0304" DIC_PERM="1"/>
+    <row DIC_ASPELL="gangweijinengzheng" DIC_SPELL="gwjnz" DIC_TEXT="岗位技能证" DIC_CODE="0305" DIC_PERM="1"/>
+    <row DIC_ASPELL="feijijiashizheng" DIC_SPELL="fjjsz" DIC_TEXT="飞机驾驶证" DIC_CODE="0306" DIC_PERM="1"/>
+    <row DIC_ASPELL="jidongchejiashizheng" DIC_SPELL="jdcjsz" DIC_TEXT="机动车驾驶证" DIC_CODE="0307" DIC_PERM="1"/>
+    <row DIC_ASPELL="feijidongchejiashizheng" DIC_SPELL="fjdcjsz" DIC_TEXT="非机动车驾驶证" DIC_CODE="0308" DIC_PERM="1"/>
+    <row DIC_ASPELL="chuanbojiashizheng" DIC_SPELL="cbjsz" DIC_TEXT="船舶驾驶证" DIC_CODE="0309" DIC_PERM="1"/>
+    <row DIC_ASPELL="qitaxueyejinengzhengshu" DIC_SPELL="qtxyjnzs" DIC_TEXT="其他学业、技能证书" DIC_CODE="0399" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhuangkuanglei" DIC_SPELL="zkl" DIC_TEXT="状况类" DIC_CODE="0400" DIC_PERM="1"/>
+    <row DIC_ASPELL="jiehunzheng" DIC_SPELL="jhz" DIC_TEXT="结婚证" DIC_CODE="0401" DIC_PERM="1"/>
+    <row DIC_ASPELL="lihunzheng" DIC_SPELL="lhz" DIC_TEXT="离婚证" DIC_CODE="0402" DIC_PERM="1"/>
+    <row DIC_ASPELL="tuiwuzheng" DIC_SPELL="twz" DIC_TEXT="退伍证" DIC_CODE="0403" DIC_PERM="1"/>
+    <row DIC_ASPELL="lituixiuzheng" DIC_SPELL="ltxz" DIC_TEXT="离退休证" DIC_CODE="0404" DIC_PERM="1"/>
+    <row DIC_ASPELL="laonianzheng" DIC_SPELL="lnz" DIC_TEXT="老年证" DIC_CODE="0405" DIC_PERM="1"/>
+    <row DIC_ASPELL="chushengyixuezhengming" DIC_SPELL="csyxzm" DIC_TEXT="出生医学证明" DIC_CODE="0406" DIC_PERM="1"/>
+    <row DIC_ASPELL="dushengzinvzheng" DIC_SPELL="dsznz" DIC_TEXT="独生子女证" DIC_CODE="0407" DIC_PERM="1"/>
+    <row DIC_ASPELL="daiyezheng" DIC_SPELL="dyz" DIC_TEXT="待业证" DIC_CODE="0408" DIC_PERM="1"/>
+    <row DIC_ASPELL="canjizheng" DIC_SPELL="cjz" DIC_TEXT="残疾证" DIC_CODE="0409" DIC_PERM="1"/>
+    <row DIC_ASPELL="zanzhuzheng" DIC_SPELL="zzz" DIC_TEXT="暂住证" DIC_CODE="0410" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhusuzheng" DIC_SPELL="zsz" DIC_TEXT="住宿证" DIC_CODE="0411" DIC_PERM="1"/>
+    <row DIC_ASPELL="xianxuezheng" DIC_SPELL="xxz" DIC_TEXT="献血证" DIC_CODE="0412" DIC_PERM="1"/>
+    <row DIC_ASPELL="qitazhuangkuangzhengjian" DIC_SPELL="qtzkzj" DIC_TEXT="其他状况证件" DIC_CODE="0499" DIC_PERM="1"/>
+    <row DIC_ASPELL="quanyilei" DIC_SPELL="qyl" DIC_TEXT="权益类" DIC_CODE="0500" DIC_PERM="1"/>
+    <row DIC_ASPELL="caifangzheng" DIC_SPELL="cfz" DIC_TEXT="采访证" DIC_CODE="0501" DIC_PERM="1"/>
+    <row DIC_ASPELL="yiliaozheng" DIC_SPELL="ylz" DIC_TEXT="医疗证" DIC_CODE="0502" DIC_PERM="1"/>
+    <row DIC_ASPELL="laobaozheng" DIC_SPELL="lbz" DIC_TEXT="劳保证" DIC_CODE="0503" DIC_PERM="1"/>
+    <row DIC_ASPELL="chengchezheng" DIC_SPELL="ccz" DIC_TEXT="乘车证" DIC_CODE="0504" DIC_PERM="1"/>
+    <row DIC_ASPELL="baoxiandan" DIC_SPELL="bxd" DIC_TEXT="保险单" DIC_CODE="0505" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhunyunzheng" DIC_SPELL="zyz" DIC_TEXT="准运证" DIC_CODE="0511" DIC_PERM="1"/>
+    <row DIC_ASPELL="yingyunzheng" DIC_SPELL="yyz" DIC_TEXT="营运证" DIC_CODE="0512" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhungouzheng" DIC_SPELL="zgz" DIC_TEXT="准购证" DIC_CODE="0514" DIC_PERM="1"/>
+    <row DIC_ASPELL="yingyezhizhao" DIC_SPELL="yyzz" DIC_TEXT="营业执照" DIC_CODE="0521" DIC_PERM="1"/>
+    <row DIC_ASPELL="shuiwudengjizheng" DIC_SPELL="swdjz" DIC_TEXT="税务登记证" DIC_CODE="0522" DIC_PERM="1"/>
+    <row DIC_ASPELL="goumeizheng" DIC_SPELL="gmz" DIC_TEXT="购煤证" DIC_CODE="0531" DIC_PERM="1"/>
+    <row DIC_ASPELL="goumeiqizheng" DIC_SPELL="gmqz" DIC_TEXT="购煤气证" DIC_CODE="0532" DIC_PERM="1"/>
+    <row DIC_ASPELL="qiangzheng" DIC_SPELL="qz" DIC_TEXT="枪证" DIC_CODE="0541" DIC_PERM="1"/>
+    <row DIC_ASPELL="qiangzhidanyaoxieyunxukezheng" DIC_SPELL="qzdyxyxkz" DIC_TEXT="枪支（弹药）携运许可证" DIC_CODE="0542" DIC_PERM="1"/>
+    <row DIC_ASPELL="jidongchexingshizheng" DIC_SPELL="jdcxsz" DIC_TEXT="机动车行驶证" DIC_CODE="0551" DIC_PERM="1"/>
+    <row DIC_ASPELL="feijidongchezheng" DIC_SPELL="fjdcz" DIC_TEXT="非机动车证" DIC_CODE="0552" DIC_PERM="1"/>
+    <row DIC_ASPELL="chuanboxingshizheng" DIC_SPELL="cbxsz" DIC_TEXT="船舶行驶证" DIC_CODE="0553" DIC_PERM="1"/>
+    <row DIC_ASPELL="junrentongxingzheng" DIC_SPELL="jrtxz" DIC_TEXT="军人通行证" DIC_CODE="0561" DIC_PERM="1"/>
+    <row DIC_ASPELL="cheliangtongxingzheng" DIC_SPELL="cltxz" DIC_TEXT="车辆通行证" DIC_CODE="0562" DIC_PERM="1"/>
+    <row DIC_ASPELL="churuzheng" DIC_SPELL="crz" DIC_TEXT="出入证" DIC_CODE="0563" DIC_PERM="1"/>
+    <row DIC_ASPELL="fangwuchanquanzheng" DIC_SPELL="fwcqz" DIC_TEXT="房屋产权证" DIC_CODE="0571" DIC_PERM="1"/>
+    <row DIC_ASPELL="tudishiyongzheng" DIC_SPELL="tdsyz" DIC_TEXT="土地使用证" DIC_CODE="0572" DIC_PERM="1"/>
+    <row DIC_ASPELL="yangquanxukezheng" DIC_SPELL="yqxkz" DIC_TEXT="养犬许可证" DIC_CODE="0598" DIC_PERM="1"/>
+    <row DIC_ASPELL="tezhonghangyejingyingxukezheng" DIC_SPELL="tzhyjyxkz" DIC_TEXT="特种行业经营许可证" DIC_CODE="0599" DIC_PERM="1"/>
+    <row DIC_ASPELL="churujinglei" DIC_SPELL="crjl" DIC_TEXT="出入境类" DIC_CODE="0600" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhonghuarenmingongheguolvxingzheng" DIC_SPELL="zhrmghglxz" DIC_TEXT="中华人民共和国旅行证" DIC_CODE="0601" DIC_PERM="1"/>
+    <row DIC_ASPELL="taiwanjuminwanglaidalutongxingzheng" DIC_SPELL="twjmwldltxz" DIC_TEXT="台湾居民往来大陆通行证" DIC_CODE="0602" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhonghuarenmingongheguoruchujingtongxingzheng" DIC_SPELL="zhrmghgrcjtxz" DIC_TEXT="中华人民共和国入出境通行证" DIC_CODE="0603" DIC_PERM="1"/>
+    <row DIC_ASPELL="wanglaigangaotongxingzheng" DIC_SPELL="wlgatxz" DIC_TEXT="往来港澳通行证" DIC_CODE="0604" DIC_PERM="1"/>
+    <row DIC_ASPELL="qianwanggangaotongxingzheng" DIC_SPELL="qwgatxz" DIC_TEXT="前往港澳通行证" DIC_CODE="0605" DIC_PERM="1"/>
+    <row DIC_ASPELL="gangaotongbaohuixiangzhenggangaojuminlaiwangneiditongxingzheng" DIC_SPELL="gatbhxzgajmlwndtxz" DIC_TEXT="港澳同胞回乡证（港澳居民来往内地通行证）" DIC_CODE="0606" DIC_PERM="1"/>
+    <row DIC_ASPELL="dalujuminwanglaitaiwantongxingzheng" DIC_SPELL="dljmwltwtxz" DIC_TEXT="大陆居民往来台湾通行证" DIC_CODE="0607" DIC_PERM="1"/>
+    <row DIC_ASPELL="wanglaixianggangaomentebiexingzhengqutongxingzheng" DIC_SPELL="wlxgamtbxzqtxz" DIC_TEXT="往来香港澳门特别行政区通行证" DIC_CODE="0608" DIC_PERM="1"/>
+    <row DIC_ASPELL="huaqiaohuiguodingjuzheng" DIC_SPELL="hqhgdjz" DIC_TEXT="华侨回国定居证" DIC_CODE="0609" DIC_PERM="1"/>
+    <row DIC_ASPELL="taiwantongbaodingjuzheng" DIC_SPELL="twtbdjz" DIC_TEXT="台湾同胞定居证" DIC_CODE="0610" DIC_PERM="1"/>
+    <row DIC_ASPELL="waiguorenchurujingzheng" DIC_SPELL="wgrcrjz" DIC_TEXT="外国人出入境证" DIC_CODE="0611" DIC_PERM="1"/>
+    <row DIC_ASPELL="waiguorenlvxingzheng" DIC_SPELL="wgrlxz" DIC_TEXT="外国人旅行证" DIC_CODE="0612" DIC_PERM="1"/>
+    <row DIC_ASPELL="waiguorenjuliuzheng" DIC_SPELL="wgrjlz" DIC_TEXT="外国人居留证" DIC_CODE="0613" DIC_PERM="1"/>
+    <row DIC_ASPELL="waiguorenlinshijuliuzheng" DIC_SPELL="wgrlsjlz" DIC_TEXT="外国人临时居留证" DIC_CODE="0614" DIC_PERM="1"/>
+    <row DIC_ASPELL="rujizhengshu" DIC_SPELL="rjzs" DIC_TEXT="入籍证书" DIC_CODE="0615" DIC_PERM="1"/>
+    <row DIC_ASPELL="chujizhengshu" DIC_SPELL="cjzs" DIC_TEXT="出籍证书" DIC_CODE="0616" DIC_PERM="1"/>
+    <row DIC_ASPELL="fujizhengshu" DIC_SPELL="fjzs" DIC_TEXT="复籍证书" DIC_CODE="0617" DIC_PERM="1"/>
+    <row DIC_ASPELL="bianjingtongxingzheng" DIC_SPELL="bjtxz" DIC_TEXT="边境通行证" DIC_CODE="0618" DIC_PERM="1"/>
+    <row DIC_ASPELL="maoyizheng" DIC_SPELL="myz" DIC_TEXT="贸易证" DIC_CODE="0619" DIC_PERM="1"/>
+    <row DIC_ASPELL="qianzhu" DIC_SPELL="qz" DIC_TEXT="签注" DIC_CODE="0697" DIC_PERM="1"/>
+    <row DIC_ASPELL="qianzheng" DIC_SPELL="qz" DIC_TEXT="签证" DIC_CODE="0698" DIC_PERM="1"/>
+    <row DIC_ASPELL="qitachurujingzhengjian" DIC_SPELL="qtcrjzj" DIC_TEXT="其他出入境证件" DIC_CODE="0699" DIC_PERM="1"/>
+    <row DIC_ASPELL="paizhaolei" DIC_SPELL="pzl" DIC_TEXT="牌照类" DIC_CODE="0700" DIC_PERM="1"/>
+    <row DIC_ASPELL="qichehaopai" DIC_SPELL="qchp" DIC_TEXT="汽车号牌" DIC_CODE="0701" DIC_PERM="1"/>
+    <row DIC_ASPELL="tuolajipai" DIC_SPELL="tljp" DIC_TEXT="拖拉机牌" DIC_CODE="0702" DIC_PERM="1"/>
+    <row DIC_ASPELL="motuochepai" DIC_SPELL="mtcp" DIC_TEXT="摩托车牌" DIC_CODE="0703" DIC_PERM="1"/>
+    <row DIC_ASPELL="chuanbopai" DIC_SPELL="cbp" DIC_TEXT="船舶牌" DIC_CODE="0704" DIC_PERM="1"/>
+    <row DIC_ASPELL="sanlunchepai" DIC_SPELL="slcp" DIC_TEXT="三轮车牌" DIC_CODE="0705" DIC_PERM="1"/>
+    <row DIC_ASPELL="zixingchepai" DIC_SPELL="zxcp" DIC_TEXT="自行车牌" DIC_CODE="0706" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhudongchepai" DIC_SPELL="zdcp" DIC_TEXT="助动车牌" DIC_CODE="0708" DIC_PERM="1"/>
+    <row DIC_ASPELL="qitapaizhaoleizhengjian" DIC_SPELL="qtpzlzj" DIC_TEXT="其他牌照类证件" DIC_CODE="0799" DIC_PERM="1"/>
+    <row DIC_ASPELL="yinzhanglei" DIC_SPELL="yzl" DIC_TEXT="印章类" DIC_CODE="0800" DIC_PERM="1"/>
+    <row DIC_ASPELL="sizhang" DIC_SPELL="sz" DIC_TEXT="私章" DIC_CODE="0801" DIC_PERM="1"/>
+    <row DIC_ASPELL="gongzhang" DIC_SPELL="gz" DIC_TEXT="公章" DIC_CODE="0802" DIC_PERM="1"/>
+    <row DIC_ASPELL="gangyin" DIC_SPELL="gy" DIC_TEXT="钢印" DIC_CODE="0803" DIC_PERM="1"/>
+    <row DIC_ASPELL="qitayinzhangleizhengjian" DIC_SPELL="qtyzlzj" DIC_TEXT="其他印章类证件" DIC_CODE="0899" DIC_PERM="1"/>
 </data>

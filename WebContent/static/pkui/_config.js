@@ -48,9 +48,7 @@ seajs.config( {
         "moment-local-zh": "lib/utils/moment/2.18.0.x/locale/zh-cn",
 
         //【lib/utils】中国身份证号校验
-        "IDValidator": "lib/utils/IDValidator/1.3.0/IDValidator",
-        // 行政区划
-        "IDValidator-GB2260": "lib/utils/IDValidator/1.3.0/GB2260",
+        "IDValidator": "lib/utils/IDValidator/1.3.0.x/IDValidator",
 
         //【lib/jQuery】
         "jquery": "lib/jquery/1.11.3.x/jquery",
@@ -125,6 +123,9 @@ seajs.config( {
 
         //【component/common 】处理占位符
         "placeholderHandler": "component/common/placeholderHandler/1.0.0/placeholderHandler",
+
+        //【component/common 】文本放大镜
+        "textMagnifier": "component/common/textMagnifier/1.0.0/textMagnifier",
 
         //【component/logic 】datagrid的扩展
         "datagrid-delete": "component/logic/datagridExt/1.0.0/datagrid-delete"

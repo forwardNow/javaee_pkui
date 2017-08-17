@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="qita" DIC_SPELL="qt" DIC_TEXT="其他" DIC_CODE="99"/>
-    <row DIC_ASPELL="gongjulei" DIC_SPELL="gjl" DIC_TEXT="工具类" DIC_CODE="01"/>
-    <row DIC_ASPELL="jiaotonggongjulei" DIC_SPELL="jtgjl" DIC_TEXT="交通工具类" DIC_CODE="02"/>
-    <row DIC_ASPELL="duwulei" DIC_SPELL="dwl" DIC_TEXT="毒物类" DIC_CODE="03"/>
-    <row DIC_ASPELL="baozhawupinlei" DIC_SPELL="bzwpl" DIC_TEXT="爆炸物品类" DIC_CODE="04"/>
-    <row DIC_ASPELL="gongyipin" DIC_SPELL="gyp" DIC_TEXT="工艺品" DIC_CODE="05"/>
-    <row DIC_ASPELL="shoushi" DIC_SPELL="ss" DIC_TEXT="首饰" DIC_CODE="06"/>
-    <row DIC_ASPELL="wenwu" DIC_SPELL="ww" DIC_TEXT="文物" DIC_CODE="07"/>
-    <row DIC_ASPELL="jiayongdianqi" DIC_SPELL="jydq" DIC_TEXT="家用电器" DIC_CODE="08"/>
-    <row DIC_ASPELL="yiqiyibiao" DIC_SPELL="yqyb" DIC_TEXT="仪器仪表" DIC_CODE="09"/>
-    <row DIC_ASPELL="zhongbiao" DIC_SPELL="zb" DIC_TEXT="钟表" DIC_CODE="10"/>
-    <row DIC_ASPELL="nongfuyumu" DIC_SPELL="nfym" DIC_TEXT="农副漁牧" DIC_CODE="11"/>
-    <row DIC_ASPELL="yeshengdongwu" DIC_SPELL="ysdw" DIC_TEXT="野生动物" DIC_CODE="12"/>
-    <row DIC_ASPELL="shipinyanjiu" DIC_SPELL="spyj" DIC_TEXT="食品烟酒" DIC_CODE="13"/>
-    <row DIC_ASPELL="fangzhipin" DIC_SPELL="fzp" DIC_TEXT="纺织品" DIC_CODE="14"/>
-    <row DIC_ASPELL="fuzhuangxiemaojichuandaipin" DIC_SPELL="fzxmjcdp" DIC_TEXT="服装鞋帽及穿戴品" DIC_CODE="15"/>
-    <row DIC_ASPELL="wenjiaotiyu" DIC_SPELL="wjty" DIC_TEXT="文教体娱" DIC_CODE="16"/>
-    <row DIC_ASPELL="jiajujiriyongzapin" DIC_SPELL="jjjryzp" DIC_TEXT="家具及日用杂品" DIC_CODE="17"/>
-    <row DIC_ASPELL="tongyongshebeidiangongjizhaomingqicai" DIC_SPELL="tysbdgjzmqc" DIC_TEXT="通用设备电工及照明器材" DIC_CODE="18"/>
-    <row DIC_ASPELL="xiangjiaosuliaozhipin" DIC_SPELL="xjslzp" DIC_TEXT="橡胶塑料制品" DIC_CODE="19"/>
-    <row DIC_ASPELL="jianzhuzhuanghuangjijinshucailiao" DIC_SPELL="jzzhjjscl" DIC_TEXT="建筑装璜及金属材料" DIC_CODE="20"/>
-    <row DIC_ASPELL="shiyouhuagongchanpin" DIC_SPELL="syhgcp" DIC_TEXT="石油化工产品" DIC_CODE="21"/>
-    <row DIC_ASPELL="yiyaojiyiliaoqicai" DIC_SPELL="yyjylqc" DIC_TEXT="医药及医疗器材" DIC_CODE="22"/>
-    <row DIC_ASPELL="dupinlei" DIC_SPELL="dpl" DIC_TEXT="毒品类" DIC_CODE="23"/>
-    <row DIC_ASPELL="yinhuiwupin" DIC_SPELL="yhwp" DIC_TEXT="淫秽物品" DIC_CODE="24"/>
-    <row DIC_ASPELL="jisuanjishebeijichanpin" DIC_SPELL="jsjsbjcp" DIC_TEXT="计算机设备及产品" DIC_CODE="25"/>
-    <row DIC_ASPELL="tongxinshebei" DIC_SPELL="txsb" DIC_TEXT="通信设备" DIC_CODE="26"/>
-    <row DIC_ASPELL="xianjinjizhaiquan" DIC_SPELL="xjjzq" DIC_TEXT="现金及债券" DIC_CODE="27"/>
+    <row DIC_ASPELL="gongjulei" DIC_SPELL="gjl" DIC_TEXT="工具类" DIC_CODE="01" DIC_PERM="1"/>
+    <row DIC_ASPELL="jiaotonggongjulei" DIC_SPELL="jtgjl" DIC_TEXT="交通工具类" DIC_CODE="02" DIC_PERM="1"/>
+    <row DIC_ASPELL="duwulei" DIC_SPELL="dwl" DIC_TEXT="毒物类" DIC_CODE="03" DIC_PERM="1"/>
+    <row DIC_ASPELL="baozhawupinlei" DIC_SPELL="bzwpl" DIC_TEXT="爆炸物品类" DIC_CODE="04" DIC_PERM="1"/>
+    <row DIC_ASPELL="gongyipin" DIC_SPELL="gyp" DIC_TEXT="工艺品" DIC_CODE="05" DIC_PERM="1"/>
+    <row DIC_ASPELL="shoushi" DIC_SPELL="ss" DIC_TEXT="首饰" DIC_CODE="06" DIC_PERM="1"/>
+    <row DIC_ASPELL="wenwu" DIC_SPELL="ww" DIC_TEXT="文物" DIC_CODE="07" DIC_PERM="1"/>
+    <row DIC_ASPELL="jiayongdianqi" DIC_SPELL="jydq" DIC_TEXT="家用电器" DIC_CODE="08" DIC_PERM="1"/>
+    <row DIC_ASPELL="yiqiyibiao" DIC_SPELL="yqyb" DIC_TEXT="仪器仪表" DIC_CODE="09" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhongbiao" DIC_SPELL="zb" DIC_TEXT="钟表" DIC_CODE="10" DIC_PERM="1"/>
+    <row DIC_ASPELL="nongfuyumu" DIC_SPELL="nfym" DIC_TEXT="农副漁牧" DIC_CODE="11" DIC_PERM="1"/>
+    <row DIC_ASPELL="yeshengdongwu" DIC_SPELL="ysdw" DIC_TEXT="野生动物" DIC_CODE="12" DIC_PERM="1"/>
+    <row DIC_ASPELL="shipinyanjiu" DIC_SPELL="spyj" DIC_TEXT="食品烟酒" DIC_CODE="13" DIC_PERM="1"/>
+    <row DIC_ASPELL="fangzhipin" DIC_SPELL="fzp" DIC_TEXT="纺织品" DIC_CODE="14" DIC_PERM="1"/>
+    <row DIC_ASPELL="fuzhuangxiemaojichuandaipin" DIC_SPELL="fzxmjcdp" DIC_TEXT="服装鞋帽及穿戴品" DIC_CODE="15" DIC_PERM="1"/>
+    <row DIC_ASPELL="wenjiaotiyu" DIC_SPELL="wjty" DIC_TEXT="文教体娱" DIC_CODE="16" DIC_PERM="1"/>
+    <row DIC_ASPELL="jiajujiriyongzapin" DIC_SPELL="jjjryzp" DIC_TEXT="家具及日用杂品" DIC_CODE="17" DIC_PERM="1"/>
+    <row DIC_ASPELL="tongyongshebeidiangongjizhaomingqicai" DIC_SPELL="tysbdgjzmqc" DIC_TEXT="通用设备电工及照明器材" DIC_CODE="18" DIC_PERM="1"/>
+    <row DIC_ASPELL="xiangjiaosuliaozhipin" DIC_SPELL="xjslzp" DIC_TEXT="橡胶塑料制品" DIC_CODE="19" DIC_PERM="1"/>
+    <row DIC_ASPELL="jianzhuzhuanghuangjijinshucailiao" DIC_SPELL="jzzhjjscl" DIC_TEXT="建筑装璜及金属材料" DIC_CODE="20" DIC_PERM="1"/>
+    <row DIC_ASPELL="shiyouhuagongchanpin" DIC_SPELL="syhgcp" DIC_TEXT="石油化工产品" DIC_CODE="21" DIC_PERM="1"/>
+    <row DIC_ASPELL="yiyaojiyiliaoqicai" DIC_SPELL="yyjylqc" DIC_TEXT="医药及医疗器材" DIC_CODE="22" DIC_PERM="1"/>
+    <row DIC_ASPELL="dupinlei" DIC_SPELL="dpl" DIC_TEXT="毒品类" DIC_CODE="23" DIC_PERM="1"/>
+    <row DIC_ASPELL="yinhuiwupin" DIC_SPELL="yhwp" DIC_TEXT="淫秽物品" DIC_CODE="24" DIC_PERM="1"/>
+    <row DIC_ASPELL="jisuanjishebeijichanpin" DIC_SPELL="jsjsbjcp" DIC_TEXT="计算机设备及产品" DIC_CODE="25" DIC_PERM="1"/>
+    <row DIC_ASPELL="tongxinshebei" DIC_SPELL="txsb" DIC_TEXT="通信设备" DIC_CODE="26" DIC_PERM="1"/>
+    <row DIC_ASPELL="xianjinjizhaiquan" DIC_SPELL="xjjzq" DIC_TEXT="现金及债券" DIC_CODE="27" DIC_PERM="1"/>
+    <row DIC_ASPELL="qita" DIC_SPELL="qt" DIC_TEXT="其他" DIC_CODE="99" DIC_PERM="1"/>
 </data>

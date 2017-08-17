@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="lahuzu" DIC_SPELL="lhz" DIC_TEXT="拉祜族" DIC_CODE="24"/>
-    <row DIC_ASPELL="jingpozu" DIC_SPELL="jpz" DIC_TEXT="景颇族" DIC_CODE="28"/>
-    <row DIC_ASPELL="dahanerzu" DIC_SPELL="dhez" DIC_TEXT="达翰尔族" DIC_CODE="31"/>
-    <row DIC_ASPELL="salazu" DIC_SPELL="slz" DIC_TEXT="撒拉族" DIC_CODE="35"/>
-    <row DIC_ASPELL="xibozu" DIC_SPELL="xbz" DIC_TEXT="锡伯族" DIC_CODE="38"/>
-    <row DIC_ASPELL="tajikezu" DIC_SPELL="tjkz" DIC_TEXT="塔吉克族" DIC_CODE="41"/>
-    <row DIC_ASPELL="eluosizu" DIC_SPELL="elsz" DIC_TEXT="俄罗斯族" DIC_CODE="44"/>
-    <row DIC_ASPELL="yuguzu" DIC_SPELL="ygz" DIC_TEXT="裕固族" DIC_CODE="48"/>
-    <row DIC_ASPELL="dulongzu" DIC_SPELL="dlz" DIC_TEXT="独龙族" DIC_CODE="51"/>
-    <row DIC_ASPELL="menbazu" DIC_SPELL="mbz" DIC_TEXT="门巴族" DIC_CODE="54"/>
-    <row DIC_ASPELL="zangzu" DIC_SPELL="zz" DIC_TEXT="藏族" DIC_CODE="04"/>
-    <row DIC_ASPELL="yizu" DIC_SPELL="yz" DIC_TEXT="彝族" DIC_CODE="07"/>
-    <row DIC_ASPELL="chaoxianzu" DIC_SPELL="cxz" DIC_TEXT="朝鲜族" DIC_CODE="10"/>
-    <row DIC_ASPELL="tujiazu" DIC_SPELL="tjz" DIC_TEXT="土家族" DIC_CODE="15"/>
-    <row DIC_ASPELL="daizu" DIC_SPELL="dz" DIC_TEXT="傣族" DIC_CODE="18"/>
-    <row DIC_ASPELL="shezu" DIC_SPELL="sz" DIC_TEXT="畲族" DIC_CODE="22"/>
-    <row DIC_ASPELL="wuzibiekezu" DIC_SPELL="wzbkz" DIC_TEXT="乌孜别克族" DIC_CODE="43"/>
-    <row DIC_ASPELL="ewenkezu" DIC_SPELL="ewkz" DIC_TEXT="鄂温克族" DIC_CODE="45"/>
-    <row DIC_ASPELL="deangzu" DIC_SPELL="daz" DIC_TEXT="德昂族" DIC_CODE="46"/>
-    <row DIC_ASPELL="baoanzu" DIC_SPELL="baz" DIC_TEXT="保安族" DIC_CODE="47"/>
-    <row DIC_ASPELL="jingzu" DIC_SPELL="jz" DIC_TEXT="京族" DIC_CODE="49"/>
-    <row DIC_ASPELL="tataerzu" DIC_SPELL="ttez" DIC_TEXT="塔塔尔族" DIC_CODE="50"/>
-    <row DIC_ASPELL="elunchunzu" DIC_SPELL="elcz" DIC_TEXT="鄂伦春族" DIC_CODE="52"/>
-    <row DIC_ASPELL="hezhezu" DIC_SPELL="hzz" DIC_TEXT="赫哲族" DIC_CODE="53"/>
-    <row DIC_ASPELL="luobazu" DIC_SPELL="lbz" DIC_TEXT="珞巴族" DIC_CODE="55"/>
-    <row DIC_ASPELL="jinuozu" DIC_SPELL="jnz" DIC_TEXT="基诺族" DIC_CODE="56"/>
-    <row DIC_ASPELL="hanzu" DIC_SPELL="hz" DIC_TEXT="汉族" DIC_CODE="01"/>
-    <row DIC_ASPELL="mengguzu" DIC_SPELL="mgz" DIC_TEXT="蒙古族" DIC_CODE="02"/>
-    <row DIC_ASPELL="huizu" DIC_SPELL="hz" DIC_TEXT="回族" DIC_CODE="03"/>
-    <row DIC_ASPELL="weiwuerzu" DIC_SPELL="wwez" DIC_TEXT="维吾尔族" DIC_CODE="05"/>
-    <row DIC_ASPELL="zhuangzu" DIC_SPELL="zz" DIC_TEXT="壮族" DIC_CODE="08"/>
-    <row DIC_ASPELL="buyizu" DIC_SPELL="byz" DIC_TEXT="布依族" DIC_CODE="09"/>
-    <row DIC_ASPELL="manzu" DIC_SPELL="mz" DIC_TEXT="满族" DIC_CODE="11"/>
-    <row DIC_ASPELL="dongzu" DIC_SPELL="dz" DIC_TEXT="侗族" DIC_CODE="12"/>
-    <row DIC_ASPELL="yaozu" DIC_SPELL="yz" DIC_TEXT="瑶族" DIC_CODE="13"/>
-    <row DIC_ASPELL="baizu" DIC_SPELL="bz" DIC_TEXT="白族" DIC_CODE="14"/>
-    <row DIC_ASPELL="hanizu" DIC_SPELL="hnz" DIC_TEXT="哈尼族" DIC_CODE="16"/>
-    <row DIC_ASPELL="hasakezu" DIC_SPELL="hskz" DIC_TEXT="哈萨克族" DIC_CODE="17"/>
-    <row DIC_ASPELL="lizu" DIC_SPELL="lz" DIC_TEXT="黎族" DIC_CODE="19"/>
-    <row DIC_ASPELL="lisuzu" DIC_SPELL="lsz" DIC_TEXT="傈僳族" DIC_CODE="20"/>
-    <row DIC_ASPELL="mulaozu" DIC_SPELL="mlz" DIC_TEXT="仫佬族" DIC_CODE="32"/>
-    <row DIC_ASPELL="qiangzu" DIC_SPELL="qz" DIC_TEXT="羌族" DIC_CODE="33"/>
-    <row DIC_ASPELL="bulangzu" DIC_SPELL="blz" DIC_TEXT="布朗族" DIC_CODE="34"/>
-    <row DIC_ASPELL="maonanzu" DIC_SPELL="mnz" DIC_TEXT="毛难族" DIC_CODE="36"/>
-    <row DIC_ASPELL="gelaozu" DIC_SPELL="glz" DIC_TEXT="仡佬族" DIC_CODE="37"/>
-    <row DIC_ASPELL="shuizu" DIC_SPELL="sz" DIC_TEXT="水族" DIC_CODE="25"/>
-    <row DIC_ASPELL="dongxiangzu" DIC_SPELL="dxz" DIC_TEXT="东乡族" DIC_CODE="26"/>
-    <row DIC_ASPELL="naxizu" DIC_SPELL="nxz" DIC_TEXT="纳西族" DIC_CODE="27"/>
-    <row DIC_ASPELL="keerkezizu" DIC_SPELL="kekzz" DIC_TEXT="柯尔克孜族" DIC_CODE="29"/>
-    <row DIC_ASPELL="tuzu" DIC_SPELL="tz" DIC_TEXT="土族" DIC_CODE="30"/>
-    <row DIC_ASPELL="gaoshanzu" DIC_SPELL="gsz" DIC_TEXT="高山族" DIC_CODE="23"/>
-    <row DIC_ASPELL="nuzu" DIC_SPELL="nz" DIC_TEXT="怒族" DIC_CODE="42"/>
-    <row DIC_ASPELL="qitaminzu" DIC_SPELL="qtmz" DIC_TEXT="其他民族" DIC_CODE="57"/>
-    <row DIC_ASPELL="miaozu" DIC_SPELL="mz" DIC_TEXT="苗族" DIC_CODE="06"/>
-    <row DIC_ASPELL="wazu" DIC_SPELL="wz" DIC_TEXT="佤族" DIC_CODE="21"/>
-    <row DIC_ASPELL="achangzu" DIC_SPELL="acz" DIC_TEXT="阿昌族" DIC_CODE="39"/>
-    <row DIC_ASPELL="pumizu" DIC_SPELL="pmz" DIC_TEXT="普米族" DIC_CODE="40"/>
+    <row DIC_ASPELL="hanzu" DIC_SPELL="hz" DIC_TEXT="汉族" DIC_CODE="01" DIC_PERM="1"/>
+    <row DIC_ASPELL="mengguzu" DIC_SPELL="mgz" DIC_TEXT="蒙古族" DIC_CODE="02" DIC_PERM="1"/>
+    <row DIC_ASPELL="huizu" DIC_SPELL="hz" DIC_TEXT="回族" DIC_CODE="03" DIC_PERM="1"/>
+    <row DIC_ASPELL="zangzu" DIC_SPELL="zz" DIC_TEXT="藏族" DIC_CODE="04" DIC_PERM="1"/>
+    <row DIC_ASPELL="weiwuerzu" DIC_SPELL="wwez" DIC_TEXT="维吾尔族" DIC_CODE="05" DIC_PERM="1"/>
+    <row DIC_ASPELL="miaozu" DIC_SPELL="mz" DIC_TEXT="苗族" DIC_CODE="06" DIC_PERM="1"/>
+    <row DIC_ASPELL="yizu" DIC_SPELL="yz" DIC_TEXT="彝族" DIC_CODE="07" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhuangzu" DIC_SPELL="zz" DIC_TEXT="壮族" DIC_CODE="08" DIC_PERM="1"/>
+    <row DIC_ASPELL="buyizu" DIC_SPELL="byz" DIC_TEXT="布依族" DIC_CODE="09" DIC_PERM="1"/>
+    <row DIC_ASPELL="chaoxianzu" DIC_SPELL="cxz" DIC_TEXT="朝鲜族" DIC_CODE="10" DIC_PERM="1"/>
+    <row DIC_ASPELL="manzu" DIC_SPELL="mz" DIC_TEXT="满族" DIC_CODE="11" DIC_PERM="1"/>
+    <row DIC_ASPELL="dongzu" DIC_SPELL="dz" DIC_TEXT="侗族" DIC_CODE="12" DIC_PERM="1"/>
+    <row DIC_ASPELL="yaozu" DIC_SPELL="yz" DIC_TEXT="瑶族" DIC_CODE="13" DIC_PERM="1"/>
+    <row DIC_ASPELL="baizu" DIC_SPELL="bz" DIC_TEXT="白族" DIC_CODE="14" DIC_PERM="1"/>
+    <row DIC_ASPELL="tujiazu" DIC_SPELL="tjz" DIC_TEXT="土家族" DIC_CODE="15" DIC_PERM="1"/>
+    <row DIC_ASPELL="hanizu" DIC_SPELL="hnz" DIC_TEXT="哈尼族" DIC_CODE="16" DIC_PERM="1"/>
+    <row DIC_ASPELL="hasakezu" DIC_SPELL="hskz" DIC_TEXT="哈萨克族" DIC_CODE="17" DIC_PERM="1"/>
+    <row DIC_ASPELL="daizu" DIC_SPELL="dz" DIC_TEXT="傣族" DIC_CODE="18" DIC_PERM="1"/>
+    <row DIC_ASPELL="lizu" DIC_SPELL="lz" DIC_TEXT="黎族" DIC_CODE="19" DIC_PERM="1"/>
+    <row DIC_ASPELL="lisuzu" DIC_SPELL="lsz" DIC_TEXT="傈僳族" DIC_CODE="20" DIC_PERM="1"/>
+    <row DIC_ASPELL="wazu" DIC_SPELL="wz" DIC_TEXT="佤族" DIC_CODE="21" DIC_PERM="1"/>
+    <row DIC_ASPELL="shezu" DIC_SPELL="sz" DIC_TEXT="畲族" DIC_CODE="22" DIC_PERM="1"/>
+    <row DIC_ASPELL="gaoshanzu" DIC_SPELL="gsz" DIC_TEXT="高山族" DIC_CODE="23" DIC_PERM="1"/>
+    <row DIC_ASPELL="lahuzu" DIC_SPELL="lhz" DIC_TEXT="拉祜族" DIC_CODE="24" DIC_PERM="1"/>
+    <row DIC_ASPELL="shuizu" DIC_SPELL="sz" DIC_TEXT="水族" DIC_CODE="25" DIC_PERM="1"/>
+    <row DIC_ASPELL="dongxiangzu" DIC_SPELL="dxz" DIC_TEXT="东乡族" DIC_CODE="26" DIC_PERM="1"/>
+    <row DIC_ASPELL="naxizu" DIC_SPELL="nxz" DIC_TEXT="纳西族" DIC_CODE="27" DIC_PERM="1"/>
+    <row DIC_ASPELL="jingpozu" DIC_SPELL="jpz" DIC_TEXT="景颇族" DIC_CODE="28" DIC_PERM="1"/>
+    <row DIC_ASPELL="keerkezizu" DIC_SPELL="kekzz" DIC_TEXT="柯尔克孜族" DIC_CODE="29" DIC_PERM="1"/>
+    <row DIC_ASPELL="tuzu" DIC_SPELL="tz" DIC_TEXT="土族" DIC_CODE="30" DIC_PERM="1"/>
+    <row DIC_ASPELL="dahanerzu" DIC_SPELL="dhez" DIC_TEXT="达翰尔族" DIC_CODE="31" DIC_PERM="1"/>
+    <row DIC_ASPELL="mulaozu" DIC_SPELL="mlz" DIC_TEXT="仫佬族" DIC_CODE="32" DIC_PERM="1"/>
+    <row DIC_ASPELL="qiangzu" DIC_SPELL="qz" DIC_TEXT="羌族" DIC_CODE="33" DIC_PERM="1"/>
+    <row DIC_ASPELL="bulangzu" DIC_SPELL="blz" DIC_TEXT="布朗族" DIC_CODE="34" DIC_PERM="1"/>
+    <row DIC_ASPELL="salazu" DIC_SPELL="slz" DIC_TEXT="撒拉族" DIC_CODE="35" DIC_PERM="1"/>
+    <row DIC_ASPELL="maonanzu" DIC_SPELL="mnz" DIC_TEXT="毛难族" DIC_CODE="36" DIC_PERM="1"/>
+    <row DIC_ASPELL="gelaozu" DIC_SPELL="glz" DIC_TEXT="仡佬族" DIC_CODE="37" DIC_PERM="1"/>
+    <row DIC_ASPELL="xibozu" DIC_SPELL="xbz" DIC_TEXT="锡伯族" DIC_CODE="38" DIC_PERM="1"/>
+    <row DIC_ASPELL="achangzu" DIC_SPELL="acz" DIC_TEXT="阿昌族" DIC_CODE="39" DIC_PERM="1"/>
+    <row DIC_ASPELL="pumizu" DIC_SPELL="pmz" DIC_TEXT="普米族" DIC_CODE="40" DIC_PERM="1"/>
+    <row DIC_ASPELL="tajikezu" DIC_SPELL="tjkz" DIC_TEXT="塔吉克族" DIC_CODE="41" DIC_PERM="1"/>
+    <row DIC_ASPELL="nuzu" DIC_SPELL="nz" DIC_TEXT="怒族" DIC_CODE="42" DIC_PERM="1"/>
+    <row DIC_ASPELL="wuzibiekezu" DIC_SPELL="wzbkz" DIC_TEXT="乌孜别克族" DIC_CODE="43" DIC_PERM="1"/>
+    <row DIC_ASPELL="eluosizu" DIC_SPELL="elsz" DIC_TEXT="俄罗斯族" DIC_CODE="44" DIC_PERM="1"/>
+    <row DIC_ASPELL="ewenkezu" DIC_SPELL="ewkz" DIC_TEXT="鄂温克族" DIC_CODE="45" DIC_PERM="1"/>
+    <row DIC_ASPELL="deangzu" DIC_SPELL="daz" DIC_TEXT="德昂族" DIC_CODE="46" DIC_PERM="1"/>
+    <row DIC_ASPELL="baoanzu" DIC_SPELL="baz" DIC_TEXT="保安族" DIC_CODE="47" DIC_PERM="1"/>
+    <row DIC_ASPELL="yuguzu" DIC_SPELL="ygz" DIC_TEXT="裕固族" DIC_CODE="48" DIC_PERM="1"/>
+    <row DIC_ASPELL="jingzu" DIC_SPELL="jz" DIC_TEXT="京族" DIC_CODE="49" DIC_PERM="1"/>
+    <row DIC_ASPELL="tataerzu" DIC_SPELL="ttez" DIC_TEXT="塔塔尔族" DIC_CODE="50" DIC_PERM="1"/>
+    <row DIC_ASPELL="dulongzu" DIC_SPELL="dlz" DIC_TEXT="独龙族" DIC_CODE="51" DIC_PERM="1"/>
+    <row DIC_ASPELL="elunchunzu" DIC_SPELL="elcz" DIC_TEXT="鄂伦春族" DIC_CODE="52" DIC_PERM="1"/>
+    <row DIC_ASPELL="hezhezu" DIC_SPELL="hzz" DIC_TEXT="赫哲族" DIC_CODE="53" DIC_PERM="1"/>
+    <row DIC_ASPELL="menbazu" DIC_SPELL="mbz" DIC_TEXT="门巴族" DIC_CODE="54" DIC_PERM="1"/>
+    <row DIC_ASPELL="luobazu" DIC_SPELL="lbz" DIC_TEXT="珞巴族" DIC_CODE="55" DIC_PERM="1"/>
+    <row DIC_ASPELL="jinuozu" DIC_SPELL="jnz" DIC_TEXT="基诺族" DIC_CODE="56" DIC_PERM="1"/>
+    <row DIC_ASPELL="qitaminzu" DIC_SPELL="qtmz" DIC_TEXT="其他民族" DIC_CODE="57" DIC_PERM="1"/>
 </data>

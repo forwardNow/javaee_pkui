@@ -542,10 +542,18 @@
 
   </select>
 <!--   <select id="getSysDicItemXmlByDicname" parameterType="java.lang.String" resultType="com.pkusoft.admin.model.SysDicItem" > -->
-  <select id="getSysDicItemXmlByDicname" parameterType="java.lang.String" resultMap="BaseResultMap" >
+  <!-- <select id="getSysDicItemXmlByDicname" parameterType="java.lang.String" resultMap="BaseResultMap" >
     select 
     DIC_NAME ,ITEM_CODE,ITEM_VALUE,ITEM_SPELL, ITEM_ASPELL
     from SYS_DIC_ITEM where DIC_NAME = #{dicName,jdbcType=VARCHAR}  and VISIABLE = '1'
 
+  </select> -->
+  <select id="getSysDicItemXmlByDicname" parameterType="java.lang.String" resultType="com.pkusoft.admin.model.SysDicItem" >
+    select 
+    DIC_NAME ,ITEM_CODE,ITEM_VALUE,ITEM_SPELL, ITEM_ASPELL,VISIABLE
+    from SYS_DIC_ITEM where DIC_NAME = #{dicName,jdbcType=VARCHAR}
+	order by VISIABLE DESC,ORDER_FLAG,ITEM_CODE
   </select>
+  
+  
 </mapper>

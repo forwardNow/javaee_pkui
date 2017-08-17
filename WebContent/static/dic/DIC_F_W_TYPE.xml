@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="kouyawupinqingdanxingzheng" DIC_SPELL="kywpqd（xz）" DIC_TEXT="扣押物品清单（行政）" DIC_CODE="01"/>
-    <row DIC_ASPELL="chouyangquzhengzhengjuqingdanxingzheng" DIC_SPELL="cyqzzjqd（xz）" DIC_TEXT="抽样取证证据清单（行政）" DIC_CODE="02"/>
-    <row DIC_ASPELL="xianxingdengjibaocunqingdanxingzheng" DIC_SPELL="xxdjbcqd（xz）" DIC_TEXT="先行登记保存清单（行政）" DIC_CODE="03"/>
-    <row DIC_ASPELL="shoujiao/zhuijiaowupinqingdanxingzheng" DIC_SPELL="sj/zjwpqd（xz）" DIC_TEXT="收缴/追缴物品清单（行政）" DIC_CODE="04"/>
-    <row DIC_ASPELL="meishouweifasuodefeifacaiwuqingdanxingzheng" DIC_SPELL="mswfsd、ffcwqd（xz）" DIC_TEXT="没收违法所得、非法财物清单（行政）" DIC_CODE="05"/>
-    <row DIC_ASPELL="kouyawupinwenjianqingdanxingshi" DIC_SPELL="kywp、wjqd（xs）" DIC_TEXT="扣押物品、文件清单（刑事）" DIC_CODE="11"/>
-    <row DIC_ASPELL="diaoquzhengjuqingdanxingshi" DIC_SPELL="dqzjqd（xs）" DIC_TEXT="调取证据清单（刑事）" DIC_CODE="12"/>
-    <row DIC_ASPELL="suianyijiaowupinwenjianqingdanxingshi" DIC_SPELL="sayjwp、wjqd（xs）" DIC_TEXT="随案移交物品、文件清单（刑事）" DIC_CODE="13"/>
-    <row DIC_ASPELL="fahaiwupinwenjianqingdanxingshi" DIC_SPELL="fhwp、wjqd（xs）" DIC_TEXT="发还物品、文件清单（刑事）" DIC_CODE="14"/>
-    <row DIC_ASPELL="chuliwupinwenjianqingdanxingshi" DIC_SPELL="clwp、wjqd（xs）" DIC_TEXT="处理物品、文件清单（刑事）" DIC_CODE="15"/>
-    <row DIC_ASPELL="xiaohuiwupinwenjianqingdanxingshi" DIC_SPELL="xhwp、wjqd（xs）" DIC_TEXT="销毁物品、文件清单（刑事）" DIC_CODE="16"/>
+    <row DIC_ASPELL="kouyawupinqingdanxingzheng" DIC_SPELL="kywpqdxz" DIC_TEXT="扣押物品清单（行政）" DIC_CODE="01" DIC_PERM="1"/>
+    <row DIC_ASPELL="chouyangquzhengzhengjuqingdanxingzheng" DIC_SPELL="cyqzzjqdxz" DIC_TEXT="抽样取证证据清单（行政）" DIC_CODE="02" DIC_PERM="1"/>
+    <row DIC_ASPELL="xianxingdengjibaocunqingdanxingzheng" DIC_SPELL="xxdjbcqdxz" DIC_TEXT="先行登记保存清单（行政）" DIC_CODE="03" DIC_PERM="1"/>
+    <row DIC_ASPELL="shoujiao/zhuijiaowupinqingdanxingzheng" DIC_SPELL="sj/zjwpqdxz" DIC_TEXT="收缴/追缴物品清单（行政）" DIC_CODE="04" DIC_PERM="1"/>
+    <row DIC_ASPELL="meishouweifasuodefeifacaiwuqingdanxingzheng" DIC_SPELL="mswfsdffcwqdxz" DIC_TEXT="没收违法所得、非法财物清单（行政）" DIC_CODE="05" DIC_PERM="1"/>
+    <row DIC_ASPELL="kouyawupinwenjianqingdanxingshi" DIC_SPELL="kywpwjqdxs" DIC_TEXT="扣押物品、文件清单（刑事）" DIC_CODE="11" DIC_PERM="1"/>
+    <row DIC_ASPELL="diaoquzhengjuqingdanxingshi" DIC_SPELL="dqzjqdxs" DIC_TEXT="调取证据清单（刑事）" DIC_CODE="12" DIC_PERM="1"/>
+    <row DIC_ASPELL="suianyijiaowupinwenjianqingdanxingshi" DIC_SPELL="sayjwpwjqdxs" DIC_TEXT="随案移交物品、文件清单（刑事）" DIC_CODE="13" DIC_PERM="1"/>
+    <row DIC_ASPELL="fahaiwupinwenjianqingdanxingshi" DIC_SPELL="fhwpwjqdxs" DIC_TEXT="发还物品、文件清单（刑事）" DIC_CODE="14" DIC_PERM="1"/>
+    <row DIC_ASPELL="chuliwupinwenjianqingdanxingshi" DIC_SPELL="clwpwjqdxs" DIC_TEXT="处理物品、文件清单（刑事）" DIC_CODE="15" DIC_PERM="1"/>
+    <row DIC_ASPELL="xiaohuiwupinwenjianqingdanxingshi" DIC_SPELL="xhwpwjqdxs" DIC_TEXT="销毁物品、文件清单（刑事）" DIC_CODE="16" DIC_PERM="1"/>
 </data>

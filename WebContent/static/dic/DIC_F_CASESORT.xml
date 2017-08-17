@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="xingzhenganjian" DIC_SPELL="xzaj" DIC_TEXT="行政案件" DIC_CODE="2"/>
-    <row DIC_ASPELL="xingshianjian" DIC_SPELL="xsaj" DIC_TEXT="刑事案件" DIC_CODE="1"/>
-    <row DIC_ASPELL="feisheananjian" DIC_SPELL="fsaaj" DIC_TEXT="非涉案案件" DIC_CODE="3"/>
+    <row DIC_ASPELL="xingshianjian" DIC_SPELL="xsaj" DIC_TEXT="刑事案件" DIC_CODE="1" DIC_PERM="1"/>
+    <row DIC_ASPELL="xingzhenganjian" DIC_SPELL="xzaj" DIC_TEXT="行政案件" DIC_CODE="2" DIC_PERM="1"/>
+    <row DIC_ASPELL="feisheananjian" DIC_SPELL="fsaaj" DIC_TEXT="非涉案案件" DIC_CODE="3" DIC_PERM="1"/>
 </data>

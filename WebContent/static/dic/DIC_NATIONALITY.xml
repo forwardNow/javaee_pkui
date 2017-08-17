@@ -1,243 +1,243 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="aishaniya" DIC_SPELL="asny" DIC_TEXT="爱沙尼亚" DIC_CODE="233"/>
-    <row DIC_ASPELL="liuniwang" DIC_SPELL="lnw" DIC_TEXT="留尼汪" DIC_CODE="638"/>
-    <row DIC_ASPELL="luomaniya" DIC_SPELL="lmny" DIC_TEXT="罗马尼亚" DIC_CODE="642"/>
-    <row DIC_ASPELL="luwangda" DIC_SPELL="lwd" DIC_TEXT="卢旺达" DIC_CODE="646"/>
-    <row DIC_ASPELL="shenghelena" DIC_SPELL="shln" DIC_TEXT="圣赫勒拿" DIC_CODE="654"/>
-    <row DIC_ASPELL="anguila" DIC_SPELL="agl" DIC_TEXT="安圭拉" DIC_CODE="660"/>
-    <row DIC_ASPELL="shengluxiya" DIC_SPELL="slxy" DIC_TEXT="圣卢西亚" DIC_CODE="662"/>
-    <row DIC_ASPELL="shengwensentehegelinnadingsi" DIC_SPELL="swsthglnds" DIC_TEXT="圣文森特和格林纳丁斯" DIC_CODE="670"/>
-    <row DIC_ASPELL="shengmalinuo" DIC_SPELL="smln" DIC_TEXT="圣马力诺" DIC_CODE="674"/>
-    <row DIC_ASPELL="shazhualabo" DIC_SPELL="szalb" DIC_TEXT="沙竺阿拉伯" DIC_CODE="682"/>
-    <row DIC_ASPELL="saineijiaer" DIC_SPELL="snje" DIC_TEXT="塞内加尔" DIC_CODE="686"/>
-    <row DIC_ASPELL="saisheer" DIC_SPELL="sse" DIC_TEXT="塞舌尔" DIC_CODE="690"/>
-    <row DIC_ASPELL="xinjiapo" DIC_SPELL="xjp" DIC_TEXT="新加坡" DIC_CODE="702"/>
-    <row DIC_ASPELL="siluofake" DIC_SPELL="slfk" DIC_TEXT="斯洛伐克" DIC_CODE="703"/>
-    <row DIC_ASPELL="yuenan" DIC_SPELL="yn" DIC_TEXT="越南" DIC_CODE="704"/>
-    <row DIC_ASPELL="suomali" DIC_SPELL="sml" DIC_TEXT="索马里" DIC_CODE="706"/>
-    <row DIC_ASPELL="nanfei" DIC_SPELL="nf" DIC_TEXT="南非" DIC_CODE="710"/>
-    <row DIC_ASPELL="jinbabuwei" DIC_SPELL="jbbw" DIC_TEXT="津巴布韦" DIC_CODE="716"/>
-    <row DIC_ASPELL="xisahala" DIC_SPELL="xshl" DIC_TEXT="西撒哈拉" DIC_CODE="732"/>
-    <row DIC_ASPELL="sudan" DIC_SPELL="sd" DIC_TEXT="苏丹" DIC_CODE="736"/>
-    <row DIC_ASPELL="sulinan" DIC_SPELL="sln" DIC_TEXT="苏里南" DIC_CODE="740"/>
-    <row DIC_ASPELL="siweishilan" DIC_SPELL="swsl" DIC_TEXT="斯威士兰" DIC_CODE="748"/>
-    <row DIC_ASPELL="ruidian" DIC_SPELL="rd" DIC_TEXT="瑞典" DIC_CODE="752"/>
-    <row DIC_ASPELL="ruishi" DIC_SPELL="rs" DIC_TEXT="瑞士" DIC_CODE="756"/>
-    <row DIC_ASPELL="xuliya" DIC_SPELL="xly" DIC_TEXT="叙利亚" DIC_CODE="760"/>
-    <row DIC_ASPELL="taiguo" DIC_SPELL="tg" DIC_TEXT="泰国" DIC_CODE="764"/>
-    <row DIC_ASPELL="duoge" DIC_SPELL="dg" DIC_TEXT="多哥" DIC_CODE="768"/>
-    <row DIC_ASPELL="tuokelao" DIC_SPELL="tkl" DIC_TEXT="托克劳" DIC_CODE="772"/>
-    <row DIC_ASPELL="tangjia" DIC_SPELL="tj" DIC_TEXT="汤加" DIC_CODE="776"/>
-    <row DIC_ASPELL="awenqiu" DIC_SPELL="awq" DIC_TEXT="阿闻酋" DIC_CODE="784"/>
-    <row DIC_ASPELL="tuerqi" DIC_SPELL="teq" DIC_TEXT="土耳其" DIC_CODE="792"/>
-    <row DIC_ASPELL="tekesikesiqundao" DIC_SPELL="tksksqd" DIC_TEXT="特克斯科斯群岛" DIC_CODE="796"/>
-    <row DIC_ASPELL="tuwalu" DIC_SPELL="twl" DIC_TEXT="图瓦卢" DIC_CODE="798"/>
-    <row DIC_ASPELL="wuganda" DIC_SPELL="wgd" DIC_TEXT="乌干达" DIC_CODE="800"/>
-    <row DIC_ASPELL="masidun" DIC_SPELL="msd" DIC_TEXT="马斯顿" DIC_CODE="807"/>
-    <row DIC_ASPELL="aiji" DIC_SPELL="aj" DIC_TEXT="埃及" DIC_CODE="818"/>
-    <row DIC_ASPELL="yingguo" DIC_SPELL="yg" DIC_TEXT="英国" DIC_CODE="826"/>
-    <row DIC_ASPELL="meiguo" DIC_SPELL="mg" DIC_TEXT="美国" DIC_CODE="840"/>
-    <row DIC_ASPELL="meishuweierjingqundao" DIC_SPELL="mswejqd" DIC_TEXT="美属维尔京群岛" DIC_CODE="850"/>
-    <row DIC_ASPELL="wulagui" DIC_SPELL="wlg" DIC_TEXT="乌拉圭" DIC_CODE="858"/>
-    <row DIC_ASPELL="wuzibiekesitan" DIC_SPELL="wzbkst" DIC_TEXT="乌兹别克斯坦" DIC_CODE="860"/>
-    <row DIC_ASPELL="walisihefutunaqundao" DIC_SPELL="wlshftnqd" DIC_TEXT="瓦利斯和富图纳群岛" DIC_CODE="876"/>
-    <row DIC_ASPELL="xisamoya" DIC_SPELL="xsmy" DIC_TEXT="西萨摩亚" DIC_CODE="882"/>
-    <row DIC_ASPELL="zanbiya" DIC_SPELL="zby" DIC_TEXT="赞比亚" DIC_CODE="894"/>
-    <row DIC_ASPELL="nanqiaozhiyadaohenansangdeweiqidao" DIC_SPELL="nqzydhnsdwqd" DIC_TEXT="南乔治亚岛和南桑德韦奇岛" DIC_CODE="239"/>
-    <row DIC_ASPELL="feiji" DIC_SPELL="fj" DIC_TEXT="斐济" DIC_CODE="242"/>
-    <row DIC_ASPELL="faguo" DIC_SPELL="fg" DIC_TEXT="法国" DIC_CODE="250"/>
-    <row DIC_ASPELL="fashuguiyanei" DIC_SPELL="fsgyn" DIC_TEXT="法属圭亚那" DIC_CODE="254"/>
-    <row DIC_ASPELL="fashunanbulingtu" DIC_SPELL="fsnblt" DIC_TEXT="法属南部领土" DIC_CODE="260"/>
-    <row DIC_ASPELL="jiapeng" DIC_SPELL="jp" DIC_TEXT="加蓬" DIC_CODE="266"/>
-    <row DIC_ASPELL="fodejiao" DIC_SPELL="fdj" DIC_TEXT="佛得角" DIC_CODE="270"/>
-    <row DIC_ASPELL="deguo" DIC_SPELL="dg" DIC_TEXT="德国" DIC_CODE="276"/>
-    <row DIC_ASPELL="jiana" DIC_SPELL="jn" DIC_TEXT="加纳" DIC_CODE="288"/>
-    <row DIC_ASPELL="jilibasi" DIC_SPELL="jlbs" DIC_TEXT="基里巴斯" DIC_CODE="296"/>
-    <row DIC_ASPELL="xila" DIC_SPELL="xl" DIC_TEXT="希腊" DIC_CODE="300"/>
-    <row DIC_ASPELL="gelinglan" DIC_SPELL="gll" DIC_TEXT="格陵兰" DIC_CODE="304"/>
-    <row DIC_ASPELL="gelinnada" DIC_SPELL="glnd" DIC_TEXT="格林纳达" DIC_CODE="308"/>
-    <row DIC_ASPELL="guandao" DIC_SPELL="gd" DIC_TEXT="关岛" DIC_CODE="316"/>
-    <row DIC_ASPELL="weidimala" DIC_SPELL="wdml" DIC_TEXT="危地马拉" DIC_CODE="320"/>
-    <row DIC_ASPELL="jineiya" DIC_SPELL="jny" DIC_TEXT="几内亚" DIC_CODE="324"/>
-    <row DIC_ASPELL="haidi" DIC_SPELL="hd" DIC_TEXT="海地" DIC_CODE="332"/>
-    <row DIC_ASPELL="fandigang" DIC_SPELL="fdg" DIC_TEXT="梵蒂冈" DIC_CODE="336"/>
-    <row DIC_ASPELL="xianggang" DIC_SPELL="xg" DIC_TEXT="香港" DIC_CODE="344"/>
-    <row DIC_ASPELL="xiongyali" DIC_SPELL="xyl" DIC_TEXT="匈牙利" DIC_CODE="348"/>
-    <row DIC_ASPELL="bingdao" DIC_SPELL="bd" DIC_TEXT="冰岛" DIC_CODE="352"/>
-    <row DIC_ASPELL="yindu" DIC_SPELL="yd" DIC_TEXT="印度" DIC_CODE="356"/>
-    <row DIC_ASPELL="yilang" DIC_SPELL="yl" DIC_TEXT="伊朗" DIC_CODE="364"/>
-    <row DIC_ASPELL="yilake" DIC_SPELL="ylk" DIC_TEXT="伊拉克" DIC_CODE="368"/>
-    <row DIC_ASPELL="aierlan" DIC_SPELL="ael" DIC_TEXT="爱尔兰" DIC_CODE="372"/>
-    <row DIC_ASPELL="yiselie" DIC_SPELL="ysl" DIC_TEXT="以色列" DIC_CODE="376"/>
-    <row DIC_ASPELL="yidali" DIC_SPELL="ydl" DIC_TEXT="意大利" DIC_CODE="380"/>
-    <row DIC_ASPELL="ketediwa" DIC_SPELL="ktdw" DIC_TEXT="科特迪瓦" DIC_CODE="384"/>
-    <row DIC_ASPELL="riben" DIC_SPELL="rb" DIC_TEXT="日本" DIC_CODE="392"/>
-    <row DIC_ASPELL="hasakesitan" DIC_SPELL="hskst" DIC_TEXT="哈萨克斯坦" DIC_CODE="398"/>
-    <row DIC_ASPELL="yuedan" DIC_SPELL="yd" DIC_TEXT="约旦" DIC_CODE="400"/>
-    <row DIC_ASPELL="chaoxian" DIC_SPELL="cx" DIC_TEXT="朝鲜" DIC_CODE="408"/>
-    <row DIC_ASPELL="hanguo" DIC_SPELL="hg" DIC_TEXT="韩国" DIC_CODE="410"/>
-    <row DIC_ASPELL="keweite" DIC_SPELL="kwt" DIC_TEXT="科威特" DIC_CODE="414"/>
-    <row DIC_ASPELL="libanen" DIC_SPELL="lbn" DIC_TEXT="黎巴嫩" DIC_CODE="422"/>
-    <row DIC_ASPELL="laisuotuo" DIC_SPELL="lst" DIC_TEXT="莱索托" DIC_CODE="426"/>
-    <row DIC_ASPELL="latuoweiya" DIC_SPELL="ltwy" DIC_TEXT="拉脱维亚" DIC_CODE="428"/>
-    <row DIC_ASPELL="libiya" DIC_SPELL="lby" DIC_TEXT="利比亚" DIC_CODE="434"/>
-    <row DIC_ASPELL="liezhidunshideng" DIC_SPELL="lzdsd" DIC_TEXT="列支敦士登" DIC_CODE="438"/>
-    <row DIC_ASPELL="litaowan" DIC_SPELL="ltw" DIC_TEXT="立陶宛" DIC_CODE="440"/>
-    <row DIC_ASPELL="lusenbao" DIC_SPELL="lsb" DIC_TEXT="卢森堡" DIC_CODE="442"/>
-    <row DIC_ASPELL="aomen" DIC_SPELL="am" DIC_TEXT="澳门" DIC_CODE="446"/>
-    <row DIC_ASPELL="madajiasijia" DIC_SPELL="mdjsj" DIC_TEXT="马达加斯加" DIC_CODE="450"/>
-    <row DIC_ASPELL="malawei" DIC_SPELL="mlw" DIC_TEXT="马拉维" DIC_CODE="454"/>
-    <row DIC_ASPELL="malaixiya" DIC_SPELL="mlxy" DIC_TEXT="马来西亚" DIC_CODE="458"/>
-    <row DIC_ASPELL="mali" DIC_SPELL="ml" DIC_TEXT="马里" DIC_CODE="466"/>
-    <row DIC_ASPELL="maerta" DIC_SPELL="met" DIC_TEXT="马耳他" DIC_CODE="470"/>
-    <row DIC_ASPELL="matinike" DIC_SPELL="mtnk" DIC_TEXT="马提尼克" DIC_CODE="474"/>
-    <row DIC_ASPELL="maolitaniya" DIC_SPELL="mltny" DIC_TEXT="毛里塔尼亚" DIC_CODE="478"/>
-    <row DIC_ASPELL="maoliqiusi" DIC_SPELL="mlqs" DIC_TEXT="毛里求斯" DIC_CODE="480"/>
-    <row DIC_ASPELL="moxige" DIC_SPELL="mxg" DIC_TEXT="墨西哥" DIC_CODE="484"/>
-    <row DIC_ASPELL="monage" DIC_SPELL="mng" DIC_TEXT="摩纳哥" DIC_CODE="492"/>
-    <row DIC_ASPELL="menggu" DIC_SPELL="mg" DIC_TEXT="蒙古" DIC_CODE="496"/>
-    <row DIC_ASPELL="moerduowa" DIC_SPELL="medw" DIC_TEXT="摩尔多瓦" DIC_CODE="498"/>
-    <row DIC_ASPELL="mengtesailate" DIC_SPELL="mtslt" DIC_TEXT="蒙特塞拉特" DIC_CODE="500"/>
-    <row DIC_ASPELL="moluoge" DIC_SPELL="mlg" DIC_TEXT="摩洛哥" DIC_CODE="504"/>
-    <row DIC_ASPELL="mosangbike" DIC_SPELL="msbk" DIC_TEXT="莫桑比克" DIC_CODE="508"/>
-    <row DIC_ASPELL="aman" DIC_SPELL="am" DIC_TEXT="阿曼" DIC_CODE="512"/>
-    <row DIC_ASPELL="naolu" DIC_SPELL="nl" DIC_TEXT="瑙鲁" DIC_CODE="520"/>
-    <row DIC_ASPELL="niboer" DIC_SPELL="nbe" DIC_TEXT="尼泊尔" DIC_CODE="524"/>
-    <row DIC_ASPELL="helan" DIC_SPELL="hl" DIC_TEXT="荷兰" DIC_CODE="528"/>
-    <row DIC_ASPELL="heshuandeliesi" DIC_SPELL="hsadls" DIC_TEXT="荷属安的列斯" DIC_CODE="530"/>
-    <row DIC_ASPELL="xinkaliduoniya" DIC_SPELL="xkldny" DIC_TEXT="新喀里多尼亚" DIC_CODE="540"/>
-    <row DIC_ASPELL="xinxilan" DIC_SPELL="xxl" DIC_TEXT="新西兰" DIC_CODE="554"/>
-    <row DIC_ASPELL="nijialagua" DIC_SPELL="njlg" DIC_TEXT="尼加拉瓜" DIC_CODE="558"/>
-    <row DIC_ASPELL="nirier" DIC_SPELL="nre" DIC_TEXT="尼日尔" DIC_CODE="562"/>
-    <row DIC_ASPELL="niuai" DIC_SPELL="na" DIC_TEXT="纽埃" DIC_CODE="570"/>
-    <row DIC_ASPELL="nuofukedao" DIC_SPELL="nfkd" DIC_TEXT="诺福克岛" DIC_CODE="574"/>
-    <row DIC_ASPELL="nuowei" DIC_SPELL="nw" DIC_TEXT="挪威" DIC_CODE="578"/>
-    <row DIC_ASPELL="mikeluonixiya" DIC_SPELL="mklnxy" DIC_TEXT="密克罗尼西亚" DIC_CODE="583"/>
-    <row DIC_ASPELL="mashaoerqundao" DIC_SPELL="mseqd" DIC_TEXT="马绍尔群岛" DIC_CODE="584"/>
-    <row DIC_ASPELL="beilao" DIC_SPELL="bl" DIC_TEXT="贝劳" DIC_CODE="585"/>
-    <row DIC_ASPELL="bajisitan" DIC_SPELL="bjst" DIC_TEXT="巴基斯坦" DIC_CODE="586"/>
-    <row DIC_ASPELL="banama" DIC_SPELL="bnm" DIC_TEXT="巴拿马" DIC_CODE="591"/>
-    <row DIC_ASPELL="babuyaxinjineiya" DIC_SPELL="bbyxjny" DIC_TEXT="巴布亚新几内亚" DIC_CODE="598"/>
-    <row DIC_ASPELL="balagui" DIC_SPELL="blg" DIC_TEXT="巴拉圭" DIC_CODE="600"/>
-    <row DIC_ASPELL="feilu:bin" DIC_SPELL="flb" DIC_TEXT="菲律宾" DIC_CODE="608"/>
-    <row DIC_ASPELL="bolan" DIC_SPELL="bl" DIC_TEXT="波兰" DIC_CODE="616"/>
-    <row DIC_ASPELL="putaoya" DIC_SPELL="pty" DIC_TEXT="葡萄牙" DIC_CODE="620"/>
-    <row DIC_ASPELL="jineiyabishao" DIC_SPELL="jnybs" DIC_TEXT="几内亚比绍" DIC_CODE="624"/>
-    <row DIC_ASPELL="dongdiwen" DIC_SPELL="ddw" DIC_TEXT="东帝汶" DIC_CODE="626"/>
-    <row DIC_ASPELL="kataer" DIC_SPELL="kte" DIC_TEXT="卡塔尔" DIC_CODE="634"/>
-    <row DIC_ASPELL="afuhan" DIC_SPELL="afh" DIC_TEXT="阿富汗" DIC_CODE="004"/>
-    <row DIC_ASPELL="aerjiliya" DIC_SPELL="aejly" DIC_TEXT="阿尔及利亚" DIC_CODE="012"/>
-    <row DIC_ASPELL="antiguahebabuda" DIC_SPELL="atghbbd" DIC_TEXT="安提瓜和巴布达" DIC_CODE="028"/>
-    <row DIC_ASPELL="aodili" DIC_SPELL="adl" DIC_TEXT="奥地利" DIC_CODE="040"/>
-    <row DIC_ASPELL="yameiniya" DIC_SPELL="ymny" DIC_TEXT="亚美尼亚" DIC_CODE="051"/>
-    <row DIC_ASPELL="baimuda" DIC_SPELL="bmd" DIC_TEXT="百慕大" DIC_CODE="060"/>
-    <row DIC_ASPELL="bosiniyaheheisaigeweinei" DIC_SPELL="bsnyhhsgwn" DIC_TEXT="波斯尼亚和黑塞哥维那" DIC_CODE="070"/>
-    <row DIC_ASPELL="yingshuyinduyanglingtu" DIC_SPELL="ysydylt" DIC_TEXT="英属印度洋领土" DIC_CODE="086"/>
-    <row DIC_ASPELL="baojialiya" DIC_SPELL="bjly" DIC_TEXT="保加利亚" DIC_CODE="100"/>
-    <row DIC_ASPELL="jianpuzhai" DIC_SPELL="jpz" DIC_TEXT="柬埔寨" DIC_CODE="116"/>
-    <row DIC_ASPELL="kaimanqundao" DIC_SPELL="kmqd" DIC_TEXT="开曼群岛" DIC_CODE="136"/>
-    <row DIC_ASPELL="zhili" DIC_SPELL="zl" DIC_TEXT="智利" DIC_CODE="152"/>
-    <row DIC_ASPELL="shengdandao" DIC_SPELL="sdd" DIC_TEXT="圣诞岛" DIC_CODE="162"/>
-    <row DIC_ASPELL="gelunbiya" DIC_SPELL="glby" DIC_TEXT="哥伦比亚" DIC_CODE="170"/>
-    <row DIC_ASPELL="zhayier" DIC_SPELL="zye" DIC_TEXT="扎伊尔" DIC_CODE="180"/>
-    <row DIC_ASPELL="keluodiya" DIC_SPELL="kldy" DIC_TEXT="克罗地亚" DIC_CODE="191"/>
-    <row DIC_ASPELL="danmai" DIC_SPELL="dm" DIC_TEXT="丹麦" DIC_CODE="208"/>
-    <row DIC_ASPELL="duominijiagongheguo" DIC_SPELL="dmnjghg" DIC_TEXT="多米尼加共和国" DIC_CODE="214"/>
-    <row DIC_ASPELL="aisaiebiya" DIC_SPELL="aseby" DIC_TEXT="埃塞俄比亚" DIC_CODE="231"/>
-    <row DIC_ASPELL="maerweinasiqundaofukelanqundao" DIC_SPELL="mewnsqd（fklqd）" DIC_TEXT="马尔维纳斯群岛（福克兰群岛）" DIC_CODE="238"/>
-    <row DIC_ASPELL="fenlan" DIC_SPELL="fl" DIC_TEXT="芬兰" DIC_CODE="246"/>
-    <row DIC_ASPELL="fashubolinixiya" DIC_SPELL="fsblnxy" DIC_TEXT="法属波利尼西亚" DIC_CODE="258"/>
-    <row DIC_ASPELL="gelujiya" DIC_SPELL="gljy" DIC_TEXT="格鲁吉亚" DIC_CODE="268"/>
-    <row DIC_ASPELL="zhibuluotuo" DIC_SPELL="zblt" DIC_TEXT="直布罗陀" DIC_CODE="292"/>
-    <row DIC_ASPELL="guadeluopu" DIC_SPELL="gdlp" DIC_TEXT="瓜德罗普" DIC_CODE="312"/>
-    <row DIC_ASPELL="guiyanei" DIC_SPELL="gyn" DIC_TEXT="圭亚那" DIC_CODE="328"/>
-    <row DIC_ASPELL="hededaohemaiketangnadao" DIC_SPELL="hddhmktnd" DIC_TEXT="赫德岛和麦克唐纳岛" DIC_CODE="334"/>
-    <row DIC_ASPELL="yindunixiya" DIC_SPELL="ydnxy" DIC_TEXT="印度尼西亚" DIC_CODE="360"/>
-    <row DIC_ASPELL="balesitan" DIC_SPELL="blst" DIC_TEXT="巴勒斯坦" DIC_CODE="374"/>
-    <row DIC_ASPELL="yamaijia" DIC_SPELL="ymj" DIC_TEXT="牙买加" DIC_CODE="388"/>
-    <row DIC_ASPELL="kenniya" DIC_SPELL="kny" DIC_TEXT="肯尼亚" DIC_CODE="404"/>
-    <row DIC_ASPELL="jierjisisitan" DIC_SPELL="jejsst" DIC_TEXT="吉尔吉斯斯坦" DIC_CODE="417"/>
-    <row DIC_ASPELL="libiliya" DIC_SPELL="lbly" DIC_TEXT="利比里亚" DIC_CODE="430"/>
-    <row DIC_ASPELL="namibiya" DIC_SPELL="nmby" DIC_TEXT="纳米比亚" DIC_CODE="516"/>
-    <row DIC_ASPELL="aluba" DIC_SPELL="alb" DIC_TEXT="阿鲁巴" DIC_CODE="533"/>
-    <row DIC_ASPELL="wanuatu" DIC_SPELL="wnat" DIC_TEXT="瓦努阿图" DIC_CODE="548"/>
-    <row DIC_ASPELL="niriliya" DIC_SPELL="nrly" DIC_TEXT="尼日利亚" DIC_CODE="566"/>
-    <row DIC_ASPELL="beimaliyana" DIC_SPELL="bmlyn" DIC_TEXT="北马里亚纳" DIC_CODE="580"/>
-    <row DIC_ASPELL="meishutaipingyanggequndaobaokuozhongtudaodeng" DIC_SPELL="mstpygqd（bk：ztdd）" DIC_TEXT="美属太平洋各群岛（包括：中途岛等）" DIC_CODE="581"/>
-    <row DIC_ASPELL="milu" DIC_SPELL="ml" DIC_TEXT="秘鲁" DIC_CODE="604"/>
-    <row DIC_ASPELL="pitekaienqundao" DIC_SPELL="ptkeqd" DIC_TEXT="皮特凯恩群岛" DIC_CODE="612"/>
-    <row DIC_ASPELL="boduolige" DIC_SPELL="bdlg" DIC_TEXT="波多黎各" DIC_CODE="630"/>
-    <row DIC_ASPELL="eluosi" DIC_SPELL="els" DIC_TEXT="俄罗斯" DIC_CODE="643"/>
-    <row DIC_ASPELL="shengjiciheniweisi" DIC_SPELL="sjchnws" DIC_TEXT="圣基茨和尼维斯" DIC_CODE="659"/>
-    <row DIC_ASPELL="shengpiaierhemikelong" DIC_SPELL="spaehmkl" DIC_TEXT="圣皮埃尔和密克隆" DIC_CODE="666"/>
-    <row DIC_ASPELL="shengduomeihepulinxibi" DIC_SPELL="sdmhplxb" DIC_TEXT="圣多美和普林西比" DIC_CODE="678"/>
-    <row DIC_ASPELL="sailaliang" DIC_SPELL="slla" DIC_TEXT="塞拉利昂" DIC_CODE="694"/>
-    <row DIC_ASPELL="siluowenniya" DIC_SPELL="slwny" DIC_TEXT="斯洛文尼亚" DIC_CODE="705"/>
-    <row DIC_ASPELL="xibanya" DIC_SPELL="xby" DIC_TEXT="西班牙" DIC_CODE="724"/>
-    <row DIC_ASPELL="siwaerbaqundao" DIC_SPELL="swebqd" DIC_TEXT="斯瓦尔巴群岛" DIC_CODE="744"/>
-    <row DIC_ASPELL="tajikesitan" DIC_SPELL="tjkst" DIC_TEXT="塔吉克斯坦" DIC_CODE="762"/>
-    <row DIC_ASPELL="telinidaheduobage" DIC_SPELL="tlndhdbg" DIC_TEXT="特立尼达和多巴哥" DIC_CODE="780"/>
-    <row DIC_ASPELL="tukumansitan" DIC_SPELL="tkmst" DIC_TEXT="土库曼斯坦" DIC_CODE="795"/>
-    <row DIC_ASPELL="wukelan" DIC_SPELL="wkl" DIC_TEXT="乌克兰" DIC_CODE="804"/>
-    <row DIC_ASPELL="tansangniya" DIC_SPELL="tsny" DIC_TEXT="坦桑尼亚" DIC_CODE="834"/>
-    <row DIC_ASPELL="bujinafasuo" DIC_SPELL="bjnfs" DIC_TEXT="布基纳法索" DIC_CODE="854"/>
-    <row DIC_ASPELL="weineiruila" DIC_SPELL="wnrl" DIC_TEXT="委内瑞拉" DIC_CODE="862"/>
-    <row DIC_ASPELL="yemen" DIC_SPELL="ym" DIC_TEXT="也门" DIC_CODE="887"/>
-    <row DIC_ASPELL="aerbaniya" DIC_SPELL="aebny" DIC_TEXT="阿尔巴尼亚" DIC_CODE="008"/>
-    <row DIC_ASPELL="nanjizhou" DIC_SPELL="njz" DIC_TEXT="南极洲" DIC_CODE="010"/>
-    <row DIC_ASPELL="meishusamoya" DIC_SPELL="mssmy" DIC_TEXT="美属萨摩亚" DIC_CODE="016"/>
-    <row DIC_ASPELL="andaoer" DIC_SPELL="ade" DIC_TEXT="安道尔" DIC_CODE="020"/>
-    <row DIC_ASPELL="angela" DIC_SPELL="agl" DIC_TEXT="安哥拉" DIC_CODE="024"/>
-    <row DIC_ASPELL="asaibaijiang" DIC_SPELL="asbj" DIC_TEXT="阿塞拜疆" DIC_CODE="031"/>
-    <row DIC_ASPELL="agenting" DIC_SPELL="agt" DIC_TEXT="阿根廷" DIC_CODE="032"/>
-    <row DIC_ASPELL="aodaliya" DIC_SPELL="adly" DIC_TEXT="澳大利亚" DIC_CODE="036"/>
-    <row DIC_ASPELL="bahama" DIC_SPELL="bhm" DIC_TEXT="巴哈马" DIC_CODE="044"/>
-    <row DIC_ASPELL="balin" DIC_SPELL="bl" DIC_TEXT="巴林" DIC_CODE="048"/>
-    <row DIC_ASPELL="mengjialaguo" DIC_SPELL="mjlg" DIC_TEXT="孟加拉国" DIC_CODE="050"/>
-    <row DIC_ASPELL="babaduosi" DIC_SPELL="bbds" DIC_TEXT="巴巴多斯" DIC_CODE="052"/>
-    <row DIC_ASPELL="bilishi" DIC_SPELL="bls" DIC_TEXT="比利时" DIC_CODE="056"/>
-    <row DIC_ASPELL="budan" DIC_SPELL="bd" DIC_TEXT="不丹" DIC_CODE="064"/>
-    <row DIC_ASPELL="boliweiya" DIC_SPELL="blwy" DIC_TEXT="玻利维亚" DIC_CODE="068"/>
-    <row DIC_ASPELL="bociwana" DIC_SPELL="bcwn" DIC_TEXT="博茨瓦纳" DIC_CODE="072"/>
-    <row DIC_ASPELL="buweidao" DIC_SPELL="bwd" DIC_TEXT="布维岛" DIC_CODE="074"/>
-    <row DIC_ASPELL="baxi" DIC_SPELL="bx" DIC_TEXT="巴西" DIC_CODE="076"/>
-    <row DIC_ASPELL="bolizi" DIC_SPELL="blz" DIC_TEXT="伯利兹" DIC_CODE="084"/>
-    <row DIC_ASPELL="suoluomenqundao" DIC_SPELL="slmqd" DIC_TEXT="所罗门群岛" DIC_CODE="090"/>
-    <row DIC_ASPELL="yingshuweierjingqundao" DIC_SPELL="yswejqd" DIC_TEXT="英属维尔京群岛" DIC_CODE="092"/>
-    <row DIC_ASPELL="wenlai" DIC_SPELL="wl" DIC_TEXT="文莱" DIC_CODE="096"/>
-    <row DIC_ASPELL="miandian" DIC_SPELL="md" DIC_TEXT="缅甸" DIC_CODE="104"/>
-    <row DIC_ASPELL="bulongdi" DIC_SPELL="bld" DIC_TEXT="布隆迪" DIC_CODE="108"/>
-    <row DIC_ASPELL="baieluosi" DIC_SPELL="bels" DIC_TEXT="白俄罗斯" DIC_CODE="112"/>
-    <row DIC_ASPELL="kamailong" DIC_SPELL="kml" DIC_TEXT="喀麦隆" DIC_CODE="120"/>
-    <row DIC_ASPELL="jianada" DIC_SPELL="jnd" DIC_TEXT="加拿大" DIC_CODE="124"/>
-    <row DIC_ASPELL="fodejiao" DIC_SPELL="fdj" DIC_TEXT="佛得角" DIC_CODE="132"/>
-    <row DIC_ASPELL="sililanka" DIC_SPELL="sllk" DIC_TEXT="斯里兰卡" DIC_CODE="144"/>
-    <row DIC_ASPELL="zhade" DIC_SPELL="zd" DIC_TEXT="乍得" DIC_CODE="148"/>
-    <row DIC_ASPELL="zhongguo" DIC_SPELL="zg" DIC_TEXT="中国" DIC_CODE="156"/>
-    <row DIC_ASPELL="zhongguotaiwan" DIC_SPELL="zgtw" DIC_TEXT="中国台湾" DIC_CODE="158"/>
-    <row DIC_ASPELL="kekesijilinqundao" DIC_SPELL="kks（jl）qd" DIC_TEXT="科科斯（基林）群岛" DIC_CODE="166"/>
-    <row DIC_ASPELL="kemoluo" DIC_SPELL="kml" DIC_TEXT="科摩罗" DIC_CODE="174"/>
-    <row DIC_ASPELL="mayuete" DIC_SPELL="myt" DIC_TEXT="马约特" DIC_CODE="175"/>
-    <row DIC_ASPELL="gangguo" DIC_SPELL="gg" DIC_TEXT="刚果" DIC_CODE="178"/>
-    <row DIC_ASPELL="kukequndao" DIC_SPELL="kkqd" DIC_TEXT="库克群岛" DIC_CODE="184"/>
-    <row DIC_ASPELL="gesidalijia" DIC_SPELL="gsdlj" DIC_TEXT="哥斯达黎加" DIC_CODE="188"/>
-    <row DIC_ASPELL="guba" DIC_SPELL="gb" DIC_TEXT="古巴" DIC_CODE="192"/>
-    <row DIC_ASPELL="faluoqundao" DIC_SPELL="flqd" DIC_TEXT="法罗群岛" DIC_CODE="234"/>
-    <row DIC_ASPELL="zhongfei" DIC_SPELL="zf" DIC_TEXT="中非" DIC_CODE="140"/>
-    <row DIC_ASPELL="beining" DIC_SPELL="bn" DIC_TEXT="贝宁" DIC_CODE="204"/>
-    <row DIC_ASPELL="jibuti" DIC_SPELL="jbt" DIC_TEXT="吉布提" DIC_CODE="262"/>
-    <row DIC_ASPELL="hongdoulasi" DIC_SPELL="hdls" DIC_TEXT="洪都拉斯" DIC_CODE="340"/>
-    <row DIC_ASPELL="laowo" DIC_SPELL="lw" DIC_TEXT="老挝" DIC_CODE="418"/>
-    <row DIC_ASPELL="maerdaifu" DIC_SPELL="medf" DIC_TEXT="马尔代夫" DIC_CODE="462"/>
-    <row DIC_ASPELL="tunisi" DIC_SPELL="tns" DIC_TEXT="突尼斯" DIC_CODE="788"/>
-    <row DIC_ASPELL="nansilafu" DIC_SPELL="nslf" DIC_TEXT="南斯拉夫" DIC_CODE="891"/>
-    <row DIC_ASPELL="saipulusi" DIC_SPELL="spls" DIC_TEXT="塞浦路斯" DIC_CODE="196"/>
-    <row DIC_ASPELL="jieke" DIC_SPELL="jk" DIC_TEXT="捷克" DIC_CODE="203"/>
-    <row DIC_ASPELL="duominike" DIC_SPELL="dmnk" DIC_TEXT="多米尼克" DIC_CODE="212"/>
-    <row DIC_ASPELL="eguaduoer" DIC_SPELL="egde" DIC_TEXT="厄瓜多尔" DIC_CODE="218"/>
-    <row DIC_ASPELL="saerwaduo" DIC_SPELL="sewd" DIC_TEXT="萨尔瓦多" DIC_CODE="222"/>
-    <row DIC_ASPELL="chidaojineiya" DIC_SPELL="cdjny" DIC_TEXT="赤道几内亚" DIC_CODE="226"/>
-    <row DIC_ASPELL="eliteliya" DIC_SPELL="eltly" DIC_TEXT="厄立特里亚" DIC_CODE="232"/>
+    <row DIC_ASPELL="afuhan" DIC_SPELL="afh" DIC_TEXT="阿富汗" DIC_CODE="004" DIC_PERM="1"/>
+    <row DIC_ASPELL="aerbaniya" DIC_SPELL="aebny" DIC_TEXT="阿尔巴尼亚" DIC_CODE="008" DIC_PERM="1"/>
+    <row DIC_ASPELL="nanjizhou" DIC_SPELL="njz" DIC_TEXT="南极洲" DIC_CODE="010" DIC_PERM="1"/>
+    <row DIC_ASPELL="aerjiliya" DIC_SPELL="aejly" DIC_TEXT="阿尔及利亚" DIC_CODE="012" DIC_PERM="1"/>
+    <row DIC_ASPELL="meishusamoya" DIC_SPELL="mssmy" DIC_TEXT="美属萨摩亚" DIC_CODE="016" DIC_PERM="1"/>
+    <row DIC_ASPELL="andaoer" DIC_SPELL="ade" DIC_TEXT="安道尔" DIC_CODE="020" DIC_PERM="1"/>
+    <row DIC_ASPELL="angela" DIC_SPELL="agl" DIC_TEXT="安哥拉" DIC_CODE="024" DIC_PERM="1"/>
+    <row DIC_ASPELL="antiguahebabuda" DIC_SPELL="atghbbd" DIC_TEXT="安提瓜和巴布达" DIC_CODE="028" DIC_PERM="1"/>
+    <row DIC_ASPELL="asaibaijiang" DIC_SPELL="asbj" DIC_TEXT="阿塞拜疆" DIC_CODE="031" DIC_PERM="1"/>
+    <row DIC_ASPELL="agenting" DIC_SPELL="agt" DIC_TEXT="阿根廷" DIC_CODE="032" DIC_PERM="1"/>
+    <row DIC_ASPELL="aodaliya" DIC_SPELL="adly" DIC_TEXT="澳大利亚" DIC_CODE="036" DIC_PERM="1"/>
+    <row DIC_ASPELL="aodili" DIC_SPELL="adl" DIC_TEXT="奥地利" DIC_CODE="040" DIC_PERM="1"/>
+    <row DIC_ASPELL="bahama" DIC_SPELL="bhm" DIC_TEXT="巴哈马" DIC_CODE="044" DIC_PERM="1"/>
+    <row DIC_ASPELL="balin" DIC_SPELL="bl" DIC_TEXT="巴林" DIC_CODE="048" DIC_PERM="1"/>
+    <row DIC_ASPELL="mengjialaguo" DIC_SPELL="mjlg" DIC_TEXT="孟加拉国" DIC_CODE="050" DIC_PERM="1"/>
+    <row DIC_ASPELL="yameiniya" DIC_SPELL="ymny" DIC_TEXT="亚美尼亚" DIC_CODE="051" DIC_PERM="1"/>
+    <row DIC_ASPELL="babaduosi" DIC_SPELL="bbds" DIC_TEXT="巴巴多斯" DIC_CODE="052" DIC_PERM="1"/>
+    <row DIC_ASPELL="bilishi" DIC_SPELL="bls" DIC_TEXT="比利时" DIC_CODE="056" DIC_PERM="1"/>
+    <row DIC_ASPELL="baimuda" DIC_SPELL="bmd" DIC_TEXT="百慕大" DIC_CODE="060" DIC_PERM="1"/>
+    <row DIC_ASPELL="budan" DIC_SPELL="bd" DIC_TEXT="不丹" DIC_CODE="064" DIC_PERM="1"/>
+    <row DIC_ASPELL="boliweiya" DIC_SPELL="blwy" DIC_TEXT="玻利维亚" DIC_CODE="068" DIC_PERM="1"/>
+    <row DIC_ASPELL="bosiniyaheheisaigeweinei" DIC_SPELL="bsnyhhsgwn" DIC_TEXT="波斯尼亚和黑塞哥维那" DIC_CODE="070" DIC_PERM="1"/>
+    <row DIC_ASPELL="bociwana" DIC_SPELL="bcwn" DIC_TEXT="博茨瓦纳" DIC_CODE="072" DIC_PERM="1"/>
+    <row DIC_ASPELL="buweidao" DIC_SPELL="bwd" DIC_TEXT="布维岛" DIC_CODE="074" DIC_PERM="1"/>
+    <row DIC_ASPELL="baxi" DIC_SPELL="bx" DIC_TEXT="巴西" DIC_CODE="076" DIC_PERM="1"/>
+    <row DIC_ASPELL="bolizi" DIC_SPELL="blz" DIC_TEXT="伯利兹" DIC_CODE="084" DIC_PERM="1"/>
+    <row DIC_ASPELL="yingshuyinduyanglingtu" DIC_SPELL="ysydylt" DIC_TEXT="英属印度洋领土" DIC_CODE="086" DIC_PERM="1"/>
+    <row DIC_ASPELL="suoluomenqundao" DIC_SPELL="slmqd" DIC_TEXT="所罗门群岛" DIC_CODE="090" DIC_PERM="1"/>
+    <row DIC_ASPELL="yingshuweierjingqundao" DIC_SPELL="yswejqd" DIC_TEXT="英属维尔京群岛" DIC_CODE="092" DIC_PERM="1"/>
+    <row DIC_ASPELL="wenlai" DIC_SPELL="wl" DIC_TEXT="文莱" DIC_CODE="096" DIC_PERM="1"/>
+    <row DIC_ASPELL="baojialiya" DIC_SPELL="bjly" DIC_TEXT="保加利亚" DIC_CODE="100" DIC_PERM="1"/>
+    <row DIC_ASPELL="miandian" DIC_SPELL="md" DIC_TEXT="缅甸" DIC_CODE="104" DIC_PERM="1"/>
+    <row DIC_ASPELL="bulongdi" DIC_SPELL="bld" DIC_TEXT="布隆迪" DIC_CODE="108" DIC_PERM="1"/>
+    <row DIC_ASPELL="baieluosi" DIC_SPELL="bels" DIC_TEXT="白俄罗斯" DIC_CODE="112" DIC_PERM="1"/>
+    <row DIC_ASPELL="jianpuzhai" DIC_SPELL="jpz" DIC_TEXT="柬埔寨" DIC_CODE="116" DIC_PERM="1"/>
+    <row DIC_ASPELL="kamailong" DIC_SPELL="kml" DIC_TEXT="喀麦隆" DIC_CODE="120" DIC_PERM="1"/>
+    <row DIC_ASPELL="jianada" DIC_SPELL="jnd" DIC_TEXT="加拿大" DIC_CODE="124" DIC_PERM="1"/>
+    <row DIC_ASPELL="fodejiao" DIC_SPELL="fdj" DIC_TEXT="佛得角" DIC_CODE="132" DIC_PERM="1"/>
+    <row DIC_ASPELL="kaimanqundao" DIC_SPELL="kmqd" DIC_TEXT="开曼群岛" DIC_CODE="136" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhongfei" DIC_SPELL="zf" DIC_TEXT="中非" DIC_CODE="140" DIC_PERM="1"/>
+    <row DIC_ASPELL="sililanka" DIC_SPELL="sllk" DIC_TEXT="斯里兰卡" DIC_CODE="144" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhade" DIC_SPELL="zd" DIC_TEXT="乍得" DIC_CODE="148" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhili" DIC_SPELL="zl" DIC_TEXT="智利" DIC_CODE="152" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhongguo" DIC_SPELL="zg" DIC_TEXT="中国" DIC_CODE="156" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhongguotaiwan" DIC_SPELL="zgtw" DIC_TEXT="中国台湾" DIC_CODE="158" DIC_PERM="1"/>
+    <row DIC_ASPELL="shengdandao" DIC_SPELL="sdd" DIC_TEXT="圣诞岛" DIC_CODE="162" DIC_PERM="1"/>
+    <row DIC_ASPELL="kekesijilinqundao" DIC_SPELL="kksjlqd" DIC_TEXT="科科斯（基林）群岛" DIC_CODE="166" DIC_PERM="1"/>
+    <row DIC_ASPELL="gelunbiya" DIC_SPELL="glby" DIC_TEXT="哥伦比亚" DIC_CODE="170" DIC_PERM="1"/>
+    <row DIC_ASPELL="kemoluo" DIC_SPELL="kml" DIC_TEXT="科摩罗" DIC_CODE="174" DIC_PERM="1"/>
+    <row DIC_ASPELL="mayuete" DIC_SPELL="myt" DIC_TEXT="马约特" DIC_CODE="175" DIC_PERM="1"/>
+    <row DIC_ASPELL="gangguo" DIC_SPELL="gg" DIC_TEXT="刚果" DIC_CODE="178" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhayier" DIC_SPELL="zye" DIC_TEXT="扎伊尔" DIC_CODE="180" DIC_PERM="1"/>
+    <row DIC_ASPELL="kukequndao" DIC_SPELL="kkqd" DIC_TEXT="库克群岛" DIC_CODE="184" DIC_PERM="1"/>
+    <row DIC_ASPELL="gesidalijia" DIC_SPELL="gsdlj" DIC_TEXT="哥斯达黎加" DIC_CODE="188" DIC_PERM="1"/>
+    <row DIC_ASPELL="keluodiya" DIC_SPELL="kldy" DIC_TEXT="克罗地亚" DIC_CODE="191" DIC_PERM="1"/>
+    <row DIC_ASPELL="guba" DIC_SPELL="gb" DIC_TEXT="古巴" DIC_CODE="192" DIC_PERM="1"/>
+    <row DIC_ASPELL="saipulusi" DIC_SPELL="spls" DIC_TEXT="塞浦路斯" DIC_CODE="196" DIC_PERM="1"/>
+    <row DIC_ASPELL="jieke" DIC_SPELL="jk" DIC_TEXT="捷克" DIC_CODE="203" DIC_PERM="1"/>
+    <row DIC_ASPELL="beining" DIC_SPELL="bn" DIC_TEXT="贝宁" DIC_CODE="204" DIC_PERM="1"/>
+    <row DIC_ASPELL="danmai" DIC_SPELL="dm" DIC_TEXT="丹麦" DIC_CODE="208" DIC_PERM="1"/>
+    <row DIC_ASPELL="duominike" DIC_SPELL="dmnk" DIC_TEXT="多米尼克" DIC_CODE="212" DIC_PERM="1"/>
+    <row DIC_ASPELL="duominijiagongheguo" DIC_SPELL="dmnjghg" DIC_TEXT="多米尼加共和国" DIC_CODE="214" DIC_PERM="1"/>
+    <row DIC_ASPELL="eguaduoer" DIC_SPELL="egde" DIC_TEXT="厄瓜多尔" DIC_CODE="218" DIC_PERM="1"/>
+    <row DIC_ASPELL="saerwaduo" DIC_SPELL="sewd" DIC_TEXT="萨尔瓦多" DIC_CODE="222" DIC_PERM="1"/>
+    <row DIC_ASPELL="chidaojineiya" DIC_SPELL="cdjny" DIC_TEXT="赤道几内亚" DIC_CODE="226" DIC_PERM="1"/>
+    <row DIC_ASPELL="aisaiebiya" DIC_SPELL="aseby" DIC_TEXT="埃塞俄比亚" DIC_CODE="231" DIC_PERM="1"/>
+    <row DIC_ASPELL="eliteliya" DIC_SPELL="eltly" DIC_TEXT="厄立特里亚" DIC_CODE="232" DIC_PERM="1"/>
+    <row DIC_ASPELL="aishaniya" DIC_SPELL="asny" DIC_TEXT="爱沙尼亚" DIC_CODE="233" DIC_PERM="1"/>
+    <row DIC_ASPELL="faluoqundao" DIC_SPELL="flqd" DIC_TEXT="法罗群岛" DIC_CODE="234" DIC_PERM="1"/>
+    <row DIC_ASPELL="maerweinasiqundaofukelanqundao" DIC_SPELL="mewnsqdfklqd" DIC_TEXT="马尔维纳斯群岛（福克兰群岛）" DIC_CODE="238" DIC_PERM="1"/>
+    <row DIC_ASPELL="nanqiaozhiyadaohenansangdeweiqidao" DIC_SPELL="nqzydhnsdwqd" DIC_TEXT="南乔治亚岛和南桑德韦奇岛" DIC_CODE="239" DIC_PERM="1"/>
+    <row DIC_ASPELL="feiji" DIC_SPELL="fj" DIC_TEXT="斐济" DIC_CODE="242" DIC_PERM="1"/>
+    <row DIC_ASPELL="fenlan" DIC_SPELL="fl" DIC_TEXT="芬兰" DIC_CODE="246" DIC_PERM="1"/>
+    <row DIC_ASPELL="faguo" DIC_SPELL="fg" DIC_TEXT="法国" DIC_CODE="250" DIC_PERM="1"/>
+    <row DIC_ASPELL="fashuguiyanei" DIC_SPELL="fsgyn" DIC_TEXT="法属圭亚那" DIC_CODE="254" DIC_PERM="1"/>
+    <row DIC_ASPELL="fashubolinixiya" DIC_SPELL="fsblnxy" DIC_TEXT="法属波利尼西亚" DIC_CODE="258" DIC_PERM="1"/>
+    <row DIC_ASPELL="fashunanbulingtu" DIC_SPELL="fsnblt" DIC_TEXT="法属南部领土" DIC_CODE="260" DIC_PERM="1"/>
+    <row DIC_ASPELL="jibuti" DIC_SPELL="jbt" DIC_TEXT="吉布提" DIC_CODE="262" DIC_PERM="1"/>
+    <row DIC_ASPELL="jiapeng" DIC_SPELL="jp" DIC_TEXT="加蓬" DIC_CODE="266" DIC_PERM="1"/>
+    <row DIC_ASPELL="gelujiya" DIC_SPELL="gljy" DIC_TEXT="格鲁吉亚" DIC_CODE="268" DIC_PERM="1"/>
+    <row DIC_ASPELL="fodejiao" DIC_SPELL="fdj" DIC_TEXT="佛得角" DIC_CODE="270" DIC_PERM="1"/>
+    <row DIC_ASPELL="deguo" DIC_SPELL="dg" DIC_TEXT="德国" DIC_CODE="276" DIC_PERM="1"/>
+    <row DIC_ASPELL="jiana" DIC_SPELL="jn" DIC_TEXT="加纳" DIC_CODE="288" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhibuluotuo" DIC_SPELL="zblt" DIC_TEXT="直布罗陀" DIC_CODE="292" DIC_PERM="1"/>
+    <row DIC_ASPELL="jilibasi" DIC_SPELL="jlbs" DIC_TEXT="基里巴斯" DIC_CODE="296" DIC_PERM="1"/>
+    <row DIC_ASPELL="xila" DIC_SPELL="xl" DIC_TEXT="希腊" DIC_CODE="300" DIC_PERM="1"/>
+    <row DIC_ASPELL="gelinglan" DIC_SPELL="gll" DIC_TEXT="格陵兰" DIC_CODE="304" DIC_PERM="1"/>
+    <row DIC_ASPELL="gelinnada" DIC_SPELL="glnd" DIC_TEXT="格林纳达" DIC_CODE="308" DIC_PERM="1"/>
+    <row DIC_ASPELL="guadeluopu" DIC_SPELL="gdlp" DIC_TEXT="瓜德罗普" DIC_CODE="312" DIC_PERM="1"/>
+    <row DIC_ASPELL="guandao" DIC_SPELL="gd" DIC_TEXT="关岛" DIC_CODE="316" DIC_PERM="1"/>
+    <row DIC_ASPELL="weidimala" DIC_SPELL="wdml" DIC_TEXT="危地马拉" DIC_CODE="320" DIC_PERM="1"/>
+    <row DIC_ASPELL="jineiya" DIC_SPELL="jny" DIC_TEXT="几内亚" DIC_CODE="324" DIC_PERM="1"/>
+    <row DIC_ASPELL="guiyanei" DIC_SPELL="gyn" DIC_TEXT="圭亚那" DIC_CODE="328" DIC_PERM="1"/>
+    <row DIC_ASPELL="haidi" DIC_SPELL="hd" DIC_TEXT="海地" DIC_CODE="332" DIC_PERM="1"/>
+    <row DIC_ASPELL="hededaohemaiketangnadao" DIC_SPELL="hddhmktnd" DIC_TEXT="赫德岛和麦克唐纳岛" DIC_CODE="334" DIC_PERM="1"/>
+    <row DIC_ASPELL="fandigang" DIC_SPELL="fdg" DIC_TEXT="梵蒂冈" DIC_CODE="336" DIC_PERM="1"/>
+    <row DIC_ASPELL="hongdoulasi" DIC_SPELL="hdls" DIC_TEXT="洪都拉斯" DIC_CODE="340" DIC_PERM="1"/>
+    <row DIC_ASPELL="xianggang" DIC_SPELL="xg" DIC_TEXT="香港" DIC_CODE="344" DIC_PERM="1"/>
+    <row DIC_ASPELL="xiongyali" DIC_SPELL="xyl" DIC_TEXT="匈牙利" DIC_CODE="348" DIC_PERM="1"/>
+    <row DIC_ASPELL="bingdao" DIC_SPELL="bd" DIC_TEXT="冰岛" DIC_CODE="352" DIC_PERM="1"/>
+    <row DIC_ASPELL="yindu" DIC_SPELL="yd" DIC_TEXT="印度" DIC_CODE="356" DIC_PERM="1"/>
+    <row DIC_ASPELL="yindunixiya" DIC_SPELL="ydnxy" DIC_TEXT="印度尼西亚" DIC_CODE="360" DIC_PERM="1"/>
+    <row DIC_ASPELL="yilang" DIC_SPELL="yl" DIC_TEXT="伊朗" DIC_CODE="364" DIC_PERM="1"/>
+    <row DIC_ASPELL="yilake" DIC_SPELL="ylk" DIC_TEXT="伊拉克" DIC_CODE="368" DIC_PERM="1"/>
+    <row DIC_ASPELL="aierlan" DIC_SPELL="ael" DIC_TEXT="爱尔兰" DIC_CODE="372" DIC_PERM="1"/>
+    <row DIC_ASPELL="balesitan" DIC_SPELL="blst" DIC_TEXT="巴勒斯坦" DIC_CODE="374" DIC_PERM="1"/>
+    <row DIC_ASPELL="yiselie" DIC_SPELL="ysl" DIC_TEXT="以色列" DIC_CODE="376" DIC_PERM="1"/>
+    <row DIC_ASPELL="yidali" DIC_SPELL="ydl" DIC_TEXT="意大利" DIC_CODE="380" DIC_PERM="1"/>
+    <row DIC_ASPELL="ketediwa" DIC_SPELL="ktdw" DIC_TEXT="科特迪瓦" DIC_CODE="384" DIC_PERM="1"/>
+    <row DIC_ASPELL="yamaijia" DIC_SPELL="ymj" DIC_TEXT="牙买加" DIC_CODE="388" DIC_PERM="1"/>
+    <row DIC_ASPELL="riben" DIC_SPELL="rb" DIC_TEXT="日本" DIC_CODE="392" DIC_PERM="1"/>
+    <row DIC_ASPELL="hasakesitan" DIC_SPELL="hskst" DIC_TEXT="哈萨克斯坦" DIC_CODE="398" DIC_PERM="1"/>
+    <row DIC_ASPELL="yuedan" DIC_SPELL="yd" DIC_TEXT="约旦" DIC_CODE="400" DIC_PERM="1"/>
+    <row DIC_ASPELL="kenniya" DIC_SPELL="kny" DIC_TEXT="肯尼亚" DIC_CODE="404" DIC_PERM="1"/>
+    <row DIC_ASPELL="chaoxian" DIC_SPELL="cx" DIC_TEXT="朝鲜" DIC_CODE="408" DIC_PERM="1"/>
+    <row DIC_ASPELL="hanguo" DIC_SPELL="hg" DIC_TEXT="韩国" DIC_CODE="410" DIC_PERM="1"/>
+    <row DIC_ASPELL="keweite" DIC_SPELL="kwt" DIC_TEXT="科威特" DIC_CODE="414" DIC_PERM="1"/>
+    <row DIC_ASPELL="jierjisisitan" DIC_SPELL="jejsst" DIC_TEXT="吉尔吉斯斯坦" DIC_CODE="417" DIC_PERM="1"/>
+    <row DIC_ASPELL="laowo" DIC_SPELL="lw" DIC_TEXT="老挝" DIC_CODE="418" DIC_PERM="1"/>
+    <row DIC_ASPELL="libanen" DIC_SPELL="lbn" DIC_TEXT="黎巴嫩" DIC_CODE="422" DIC_PERM="1"/>
+    <row DIC_ASPELL="laisuotuo" DIC_SPELL="lst" DIC_TEXT="莱索托" DIC_CODE="426" DIC_PERM="1"/>
+    <row DIC_ASPELL="latuoweiya" DIC_SPELL="ltwy" DIC_TEXT="拉脱维亚" DIC_CODE="428" DIC_PERM="1"/>
+    <row DIC_ASPELL="libiliya" DIC_SPELL="lbly" DIC_TEXT="利比里亚" DIC_CODE="430" DIC_PERM="1"/>
+    <row DIC_ASPELL="libiya" DIC_SPELL="lby" DIC_TEXT="利比亚" DIC_CODE="434" DIC_PERM="1"/>
+    <row DIC_ASPELL="liezhidunshideng" DIC_SPELL="lzdsd" DIC_TEXT="列支敦士登" DIC_CODE="438" DIC_PERM="1"/>
+    <row DIC_ASPELL="litaowan" DIC_SPELL="ltw" DIC_TEXT="立陶宛" DIC_CODE="440" DIC_PERM="1"/>
+    <row DIC_ASPELL="lusenbao" DIC_SPELL="lsb" DIC_TEXT="卢森堡" DIC_CODE="442" DIC_PERM="1"/>
+    <row DIC_ASPELL="aomen" DIC_SPELL="am" DIC_TEXT="澳门" DIC_CODE="446" DIC_PERM="1"/>
+    <row DIC_ASPELL="madajiasijia" DIC_SPELL="mdjsj" DIC_TEXT="马达加斯加" DIC_CODE="450" DIC_PERM="1"/>
+    <row DIC_ASPELL="malawei" DIC_SPELL="mlw" DIC_TEXT="马拉维" DIC_CODE="454" DIC_PERM="1"/>
+    <row DIC_ASPELL="malaixiya" DIC_SPELL="mlxy" DIC_TEXT="马来西亚" DIC_CODE="458" DIC_PERM="1"/>
+    <row DIC_ASPELL="maerdaifu" DIC_SPELL="medf" DIC_TEXT="马尔代夫" DIC_CODE="462" DIC_PERM="1"/>
+    <row DIC_ASPELL="mali" DIC_SPELL="ml" DIC_TEXT="马里" DIC_CODE="466" DIC_PERM="1"/>
+    <row DIC_ASPELL="maerta" DIC_SPELL="met" DIC_TEXT="马耳他" DIC_CODE="470" DIC_PERM="1"/>
+    <row DIC_ASPELL="matinike" DIC_SPELL="mtnk" DIC_TEXT="马提尼克" DIC_CODE="474" DIC_PERM="1"/>
+    <row DIC_ASPELL="maolitaniya" DIC_SPELL="mltny" DIC_TEXT="毛里塔尼亚" DIC_CODE="478" DIC_PERM="1"/>
+    <row DIC_ASPELL="maoliqiusi" DIC_SPELL="mlqs" DIC_TEXT="毛里求斯" DIC_CODE="480" DIC_PERM="1"/>
+    <row DIC_ASPELL="moxige" DIC_SPELL="mxg" DIC_TEXT="墨西哥" DIC_CODE="484" DIC_PERM="1"/>
+    <row DIC_ASPELL="monage" DIC_SPELL="mng" DIC_TEXT="摩纳哥" DIC_CODE="492" DIC_PERM="1"/>
+    <row DIC_ASPELL="menggu" DIC_SPELL="mg" DIC_TEXT="蒙古" DIC_CODE="496" DIC_PERM="1"/>
+    <row DIC_ASPELL="moerduowa" DIC_SPELL="medw" DIC_TEXT="摩尔多瓦" DIC_CODE="498" DIC_PERM="1"/>
+    <row DIC_ASPELL="mengtesailate" DIC_SPELL="mtslt" DIC_TEXT="蒙特塞拉特" DIC_CODE="500" DIC_PERM="1"/>
+    <row DIC_ASPELL="moluoge" DIC_SPELL="mlg" DIC_TEXT="摩洛哥" DIC_CODE="504" DIC_PERM="1"/>
+    <row DIC_ASPELL="mosangbike" DIC_SPELL="msbk" DIC_TEXT="莫桑比克" DIC_CODE="508" DIC_PERM="1"/>
+    <row DIC_ASPELL="aman" DIC_SPELL="am" DIC_TEXT="阿曼" DIC_CODE="512" DIC_PERM="1"/>
+    <row DIC_ASPELL="namibiya" DIC_SPELL="nmby" DIC_TEXT="纳米比亚" DIC_CODE="516" DIC_PERM="1"/>
+    <row DIC_ASPELL="naolu" DIC_SPELL="nl" DIC_TEXT="瑙鲁" DIC_CODE="520" DIC_PERM="1"/>
+    <row DIC_ASPELL="niboer" DIC_SPELL="nbe" DIC_TEXT="尼泊尔" DIC_CODE="524" DIC_PERM="1"/>
+    <row DIC_ASPELL="helan" DIC_SPELL="hl" DIC_TEXT="荷兰" DIC_CODE="528" DIC_PERM="1"/>
+    <row DIC_ASPELL="heshuandeliesi" DIC_SPELL="hsadls" DIC_TEXT="荷属安的列斯" DIC_CODE="530" DIC_PERM="1"/>
+    <row DIC_ASPELL="aluba" DIC_SPELL="alb" DIC_TEXT="阿鲁巴" DIC_CODE="533" DIC_PERM="1"/>
+    <row DIC_ASPELL="xinkaliduoniya" DIC_SPELL="xkldny" DIC_TEXT="新喀里多尼亚" DIC_CODE="540" DIC_PERM="1"/>
+    <row DIC_ASPELL="wanuatu" DIC_SPELL="wnat" DIC_TEXT="瓦努阿图" DIC_CODE="548" DIC_PERM="1"/>
+    <row DIC_ASPELL="xinxilan" DIC_SPELL="xxl" DIC_TEXT="新西兰" DIC_CODE="554" DIC_PERM="1"/>
+    <row DIC_ASPELL="nijialagua" DIC_SPELL="njlg" DIC_TEXT="尼加拉瓜" DIC_CODE="558" DIC_PERM="1"/>
+    <row DIC_ASPELL="nirier" DIC_SPELL="nre" DIC_TEXT="尼日尔" DIC_CODE="562" DIC_PERM="1"/>
+    <row DIC_ASPELL="niriliya" DIC_SPELL="nrly" DIC_TEXT="尼日利亚" DIC_CODE="566" DIC_PERM="1"/>
+    <row DIC_ASPELL="niuai" DIC_SPELL="na" DIC_TEXT="纽埃" DIC_CODE="570" DIC_PERM="1"/>
+    <row DIC_ASPELL="nuofukedao" DIC_SPELL="nfkd" DIC_TEXT="诺福克岛" DIC_CODE="574" DIC_PERM="1"/>
+    <row DIC_ASPELL="nuowei" DIC_SPELL="nw" DIC_TEXT="挪威" DIC_CODE="578" DIC_PERM="1"/>
+    <row DIC_ASPELL="beimaliyana" DIC_SPELL="bmlyn" DIC_TEXT="北马里亚纳" DIC_CODE="580" DIC_PERM="1"/>
+    <row DIC_ASPELL="meishutaipingyanggequndaobaokuozhongtudaodeng" DIC_SPELL="mstpygqdbkztdd" DIC_TEXT="美属太平洋各群岛（包括：中途岛等）" DIC_CODE="581" DIC_PERM="1"/>
+    <row DIC_ASPELL="mikeluonixiya" DIC_SPELL="mklnxy" DIC_TEXT="密克罗尼西亚" DIC_CODE="583" DIC_PERM="1"/>
+    <row DIC_ASPELL="mashaoerqundao" DIC_SPELL="mseqd" DIC_TEXT="马绍尔群岛" DIC_CODE="584" DIC_PERM="1"/>
+    <row DIC_ASPELL="beilao" DIC_SPELL="bl" DIC_TEXT="贝劳" DIC_CODE="585" DIC_PERM="1"/>
+    <row DIC_ASPELL="bajisitan" DIC_SPELL="bjst" DIC_TEXT="巴基斯坦" DIC_CODE="586" DIC_PERM="1"/>
+    <row DIC_ASPELL="banama" DIC_SPELL="bnm" DIC_TEXT="巴拿马" DIC_CODE="591" DIC_PERM="1"/>
+    <row DIC_ASPELL="babuyaxinjineiya" DIC_SPELL="bbyxjny" DIC_TEXT="巴布亚新几内亚" DIC_CODE="598" DIC_PERM="1"/>
+    <row DIC_ASPELL="balagui" DIC_SPELL="blg" DIC_TEXT="巴拉圭" DIC_CODE="600" DIC_PERM="1"/>
+    <row DIC_ASPELL="bilu" DIC_SPELL="bl" DIC_TEXT="秘鲁" DIC_CODE="604" DIC_PERM="1"/>
+    <row DIC_ASPELL="feilvbin" DIC_SPELL="flb" DIC_TEXT="菲律宾" DIC_CODE="608" DIC_PERM="1"/>
+    <row DIC_ASPELL="pitekaienqundao" DIC_SPELL="ptkeqd" DIC_TEXT="皮特凯恩群岛" DIC_CODE="612" DIC_PERM="1"/>
+    <row DIC_ASPELL="bolan" DIC_SPELL="bl" DIC_TEXT="波兰" DIC_CODE="616" DIC_PERM="1"/>
+    <row DIC_ASPELL="putaoya" DIC_SPELL="pty" DIC_TEXT="葡萄牙" DIC_CODE="620" DIC_PERM="1"/>
+    <row DIC_ASPELL="jineiyabishao" DIC_SPELL="jnybs" DIC_TEXT="几内亚比绍" DIC_CODE="624" DIC_PERM="1"/>
+    <row DIC_ASPELL="dongdiwen" DIC_SPELL="ddw" DIC_TEXT="东帝汶" DIC_CODE="626" DIC_PERM="1"/>
+    <row DIC_ASPELL="boduolige" DIC_SPELL="bdlg" DIC_TEXT="波多黎各" DIC_CODE="630" DIC_PERM="1"/>
+    <row DIC_ASPELL="kataer" DIC_SPELL="kte" DIC_TEXT="卡塔尔" DIC_CODE="634" DIC_PERM="1"/>
+    <row DIC_ASPELL="liuniwang" DIC_SPELL="lnw" DIC_TEXT="留尼汪" DIC_CODE="638" DIC_PERM="1"/>
+    <row DIC_ASPELL="luomaniya" DIC_SPELL="lmny" DIC_TEXT="罗马尼亚" DIC_CODE="642" DIC_PERM="1"/>
+    <row DIC_ASPELL="eluosi" DIC_SPELL="els" DIC_TEXT="俄罗斯" DIC_CODE="643" DIC_PERM="1"/>
+    <row DIC_ASPELL="luwangda" DIC_SPELL="lwd" DIC_TEXT="卢旺达" DIC_CODE="646" DIC_PERM="1"/>
+    <row DIC_ASPELL="shenghelena" DIC_SPELL="shln" DIC_TEXT="圣赫勒拿" DIC_CODE="654" DIC_PERM="1"/>
+    <row DIC_ASPELL="shengjiciheniweisi" DIC_SPELL="sjchnws" DIC_TEXT="圣基茨和尼维斯" DIC_CODE="659" DIC_PERM="1"/>
+    <row DIC_ASPELL="anguila" DIC_SPELL="agl" DIC_TEXT="安圭拉" DIC_CODE="660" DIC_PERM="1"/>
+    <row DIC_ASPELL="shengluxiya" DIC_SPELL="slxy" DIC_TEXT="圣卢西亚" DIC_CODE="662" DIC_PERM="1"/>
+    <row DIC_ASPELL="shengpiaierhemikelong" DIC_SPELL="spaehmkl" DIC_TEXT="圣皮埃尔和密克隆" DIC_CODE="666" DIC_PERM="1"/>
+    <row DIC_ASPELL="shengwensentehegelinnadingsi" DIC_SPELL="swsthglnds" DIC_TEXT="圣文森特和格林纳丁斯" DIC_CODE="670" DIC_PERM="1"/>
+    <row DIC_ASPELL="shengmalinuo" DIC_SPELL="smln" DIC_TEXT="圣马力诺" DIC_CODE="674" DIC_PERM="1"/>
+    <row DIC_ASPELL="shengduomeihepulinxibi" DIC_SPELL="sdmhplxb" DIC_TEXT="圣多美和普林西比" DIC_CODE="678" DIC_PERM="1"/>
+    <row DIC_ASPELL="shazhualabo" DIC_SPELL="szalb" DIC_TEXT="沙竺阿拉伯" DIC_CODE="682" DIC_PERM="1"/>
+    <row DIC_ASPELL="saineijiaer" DIC_SPELL="snje" DIC_TEXT="塞内加尔" DIC_CODE="686" DIC_PERM="1"/>
+    <row DIC_ASPELL="saisheer" DIC_SPELL="sse" DIC_TEXT="塞舌尔" DIC_CODE="690" DIC_PERM="1"/>
+    <row DIC_ASPELL="sailaliang" DIC_SPELL="slla" DIC_TEXT="塞拉利昂" DIC_CODE="694" DIC_PERM="1"/>
+    <row DIC_ASPELL="xinjiapo" DIC_SPELL="xjp" DIC_TEXT="新加坡" DIC_CODE="702" DIC_PERM="1"/>
+    <row DIC_ASPELL="siluofake" DIC_SPELL="slfk" DIC_TEXT="斯洛伐克" DIC_CODE="703" DIC_PERM="1"/>
+    <row DIC_ASPELL="yuenan" DIC_SPELL="yn" DIC_TEXT="越南" DIC_CODE="704" DIC_PERM="1"/>
+    <row DIC_ASPELL="siluowenniya" DIC_SPELL="slwny" DIC_TEXT="斯洛文尼亚" DIC_CODE="705" DIC_PERM="1"/>
+    <row DIC_ASPELL="suomali" DIC_SPELL="sml" DIC_TEXT="索马里" DIC_CODE="706" DIC_PERM="1"/>
+    <row DIC_ASPELL="nanfei" DIC_SPELL="nf" DIC_TEXT="南非" DIC_CODE="710" DIC_PERM="1"/>
+    <row DIC_ASPELL="jinbabuwei" DIC_SPELL="jbbw" DIC_TEXT="津巴布韦" DIC_CODE="716" DIC_PERM="1"/>
+    <row DIC_ASPELL="xibanya" DIC_SPELL="xby" DIC_TEXT="西班牙" DIC_CODE="724" DIC_PERM="1"/>
+    <row DIC_ASPELL="xisahala" DIC_SPELL="xshl" DIC_TEXT="西撒哈拉" DIC_CODE="732" DIC_PERM="1"/>
+    <row DIC_ASPELL="sudan" DIC_SPELL="sd" DIC_TEXT="苏丹" DIC_CODE="736" DIC_PERM="1"/>
+    <row DIC_ASPELL="sulinan" DIC_SPELL="sln" DIC_TEXT="苏里南" DIC_CODE="740" DIC_PERM="1"/>
+    <row DIC_ASPELL="siwaerbaqundao" DIC_SPELL="swebqd" DIC_TEXT="斯瓦尔巴群岛" DIC_CODE="744" DIC_PERM="1"/>
+    <row DIC_ASPELL="siweishilan" DIC_SPELL="swsl" DIC_TEXT="斯威士兰" DIC_CODE="748" DIC_PERM="1"/>
+    <row DIC_ASPELL="ruidian" DIC_SPELL="rd" DIC_TEXT="瑞典" DIC_CODE="752" DIC_PERM="1"/>
+    <row DIC_ASPELL="ruishi" DIC_SPELL="rs" DIC_TEXT="瑞士" DIC_CODE="756" DIC_PERM="1"/>
+    <row DIC_ASPELL="xuliya" DIC_SPELL="xly" DIC_TEXT="叙利亚" DIC_CODE="760" DIC_PERM="1"/>
+    <row DIC_ASPELL="tajikesitan" DIC_SPELL="tjkst" DIC_TEXT="塔吉克斯坦" DIC_CODE="762" DIC_PERM="1"/>
+    <row DIC_ASPELL="taiguo" DIC_SPELL="tg" DIC_TEXT="泰国" DIC_CODE="764" DIC_PERM="1"/>
+    <row DIC_ASPELL="duoge" DIC_SPELL="dg" DIC_TEXT="多哥" DIC_CODE="768" DIC_PERM="1"/>
+    <row DIC_ASPELL="tuokelao" DIC_SPELL="tkl" DIC_TEXT="托克劳" DIC_CODE="772" DIC_PERM="1"/>
+    <row DIC_ASPELL="tangjia" DIC_SPELL="tj" DIC_TEXT="汤加" DIC_CODE="776" DIC_PERM="1"/>
+    <row DIC_ASPELL="telinidaheduobage" DIC_SPELL="tlndhdbg" DIC_TEXT="特立尼达和多巴哥" DIC_CODE="780" DIC_PERM="1"/>
+    <row DIC_ASPELL="awenqiu" DIC_SPELL="awq" DIC_TEXT="阿闻酋" DIC_CODE="784" DIC_PERM="1"/>
+    <row DIC_ASPELL="tunisi" DIC_SPELL="tns" DIC_TEXT="突尼斯" DIC_CODE="788" DIC_PERM="1"/>
+    <row DIC_ASPELL="tuerqi" DIC_SPELL="teq" DIC_TEXT="土耳其" DIC_CODE="792" DIC_PERM="1"/>
+    <row DIC_ASPELL="tukumansitan" DIC_SPELL="tkmst" DIC_TEXT="土库曼斯坦" DIC_CODE="795" DIC_PERM="1"/>
+    <row DIC_ASPELL="tekesikesiqundao" DIC_SPELL="tksksqd" DIC_TEXT="特克斯科斯群岛" DIC_CODE="796" DIC_PERM="1"/>
+    <row DIC_ASPELL="tuwalu" DIC_SPELL="twl" DIC_TEXT="图瓦卢" DIC_CODE="798" DIC_PERM="1"/>
+    <row DIC_ASPELL="wuganda" DIC_SPELL="wgd" DIC_TEXT="乌干达" DIC_CODE="800" DIC_PERM="1"/>
+    <row DIC_ASPELL="wukelan" DIC_SPELL="wkl" DIC_TEXT="乌克兰" DIC_CODE="804" DIC_PERM="1"/>
+    <row DIC_ASPELL="masidun" DIC_SPELL="msd" DIC_TEXT="马斯顿" DIC_CODE="807" DIC_PERM="1"/>
+    <row DIC_ASPELL="aiji" DIC_SPELL="aj" DIC_TEXT="埃及" DIC_CODE="818" DIC_PERM="1"/>
+    <row DIC_ASPELL="yingguo" DIC_SPELL="yg" DIC_TEXT="英国" DIC_CODE="826" DIC_PERM="1"/>
+    <row DIC_ASPELL="tansangniya" DIC_SPELL="tsny" DIC_TEXT="坦桑尼亚" DIC_CODE="834" DIC_PERM="1"/>
+    <row DIC_ASPELL="meiguo" DIC_SPELL="mg" DIC_TEXT="美国" DIC_CODE="840" DIC_PERM="1"/>
+    <row DIC_ASPELL="meishuweierjingqundao" DIC_SPELL="mswejqd" DIC_TEXT="美属维尔京群岛" DIC_CODE="850" DIC_PERM="1"/>
+    <row DIC_ASPELL="bujinafasuo" DIC_SPELL="bjnfs" DIC_TEXT="布基纳法索" DIC_CODE="854" DIC_PERM="1"/>
+    <row DIC_ASPELL="wulagui" DIC_SPELL="wlg" DIC_TEXT="乌拉圭" DIC_CODE="858" DIC_PERM="1"/>
+    <row DIC_ASPELL="wuzibiekesitan" DIC_SPELL="wzbkst" DIC_TEXT="乌兹别克斯坦" DIC_CODE="860" DIC_PERM="1"/>
+    <row DIC_ASPELL="weineiruila" DIC_SPELL="wnrl" DIC_TEXT="委内瑞拉" DIC_CODE="862" DIC_PERM="1"/>
+    <row DIC_ASPELL="walisihefutunaqundao" DIC_SPELL="wlshftnqd" DIC_TEXT="瓦利斯和富图纳群岛" DIC_CODE="876" DIC_PERM="1"/>
+    <row DIC_ASPELL="xisamoya" DIC_SPELL="xsmy" DIC_TEXT="西萨摩亚" DIC_CODE="882" DIC_PERM="1"/>
+    <row DIC_ASPELL="yemen" DIC_SPELL="ym" DIC_TEXT="也门" DIC_CODE="887" DIC_PERM="1"/>
+    <row DIC_ASPELL="nansilafu" DIC_SPELL="nslf" DIC_TEXT="南斯拉夫" DIC_CODE="891" DIC_PERM="1"/>
+    <row DIC_ASPELL="zanbiya" DIC_SPELL="zby" DIC_TEXT="赞比亚" DIC_CODE="894" DIC_PERM="1"/>
 </data>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="yanjiushengyishang" DIC_SPELL="yjsys" DIC_TEXT="研究生以上" DIC_CODE="10"/>
-    <row DIC_ASPELL="daxuebenkejianchengdaxue" DIC_SPELL="dxbk（jcdx）" DIC_TEXT="大学本科（简称大学）" DIC_CODE="20"/>
-    <row DIC_ASPELL="daxuezhuankehezhuankexuexiao" DIC_SPELL="dxzkhzkxx" DIC_TEXT="大学专科和专科学校" DIC_CODE="30"/>
-    <row DIC_ASPELL="zhongdengzhuanyexuexiao" DIC_SPELL="zdzyxx" DIC_TEXT="中等专业学校" DIC_CODE="40"/>
-    <row DIC_ASPELL="jigongxuexiao" DIC_SPELL="jgxx" DIC_TEXT="技工学校" DIC_CODE="50"/>
-    <row DIC_ASPELL="gaozhong" DIC_SPELL="gz" DIC_TEXT="高中" DIC_CODE="60"/>
-    <row DIC_ASPELL="chuzhong" DIC_SPELL="cz" DIC_TEXT="初中" DIC_CODE="70"/>
-    <row DIC_ASPELL="xiaoxue" DIC_SPELL="xx" DIC_TEXT="小学" DIC_CODE="80"/>
-    <row DIC_ASPELL="wenmanghuobanwenmang" DIC_SPELL="wmhbwm" DIC_TEXT="文盲或半文盲" DIC_CODE="90"/>
+    <row DIC_ASPELL="yanjiushengyishang" DIC_SPELL="yjsys" DIC_TEXT="研究生以上" DIC_CODE="10" DIC_PERM="1"/>
+    <row DIC_ASPELL="daxuebenkejianchengdaxue" DIC_SPELL="dxbkjcdx" DIC_TEXT="大学本科（简称大学）" DIC_CODE="20" DIC_PERM="1"/>
+    <row DIC_ASPELL="daxuezhuankehezhuankexuexiao" DIC_SPELL="dxzkhzkxx" DIC_TEXT="大学专科和专科学校" DIC_CODE="30" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhongdengzhuanyexuexiao" DIC_SPELL="zdzyxx" DIC_TEXT="中等专业学校" DIC_CODE="40" DIC_PERM="1"/>
+    <row DIC_ASPELL="jigongxuexiao" DIC_SPELL="jgxx" DIC_TEXT="技工学校" DIC_CODE="50" DIC_PERM="1"/>
+    <row DIC_ASPELL="gaozhong" DIC_SPELL="gz" DIC_TEXT="高中" DIC_CODE="60" DIC_PERM="1"/>
+    <row DIC_ASPELL="chuzhong" DIC_SPELL="cz" DIC_TEXT="初中" DIC_CODE="70" DIC_PERM="1"/>
+    <row DIC_ASPELL="xiaoxue" DIC_SPELL="xx" DIC_TEXT="小学" DIC_CODE="80" DIC_PERM="1"/>
+    <row DIC_ASPELL="wenmanghuobanwenmang" DIC_SPELL="wmhbwm" DIC_TEXT="文盲或半文盲" DIC_CODE="90" DIC_PERM="1"/>
 </data>

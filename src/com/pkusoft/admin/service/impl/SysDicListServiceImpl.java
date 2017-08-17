@@ -12,25 +12,20 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
-import com.pkusoft.framework.dao.BaseMapper;
-import com.pkusoft.framework.model.Criteria;
-import com.pkusoft.framework.User;
-import com.pkusoft.framework.model.Pager;
-import com.pkusoft.framework.util.DicUtils;
-import com.pkusoft.framework.util.MapUtils;
-import com.pkusoft.framework.util.StringUtils;
-import com.pkusoft.framework.util.WebUtils;
-import com.pkusoft.framework.service.impl.BaseServiceImpl;
 import com.pkusoft.admin.dao.SysDicListMapper;
-import com.pkusoft.admin.model.SysDept;
 import com.pkusoft.admin.model.SysDicItem;
 import com.pkusoft.admin.model.SysDicList;
 import com.pkusoft.admin.model.SysDicListCriteria;
-import com.pkusoft.admin.model.SysPara;
 import com.pkusoft.admin.service.SysDicItemService;
 import com.pkusoft.admin.service.SysDicListService;
-import com.pkusoft.common.cache.DicCache;
-import com.pkusoft.common.constants.DataPermitType;
+import com.pkusoft.framework.User;
+import com.pkusoft.framework.dao.BaseMapper;
+import com.pkusoft.framework.model.Criteria;
+import com.pkusoft.framework.model.Pager;
+import com.pkusoft.framework.service.impl.BaseServiceImpl;
+import com.pkusoft.framework.util.DicUtilsPro;
+import com.pkusoft.framework.util.MapUtils;
+import com.pkusoft.framework.util.StringUtils;
 
 /**
  * 服务实现类
@@ -157,7 +152,7 @@ public class SysDicListServiceImpl extends BaseServiceImpl<SysDicList> implement
 	public void createDicFile(String dicName){
 		if(dicName != null && !"".equals(dicName)){
 			List<SysDicItem> dicDataList = sysDicItemService.getSysDicItemXmlByDicname(dicName);
-			DicUtils.createDicXml(dicName, dicDataList);
+			DicUtilsPro.createDicXml(dicName, dicDataList);
 		}
 	}
 	/* (non-Javadoc)
@@ -169,7 +164,7 @@ public class SysDicListServiceImpl extends BaseServiceImpl<SysDicList> implement
 			String dicname = dicName[ i ];
 			if(dicname != null && !"".equals(dicname)){
 				List<SysDicItem> dicDataList = sysDicItemService.getSysDicItemXmlByDicname(dicname);
-				DicUtils.createDicXml(dicname, dicDataList);
+				DicUtilsPro.createDicXml(dicname, dicDataList);
 			}
 		}
 	}

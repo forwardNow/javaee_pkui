@@ -21,11 +21,9 @@ import com.pkusoft.admin.model.SysDeptReleCriteria;
 import com.pkusoft.admin.service.SysDeptReleService;
 import com.pkusoft.admin.service.SysDeptService;
 import com.pkusoft.common.cache.DeptCache;
-import com.pkusoft.common.constants.AdminFunctionId;
 import com.pkusoft.common.constants.Common;
 import com.pkusoft.common.constants.DataPermitType;
 import com.pkusoft.common.constants.ErrorCode;
-import com.pkusoft.common.constants.IdType;
 import com.pkusoft.framework.User;
 import com.pkusoft.framework.constants.General;
 import com.pkusoft.framework.dao.BaseMapper;
@@ -33,9 +31,8 @@ import com.pkusoft.framework.exception.BizException;
 import com.pkusoft.framework.model.Criteria;
 import com.pkusoft.framework.model.Pager;
 import com.pkusoft.framework.service.impl.BaseServiceImpl;
-import com.pkusoft.framework.util.DicUtils;
+import com.pkusoft.framework.util.DicUtilsPro;
 import com.pkusoft.framework.util.MapUtils;
-import com.pkusoft.framework.util.MaxIdUtils;
 import com.pkusoft.framework.util.StringUtils;
 import com.pkusoft.framework.util.WebUtils;
 
@@ -260,7 +257,7 @@ public class SysDeptServiceImpl extends BaseServiceImpl<SysDept> implements SysD
 		criteria.setOrderByClause("DEPT_ID");
 		List<SysDept> deptList = this.getListByCriteria(criteria);
 		
-		return DicUtils.createDicXml(dicName, deptList, "deptId", "deptName");
+		return DicUtilsPro.createDicXml(dicName, deptList, "deptId", "deptName");
 	}
 	
 	/*

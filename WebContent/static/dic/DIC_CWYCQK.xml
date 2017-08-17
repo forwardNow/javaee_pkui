@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="sunhui" DIC_SPELL="sh" DIC_TEXT="损毁" DIC_CODE="11"/>
-    <row DIC_ASPELL="duanshao" DIC_SPELL="ds" DIC_TEXT="短少" DIC_CODE="12"/>
-    <row DIC_ASPELL="diaohuan" DIC_SPELL="dh" DIC_TEXT="调换" DIC_CODE="13"/>
-    <row DIC_ASPELL="diushi" DIC_SPELL="ds" DIC_TEXT="丢失" DIC_CODE="14"/>
+    <row DIC_ASPELL="sunhui" DIC_SPELL="sh" DIC_TEXT="损毁" DIC_CODE="11" DIC_PERM="1"/>
+    <row DIC_ASPELL="duanshao" DIC_SPELL="ds" DIC_TEXT="短少" DIC_CODE="12" DIC_PERM="1"/>
+    <row DIC_ASPELL="diaohuan" DIC_SPELL="dh" DIC_TEXT="调换" DIC_CODE="13" DIC_PERM="1"/>
+    <row DIC_ASPELL="diushi" DIC_SPELL="ds" DIC_TEXT="丢失" DIC_CODE="14" DIC_PERM="1"/>
 </data>

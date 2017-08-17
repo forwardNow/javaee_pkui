@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="yibananjian" DIC_SPELL="ybaj" DIC_TEXT="一般案件" DIC_CODE="2"/>
-    <row DIC_ASPELL="tedaanjian" DIC_SPELL="tdaj" DIC_TEXT="特大案件" DIC_CODE="4"/>
-    <row DIC_ASPELL="teshuanjian" DIC_SPELL="tsaj" DIC_TEXT="特殊案件" DIC_CODE="5"/>
-    <row DIC_ASPELL="jianyianjian" DIC_SPELL="jyaj" DIC_TEXT="简易案件" DIC_CODE="1"/>
-    <row DIC_ASPELL="zhongdaanjian" DIC_SPELL="zdaj" DIC_TEXT="重大案件" DIC_CODE="3"/>
+    <row DIC_ASPELL="jianyianjian" DIC_SPELL="jyaj" DIC_TEXT="简易案件" DIC_CODE="1" DIC_PERM="1"/>
+    <row DIC_ASPELL="yibananjian" DIC_SPELL="ybaj" DIC_TEXT="一般案件" DIC_CODE="2" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhongdaanjian" DIC_SPELL="zdaj" DIC_TEXT="重大案件" DIC_CODE="3" DIC_PERM="1"/>
+    <row DIC_ASPELL="tedaanjian" DIC_SPELL="tdaj" DIC_TEXT="特大案件" DIC_CODE="4" DIC_PERM="1"/>
+    <row DIC_ASPELL="teshuanjian" DIC_SPELL="tsaj" DIC_TEXT="特殊案件" DIC_CODE="5" DIC_PERM="1"/>
 </data>

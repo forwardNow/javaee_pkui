@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="fou" DIC_SPELL="f" DIC_TEXT="否" DIC_CODE="0"/>
-    <row DIC_ASPELL="shi" DIC_SPELL="s" DIC_TEXT="是" DIC_CODE="1"/>
+    <row DIC_ASPELL="fou" DIC_SPELL="f" DIC_TEXT="否" DIC_CODE="0" DIC_PERM="1"/>
+    <row DIC_ASPELL="shi" DIC_SPELL="s" DIC_TEXT="是" DIC_CODE="1" DIC_PERM="1"/>
 </data>

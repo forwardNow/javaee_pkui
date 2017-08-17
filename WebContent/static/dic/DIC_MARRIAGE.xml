@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="weihun" DIC_SPELL="wh" DIC_TEXT="未婚" DIC_CODE="1"/>
-    <row DIC_ASPELL="yihun" DIC_SPELL="yh" DIC_TEXT="已婚" DIC_CODE="2"/>
-    <row DIC_ASPELL="sangou" DIC_SPELL="so" DIC_TEXT="丧偶" DIC_CODE="3"/>
-    <row DIC_ASPELL="lihun" DIC_SPELL="lh" DIC_TEXT="离婚" DIC_CODE="4"/>
-    <row DIC_ASPELL="qita" DIC_SPELL="qt" DIC_TEXT="其他" DIC_CODE="9"/>
+    <row DIC_ASPELL="weihun" DIC_SPELL="wh" DIC_TEXT="未婚" DIC_CODE="1" DIC_PERM="1"/>
+    <row DIC_ASPELL="yihun" DIC_SPELL="yh" DIC_TEXT="已婚" DIC_CODE="2" DIC_PERM="1"/>
+    <row DIC_ASPELL="sangou" DIC_SPELL="so" DIC_TEXT="丧偶" DIC_CODE="3" DIC_PERM="1"/>
+    <row DIC_ASPELL="lihun" DIC_SPELL="lh" DIC_TEXT="离婚" DIC_CODE="4" DIC_PERM="1"/>
+    <row DIC_ASPELL="qita" DIC_SPELL="qt" DIC_TEXT="其他" DIC_CODE="9" DIC_PERM="1"/>
 </data>

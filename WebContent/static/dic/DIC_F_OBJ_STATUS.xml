@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="dengji" DIC_SPELL="dj" DIC_TEXT="登记" DIC_CODE="0"/>
-    <row DIC_ASPELL="ruku" DIC_SPELL="rk" DIC_TEXT="入库" DIC_CODE="1"/>
-    <row DIC_ASPELL="diaoyongchuku" DIC_SPELL="dyck" DIC_TEXT="调用出库" DIC_CODE="20"/>
-    <row DIC_ASPELL="yijiaochuku" DIC_SPELL="yjck" DIC_TEXT="移交出库" DIC_CODE="21"/>
-    <row DIC_ASPELL="tuihai(chuli)" DIC_SPELL="th(cl)" DIC_TEXT="退还(处理)" DIC_CODE="40"/>
-    <row DIC_ASPELL="shangjiao(chuli)" DIC_SPELL="sj(cl)" DIC_TEXT="上缴(处理)" DIC_CODE="41"/>
-    <row DIC_ASPELL="xiaohui(chuli)" DIC_SPELL="xh(cl)" DIC_TEXT="销毁(处理)" DIC_CODE="42"/>
-    <row DIC_ASPELL="yijiao(chuli)" DIC_SPELL="yj(cl)" DIC_TEXT="移交(处理)" DIC_CODE="43"/>
-    <row DIC_ASPELL="fahai(chuli)" DIC_SPELL="fh(cl)" DIC_TEXT="发还(处理)" DIC_CODE="44"/>
-    <row DIC_ASPELL="meishou(chuli)" DIC_SPELL="ms(cl)" DIC_TEXT="没收(处理)" DIC_CODE="45"/>
-    <row DIC_ASPELL="paimai(chuli)" DIC_SPELL="pm(cl)" DIC_TEXT="拍卖(处理)" DIC_CODE="46"/>
-    <row DIC_ASPELL="bianmai(chuli)" DIC_SPELL="bm(cl)" DIC_TEXT="变卖(处理)" DIC_CODE="47"/>
-    <row DIC_ASPELL="kouya(chuli)" DIC_SPELL="ky(cl)" DIC_TEXT="扣押(处理)" DIC_CODE="48"/>
-    <row DIC_ASPELL="jiechu(chuli)" DIC_SPELL="jc(cl)" DIC_TEXT="解除(处理)" DIC_CODE="49"/>
+    <row DIC_ASPELL="dengji" DIC_SPELL="dj" DIC_TEXT="登记" DIC_CODE="0" DIC_PERM="1"/>
+    <row DIC_ASPELL="ruku" DIC_SPELL="rk" DIC_TEXT="入库" DIC_CODE="1" DIC_PERM="1"/>
+    <row DIC_ASPELL="diaoyongchuku" DIC_SPELL="dyck" DIC_TEXT="调用出库" DIC_CODE="20" DIC_PERM="1"/>
+    <row DIC_ASPELL="yijiaochuku" DIC_SPELL="yjck" DIC_TEXT="移交出库" DIC_CODE="21" DIC_PERM="1"/>
+    <row DIC_ASPELL="tuihai(chuli)" DIC_SPELL="th(cl)" DIC_TEXT="退还(处理)" DIC_CODE="40" DIC_PERM="1"/>
+    <row DIC_ASPELL="shangjiao(chuli)" DIC_SPELL="sj(cl)" DIC_TEXT="上缴(处理)" DIC_CODE="41" DIC_PERM="1"/>
+    <row DIC_ASPELL="xiaohui(chuli)" DIC_SPELL="xh(cl)" DIC_TEXT="销毁(处理)" DIC_CODE="42" DIC_PERM="1"/>
+    <row DIC_ASPELL="yijiao(chuli)" DIC_SPELL="yj(cl)" DIC_TEXT="移交(处理)" DIC_CODE="43" DIC_PERM="1"/>
+    <row DIC_ASPELL="fahai(chuli)" DIC_SPELL="fh(cl)" DIC_TEXT="发还(处理)" DIC_CODE="44" DIC_PERM="1"/>
+    <row DIC_ASPELL="meishou(chuli)" DIC_SPELL="ms(cl)" DIC_TEXT="没收(处理)" DIC_CODE="45" DIC_PERM="1"/>
+    <row DIC_ASPELL="paimai(chuli)" DIC_SPELL="pm(cl)" DIC_TEXT="拍卖(处理)" DIC_CODE="46" DIC_PERM="1"/>
+    <row DIC_ASPELL="bianmai(chuli)" DIC_SPELL="bm(cl)" DIC_TEXT="变卖(处理)" DIC_CODE="47" DIC_PERM="1"/>
+    <row DIC_ASPELL="kouya(chuli)" DIC_SPELL="ky(cl)" DIC_TEXT="扣押(处理)" DIC_CODE="48" DIC_PERM="1"/>
+    <row DIC_ASPELL="jiechu(chuli)" DIC_SPELL="jc(cl)" DIC_TEXT="解除(处理)" DIC_CODE="49" DIC_PERM="1"/>
 </data>

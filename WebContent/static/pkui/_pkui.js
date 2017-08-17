@@ -78,6 +78,7 @@ define( function ( require ) {
             // 渲染次数（render()被调用的次数）
             __renderedTimes: 0,
 
+            isIE8: ns.isIE8,
 
             version: "1.0.5"
 
@@ -630,6 +631,9 @@ define( function ( require ) {
                                     break;
                                 case "datetimepicker":
                                     moduleId = "datetimepicker";
+                                    break;
+                                case "textMagnifier":
+                                    moduleId = "textMagnifier";
                                     break;
                                 default:
                                     var errorMessage = "未被注册的组件[" + componentName + "]";

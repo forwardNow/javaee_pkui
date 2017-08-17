@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="neizi" DIC_SPELL="nz" DIC_TEXT="内资" DIC_CODE="100"/>
-    <row DIC_ASPELL="guoyouquanzi" DIC_SPELL="gyqz" DIC_TEXT="国有全资" DIC_CODE="110"/>
-    <row DIC_ASPELL="jitiquanzi" DIC_SPELL="jtqz" DIC_TEXT="集体全资" DIC_CODE="120"/>
-    <row DIC_ASPELL="gufenhezuo" DIC_SPELL="gfhz" DIC_TEXT="股份合作" DIC_CODE="130"/>
-    <row DIC_ASPELL="lianying" DIC_SPELL="ly" DIC_TEXT="联营" DIC_CODE="140"/>
-    <row DIC_ASPELL="gerenziranrentouziduziqiye" DIC_SPELL="gr（zrrtz）dzqy" DIC_TEXT="个人（自然人投资）独资企业" DIC_CODE="160"/>
-    <row DIC_ASPELL="zhongwaiheziqiye" DIC_SPELL="zwhzqy" DIC_TEXT="中外合资企业" DIC_CODE="170"/>
-    <row DIC_ASPELL="waishangduziqiye" DIC_SPELL="wsdzqy" DIC_TEXT="外商独资企业" DIC_CODE="180"/>
-    <row DIC_ASPELL="zhongwaihezuoqiye" DIC_SPELL="zwhzqy" DIC_TEXT="中外合作企业" DIC_CODE="190"/>
-    <row DIC_ASPELL="guoyoulianying" DIC_SPELL="gyly" DIC_TEXT="国有联营" DIC_CODE="141"/>
-    <row DIC_ASPELL="jitilianying" DIC_SPELL="jtly" DIC_TEXT="集体联营" DIC_CODE="142"/>
-    <row DIC_ASPELL="guoyouyujitilianying" DIC_SPELL="gyyjtly" DIC_TEXT="国有与集体联营" DIC_CODE="143"/>
-    <row DIC_ASPELL="qitalianying" DIC_SPELL="qtly" DIC_TEXT="其他联营" DIC_CODE="149"/>
-    <row DIC_ASPELL="youxianzerengongsi" DIC_SPELL="yxzr（gs）" DIC_TEXT="有限责任（公司）" DIC_CODE="150"/>
+    <row DIC_ASPELL="neizi" DIC_SPELL="nz" DIC_TEXT="内资" DIC_CODE="100" DIC_PERM="1"/>
+    <row DIC_ASPELL="guoyouquanzi" DIC_SPELL="gyqz" DIC_TEXT="国有全资" DIC_CODE="110" DIC_PERM="1"/>
+    <row DIC_ASPELL="jitiquanzi" DIC_SPELL="jtqz" DIC_TEXT="集体全资" DIC_CODE="120" DIC_PERM="1"/>
+    <row DIC_ASPELL="gufenhezuo" DIC_SPELL="gfhz" DIC_TEXT="股份合作" DIC_CODE="130" DIC_PERM="1"/>
+    <row DIC_ASPELL="lianying" DIC_SPELL="ly" DIC_TEXT="联营" DIC_CODE="140" DIC_PERM="1"/>
+    <row DIC_ASPELL="guoyoulianying" DIC_SPELL="gyly" DIC_TEXT="国有联营" DIC_CODE="141" DIC_PERM="1"/>
+    <row DIC_ASPELL="jitilianying" DIC_SPELL="jtly" DIC_TEXT="集体联营" DIC_CODE="142" DIC_PERM="1"/>
+    <row DIC_ASPELL="guoyouyujitilianying" DIC_SPELL="gyyjtly" DIC_TEXT="国有与集体联营" DIC_CODE="143" DIC_PERM="1"/>
+    <row DIC_ASPELL="qitalianying" DIC_SPELL="qtly" DIC_TEXT="其他联营" DIC_CODE="149" DIC_PERM="1"/>
+    <row DIC_ASPELL="youxianzerengongsi" DIC_SPELL="yxzrgs" DIC_TEXT="有限责任（公司）" DIC_CODE="150" DIC_PERM="1"/>
+    <row DIC_ASPELL="gerenziranrentouziduziqiye" DIC_SPELL="grzrrtzdzqy" DIC_TEXT="个人（自然人投资）独资企业" DIC_CODE="160" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhongwaiheziqiye" DIC_SPELL="zwhzqy" DIC_TEXT="中外合资企业" DIC_CODE="170" DIC_PERM="1"/>
+    <row DIC_ASPELL="waishangduziqiye" DIC_SPELL="wsdzqy" DIC_TEXT="外商独资企业" DIC_CODE="180" DIC_PERM="1"/>
+    <row DIC_ASPELL="zhongwaihezuoqiye" DIC_SPELL="zwhzqy" DIC_TEXT="中外合作企业" DIC_CODE="190" DIC_PERM="1"/>
 </data>

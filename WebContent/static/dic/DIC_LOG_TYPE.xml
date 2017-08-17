@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <data>
-    <row DIC_ASPELL="xitongdenglurizhi" DIC_SPELL="xtdlrz" DIC_TEXT="系统登录日志" DIC_CODE="10"/>
-    <row DIC_ASPELL="yewucaozuorizhi" DIC_SPELL="ywczrz" DIC_TEXT="业务操作日志" DIC_CODE="11"/>
+    <row DIC_ASPELL="xitongdenglurizhi" DIC_SPELL="xtdlrz" DIC_TEXT="系统登录日志" DIC_CODE="10" DIC_PERM="1"/>
+    <row DIC_ASPELL="yewucaozuorizhi" DIC_SPELL="ywczrz" DIC_TEXT="业务操作日志" DIC_CODE="11" DIC_PERM="1"/>
 </data>
