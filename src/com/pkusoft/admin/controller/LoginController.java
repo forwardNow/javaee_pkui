@@ -24,6 +24,7 @@ import org.apache.shiro.web.util.WebUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.pkusoft.admin.model.SysUser;
 import com.pkusoft.common.constants.FunctionId;
@@ -51,6 +52,11 @@ public class LoginController {
 		return "login";
 	}
 
+	@RequestMapping("/pkuiLogin")
+	public String pkuiLogin(ModelAndView model){
+		return "login";
+	}
+	
 	/**
 	 * 退出登录页面
 	 * 

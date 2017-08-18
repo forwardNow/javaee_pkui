@@ -396,4 +396,31 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements SysU
 		
 		return sysUserMapper.getUserPermitList(params);
 	}
+	
+	@Override
+	public boolean checkPassword(String password) {
+		SysUser sysUser = sysUserMapper.get(User.getUserId());
+		return sysUser.getPassword().equals(DigestUtils.sha1Hex(password, sysUser.getSalt(),ShiroDbRealm.HASH_ITERATIONS));
+	}
+	@Override
+	public boolean updatePassword(SysUser user) {
+		try{
+			SysUser sysUser = sysUserMapper.get(User.getUserId());
+			String shapassword = DigestUtils.sha1Hex(
+			        user.getPassword(),
+			        sysUser.getSalt(),
+			        ShiroDbRealm.HASH_ITERATIONS
+			);
+			sysUser.setPassword(shapassword);
+			sysUser.setMemo(user.getMemo());
+			sysUser.setMobile(user.getMobile());
+			sysUser.setTel(user.getTel());
+			//sysUser.setUserName(user.getUserName());
+			this.update(sysUser);
+			UserCache.refresh(sysUser.getUserId());
+			return true;
+		}catch(Exception e){
+			return false;
+		}
+	}
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -377,15 +378,57 @@ public class SysUserController extends BaseController {
 		try {
 			UserInfo userInfo = (UserInfo) session.getAttribute( "_pku_user" );
 			
-			SysUser sysUser = new SysUser();
-			
-			sysUser.setUserId( userInfo.getUserId() );
-			sysUser.setLoginName( userInfo.getLoginName() );
-			sysUser.setUserName( userInfo.getUserName() );
+			SysUser sysUser = sysUserService.get( userInfo.getUserId() );
 			
 			return new JsonResult( true, sysUser );
 		} catch (Exception e) {
 			return new JsonResult( false, "获取数据失败" );
 		}
 	}
+	
+	/**
+	 * 用户密码验证
+	 */
+	@RequestMapping( "/admin/checkSysUserPassword" )
+	@ResponseBody
+	public JsonResult sysUserCheckPassword(String password) {
+		try {
+			boolean result = sysUserService.checkPassword( password );
+			if ( result == true ) {
+				return new JsonResult( true, "密码正确" );
+			} else {
+				return new JsonResult( false, "密码错误" );
+			}
+		} catch (Exception e) {
+			logger.error("用户密码验证出错", e);
+			return new JsonResult(false, "服务器内部错误" );
+		}
+	}
+
+	/**
+	 * 用户密码更改
+	 * 
+	 */
+	@RequestMapping( "/admin/updateSysUserPassword" )
+	@ResponseBody
+	public JsonResult sysUserUpdatePassword( SysUser sysUser ) {
+		try {
+			boolean result = sysUserService.updatePassword( sysUser );
+			JsonResult jsonResult;
+			
+			if ( result == true ) {
+				jsonResult = new JsonResult( true, "密码正确" );
+				LogUtils.log( AdminFunctionId.SYS_ROLE_SAVE_UPDATE, "用户密码修改成功" );
+			} else {
+				jsonResult = new JsonResult( false, "密码错误" );
+				LogUtils.log( AdminFunctionId.SYS_ROLE_SAVE_UPDATE, "用户密码修改失败" );
+			}
+			SecurityUtils.getSubject().logout();
+			return jsonResult;
+		} catch ( Exception e ) {
+			logger.error( "用户密码修改出错", e );
+			return new JsonResult( false, "服务器内部错误" );
+		}
+	}
+
 }

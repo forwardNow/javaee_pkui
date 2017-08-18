@@ -104,4 +104,8 @@ public interface SysUserService extends BaseService<SysUser> {
 	 * @author tanggj
 	 */
 	List<Map<String,Object>> getUserPermitList(Long userId);
+
+	boolean checkPassword( String password );
+
+	boolean updatePassword( SysUser sysUser );
 }
