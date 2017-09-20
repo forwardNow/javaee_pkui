@@ -387,6 +387,9 @@ define( function ( require ) {
                         date = row[ column.id ],
                         momentInstance
                     ;
+                    if ( !date ) {
+                        return "";
+                    }
                     if ( typeof date === "number" ) {
                         momentInstance = moment( date );
                     } else if ( typeof date === "string" ) {
@@ -401,6 +404,9 @@ define( function ( require ) {
                         date = row[ column.id ],
                         momentInstance
                     ;
+                    if ( !date ) {
+                        return "";
+                    }
                     if ( typeof date === "number" ) {
                         momentInstance = moment( date );
                     } else if ( typeof date === "string" ) {
@@ -419,8 +425,11 @@ define( function ( require ) {
                         return '<span class="text-success"><i class="fa fa-circle"></i> 正常</span>';
                     }
                     // 停用
-                    else {
+                    else if ( status === "0" ) {
                         return '<span class="text-danger"><i class="fa fa-circle"></i> 停用</span>';
+                    }
+                    else {
+                        return "";
                     }
                 },
                 // 标志状态（是/否）
@@ -433,8 +442,11 @@ define( function ( require ) {
                         return '<span class="text-success"><i class="fa fa-circle"></i> 是</span>';
                     }
                     // 停用
-                    else {
+                    else if ( status === "0" ) {
                         return '<span class="text-danger"><i class="fa fa-circle"></i> 否</span>';
+                    }
+                    else {
+                        return "";
                     }
                 }
             }
@@ -639,6 +651,9 @@ define( function ( require ) {
                                     break;
                                 case "textMagnifier":
                                     moduleId = "textMagnifier";
+                                    break;
+                                case "umeditor":
+                                    moduleId = "umeditor";
                                     break;
                                 default:
                                     var errorMessage = "未被注册的组件[" + componentName + "]";

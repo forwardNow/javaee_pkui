@@ -1,9 +1,9 @@
 /**
- * 对 bootgrid 的扩展
+ * @fileOverview 对 bootgrid 的扩展，扩展删除记录功能
+ * @author 吴钦飞（wuqf@pkusoft.net）
  */
 define( function ( require ) {
     var
-        bootgrid = require( "bootgrid" ),
         $ = require( "jquery" ),
         layer = window.layer,
 
@@ -17,7 +17,13 @@ define( function ( require ) {
         // "paraCode"
         PKName: "",
         // "__CTX__/admin/sysParaDelete"
-        url: ""
+        url: "",
+        /** 额外的参数
+         * "extraData": {
+         *      "isSend": "#sysMessage-isSend"
+         *  }
+         */
+        extraData: null
     };
 
     function DatagridDelete( target, options ) {
@@ -41,6 +47,7 @@ define( function ( require ) {
     function deleteRecord( $table, $button, options ) {
         var
             seletedRowIds = $table.bootgrid( "getSelectedRows" ),
+            extraData = options.extraData,
             data = ""
             ;
 
@@ -72,6 +79,10 @@ define( function ( require ) {
         );
 
         function doDelete () {
+            var
+                paraName,
+                paraSelector
+            ;
             // 打开 loading
             $button.isLoading( { position: "insideButton" } );
 
@@ -82,6 +93,17 @@ define( function ( require ) {
                 }
                 data += options.PKName + "=" + pkValue;
             } );
+
+            // 处理额外的参数
+            if ( extraData ) {
+                for ( paraName in extraData ) {
+                    if ( ! extraData.hasOwnProperty( paraName ) ) {
+                        continue;
+                    }
+                    paraSelector = extraData[ paraName ];
+                    data += "&" + paraName + "=" + $( paraSelector ).val();
+                }
+            }
 
             $.ajax( {
                 url: options.url,

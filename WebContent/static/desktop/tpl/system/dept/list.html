@@ -6,7 +6,7 @@
                 data-pkui-component-options='{
                     "url":"__CTX__/static/desktop/tpl/system/dept/add.html",
                     "container": ".da-win-main"}'
-                ><i class="fa fa-plus"></i> 添加</button>
+        ><i class="fa fa-plus"></i> 添加</button>
         <!--<button type="button" class="btn btn-info-2"><i class="fa fa-pencil"></i> 修改</button>-->
         <button type="button" class="btn btn-danger-2"
                 data-pkui-component="datagrid-delete"
@@ -16,10 +16,10 @@
                     "url": "{% system.dept.list.sysDeptDelete %}"
                 }'
                 title="删除勾选的记录（可多选）"
-                ><i class="fa fa-trash-o"></i> 删除</button>
+        ><i class="fa fa-trash-o"></i> 删除</button>
         <button type="button" class="btn btn-primary-2"
                 onclick="doCreateDeptDic(this)"
-                ><i class="fa fa-book"></i> 生成字典</button>
+        ><i class="fa fa-book"></i> 生成字典</button>
         <!--<button type="button" class="btn btn-default-2"><i class="fa fa-search"></i> 高级查询</button>-->
     </div>
     <div class="main-topbar-query">
@@ -51,7 +51,7 @@
        data-beforeload-callback="sysDeptListBeforeloadCallback"
        data-afterload-callback="sysDeptListAfterloadCallback"
        data-failload-callback="sysDeptListFailloadCallback"
-       >
+>
     <!--
      data-url="http://localhost:8080/pkui/admin/sysDeptListData"
     -->
@@ -72,7 +72,7 @@
         <th data-column-id="deptName" data-sortable="false" data-width="30%">部门名称</th>
         <th data-column-id="deptLevel" data-sortable="true" data-order="asc" data-dic="DIC_DEPT_LEVEL" data-width="10%">部门级别</th>
         <th data-column-id="addTime" data-sortable="false" data-formatter="dateFormatter" data-width="20%">录入时间</th>
-        <th data-column-id="__" data-sortable="false" data-formatter="sysDeptOpe">操作</th>
+        <th data-column-id="__" data-sortable="false" data-formatter="sysDeptOpe" data-has-dropdown-menu="true">操作</th>
     </tr>
     </thead>
 
@@ -85,20 +85,32 @@
      */
     function sysDeptOpe(column, row) {
         return '<a href="javascript:void(0)" '
-        +           ' id=viewSysDept_' + row.deptId
-        +           ' data-pkui-component="drawer"'
-        +           ' data-pkui-component-options=\'{'
-        +               '"url":"__CTX__/static/desktop/tpl/system/dept/detail.html",'
-        +               '"model":"{% system.dept.list.sysDeptModel %}?deptId=' + row.deptId + '",'
-        +               '"container": ".da-win-main"}\'><i class="fa fa-file-o"></i> 查看</a>　'
+            +           ' id=viewSysDept_' + row.deptId
+            +           ' data-pkui-component="drawer"'
+            +           ' data-pkui-component-options=\'{'
+            +               '"url":"__CTX__/static/desktop/tpl/system/dept/detail.html",'
+            +               '"model":"{% system.dept.list.sysDeptModel %}?deptId=' + row.deptId + '",'
+            +               '"container": ".da-win-main"}\'><i class="fa fa-file-o"></i> 查看</a>　'
 
-        +       '<a href="javascript:void(0)" '
-        +           ' id=editSysDept_' + row.deptId
-        +           ' data-pkui-component="drawer"'
-        +           ' data-pkui-component-options=\'{'
-        +               '"url":"__CTX__/static/desktop/tpl/system/dept/edit.html",'
-        +               '"model":"{% system.dept.list.sysDeptModel %}?deptId=' + row.deptId + '",'
-        +               '"container": ".da-win-main"}\'><i class="fa fa-edit"></i> 编辑</a>';
+            +       '<a href="javascript:void(0)" '
+            +           ' id=editSysDept_' + row.deptId
+            +           ' data-pkui-component="drawer"'
+            +           ' data-pkui-component-options=\'{'
+            +               '"url":"__CTX__/static/desktop/tpl/system/dept/edit.html",'
+            +               '"model":"{% system.dept.list.sysDeptModel %}?deptId=' + row.deptId + '",'
+            +               '"container": ".da-win-main"}\'><i class="fa fa-edit"></i> 编辑</a>　'
+
+            + '<div class="dropdown">'
+            + '    <a href="javascript:void(0)" data-toggle="dropdown" >更多</a>'
+            + '    <span class="caret"></span>'
+            + '  </button>'
+            + '  <ul class="dropdown-menu" aria-labelledby="dLabel">'
+            + '    <li><a href="#">功能1</a></li>'
+            + '    <li><a href="#">功能功能2</a></li>'
+            + '    <li><a href="#">功能功能能3</a></li>'
+            + '  </ul>'
+            + '</div>'
+            ;
     }
 
     /**

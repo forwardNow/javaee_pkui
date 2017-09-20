@@ -23,6 +23,7 @@
 				/logout = anon
 				/captcha = anon
 				/static/** = anon
+				/noauth/** = anon
 			</value>
 		</property>
 		<property name="afterFilterChainDefinitions">

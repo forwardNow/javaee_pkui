@@ -43,6 +43,79 @@
         </form>
     </div>
 </div>	
+<div class="index-choices clearfix">
+	<!-- <div class="alert alert-warning text-center">请选择主页</div> -->
+	<a class="index-page index-page-new" href="${ ctx }/static/laweye/index.html">
+		<span class="hook"></span>
+		<img src="${ ctx }/static/laweye/images/index_new.jpg" alt="" />
+		<span class="index-page-text">新版</span>
+	</a>
+	<a class="index-page index-page-old" href="${ ctx }/static/desktop/index.html">
+		<span class="hook"></span>
+		<img src="${ ctx }/static/laweye/images/index_old.jpg" alt="" />
+		<span class="index-page-text">旧版</span>
+	</a>
+</div>
+<style>
+	html,body {
+		height: 100%;
+	}
+	.index-choices {
+		z-index: 10;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #000;
+	}
+	.hook {display:inline-block;width:0;height:100%;overflow:hidden;margin-left:-1px;font-size:0;line-height:0;vertical-align:middle;}
+	.index-page {
+		position: relative;
+		float: left;
+		height: 100%;
+		text-align: center;
+		border: solid 2px transparent;
+		box-sizing: border-box;
+		transition: all 0.3s;
+	}
+	.index-page img {
+		width: 80%;
+		vertical-align:middle;border:0 none;
+		opacity: 0.6;
+		transition: all 0.3s;
+	}
+	.index-page-old {
+		width: 40%;
+	}
+	.index-page-new {
+		width: 60%;
+	}
+	.index-page:hover {
+		border-color: #fff;
+	}
+	.index-page:hover img {
+		margin-top: -20px;
+		opacity: 1;
+	}
+	.index-page:hover .index-page-text {
+		background-color: #fff;
+		color: #000;
+	}
+	.index-page-text {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 60px;
+		line-height: 60px;
+		color: #333;
+		font-size: 24px;
+		text-align: center;
+		background-color: rgba(255,255,255,0.3);
+		transition: all 0.3s;
+	}
+</style>
 <script>
 
     // 请求发送成功，对服务器端返回的数据进行处理
