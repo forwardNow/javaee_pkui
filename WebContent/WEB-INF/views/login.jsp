@@ -27,37 +27,8 @@
      .form button:active,
      .form button:focus,
      .form button[disabled] { background: #43A047; }
-</style>
-<body>
-<div class="login-page">
-    <div class="form" id="loginForm">
-        <form class="login-form" action="${ ctx }/doLogin" method="post"
-		    data-pkui-component="validator|form"
-		    data-done-callback="doLoginDoneCallback"
-		    data-fail-callback="doLoginFailCallback"
-		    data-always-callback="doLoginAlwaysCallback" >
-		    
-            <input type="text" name="loginName"  value="admin"/>
-            <input type="text" name="password" value="a"/>
-            <button type="submit" id="submitBtn">登陆</button>
-        </form>
-    </div>
-</div>	
-<div class="index-choices clearfix">
-	<!-- <div class="alert alert-warning text-center">请选择主页</div> -->
-	<a class="index-page index-page-new" href="${ ctx }/static/laweye/index.html">
-		<span class="hook"></span>
-		<img src="${ ctx }/static/laweye/images/index_new.jpg" alt="" />
-		<span class="index-page-text">新版</span>
-	</a>
-	<a class="index-page index-page-old" href="${ ctx }/static/desktop/index.html">
-		<span class="hook"></span>
-		<img src="${ ctx }/static/laweye/images/index_old.jpg" alt="" />
-		<span class="index-page-text">旧版</span>
-	</a>
-</div>
-<style>
-	html,body {
+     
+     html,body {
 		height: 100%;
 	}
 	.index-choices {
@@ -115,7 +86,37 @@
 		background-color: rgba(255,255,255,0.3);
 		transition: all 0.3s;
 	}
+     
 </style>
+<body>
+<div class="login-page">
+    <div class="form" id="loginForm">
+        <form class="login-form" action="${ ctx }/doLogin" method="post"
+		    data-pkui-component="validator|form"
+		    data-done-callback="doLoginDoneCallback"
+		    data-fail-callback="doLoginFailCallback"
+		    data-always-callback="doLoginAlwaysCallback" >
+		    
+            <input type="text" name="loginName"  value="admin"/>
+            <input type="text" name="password" value="a"/>
+            <button type="submit" id="submitBtn">登陆</button>
+        </form>
+    </div>
+</div>	
+
+<div class="index-choices clearfix" style="display: none;">
+	<!-- <div class="alert alert-warning text-center">请选择主页</div> -->
+	<a class="index-page index-page-new" href="${ ctx }/static/laweye/index.html">
+		<span class="hook"></span>
+		<img src="${ ctx }/static/laweye/images/index_new.jpg" alt="" />
+		<span class="index-page-text">新版</span>
+	</a>
+	<a class="index-page index-page-old" href="${ ctx }/static/desktop/index.html">
+		<span class="hook"></span>
+		<img src="${ ctx }/static/laweye/images/index_old.jpg" alt="" />
+		<span class="index-page-text">旧版</span>
+	</a>
+</div>
 <script>
 
     // 请求发送成功，对服务器端返回的数据进行处理
@@ -124,11 +125,12 @@
         // 服务器端处理成功
         if ( jsonResult.success ) {
             // 提示
-            layer.msg( jsonResult.message || "登陆成功，即将跳转。", { 
+            layer.msg( "登陆成功，请选择首页。", { 
             	icon: 1,
             	time: 1000,
             	end: function () {
-            		location = "${ ctx }/static/desktop/index.html";
+            		// location = "${ ctx }/static/desktop/index.html";
+            		jQuery( ".index-choices" ).show( 300 );
             	}
            	});
         }
