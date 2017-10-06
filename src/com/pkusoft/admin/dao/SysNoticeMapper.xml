@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pkusoft.admin.dao.SysNoticeMapper" >
+  <!-- 结果集映射 -->
+  <resultMap id="BaseResultMap" type="com.pkusoft.admin.model.SysNotice" >
+    <id column="OPID" property="opid" jdbcType="DECIMAL" />
+    <result column="SUBJECT" property="subject" jdbcType="VARCHAR" />
+    <result column="CONTENT" property="content" jdbcType="DECIMAL" />
+    <result column="AUTHORID" property="authorid" jdbcType="VARCHAR" />
+    <result column="AUTHOR" property="author" jdbcType="VARCHAR" />
+    <result column="OPTIME" property="optime" jdbcType="TIMESTAMP" />
+    <result column="IS_PUBLISH" property="isPublish" jdbcType="VARCHAR" />
+    <result column="IS_WORKTABLE" property="isWorktable" jdbcType="VARCHAR" />
+    <result column="TIME_LIMIT" property="timeLimit" jdbcType="TIMESTAMP" />
+    <result column="DEPTID" property="deptid" jdbcType="VARCHAR" />
+    <result column="DEPTNAME" property="deptname" jdbcType="VARCHAR" />
+    <result column="RESERVE1" property="reserve1" jdbcType="VARCHAR" />
+    <result column="RESERVE2" property="reserve2" jdbcType="VARCHAR" />
+    <result column="RESERVE3" property="reserve3" jdbcType="VARCHAR" />
+    <result column="RESERVE4" property="reserve4" jdbcType="VARCHAR" />
+    <result column="RESERVE5" property="reserve5" jdbcType="VARCHAR" />
+  </resultMap>
+  <!-- Oracle分页SQL片段 -->
+  <sql id="pageHeader">
+  	<!-- 
+    select * from(select s_.*,rownum rn_ from(
+    -->
+  </sql>
+  <sql id="pageRoot">
+  	  <!-- 
+      ) s_ where rownum &lt;= #{pager.limit}) where rn_ &gt; #{pager.start}
+      -->
+       limit #{pager.start}, #{pager.pageSize} 
+  </sql>
+  <!-- 查询操作的查询标准SQL片段 -->
+  <sql id="Criteria_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!-- 更新操作的查询标准SQL片段 -->
+  <sql id="Update_By_Criteria_Where_Clause" >
+    <where >
+      <foreach collection="criteria.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <!-- 查询字段SQL片段 -->
+  <sql id="Base_Column_List" >
+  	OPID,
+  	SUBJECT,
+  	CONTENT,
+  	AUTHORID,
+  	AUTHOR,
+  	OPTIME,
+  	IS_PUBLISH,
+  	IS_WORKTABLE,
+  	TIME_LIMIT,
+  	DEPTID,
+  	DEPTNAME,
+  	RESERVE1,
+  	RESERVE2,
+  	RESERVE3,
+  	RESERVE4,
+  	RESERVE5
+  </sql>
+  <!-- 根据查询标准获取列表数据-->
+  <select id="getListByCriteria" resultMap="BaseResultMap" parameterType="com.pkusoft.framework.model.Criteria" >
+  	<if test="pager != null" >
+      <include refid="pageHeader" />
+    </if> 
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_NOTICE
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="pager != null" >
+      <include refid="pageRoot" />
+    </if>
+  </select>
+  <!-- 根据主键获取对象信息 -->
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Object" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_NOTICE
+    where 
+    OPID = #{opid,jdbcType=DECIMAL}
+  </select>
+  <!-- 根据主键删除记录 -->
+  <delete id="delete" parameterType="java.lang.Object" >
+    delete from SYS_NOTICE
+    where 
+    OPID = #{opid,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.pkusoft.framework.model.Criteria" >
+    delete from SYS_NOTICE
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </delete>
+  <!-- 全字段插入 -->
+  <insert id="insert" parameterType="com.pkusoft.admin.model.SysNotice" >
+    insert into SYS_NOTICE (
+    OPID,
+    SUBJECT,
+    CONTENT,
+    AUTHORID,
+    AUTHOR,
+    OPTIME,
+    IS_PUBLISH,
+    IS_WORKTABLE,
+    TIME_LIMIT,
+    DEPTID,
+    DEPTNAME,
+    RESERVE1,
+    RESERVE2,
+    RESERVE3,
+    RESERVE4,
+    RESERVE5
+      )
+    values (
+    #{opid,jdbcType=DECIMAL},
+    #{subject,jdbcType=VARCHAR},
+    #{content,jdbcType=CLOB},
+    #{authorid,jdbcType=VARCHAR},
+    #{author,jdbcType=VARCHAR},
+    #{optime,jdbcType=TIMESTAMP},
+    #{isPublish,jdbcType=VARCHAR},
+    #{isWorktable,jdbcType=VARCHAR},
+    #{timeLimit,jdbcType=TIMESTAMP},
+    #{deptid,jdbcType=VARCHAR},
+    #{deptname,jdbcType=VARCHAR},
+    #{reserve1,jdbcType=VARCHAR},
+    #{reserve2,jdbcType=VARCHAR},
+    #{reserve3,jdbcType=VARCHAR},
+    #{reserve4,jdbcType=VARCHAR},
+    #{reserve5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <!-- 选择值不为空的字段插入 -->
+  <insert id="insertSelective" parameterType="com.pkusoft.admin.model.SysNotice" >
+    insert into SYS_NOTICE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="opid != null" >
+	    OPID,
+      </if>
+      <if test="subject != null" >
+	    SUBJECT,
+      </if>
+      <if test="content != null" >
+	    CONTENT,
+      </if>
+      <if test="authorid != null" >
+	    AUTHORID,
+      </if>
+      <if test="author != null" >
+	    AUTHOR,
+      </if>
+      <if test="optime != null" >
+	    OPTIME,
+      </if>
+      <if test="isPublish != null" >
+	    IS_PUBLISH,
+      </if>
+      <if test="isWorktable != null" >
+	    IS_WORKTABLE,
+      </if>
+      <if test="timeLimit != null" >
+	    TIME_LIMIT,
+      </if>
+      <if test="deptid != null" >
+	    DEPTID,
+      </if>
+      <if test="deptname != null" >
+	    DEPTNAME,
+      </if>
+      <if test="reserve1 != null" >
+	    RESERVE1,
+      </if>
+      <if test="reserve2 != null" >
+	    RESERVE2,
+      </if>
+      <if test="reserve3 != null" >
+	    RESERVE3,
+      </if>
+      <if test="reserve4 != null" >
+	    RESERVE4,
+      </if>
+      <if test="reserve5 != null" >
+	    RESERVE5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="opid != null" >
+	    #{opid,jdbcType=DECIMAL},
+      </if>
+      <if test="subject != null" >
+	    #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+	    #{content,jdbcType=CLOB},
+      </if>
+      <if test="authorid != null" >
+	    #{authorid,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+	    #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="optime != null" >
+	    #{optime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isPublish != null" >
+	    #{isPublish,jdbcType=VARCHAR},
+      </if>
+      <if test="isWorktable != null" >
+	    #{isWorktable,jdbcType=VARCHAR},
+      </if>
+      <if test="timeLimit != null" >
+	    #{timeLimit,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deptid != null" >
+	    #{deptid,jdbcType=VARCHAR},
+      </if>
+      <if test="deptname != null" >
+	    #{deptname,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null" >
+	    #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+	    #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+	    #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+	    #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null" >
+	    #{reserve5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- 根据查询标准获取记录数 -->
+  <select id="getCountByCriteria" parameterType="com.pkusoft.framework.model.Criteria" resultType="java.lang.Integer" >
+    select count(*) from SYS_NOTICE
+    <if test="_parameter != null" >
+      <include refid="Criteria_Where_Clause" />
+    </if>
+  </select>
+  <!-- 根据查询标准更新 ，选择字段值不为空的更新 -->
+  <update id="updateByCriteriaSelective" parameterType="map" >
+    update SYS_NOTICE
+    <set >
+      <if test="record.opid != null" >
+	    OPID = #{record.opid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.subject != null" >
+	    SUBJECT = #{record.subject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+	    CONTENT = #{record.content,jdbcType=CLOB},
+      </if>
+      <if test="record.authorid != null" >
+	    AUTHORID = #{record.authorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.author != null" >
+	    AUTHOR = #{record.author,jdbcType=VARCHAR},
+      </if>
+      <if test="record.optime != null" >
+	    OPTIME = #{record.optime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isPublish != null" >
+	    IS_PUBLISH = #{record.isPublish,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isWorktable != null" >
+	    IS_WORKTABLE = #{record.isWorktable,jdbcType=VARCHAR},
+      </if>
+      <if test="record.timeLimit != null" >
+	    TIME_LIMIT = #{record.timeLimit,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deptid != null" >
+	    DEPTID = #{record.deptid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptname != null" >
+	    DEPTNAME = #{record.deptname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve1 != null" >
+	    RESERVE1 = #{record.reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve2 != null" >
+	    RESERVE2 = #{record.reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve3 != null" >
+	    RESERVE3 = #{record.reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve4 != null" >
+	    RESERVE4 = #{record.reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve5 != null" >
+	    RESERVE5 = #{record.reserve5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <!-- 根据查询标准全字段更新 -->
+  <update id="updateByCriteria" parameterType="map" >
+    update SYS_NOTICE
+    set 
+		OPID = #{record.opid,jdbcType=DECIMAL},
+		SUBJECT = #{record.subject,jdbcType=VARCHAR},
+		CONTENT = #{record.content,jdbcType=CLOB},
+		AUTHORID = #{record.authorid,jdbcType=VARCHAR},
+		AUTHOR = #{record.author,jdbcType=VARCHAR},
+		OPTIME = #{record.optime,jdbcType=TIMESTAMP},
+		IS_PUBLISH = #{record.isPublish,jdbcType=VARCHAR},
+		IS_WORKTABLE = #{record.isWorktable,jdbcType=VARCHAR},
+		TIME_LIMIT = #{record.timeLimit,jdbcType=TIMESTAMP},
+		DEPTID = #{record.deptid,jdbcType=VARCHAR},
+		DEPTNAME = #{record.deptname,jdbcType=VARCHAR},
+		RESERVE1 = #{record.reserve1,jdbcType=VARCHAR},
+		RESERVE2 = #{record.reserve2,jdbcType=VARCHAR},
+		RESERVE3 = #{record.reserve3,jdbcType=VARCHAR},
+		RESERVE4 = #{record.reserve4,jdbcType=VARCHAR},
+		RESERVE5 = #{record.reserve5,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Criteria_Where_Clause" />
+    </if>
+  </update>
+  <!-- 根据主键更新 ，选择字段值不为空的更新 -->
+  <update id="updateSelective" parameterType="com.pkusoft.admin.model.SysNotice" >
+    update SYS_NOTICE
+    <set >
+      <if test="opid != null" >
+       OPID = #{opid,jdbcType=DECIMAL},
+      </if>
+      <if test="subject != null" >
+       SUBJECT = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+       CONTENT = #{content,jdbcType=CLOB},
+      </if>
+      <if test="authorid != null" >
+       AUTHORID = #{authorid,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+       AUTHOR = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="optime != null" >
+       OPTIME = #{optime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isPublish != null" >
+       IS_PUBLISH = #{isPublish,jdbcType=VARCHAR},
+      </if>
+      <if test="isWorktable != null" >
+       IS_WORKTABLE = #{isWorktable,jdbcType=VARCHAR},
+      </if>
+      <if test="timeLimit != null" >
+       TIME_LIMIT = #{timeLimit,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deptid != null" >
+       DEPTID = #{deptid,jdbcType=VARCHAR},
+      </if>
+      <if test="deptname != null" >
+       DEPTNAME = #{deptname,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null" >
+       RESERVE1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+       RESERVE2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+       RESERVE3 = #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null" >
+       RESERVE4 = #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null" >
+       RESERVE5 = #{reserve5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where 
+    OPID = #{opid,jdbcType=DECIMAL}
+  </update>
+  <!-- 根据主键全字段更新 -->
+  <update id="update" parameterType="com.pkusoft.admin.model.SysNotice" >
+    update SYS_NOTICE
+    set 
+		OPID = #{opid,jdbcType=DECIMAL},
+		SUBJECT = #{subject,jdbcType=VARCHAR},
+		CONTENT = #{content,jdbcType=CLOB},
+		AUTHORID = #{authorid,jdbcType=VARCHAR},
+		AUTHOR = #{author,jdbcType=VARCHAR},
+		OPTIME = #{optime,jdbcType=TIMESTAMP},
+		IS_PUBLISH = #{isPublish,jdbcType=VARCHAR},
+		IS_WORKTABLE = #{isWorktable,jdbcType=VARCHAR},
+		TIME_LIMIT = #{timeLimit,jdbcType=TIMESTAMP},
+		DEPTID = #{deptid,jdbcType=VARCHAR},
+		DEPTNAME = #{deptname,jdbcType=VARCHAR},
+		RESERVE1 = #{reserve1,jdbcType=VARCHAR},
+		RESERVE2 = #{reserve2,jdbcType=VARCHAR},
+		RESERVE3 = #{reserve3,jdbcType=VARCHAR},
+		RESERVE4 = #{reserve4,jdbcType=VARCHAR},
+		RESERVE5 = #{reserve5,jdbcType=VARCHAR}
+    where 
+    OPID = #{opid,jdbcType=DECIMAL}
+  </update> 
+  
+  <!-- 在以下扩展数据操作接口 -->
+  
+</mapper>
