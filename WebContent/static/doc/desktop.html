@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>第三方库 · GitBook</title>
+        <title>desktop · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="di-san-fang-ku/shi-yong.html" />
+    <link rel="next" href="desktop/dan-chu-ceng.html" />
     
     
-    <link rel="prev" href="faq/xuan-ran.html" />
+    <link rel="prev" href="zhan-wei-1/umeditor.html" />
     
 
     </head>
@@ -186,7 +186,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3" data-path="di-san-fang-ku.html">
+        <li class="chapter " data-level="1.3" data-path="di-san-fang-ku.html">
             
                 <a href="di-san-fang-ku.html">
             
@@ -289,7 +289,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="desktop.html">
+        <li class="chapter active" data-level="1.5" data-path="desktop.html">
             
                 <a href="desktop.html">
             
@@ -403,7 +403,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >第三方库</a>
+        <a href="." >desktop</a>
     </h1>
 </div>
 
@@ -418,67 +418,10 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <pre><code>pkui
-    |-- component    // &#x7EC4;&#x4EF6;
-    |-- css          // &#x6837;&#x5F0F;
-    |
-    |-- lib          // &#x7B2C;&#x4E09;&#x65B9;&#x5E93;
-        |
-        |-- sea-modules // &#x6A21;&#x5757;&#x7CFB;&#x7EDF;
-        |   |
-        |   |-- seajs         // sea.js 
-        |   |-- seajs-css     // &#x52A0;&#x8F7D;css&#x6587;&#x4EF6;
-        |   |-- seajs-text    // &#x52A0;&#x8F7D;&#x6587;&#x672C;&#x6587;&#x4EF6;
-        |
-        |-- jquery      // 1 jQuery.js&#x4EE5;&#x53CA;&#x63D2;&#x4EF6;
-        |   |
-        |   |-- 1.9.0
-        |   |-- 1.11.3
-        |   |-- 1.11.3.x    // pkui&#x4F7F;&#x7528;&#x7684;jQuery&#x7248;&#x672C;
-        |   |
-        |   |-- plugin
-        |       |
-        |       |-- colResizable    // 1-1 &#x4F7F;&#x8868;&#x683C;&#xFF08;&lt;table&gt;&#xFF09;&#x7684;&#x5217;&#x53EF;&#x4EE5;&#x62D6;&#x62FD;&#x6539;&#x53D8;&#x5BBD;&#x5EA6;
-        |       |-- bootstrap       // 1-2 bootstrap&#x7684;&#x4E00;&#x4E9B;&#x63D2;&#x4EF6; 
-        |       |   |-- dropdown.js    // &#x4E0B;&#x62C9;&#x83DC;&#x5355;
-        |       |   |-- tab.js         // &#x9875;&#x7B7E; 
-        |       |   |-- tooltip.js     // &#x5DE5;&#x5177;&#x63D0;&#x793A;
-        |       |-- jquery-ui       // 1-3 jquery ui &#x5B8C;&#x6574;&#x7248; 
-        |       |-- mousewheel      // 1-4 &#x8DE8;&#x5E73;&#x53F0;&#x9F20;&#x6807;&#x6EDA;&#x8F6E;&#x4E8B;&#x4EF6;&#x7684;&#x652F;&#x6301;
-        |
-        |-- polyfill    // 2 &#x5BF9;&#x4F4E;&#x7248;&#x672C;IE&#x4EE5;&#x53CA;&#x4F4E;&#x7248;&#x672C;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x4E00;&#x4E9B;&#x4FEE;&#x590D;
-        |   |
-        |   |-- es5-shim      // 2-1 &#x5728;ES3&#x73AF;&#x5883;&#x4E0B;&#x6A21;&#x62DF;ES5&#x8BED;&#x6CD5;
-        |   |-- html5shiv     // 2-2 &#x89E3;&#x51B3;&#x65E7;&#x6D4F;&#x89C8;&#x5668;&#xFF08;IE8&#x4E4B;&#x7C7B;&#xFF09;&#x5BF9;HTML5&#x65B0;&#x6807;&#x7B7E;&#x7684;&#x4E0D;&#x652F;&#x6301;&#x95EE;&#x9898;
-        |   |-- json3         // 2-3 &#x6A21;&#x62DF;JSON.parse &#x548C; JSON.stringify 
-        |   |-- respond       // 2-4 &#x89E3;&#x51B3;&#x65E7;&#x6D4F;&#x89C8;&#x5668;&#xFF08;IE8&#x4E4B;&#x7C7B;&#xFF09;&#x5BF9;&#x5A92;&#x4ECB;&#x67E5;&#x8BE2;&#x7684;&#x4E0D;&#x652F;&#x6301;&#x95EE;&#x9898;
-        |   
-        |-- utils       // 3 &#x5DE5;&#x5177;&#x7C7B;
-        |   |
-        |   |-- art-template  // 3-1 &#x6A21;&#x677F;&#x5F15;&#x64CE;
-        |   |-- form          // 3-2 &#x8868;&#x5355;&#x63D0;&#x4EA4;   
-        |   |-- jsencrypt     // 3-3 RSA
-        |   |-- meld          // 3-4 AOP
-        |   |-- moment        // 3-5 &#x65F6;&#x95F4;&#x5904;&#x7406;
-        |   |-- IDValidator   // 3-6 &#x8EAB;&#x4EFD;&#x8BC1;&#x53F7;&#x7801;&#x9A8C;&#x8BC1; 
-        |   |-- etpl          // 3-7 &#x6A21;&#x677F;&#x5F15;&#x64CE;
-        |
-        |--- component  // 4 &#x7EC4;&#x4EF6;&#x7C7B;
-            |
-            |-- art-dialog    // 4-1 &#x5F39;&#x51FA;&#x5C42;&#x7EC4;&#x4EF6;&#xFF08;https://github.com/aui/artDialog&#xFF09;
-            |-- bootgrid      // 4-2 &#x6570;&#x636E;&#x8868;&#x683C;&#x63D2;&#x4EF6;&#xFF08;http://www.jquery-bootgrid.com/Documentation&#xFF09;
-            |-- isLoading     // 4-3 &#x52A0;&#x8F7D;&#x6548;&#x679C;
-            |-- layer         // 4-4 &#x5F39;&#x51FA;&#x5C42;&#x7EC4;&#x4EF6;&#xFF08;http://layer.layui.com/&#xFF09;
-            |-- swiper        // 4-5 &#x8F6E;&#x64AD;&#x7EC4;&#x4EF6;&#xFF08;http://www.swiper.com.cn/&#xFF09;
-            |-- validator     // 4-6 &#x8868;&#x5355;&#x6821;&#x9A8C;&#xFF08;https://github.com/niceue/nice-validator&#xFF09;
-            |-- chosen        // 4-7 &#x5B57;&#x5178;&#x63A7;&#x4EF6;&#xFF08;https://harvesthq.github.io/chosen/&#xFF09;
-            |-- datepicker    // 4-8 &#x65E5;&#x671F;&#x63A7;&#x4EF6;&#xFF08;https://github.com/uxsolutions/bootstrap-datepicker&#xFF09;
-            |-- jstree        // 4-9 &#x6811;&#xFF08;https://www.jstree.com&#xFF09;
-            |-- webuploader   // 4-10 &#x4E0A;&#x4F20;&#x7EC4;&#x4EF6;&#xFF08;http://fex.baidu.com/webuploader/&#xFF09;
-            |-- intro         // 4-11 &#x5F15;&#x5BFC;&#x7EC4;&#x4EF6;
-            |-- datetimepicker// 4-12 &#x65E5;&#x671F;&#x65F6;&#x95F4;&#x63A7;&#x4EF6;&#xFF08;https://github.com/xdan/datetimepicker&#xFF09;
-            |-- umeditor      // 4-13 &#x5BCC;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;http://ueditor.baidu.com/website/umeditor.html&#xFF09;
-</code></pre>
+                                <h1 id="desktop&#xFF08;&#x7C7B;&#x684C;&#x9762;webapp&#xFF09;">desktop&#xFF08;&#x7C7B;&#x684C;&#x9762;webapp&#xFF09;</h1>
+<hr>
+<p>&#x8BB0;&#x5F55;&#x4E00;&#x4E9B;&#x5E38;&#x89C1;&#x7684;&#x95EE;&#x9898;</p>
+
                                 
                                 </section>
                             
@@ -505,12 +448,12 @@
 
             
                 
-                <a href="faq/xuan-ran.html" class="navigation navigation-prev " aria-label="Previous page: 渲染">
+                <a href="zhan-wei-1/umeditor.html" class="navigation navigation-prev " aria-label="Previous page: UMEditor">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="di-san-fang-ku/shi-yong.html" class="navigation navigation-next " aria-label="Next page: 使用">
+                <a href="desktop/dan-chu-ceng.html" class="navigation navigation-next " aria-label="Next page: 弹出层">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -521,7 +464,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第三方库","level":"1.3","depth":1,"next":{"title":"使用","level":"1.3.1","depth":2,"path":"di-san-fang-ku/shi-yong.md","ref":"di-san-fang-ku/shi-yong.md","articles":[]},"previous":{"title":"渲染","level":"1.2.5","depth":2,"path":"faq/xuan-ran.md","ref":"faq/xuan-ran.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"di-san-fang-ku.md","mtime":"2017-09-22T08:33:24.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-12T11:27:44.825Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"desktop","level":"1.5","depth":1,"next":{"title":"弹出层","level":"1.5.1","depth":2,"path":"desktop/dan-chu-ceng.md","ref":"desktop/dan-chu-ceng.md","articles":[]},"previous":{"title":"UMEditor","level":"1.4.4","depth":2,"path":"zhan-wei-1/umeditor.md","ref":"zhan-wei-1/umeditor.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"desktop.md","mtime":"2017-10-12T09:00:55.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-12T11:27:44.825Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
