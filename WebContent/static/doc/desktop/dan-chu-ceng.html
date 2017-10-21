@@ -100,6 +100,38 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../geng-xin-li-shi.html">
+            
+                <a href="../geng-xin-li-shi.html">
+            
+                    
+                    更新历史
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../ji-hua.html">
+            
+                <a href="../ji-hua.html">
+            
+                    
+                    计划
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.2" data-path="../faq.html">
@@ -284,6 +316,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.5" data-path="../zhan-wei-1/message.html">
+            
+                <a href="../zhan-wei-1/message.html">
+            
+                    
+                    message
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -429,10 +474,329 @@
 </ul>
 <h2 id="2-&#x4F7F;&#x7528;">2. &#x4F7F;&#x7528;</h2>
 <h3 id="21-art-dialog">2.1 art-dialog</h3>
-<p>// TODO</p>
+<p><code>art-dialog v6.0.4.x</code> &#x5DF2;&#x88AB;&#x5B8C;&#x5168;&#x4FEE;&#x6539;&#x4E3A;&#x53EA;&#x9002;&#x7528;&#x4E8E; desktop &#x7684;&#x201C;&#x5FEB;&#x6377;&#x65B9;&#x5F0F;app&#x5E94;&#x7528;&#x201D;&#xFF0C;</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x5173;&#x4E8E; art-dialog &#x7684;&#x4F7F;&#x7528; &#x5C06;&#x4F1A;&#x7EB3;&#x5165;&#x5FEB;&#x6377;&#x65B9;&#x5F0F;&#x7684;&#x4F7F;&#x7528;&#x8BF4;&#x660E;&#x91CC;&#xFF0C;</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x5728;&#x6B64;&#x4E0D;&#x505A;&#x8D58;&#x8FF0;&#x3002;</p>
 <h3 id="22-layer">2.2 layer</h3>
-<p>// TODO</p>
-<h3 id="23-drawer">2.3 drawer</h3>
+<p>&#x5B98;&#x7F51;&#xFF1A;<a href="http://www.layui.com/layer/" target="_blank">http://www.layui.com/layer/</a></p>
+<p>&#x7531;&#x4E8E;&#x539F;&#x751F;&#x7684;&#x5F39;&#x51FA;&#x5C42;&#x7EC4;&#x4EF6;&#x4E0D;&#x53EF;&#x8BBE;&#x7F6E;&#x5176;&#x6837;&#x5F0F;&#xFF0C;&#x56E0;&#x6B64;&#x5F15;&#x5165; layer&#xFF08;v3.0.1&#xFF09; &#x4EE5;&#x4E30;&#x5BCC;&#xFF1A;</p>
+<ul>
+<li>alert&#xFF08;&#x8B66;&#x544A;&#xFF09;</li>
+<li>confirm&#xFF08;&#x786E;&#x8BA4;/&#x8BE2;&#x95EE;&#xFF09;</li>
+<li>message&#xFF08;&#x6D88;&#x606F;&#xFF09;</li>
+<li>&#x9875;&#x9762;&#x5C42;&#xFF08;&#x8BE6;&#x60C5;&#x9875;/&#x7F16;&#x8F91;&#x9875;&#xFF09;</li>
+</ul>
+<p>layer&#x7EC4;&#x4EF6;&#x5C5E;&#x4E8E;&#x9884;&#x52A0;&#x8F7D;&#x6A21;&#x5757;&#xFF0C;&#x53EF;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#xFF08;<code>window.layer.alert()</code>&#xFF09;&#x3002;</p>
+<h4 id="221-open">2.2.1 open</h4>
+<p><code>layer.open(options)</code></p>
+<ul>
+<li>&#x539F;&#x59CB;&#x6838;&#x5FC3;&#x65B9;&#x6CD5;&#x3002;&#x4E0D;&#x7BA1;&#x662F;&#x4F7F;&#x7528;&#x54EA;&#x79CD;&#x65B9;&#x5F0F;&#x521B;&#x5EFA;&#x5C42;&#xFF0C;&#x90FD;&#x662F;&#x901A;&#x8FC7;layer.open()</li>
+<li>&#x53C2;&#x6570;&#xFF1A;&#x53C2;&#x8003;&#x201C;&#x5E38;&#x7528;&#x53C2;&#x6570;&#x201D;</li>
+<li>&#x8FD4;&#x56DE;&#x503C;&#xFF1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5F53;&#x524D;&#x5C42;&#x7D22;&#x5F15;&#x3002;</li>
+</ul>
+<h4 id="222-&#x53C2;&#x6570;&#xFF08;options&#xFF09;">2.2.2 &#x53C2;&#x6570;&#xFF08;options&#xFF09;</h4>
+<ul>
+<li>type<ul>
+<li>&#x57FA;&#x672C;&#x5C42;&#x7C7B;&#x578B;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Number&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;0<ul>
+<li>0&#xFF08;&#x4FE1;&#x606F;&#x6846;&#xFF0C;&#x9ED8;&#x8BA4;&#xFF09;</li>
+<li>1&#xFF08;&#x9875;&#x9762;&#x5C42;&#xFF09;</li>
+<li>2&#xFF08;iframe&#x5C42;&#xFF09;</li>
+<li>3&#xFF08;&#x52A0;&#x8F7D;&#x5C42;&#xFF09;</li>
+<li>4&#xFF08;tips&#x5C42;&#xFF09;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>title<ul>
+<li>&#x8BF4;&#x660E;&#xFF1A;&#x6807;&#x9898;</li>
+</ul>
+</li>
+<li><ul>
+<li>&#x7C7B;&#x578B;&#xFF1A;String/Array/Boolean&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;&apos;&#x4FE1;&#x606F;&apos;<ul>
+<li>String&#xFF1A;&#x6539;&#x53D8;&#x6807;&#x9898;&#x6587;&#x672C;&#xFF0C;&#x5982; <code>title :&apos;&#x6211;&#x662F;&#x6807;&#x9898;&apos;</code></li>
+<li>Array&#xFF1A;&#x81EA;&#x5B9A;&#x4E49;&#x6807;&#x9898;&#x533A;&#x57DF;&#x6837;&#x5F0F;&#xFF0C;&#x5982; <code>title: [&apos;&#x6587;&#x672C;&apos;, &apos;font-size:18px;color:#333;&apos;]</code></li>
+<li>Boolean&#xFF1A;&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x60F3;&#x663E;&#x793A;&#x6807;&#x9898;&#x680F;&#xFF0C;&#x8BBE;&#x7F6E;<code>title: false</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>content<ul>
+<li>&#x5185;&#x5BB9;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;String/DOM/Array&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;&apos;&apos;<ul>
+<li>String&#xFF1A;&#x666E;&#x901A;&#x7684;html&#x5185;&#x5BB9;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>area<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x5BBD;&#x9AD8;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;String/Array&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;&apos;auto&apos;<ul>
+<li>String&#xFF1A;&#x5728;&#x9ED8;&#x8BA4;&#x72B6;&#x6001;&#x4E0B;&#xFF0C;layer&#x662F;&#x5BBD;&#x9AD8;&#x90FD;&#x81EA;&#x9002;&#x5E94;&#x7684;&#xFF0C;&#x5F53;&#x4F60;&#x53EA;&#x60F3;&#x5B9A;&#x4E49;&#x5BBD;&#x5EA6;&#x65F6;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;<code>area: &apos;500px&apos;</code>&#xFF0C;&#x9AD8;&#x5EA6;&#x4ECD;&#x7136;&#x662F;&#x81EA;&#x9002;&#x5E94;&#x7684;</li>
+<li>Array&#xFF1A;&#x5F53;&#x4F60;&#x5BBD;&#x9AD8;&#x90FD;&#x8981;&#x5B9A;&#x4E49;&#x65F6;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;<code>area: [&apos;500px&apos;, &apos;300px&apos;]</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>offset<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x5750;&#x6807;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;String/Array&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;&#x5782;&#x76F4;&#x6C34;&#x5E73;&#x5C45;&#x4E2D;<ul>
+<li>String&#xFF1A;&#x4F46;&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x60F3;&#x5782;&#x76F4;&#x6C34;&#x5E73;&#x5C45;&#x4E2D;&#xFF0C;&#x4F60;&#x8FD8;&#x53EF;&#x4EE5;<code>offset: &apos;100px&apos;</code> &#xFF0C;&#x53EA;&#x5B9A;&#x4E49;top&#x5750;&#x6807;&#xFF0C;&#x6C34;&#x5E73;&#x4FDD;&#x6301;&#x5C45;&#x4E2D;</li>
+<li>Array&#xFF1A;offset: [&apos;100px&apos;, &apos;50px&apos;] &#x540C;&#x65F6;&#x5B9A;&#x4E49;top&#x3001;left&#x5750;&#x6807;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>icon<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x56FE;&#x6807;&#x3002;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Number&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;-1&#xFF08;&#x4E0D;&#x663E;&#x793A;&#xFF09;<ul>
+<li>0&#xFF1A;&#x6A59;&#x8272;&#x7684; &#x8B66;&#x544A;</li>
+<li>1&#xFF1A;&#x7EFF;&#x8272;&#x7684; &#x6210;&#x529F;</li>
+<li>2&#xFF1A;&#x7EA2;&#x8272;&#x7684; &#x9519;&#x8BEF;</li>
+<li>3&#xFF1A;&#x9EC4;&#x8272;&#x7684; &#x7591;&#x95EE;</li>
+<li>4&#xFF1A;&#x6DF1;&#x7070;&#x7684; &#x9501;</li>
+<li>5&#xFF1A;&#x7EA2;&#x8272;&#x7684; &#x5931;&#x671B;&#x8868;&#x60C5;</li>
+<li>6&#xFF1A;&#x7EFF;&#x8272;&#x7684; &#x9AD8;&#x5174;&#x8868;&#x60C5;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>btn<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x6309;&#x94AE;&#x3002;&#x4FE1;&#x606F;&#x6846;&#x6A21;&#x5F0F;&#x65F6;&#xFF0C;btn&#x9ED8;&#x8BA4;&#x662F;&#x4E00;&#x4E2A;&#x786E;&#x8BA4;&#x6309;&#x94AE;&#xFF0C;&#x5176;&#x5B83;&#x5C42;&#x7C7B;&#x578B;&#x5219;&#x9ED8;&#x8BA4;&#x4E0D;&#x663E;&#x793A;&#x3002;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;String/Array&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;&apos;&#x786E;&#x8BA4;&apos;<ul>
+<li>String&#xFF1A;&#x5F53;&#x60A8;&#x53EA;&#x60F3;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x6309;&#x94AE;&#x65F6;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;<code>btn: &apos;&#x6211;&#x77E5;&#x9053;&#x4E86;&apos;</code></li>
+<li>Array&#xFF1A;&#x5F53;&#x4F60;&#x8981;&#x5B9A;&#x4E49;&#x4E24;&#x4E2A;&#x53CA;&#x4EE5;&#x4E0A;&#x6309;&#x94AE;&#x65F6;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;<code>btn: [&apos;&#x786E;&#x8BA4;&apos;, &apos;&#x53D6;&#x6D88;&apos;]</code><ul>
+<li>&#x6309;&#x94AE;1&#x7684;&#x56DE;&#x8C03;&#x4E3A; <code>yes:function(){}</code></li>
+<li>&#x6309;&#x94AE;2&#x7684;&#x56DE;&#x8C03;&#x4E3A;<code>btn2:function(){}</code></li>
+<li>&#x6309;&#x94AE;3&#x7684;&#x56DE;&#x8C03;&#x4E3A;<code>btn3:function(){}</code></li>
+<li>...</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>btnAlign<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x6309;&#x94AE;&#x6392;&#x5217;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;String&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;&quot;r&quot;<ul>
+<li><code>btnAlign: &apos;l&apos;</code>   &#x6309;&#x94AE;&#x5DE6;&#x5BF9;&#x9F50;</li>
+<li><code>btnAlign: &apos;c&apos;</code>   &#x6309;&#x94AE;&#x5C45;&#x4E2D;&#x5BF9;&#x9F50;</li>
+<li><code>btnAlign: &apos;r&apos;</code>  &#x6309;&#x94AE;&#x53F3;&#x5BF9;&#x9F50;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>closeBtn<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x53F3;&#x4E0A;&#x89D2;&#x7684; &#x5173;&#x95ED;&#x6309;&#x94AE;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Number&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;1<ul>
+<li>0&#xFF1A;&#x4E0D;&#x663E;&#x793A;</li>
+<li>1&#xFF1A;&#x5728;&#x6807;&#x9898;&#x5185;</li>
+<li>2&#xFF1A;&#x5728;&#x6807;&#x9898;&#x5916;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>shade<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x906E;&#x7F69;&#x5C42;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Array/Boolean&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;[0.3, &quot;#000&quot;]&#xFF08;0.3&#x900F;&#x660E;&#x5EA6;&#x7684;&#x9ED1;&#x8272;&#x80CC;&#x666F;&#xFF09;<ul>
+<li>&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x60F3;&#x663E;&#x793A;&#x906E;&#x7F69;&#xFF0C;&#x53EF;&#x4EE5;<code>shade: 0</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>shadeClose<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x662F;&#x5426;&#x70B9;&#x51FB;&#x906E;&#x7F69;&#x5173;&#x95ED;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Boolean&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;false</li>
+</ul>
+</li>
+<li>time<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x8BBE;&#x7F6E;&#x81EA;&#x52A8;&#x5173;&#x95ED;&#x6240;&#x9700;&#x6BEB;&#x79D2;&#x6570;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Number&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;0&#xFF08;&#x4E0D;&#x81EA;&#x52A8;&#x5173;&#x95ED;&#xFF09;</li>
+</ul>
+</li>
+<li>anim<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x5F39;&#x51FA;&#x52A8;&#x753B;&#xFF08;&#x51FA;&#x573A;&#x52A8;&#x753B;&#x5168;&#x90E8;&#x91C7;&#x7528;CSS3&#xFF0C;ie6-9&#x65E0;&#x6548;&#x679C;&#xFF09;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Number&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;0<ul>
+<li>anim: 0 &#x5E73;&#x6ED1;&#x653E;&#x5927;&#x3002;&#x9ED8;&#x8BA4;
+anim: 1 &#x4ECE;&#x4E0A;&#x6389;&#x843D;
+anim: 2 &#x4ECE;&#x6700;&#x5E95;&#x90E8;&#x5F80;&#x4E0A;&#x6ED1;&#x5165;
+anim: 3 &#x4ECE;&#x5DE6;&#x6ED1;&#x5165;
+anim: 4 &#x4ECE;&#x5DE6;&#x7FFB;&#x6EDA;
+anim: 5 &#x6E10;&#x663E;
+anim: 6 &#x6296;&#x52A8;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>maxmin<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x6700;&#x5927;&#x6700;&#x5C0F;&#x5316;&#x3002;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Boolean&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;false</li>
+</ul>
+</li>
+<li>fixed<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x56FA;&#x5B9A;&#x3002;&#x5373;&#x9F20;&#x6807;&#x6EDA;&#x52A8;&#x65F6;&#xFF0C;&#x5C42;&#x662F;&#x5426;&#x56FA;&#x5B9A;&#x5728;&#x53EF;&#x89C6;&#x533A;&#x57DF;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Boolean&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;true</li>
+</ul>
+</li>
+<li>resize<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x662F;&#x5426;&#x5141;&#x8BB8;&#x62C9;&#x4F38;&#xFF08;&#x62D6;&#x52A8;&#x5F39;&#x5C42;&#x53F3;&#x4E0B;&#x89D2;&#x6765;&#x62C9;&#x4F38;&#x5C3A;&#x5BF8;&#xFF09;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Boolean&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;true</li>
+</ul>
+</li>
+<li>scrollbar<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x662F;&#x5426;&#x5141;&#x8BB8;&#x6D4F;&#x89C8;&#x5668;&#x51FA;&#x73B0;&#x6EDA;&#x52A8;&#x6761;&#x3002;&#x9ED8;&#x8BA4;&#x5141;&#x8BB8;&#x6D4F;&#x89C8;&#x5668;&#x6EDA;&#x52A8;&#xFF0C;&#x5982;&#x679C;&#x8BBE;&#x5B9A;<code>scrollbar: false</code>&#xFF0C;&#x5219;&#x5C4F;&#x853D;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Boolean&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;true</li>
+</ul>
+</li>
+<li>maxWidth<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x6700;&#x5927;&#x5BBD;&#x5EA6;&#x3002;&#x53EA;&#x6709;&#x5F53;area: &apos;auto&apos;&#x65F6;&#xFF0C;maxWidth&#x7684;&#x8BBE;&#x5B9A;&#x624D;&#x6709;&#x6548;&#x3002;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Number&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;360</li>
+</ul>
+</li>
+<li>maxHeight<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x6700;&#x5927;&#x9AD8;&#x5EA6;&#x3002;&#x53EA;&#x6709;&#x5F53;&#x9AD8;&#x5EA6;&#x81EA;&#x9002;&#x5E94;&#x65F6;&#xFF0C;maxHeight&#x7684;&#x8BBE;&#x5B9A;&#x624D;&#x6709;&#x6548;&#x3002;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Number&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;&#x65E0;</li>
+</ul>
+</li>
+<li>zIndex<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x5C42;&#x53E0;&#x987A;&#x5E8F;&#x3002;&#x4E00;&#x822C;&#x7528;&#x4E8E;&#x89E3;&#x51B3;&#x548C;&#x5176;&#x5B83;&#x7EC4;&#x4EF6;&#x7684;&#x5C42;&#x53E0;&#x51B2;&#x7A81;&#x3002;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;19891014</li>
+</ul>
+</li>
+<li>move<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x89E6;&#x53D1;&#x62D6;&#x52A8;&#x7684;&#x5143;&#x7D20;&#x3002;&#x9ED8;&#x8BA4;&#x662F;&#x89E6;&#x53D1;&#x6807;&#x9898;&#x533A;&#x57DF;&#x62D6;&#x62FD;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x5355;&#x72EC;&#x5B9A;&#x4E49;&#xFF0C;&#x6307;&#x5411;&#x5143;&#x7D20;&#x7684;&#x9009;&#x62E9;&#x5668;&#x6216;&#x8005;DOM&#x5373;&#x53EF;&#x3002;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;String/DOM/Boolean&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;<code>&apos;.layui-layer-title&apos;</code>&#x3002;<code>false</code>&#xFF0C;&#x7981;&#x6B62;&#x62D6;&#x62FD;&#x3002;</li>
+</ul>
+</li>
+<li>moveOut<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x662F;&#x5426;&#x5141;&#x8BB8;&#x62D6;&#x62FD;&#x5230;&#x7A97;&#x53E3;&#x5916;&#x3002;&#x9ED8;&#x8BA4;&#x53EA;&#x80FD;&#x5728;&#x7A97;&#x53E3;&#x5185;&#x62D6;&#x62FD;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8BA9;&#x62D6;&#x5230;&#x7A97;&#x5916;&#xFF0C;&#x90A3;&#x4E48;&#x8BBE;&#x5B9A;moveOut: true&#x5373;&#x53EF;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Boolean&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;false</li>
+</ul>
+</li>
+<li>moveEnd<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x62D6;&#x52A8;&#x5B8C;&#x6BD5;&#x540E;&#x7684;&#x56DE;&#x8C03;&#x65B9;&#x6CD5;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Function&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;null<ul>
+<li>&#x9ED8;&#x8BA4;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;moveEnd&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#xFF0C;&#x8BBE;&#x5B9A;<code>moveEnd: function(layero){}</code>&#x5373;&#x53EF;&#xFF0C;&#x5176;&#x4E2D;layero&#x4E3A;&#x5F53;&#x524D;&#x5C42;&#x7684;DOM&#x5BF9;&#x8C61;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>success<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x5C42;&#x5F39;&#x51FA;&#x540E;&#x7684;&#x6210;&#x529F;&#x56DE;&#x8C03;&#x65B9;&#x6CD5;&#x3002;&#x5F53;&#x4F60;&#x9700;&#x8981;&#x5728;&#x5C42;&#x521B;&#x5EFA;&#x5B8C;&#x6BD5;&#x65F6;&#x5373;&#x6267;&#x884C;&#x4E00;&#x4E9B;&#x8BED;&#x53E5;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BE5;&#x56DE;&#x8C03;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Function&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;null<ul>
+<li><code>function(layero, index){  }</code>&#xFF0C;<code>layero</code> &#x5F53;&#x524D;&#x5C42;&#xFF0C;<code>index</code>&#x5F53;&#x524D;&#x5C42;&#x7D22;&#x5F15;&#x3002;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>yes<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x786E;&#x5B9A;&#x6309;&#x94AE;&#x56DE;&#x8C03;&#x65B9;&#x6CD5;&#x3002;&#x7B2C;&#x4E00;&#x4E2A;&#x6309;&#x94AE;&#x7684;&#x56DE;&#x8C03;&#x3002;&#x5982;&#x679C;&#x8BBE;&#x5B9A;&#x4E86;yes&#x56DE;&#x8C03;&#xFF0C;&#x9700;&#x8FDB;&#x884C;&#x624B;&#x5DE5;&#x5173;&#x95ED;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Function&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;null<ul>
+<li><code>function(index, layero){</code>
+<code>//do something</code>
+<code>layer.close(index); //&#x5982;&#x679C;&#x8BBE;&#x5B9A;&#x4E86;yes&#x56DE;&#x8C03;&#xFF0C;&#x9700;&#x8FDB;&#x884C;&#x624B;&#x5DE5;&#x5173;&#x95ED;</code>
+<code>}</code>
+<code>});</code>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>cancel<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x53F3;&#x4E0A;&#x89D2;&#x5173;&#x95ED;&#x6309;&#x94AE;&#x89E6;&#x53D1;&#x7684;&#x56DE;&#x8C03;&#x3002;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Function&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;null&#x3002;&#x9ED8;&#x8BA4;&#x4F1A;&#x81EA;&#x52A8;&#x89E6;&#x53D1;&#x5173;&#x95ED;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x60F3;&#x5173;&#x95ED;&#xFF0C;<code>return false</code>&#x5373;&#x53EF;&#x3002;<ul>
+<li><code>function(index, layero){</code>
+<code>if(confirm(&apos;&#x786E;&#x5B9A;&#x8981;&#x5173;&#x95ED;&#x4E48;&apos;)){ //&#x53EA;&#x6709;&#x5F53;&#x70B9;&#x51FB;confirm&#x6846;&#x7684;&#x786E;&#x5B9A;&#x65F6;&#xFF0C;&#x8BE5;&#x5C42;&#x624D;&#x4F1A;&#x5173;&#x95ED;</code>
+<code>layer.close(index)</code>
+<code>}</code>
+<code>return false;</code>
+<code>}</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>end<ul>
+<li>&#x5C42;&#x9500;&#x6BC1;&#x540E;&#x89E6;&#x53D1;&#x7684;&#x56DE;&#x8C03;&#x3002;&#x65E0;&#x8BBA;&#x662F;&#x786E;&#x8BA4;&#x8FD8;&#x662F;&#x53D6;&#x6D88;&#xFF0C;&#x53EA;&#x8981;&#x5C42;&#x88AB;&#x9500;&#x6BC1;&#x4E86;&#xFF0C;end&#x90FD;&#x4F1A;&#x6267;&#x884C;&#xFF0C;&#x4E0D;&#x643A;&#x5E26;&#x4EFB;&#x4F55;&#x53C2;&#x6570;&#x3002;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Function&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;null</li>
+</ul>
+</li>
+<li>full/min/restore<ul>
+<li>&#x5206;&#x522B;&#x4EE3;&#x8868;&#x6700;&#x5927;&#x5316;&#x3001;&#x6700;&#x5C0F;&#x5316;&#x3001;&#x8FD8;&#x539F; &#x540E;&#x89E6;&#x53D1;&#x7684;&#x56DE;&#x8C03;</li>
+<li>&#x7C7B;&#x578B;&#xFF1A;Function&#xFF0C;&#x9ED8;&#x8BA4;&#xFF1A;null&#x3002;&#x643A;&#x5E26;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5373;&#x5F53;&#x524D;&#x5C42;DOM</li>
+</ul>
+</li>
+</ul>
+<h4 id="223-alert">2.2.3 alert</h4>
+<p>&#x5728; pkui.js &#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x5168;&#x5C40;&#x51FD;&#x6570;<code>alert()</code>&#x88AB;&#x8986;&#x5199;&#xFF1A;</p>
+<pre><code>/**
+ * &#x4FEE;&#x6539;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x539F;&#x751F;&#x65B9;&#x6CD5;&#xFF08;&#x5982; alert &#xFF09;
+ */
+_modifyBrowserMethod: function () {
+    window.__alert = window.alert;
+    window.alert = window.layer.alert;
+}
+</code></pre><p>&#x793A;&#x4F8B;&#xFF08;&#x53C2;&#x6570;&#x8BF7;&#x53C2;&#x8003;&#x201C;2.2.2 &#x53C2;&#x6570;&#xFF08;options&#xFF09;&#x201D;&#xFF09;&#xFF1A;</p>
+<pre><code>window.alert( 
+    // &#x5185;&#x5BB9;
+    &quot;&#x4FDD;&#x5B58;&#x6210;&#x529F;&#xFF01;&quot;, 
+    // &#x53C2;&#x6570;
+    {
+        // &#x6807;&#x9898;
+        title: &quot;&#x4FE1;&#x606F;&quot;,
+        // &#x56FE;&#x6807;&#xFF1A;0 - &#x8B66;&#x544A;&#xFF1B;1 - &#x6210;&#x529F;&#xFF1B;2 - &#x5931;&#x8D25;&#xFF1B;3 - &#x7591;&#x95EE;&#xFF1B;
+        icon: 1,
+        // &#x6309;&#x94AE;&#xFF1A;&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#x7EDD;&#x5BF9;&#x591A;&#x5C11;&#x4E2A;&#x6309;&#x94AE;&#xFF0C;&#x5143;&#x7D20;&#x503C;&#x4E3A;&#x6309;&#x94AE;&#x6587;&#x5B57;
+        btn: [ &quot;&#x786E;&#x5B9A;&quot; /*, &quot;&#x53D6;&#x6D88;&quot;*/ ]
+
+    } 
+);
+</code></pre><h4 id="224-confirm">2.2.4 confirm</h4>
+<p>&#x53C2;&#x6570;&#x8BF7;&#x53C2;&#x8003;&#x201C;2.2.2 &#x53C2;&#x6570;&#xFF08;options&#xFF09;&#x201D;</p>
+<pre><code>layer.confirm( &quot;&#x662F;&#x5426;&#x5220;&#x9664;&quot;,
+    {
+        title: &quot;&#x64CD;&#x4F5C;&#x786E;&#x8BA4;&quot;,
+        btn: [ &quot;&#x5220;&#x9664;&quot; , &quot;&#x53D6;&#x6D88;&quot; ] //&#x6309;&#x94AE;
+    },
+    // &#x786E;&#x8BA4;&#x56DE;&#x8C03;
+    function( index ){
+        // &#x5220;&#x9664;&#x64CD;&#x4F5C;...
+        // &#x624B;&#x52A8;&#x5173;&#x95ED;&#x5F53;&#x524D;&#x786E;&#x8BA4;&#x6846;
+        layer.close( index );
+    },
+    // &#x53D6;&#x6D88;&#x56DE;&#x8C03;
+    function(){
+
+    }
+);
+</code></pre><h4 id="225-message">2.2.5 message</h4>
+<p>&#x53C2;&#x6570;&#x8BF7;&#x53C2;&#x8003;&#x201C;2.2.2 &#x53C2;&#x6570;&#xFF08;options&#xFF09;&#x201D;</p>
+<pre><code>layer.msg( &apos;&#x7F51;&#x7EDC;&#x9519;&#x8BEF;&#xFF01;&apos;, { icon: 0 } );
+layer.msg( &apos;&#x5220;&#x9664;&#x6210;&#x529F;&#xFF01;&apos;, { icon: 1 } );
+layer.msg( &apos;&#x5220;&#x9664;&#x5931;&#x8D25;&#xFF01;&apos;, { icon: 2 } );
+</code></pre><h4 id="226-&#x9875;&#x9762;&#x5C42;">2.2.6 &#x9875;&#x9762;&#x5C42;</h4>
+<p>&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x5F39;&#x51FA;&#x9875;&#x9762;&#xFF0C;&#x663E;&#x793A;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x9875;&#x9762;&#x3002;</p>
+<pre><code>seajs.use( [ &quot;jquery&quot;, &quot;template&quot; ], function ( $, Template ) {
+    var 
+        view = &quot;__CTX__/static/desktop/tpl/system/dept/detail.html&quot;,
+        model = &quot;__CTX__/admin/sysDeptModel?deptId=420000000000&quot;
+    ;    
+
+    Template.getModelAndView( view, model, function ( htmlString ) {
+        window.layer.open( {
+            title: &quot;&#x67E5;&#x770B;&#x90E8;&#x95E8;&quot;,
+            type: 1,
+            skin: &apos;layui-layer-rim&apos;, //&#x52A0;&#x4E0A;&#x8FB9;&#x6846;
+            area: [&apos;800px&apos;, &apos;420px&apos;], //&#x5BBD;&#x9AD8;
+            content: htmlString,
+            success: function ( layero, index ) {
+                // &#x6682;&#x5B58;&#x5B58;&#x50A8;&#x7ED1;&#x5B9A;&#x5F39;&#x51FA;&#x5C42;&#x7D22;&#x5F15;&#xFF0C;
+                // &#x4EE5;&#x4FBF; &#x901A;&#x8FC7; window.layer.close( index ) &#x5173;&#x95ED;
+                layero.find(&quot;form table input[name=&apos;layerIndex&apos;]&quot;).val( index );
+            }
+        } );
+    } );
+
+} );
+</code></pre><h3 id="23-drawer">2.3 drawer</h3>
 <p>&#x6B64;PKUI&#x7EC4;&#x4EF6;&#xFF0C;&#x5E94;&#x7528;&#x573A;&#x666F;&#x4E0D;&#x591A;&#xFF0C;&#x6682;&#x65F6;&#x5728;app&#x7A97;&#x53E3;&#x5185;&#x4F7F;&#x7528;&#x3002;</p>
 <p>&#x67E5;&#x770B;&#x6E90;&#x6587;&#x4EF6;&#xFF1A;<a href="https://github.com/forwardNow/pkui/blob/master/src/component/common/drawer/1.0.0/drawer.js" target="_blank">https://github.com/forwardNow/pkui/blob/master/src/component/common/drawer/1.0.0/drawer.js</a></p>
 <h4 id="231-&#x8BF4;&#x660E;">2.3.1 &#x8BF4;&#x660E;</h4>
@@ -440,7 +804,11 @@
 <ul>
 <li>container<ul>
 <li>&#x4F5C;&#x7528;&#xFF1A;&#x6307;&#x5B9A;&#x5F39;&#x51FA;&#x5C42;&#x7684;&#x5BB9;&#x5668;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x6307;&#x5B9A;&#x5F39;&#x51FA;&#x5C42;&#x5B8C;&#x5168;&#x8986;&#x76D6;&#x54EA;&#x4E2A;&#x5143;&#x7D20;&#x3002;</li>
-<li>&#x503C;&#xFF1A;String&#xFF0C;CSS&#x9009;&#x62E9;&#x5668;&#x3002;&#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;&#xFF0C;&#x5219;&#x4ECE; target&#x8282;&#x70B9; &#x5F80;&#x4E0A;&#x67E5;&#x627E;&#x6700;&#x8FD1;&#x7684;&#x7956;&#x5148;&#x5143;&#x7D20;</li>
+<li>&#x503C;&#xFF1A;String&#xFF08;CSS&#x9009;&#x62E9;&#xFF09; |  jQuery&#x3002;&#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;&#xFF0C;&#x5219;&#x4ECE; target&#x8282;&#x70B9; &#x5F80;&#x4E0A;&#x67E5;&#x627E;&#x6700;&#x8FD1;&#x7684;&#x7956;&#x5148;&#x5143;&#x7D20;</li>
+</ul>
+</li>
+<li>referenceElementSelector&#xFF08;v1.0.11&#xFF09;<ul>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x5982;&#x679C; <code>container&#x53C2;&#x6570;</code> &#x6307;&#x5B9A;&#x9009;&#x62E9;&#x5668;&#x4E0D;&#x552F;&#x4E00;&#xFF0C;&#x5219;&#x4F1A;&#x4EE5;<code>referenceElementSelector</code> &#x6307;&#x5B9A;&#x7684;&#x5143;&#x7D20;&#x4E3A;&#x53C2;&#x8003;&#x70B9;&#x627E;&#x6700;&#x8FD1;&#x7684;&#x7B26;&#x5408;<code>container&#x53C2;&#x6570;</code>&#x503C;&#x7684;&#x7956;&#x5148;&#x5143;&#x7D20;</li>
 </ul>
 </li>
 <li>url<ul>
@@ -448,7 +816,7 @@
 </ul>
 </li>
 <li>model<ul>
-<li>&#x4F5C;&#x7528;&#xFF1A;&#x6307;&#x5B9A;&#x6A21;&#x578B;URL&#xFF1B;&#x4E0D;&#x6307;&#x5B9A;&#x65F6;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8F7D;&#x5165;url&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x7684;&#x6A21;&#x677F;</li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x6307;&#x5B9A;&#x6A21;&#x578B;URL&#xFF1B;&#x4E0D;&#x6307;&#x5B9A;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8F7D;&#x5165;<code>url&#x53C2;&#x6570;</code>&#x6307;&#x5B9A;&#x7684;&#x6A21;&#x677F;&#xFF08;&#x6BD4;&#x5982;JSP&#x6587;&#x4EF6;&#xFF09;</li>
 </ul>
 </li>
 </ul>
@@ -466,10 +834,6 @@
 <li>&#x4F5C;&#x7528;&#xFF1A;&#x9500;&#x6BC1;&#x62BD;&#x5C49;&#x5C42;&#x3002;&#x70B9;&#x51FB;drawer&#x5F39;&#x51FA;&#x5C42;&#x7684;&#x5173;&#x95ED;&#x6309;&#x94AE;&#x540E;&#x4F1A;&#x81EA;&#x52A8;&#x8C03;&#x7528;&#x6B64;&#x65B9;&#x6CD5;&#x3002;</li>
 </ul>
 </li>
-</ul>
-<p>&#x6CE8;&#x610F;&#xFF1A;</p>
-<ul>
-<li>&#x7531;&#x4E8E; drawer &#x662F;PKUI&#x7EC4;&#x4EF6;&#xFF0C;&#x5F97;&#x6709;&#x5BBF;&#x4E3B;&#x5143;&#x7D20;&#xFF08;&#x76EE;&#x6807;&#x5143;&#x7D20;&#xFF09;</li>
 </ul>
 <h4 id="232-&#x7ED3;&#x5408;bootgrid&#x4F7F;&#x7528;">2.3.2 &#x7ED3;&#x5408;bootgrid&#x4F7F;&#x7528;</h4>
 <p>&#x4E00;&#x822C;&#x7684;&#x7528;&#x6CD5;&#xFF0C;&#x7ED3;&#x5408; bootgrid &#x4F7F;&#x7528;&#xFF0C;&#x4EE5;&#x6ED1;&#x51FA;&#x62BD;&#x5C49;&#x7684;&#x5F62;&#x5F0F;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x5F39;&#x51FA;&#x5C42;&#x3002;</p>
@@ -494,7 +858,48 @@
 &lt;/script&gt;
 </code></pre><h4 id="233-&#x4E3B;&#x52A8;&#x5F39;&#x51FA;&#x62BD;&#x5C49;&#x5C42;">2.3.3 &#x4E3B;&#x52A8;&#x5F39;&#x51FA;&#x62BD;&#x5C49;&#x5C42;</h4>
 <p>&#x6709;&#x4E9B;&#x60C5;&#x51B5;&#xFF0C;&#x4E0D;&#x662F;&#x7ED3;&#x5408;bootgrid&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x8FD9;&#x5C31;&#x5F97;&#x4E3B;&#x52A8;&#x5F39;&#x51FA;&#x62BD;&#x5C49;&#x5C42;&#x3002;</p>
+<p>&#x4E3A;&#x6EE1;&#x8DB3;&#x8FD9;&#x79CD;&#x5E94;&#x7528;&#x573A;&#x666F;&#xFF0C;&#x5BF9; <code>drawer.js</code> &#x8FDB;&#x884C;&#x4E86;&#x4E00;&#x4E9B;&#x6269;&#x5C55;&#xFF0C;&#x7248;&#x672C;&#x4E3A;&#xFF1A;PKUIv1.0.11&#x3002;</p>
+<p>&#x67E5;&#x770B;&#x6E90;&#x6587;&#x4EF6;&#xFF1A;<a href="https://github.com/forwardNow/pkui/blob/master/app/desktop/tpl/system/dept/list.html" target="_blank">https://github.com/forwardNow/pkui/blob/master/app/desktop/tpl/system/dept/list.html</a>&#x3002;</p>
+<pre><code>&lt;table id=&quot;sysDeptDatagrid&quot;
+       data-pkui-component=&quot;datagrid&quot;
+    ...
+    &lt;th ... data-formatter=&quot;sysDeptOpe_2&quot;&gt;&#x64CD;&#x4F5C;&lt;/th&gt;
+    ...    
+&lt;/table&gt;
+&lt;script&gt;
+/**
+ * &#x64CD;&#x4F5C;&#xFF0C;&#x624B;&#x52A8;&#x6253;&#x5F00; &#x62BD;&#x5C49;&#x5C42;
+ */
+function sysDeptOpe_2(column, row) {
+    return &apos;&lt;a href=&quot;javascript:void(0)&quot; &apos;
+    +           &apos; onclick=&quot;sysDeptOpe_2.viewDetail(this)&quot;&apos;
+    +           &apos; data-options=\&apos;{&apos;
+    +               &apos;&quot;url&quot;:&quot;__CTX__/static/desktop/tpl/system/dept/detail.html&quot;,&apos;
+    +               &apos;&quot;model&quot;:&quot;{% system.dept.list.sysDeptModel %}?deptId=&apos; + row.deptId + &apos;&quot;,&apos;
 
+    +               &apos;&quot;referenceElementSelector&quot;: &quot;#sysDeptDatagrid&quot;,&apos;
+    +               &apos;&quot;container&quot;: &quot;.da-win-main&quot;}\&apos;&gt;&lt;i class=&quot;fa fa-file-o&quot;&gt;&lt;/i&gt; &#x67E5;&#x770B;&lt;/a&gt;&#x3000;&apos;
+    ;
+}
+sysDeptOpe_2.viewDetail = function ( target ) {
+    var
+        $ = jQuery,
+        $target = $( target ),
+        options = $target.data( &quot;options&quot; )
+    ;
+    layer.msg( &apos;&#x6B63;&#x5728;&#x9A8C;&#x8BC1;&#x60A8;&#x7684;&#x6743;&#x9650;...&apos;, {
+        icon: 1,
+        time: 2000 // 2&#x79D2;&#x5173;&#x95ED;&#xFF08;&#x5982;&#x679C;&#x4E0D;&#x914D;&#x7F6E;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;3&#x79D2;&#xFF09;
+    }, function () {
+
+        seajs.use( &quot;drawer&quot;, function () {
+            window.PKUI.component.drawer( &quot;open&quot;, options );
+        } );
+
+    } );
+};
+&lt;/script&gt;
+</code></pre>
                                 
                                 </section>
                             
@@ -537,7 +942,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"弹出层","level":"1.5.1","depth":2,"next":{"title":"issue","level":"1.6","depth":1,"path":"issue.md","ref":"issue.md","articles":[]},"previous":{"title":"desktop","level":"1.5","depth":1,"path":"desktop.md","ref":"desktop.md","articles":[{"title":"弹出层","level":"1.5.1","depth":2,"path":"desktop/dan-chu-ceng.md","ref":"desktop/dan-chu-ceng.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"desktop/dan-chu-ceng.md","mtime":"2017-10-12T11:24:25.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-12T11:27:44.825Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"弹出层","level":"1.5.1","depth":2,"next":{"title":"issue","level":"1.6","depth":1,"path":"issue.md","ref":"issue.md","articles":[]},"previous":{"title":"desktop","level":"1.5","depth":1,"path":"desktop.md","ref":"desktop.md","articles":[{"title":"弹出层","level":"1.5.1","depth":2,"path":"desktop/dan-chu-ceng.md","ref":"desktop/dan-chu-ceng.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"desktop/dan-chu-ceng.md","mtime":"2017-10-17T03:03:01.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-20T09:39:42.704Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

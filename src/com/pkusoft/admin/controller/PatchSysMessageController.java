@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.CookieGenerator;
 
 import com.pkusoft.admin.model.SysMessage;
+import com.pkusoft.admin.model.SysMessageCriteria;
 import com.pkusoft.admin.model.SysUser;
 import com.pkusoft.admin.model.SysUserCriteria;
 import com.pkusoft.admin.service.SysMessageService;
@@ -37,6 +38,7 @@ import com.pkusoft.framework.model.GridResult;
 import com.pkusoft.framework.model.JsonResult;
 import com.pkusoft.framework.model.Pager;
 import com.pkusoft.framework.util.MapUtils;
+import com.pkusoft.framework.util.StringUtils;
 import com.pkusoft.framework.util.TokenHelper;
 import com.pkusoft.framework.util.WebUtils;
 
@@ -224,6 +226,67 @@ public class PatchSysMessageController extends BaseController {
 		} catch (Exception e) {
 			logger.error("保存信息出错", e);
 			return new JsonResult(false, "保存消息出错");
+		}
+	}
+	
+	@RequestMapping("/common/getUnreadSysMessage")
+	@ResponseBody
+	public GridResult getUnreadSysMessage(String type) {
+		try {
+			Criteria<SysMessageCriteria> criteria = new Criteria<SysMessageCriteria>();
+			Pager pager = new Pager();
+			if ( "all".equals( type ) ) {
+				pager.setPageSize( 10 );
+				pager.setLimit( 10 );
+				pager.setStart( 0 );
+			} else if ( "private".equals( type ) ) {
+				pager.setPageSize( 3 );
+				pager.setLimit( 3 );
+				pager.setStart( 0 );
+			} else if ( "public".equals( type ) ) {
+				pager.setPageSize( 4 );
+				pager.setLimit( 4 );
+				pager.setStart( 4 );
+			}
+			criteria.setPager(pager);
+			criteria.setOrderByClause("SEND_TIME DESC");
+			SysMessageCriteria sysMessageCriteria = criteria.createCriteria(SysMessageCriteria.class);
+			sysMessageCriteria.andReceiveDelFlagEqualTo(General.NO);
+			sysMessageCriteria.andReceiveUserIdEqualTo(User.getUserId());
+					
+			List<SysMessage> list = sysMessageService.getListByCriteria(criteria);
+			return new GridResult(true, list, -1);
+		} catch (Exception e) {
+			logger.error("查询列表数据出错", e);
+			return new GridResult(false, null);
+		}
+	}
+	
+	/**
+	 * 消息保存信息
+	 * 
+	 * @param sysMessage
+	 * @return
+	 */
+	@RequestMapping("/common/hasSysMessage")
+	@ResponseBody
+	public JsonResult hasSysMessage() {
+		try {
+			Criteria<SysMessageCriteria> criteria = new Criteria<SysMessageCriteria>();
+			Pager pager = new Pager();
+			pager.setPageSize( 1 );
+			pager.setLimit( 1 );
+			pager.setStart( 0 );
+			criteria.setPager(pager);
+			criteria.setOrderByClause("SEND_TIME DESC");
+			SysMessageCriteria sysMessageCriteria = criteria.createCriteria(SysMessageCriteria.class);
+			sysMessageCriteria.andReceiveDelFlagEqualTo(General.NO);
+			sysMessageCriteria.andReceiveUserIdEqualTo(User.getUserId());
+					
+			List<SysMessage> list = sysMessageService.getListByCriteria(criteria);
+			return new JsonResult( list.size() > 0 );
+		} catch (Exception e) {
+			return new JsonResult( false );
 		}
 	}
 	
