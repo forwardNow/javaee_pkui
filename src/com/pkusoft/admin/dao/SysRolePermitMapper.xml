@@ -272,13 +272,13 @@
   <select id="getPermitListByRoleId"  resultType="java.util.Map"   parameterType="java.lang.Object">
   	SELECT 
   		t.PERMIT_CODE as permitCode, 
-  		(select item_value from sys_dic_item Where dic_name='DIC_PERMIT_TYPE' And item_code=t.Permit_Code) as permitCodeDesc,
+  		(select item_value from SYS_DIC_ITEM Where dic_name='DIC_PERMIT_TYPE' And item_code=t.Permit_Code) as permitCodeDesc,
   		t.PERMIT_ID as permitId,
   		s.PERMIT_NAME as permitName,
 		case IFNULL(m.Role_Permit_Id , 0) when 0 THEN '' else 'checked' end as checked
-	FROM Sys_Permit t
-	LEFT JOIN Sys_Permit s ON t.Permit_Id = s.Permit_Id
-	LEFT JOIN Sys_Role_Permit m ON t.Permit_Id = m.Permit_Id  And m.Role_Id = #{roleId,jdbcType=DECIMAL}
+	FROM SYS_PERMIT t
+	LEFT JOIN SYS_PERMIT s ON t.Permit_Id = s.Permit_Id
+	LEFT JOIN SYS_ROLE_PERMIT m ON t.Permit_Id = m.Permit_Id  And m.Role_Id = #{roleId,jdbcType=DECIMAL}
 	Order By t.PERMIT_Code, t.Order_Flag
   </select>
 </mapper>

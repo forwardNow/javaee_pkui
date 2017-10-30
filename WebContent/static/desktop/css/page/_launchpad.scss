@@ -105,17 +105,18 @@
     //background: rgba(0,0,0,.2);
     position: absolute;
     z-index: 2;
-    bottom: 50px;
-    left: 0;
-    width: 100%;
-    height: 0;
+    top: 45%;
+    right: 1%;
+    width: 20px;
+    height: 50%;
     text-align: center;
+    //text-align: center;
 }
 .launchpad-pagination-switchItem {
     display: inline-block;
     width: 12px;
     height: 12px;
-    margin: 0 12px;
+    margin: 0 0 6px 0;
     border-radius: 12px;
     background-color: #6e9ec0;
     @include box-shadow(inset 0 0 1px rgba(0, 0, 0, 0.35));
@@ -129,10 +130,12 @@
 
 .da-theme-light {
     .launchpad-pagination-previous {
-        @extend .icon-arrow-light-left;
+        transition: background-position 0.3s;
+        @extend .icon-halfcircle-left;
     }
     .launchpad-pagination-next {
-        @extend .icon-arrow-light-right;
+        transition: background-position 0.3s;
+        @extend .icon-halfcircle-right;
     }
     .launchpad-shortcut-icon {
         -webkit-box-reflect: below 2px  -webkit-linear-gradient(top,rgba(250,250,250,0),rgba(250,250,250,.0) 40%,rgba(250,250,250,0.2));

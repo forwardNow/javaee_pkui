@@ -6,7 +6,7 @@
  *
  * @author 吴钦飞（wuqf@pkusoft.net）
  * @link https://github.com/forwardNow/pkui/releases/
- * @version 1.1.0
+ * @version 1.2.0
  */
 define( function ( require ) {
     "use strict";
@@ -42,6 +42,10 @@ define( function ( require ) {
         $doc = $( window.document ),
 
         PKUI = {
+
+            // 是否为开发模式
+            isDevMode: false,
+
             // 标识组件类型的HTML属性：<div data-pkui-component>
             componentHtmlAttr: "pkui-component",
 
@@ -66,10 +70,15 @@ define( function ( require ) {
             // 组件容器
             component: {},
 
-            // 数据表格使用 dateFormatter 时，日期格式化后的日期
+            // 数据表格使用预定义格式化器 dateFormatter 时，指定日期值格式化的模式
             datagridDateFormat: "YYYY-MM-DD",
-            // 数据表格使用 datetimeFormatter 时，日期时间格式化后的日期时间
+            // 数据表格使用预定义格式化器 datetimeFormatter 时，指定日期时间值格式化的模式
             datagridDatetimeFormat: "YYYY-MM-DD HH:mm:ss",
+
+            // 是否格式化发送到服务器的日期（时间）值，针对 form（PKUI组件）
+            isFormatDateInputField: true,
+            // 服务器获取到的日期（时间）值格式
+            formattedInputFieldPattern: "YYYYMMDDHHmmss",
 
             // 自动渲染标志
             isAutoRender: true,
@@ -81,7 +90,7 @@ define( function ( require ) {
 
             isIE8: ns.isIE8,
 
-            version: "1.1.0"
+            version: "1.2.0"
 
         }
         ;
@@ -126,6 +135,9 @@ define( function ( require ) {
             // 暴露到全局名称空间
             window.PKUI = PKUI;
 
+            // 判断是否为开发模式
+            this._distinguishMode();
+
             // 处理低版本IE
             this._handleLowVersionIE();
 
@@ -153,6 +165,17 @@ define( function ( require ) {
             // 设置自动渲染
             this.setAutoRender( this.isAutoRender );
         },
+
+        /**
+         * 判断是否为开发模式
+         */
+        _distinguishMode: function () {
+            var
+                pattern = /^http(s)?:\/\/localhost/
+            ;
+            PKUI.isDevMode = pattern.test( PKUI.ctxPath );
+        },
+
         /**
          * 处理低版本IE
          */

@@ -619,20 +619,20 @@
   <select id="getSysMenuByUserId" resultMap="BaseResultMap" parameterType="java.lang.Object" >
     select 
       <include refid="Base_Column_List" />
-    from sys_menu m
+    from SYS_MENU m
       where m.menu_id  
     in 
       (select 
          menu_id
        from 
-         sys_role_menu rm 
+         SYS_ROLE_MENU rm 
        where 
          rm.role_id 
        in
          (select 
             role_id 
           from 
-            sys_role_user
+            SYS_ROLE_USER
           where
             user_id = #{userId,jdbcType=DECIMAL}
          )

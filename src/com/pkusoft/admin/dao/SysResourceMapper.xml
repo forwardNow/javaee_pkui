@@ -553,7 +553,7 @@
        t.Modify_User_Id,
        t.Modify_User_Name,
        t.Modify_Time
-	FROM Sys_Resource t, Sys_Role_Resouce s, Sys_Role_User m, Sys_User n
+	FROM SYS_RESOURCE t, SYS_ROLE_RESOUCE s, SYS_ROLE_USER m, SYS_USER n
 	WHERE t.Resource_Id = s.Resouce_Id AND s.Role_Id = m.Role_Id AND
 	      m.User_Id = n.User_Id And n.User_Id=#{userId,jdbcType=DECIMAL}
   </select>

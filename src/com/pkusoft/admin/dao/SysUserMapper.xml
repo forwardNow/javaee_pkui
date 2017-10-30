@@ -758,11 +758,11 @@
   <select id="getUserPermitList" resultType="java.util.Map" parameterType="java.lang.Object" >
   SELECT t.PERMIT_CODE,
          t.PERMIT_VALUE
-    FROM Sys_Permit t, Sys_Role_Permit s
+    FROM SYS_PERMIT t, SYS_ROLE_PERMIT s
     WHERE t.Permit_Id = s.Permit_Id 
             <if test="permitCode != null" >
             AND t.PERMIT_Code = #{permitCode,jdbcType=VARCHAR}
             </if>
-            AND s.Role_Id = (SELECT a.Role_Id FROM Sys_Role_User a WHERE a.User_Id = #{userId,jdbcType=DECIMAL})
+            AND s.Role_Id = (SELECT a.Role_Id FROM SYS_ROLE_USER a WHERE a.User_Id = #{userId,jdbcType=DECIMAL})
   </select>
 </mapper>

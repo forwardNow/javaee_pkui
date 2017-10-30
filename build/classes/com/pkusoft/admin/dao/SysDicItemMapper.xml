@@ -523,15 +523,15 @@
    	 <if test="pager != null" >
       <include refid="pageHeader" />
      </if> 
-   		select b.* from (select DIC_NAME from sys_dic_list c where c.parent_dic=#{dicName,jdbcType=VARCHAR} ) a ,sys_dic_item b 
+   		select b.* from (select DIC_NAME from SYS_DIC_LIST c where c.parent_dic=#{dicName,jdbcType=VARCHAR} ) a ,SYS_DIC_ITEM b 
     		where a.dic_name = b.dic_name 
- 		union select d.* from sys_dic_item d where d.dic_name = #{dicName,jdbcType=VARCHAR}
+ 		union select d.* from SYS_DIC_ITEM d where d.dic_name = #{dicName,jdbcType=VARCHAR}
 	 <if test="pager != null" >
     	  <include refid="pageRoot" />
  	 </if>
   </select>
   <select id="getMaxItemId" parameterType="java.lang.String" resultType="java.lang.Long" >
-	select max(item_Id)from Sys_dic_item
+	select max(item_Id) from SYS_DIC_ITEM
   </select>
   
   <select id="getListByDicNameAndItemValue" parameterType="com.pkusoft.admin.model.SysDicItem" resultMap="BaseResultMap" >
