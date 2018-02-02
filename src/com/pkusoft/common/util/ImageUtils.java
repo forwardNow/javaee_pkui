@@ -66,29 +66,29 @@ public class ImageUtils {
 		String pathPrefix = "/Users/forwardNow/develop/workspace";
 		String dirPath = pathPrefix + "/pkui/WebContent/static/desktop/images/apps";
 		String imageBasePath_24x24 =  pathPrefix + "/pkui/WebContent/static/desktop/images/icon/24x24";
-		String imageBasePath_76x76 =  pathPrefix + "/pkui/WebContent/static/desktop/images/icon/76x76";
+//		String imageBasePath_76x76 =  pathPrefix + "/pkui/WebContent/static/desktop/images/icon/76x76";
 		
 		// 1. 读取 /pkui/WebContent/static/desktop/images/apps 目录里的所有png图片
-		File imageDir = new File( dirPath );
+		File imageDir = new File( "/Users/forwardNow/Downloads/201711/136517-file-types/png" );
 		File[] imageFileList = imageDir.listFiles();
 		
 		for ( int i = 0; i < imageFileList.length; i++ ) {
 			File imageFile = imageFileList[ i ];
 			String fileName = imageFile.getName();
 			InputStream srcImageInputStream = new FileInputStream( imageFile );
-			OutputStream compressedImageOutputStrem_24x24 = new FileOutputStream( imageBasePath_24x24 + "/" + fileName );
-			OutputStream compressedImageOutputStrem_76x76 = new FileOutputStream( imageBasePath_76x76 + "/" + fileName );
+			OutputStream compressedImageOutputStrem_24x24 = new FileOutputStream( "/Users/forwardNow/Downloads/201711/png_110/" + fileName );
+//			OutputStream compressedImageOutputStrem_76x76 = new FileOutputStream( imageBasePath_76x76 + "/" + fileName );
 			
 			if ( fileName.indexOf( ".png" ) == -1 ) {
 				continue;
 			}
 			
 			// 2. 压缩为 24x24 存入 /pkui/WebContent/static/desktop/images/icon/24x24
-			ImageUtils.compressImage( srcImageInputStream, compressedImageOutputStrem_24x24, "png", 24, 24 );
+			ImageUtils.compressImage( srcImageInputStream, compressedImageOutputStrem_24x24, "png", 110, 110 );
 			
 			// 3. 压缩为 76x76 存入 /pkui/WebContent/static/desktop/images/icon/76x76
-			srcImageInputStream = new FileInputStream( imageFile );
-			ImageUtils.compressImage( srcImageInputStream, compressedImageOutputStrem_76x76, "png", 76, 76 );
+//			srcImageInputStream = new FileInputStream( imageFile );
+//			ImageUtils.compressImage( srcImageInputStream, compressedImageOutputStrem_76x76, "png", 76, 76 );
 		}
 		
 		

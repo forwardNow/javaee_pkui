@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas" width="400" height="400"></canvas>
+<script>
+    function Circle() {
+        this.radius = 100;    // 圆环半径
+        this.lineWidth = 25;  // 圆环边的宽度
+        this.strokeStyle = '#ccc'; //边的颜色
+        this.fillStyle = 'red';  //填充色
+        this.lineCap = 'round';
+    }
+
+    Circle.prototype.draw = function(ctx) {
+        ctx.beginPath();
+        ctx.arc(250, 250, this.radius, 0, Math.PI*2, true);  // 坐标为250的圆，这里起始角度是0，结束角度是Math.PI*2
+        ctx.lineWidth = this.lineWidth;
+        ctx.strokeStyle = this.strokeStyle;
+        ctx.stroke();  // 这里用stroke画一个空心圆，想填充颜色的童鞋可以用fill方法
+    };
+
+    function Ring(startAngle, percent) {
+        Circle.call(this);
+        this.startAngle = startAngle || 3*Math.PI/2; //弧起始角度
+        this.percent = percent;  //弧占的比例
+    }
+
+    Ring.prototype = Object.create(Circle.prototype);
+
+    Ring.prototype.drawRing = function(ctx) {
+        var count = 0,
+            that = this,
+            times = 10, // 分十次绘制蓝弧
+            startAngle = this.startAngle,
+            endAngle = startAngle;
+
+        // draw background cirle
+        this.draw(ctx);
+
+        var handle = setInterval(function() {
+            if (count == times) {
+                clearInterval(handle);
+            }
+
+            // angle
+            ctx.beginPath();
+            var anglePerSec = 2 * Math.PI * (that.percent / 100) / times; // 每个间隔滑动的弧度
+            ctx.arc(250, 250, that.radius, startAngle, endAngle, false); //这里的圆心坐标要和cirle的保持一致
+            ctx.strokeStyle = that.fillStyle;
+            ctx.lineCap = that.lineCap;
+            ctx.stroke();
+            ctx.closePath();
+
+            startAngle += anglePerSec - 0.0028; // 消除每次绘环间的计算误差，防止出现空隙
+            endAngle = startAngle + anglePerSec;
+
+            count++;
+        }, 60); // 这里定义每60ms绘制一次
+    };
+
+    var canvas = document.getElementById('canvas');
+    var ctx =  canvas.getContext('2d');
+
+    var ring = new Ring( Math.PI / 2 * 2, 100);  // 从2*Math.PI/3弧度开始，进度为50%的环
+    ring.drawRing(ctx);
+</script>
+</body>
+</html>

@@ -1,0 +1,401 @@
+.webuploader-container {
+  position: relative;
+}
+
+.webuploader-element-invisible {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.webuploader-pick {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  background: #00b7ee;
+  padding: 10px 15px;
+  color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.webuploader-pick-hover {
+  background: #00a2d4;
+}
+
+.webuploader-pick-disable {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.wu-full.wu-container {
+  position: relative;
+  padding: 45px 15px 15px;
+  margin: 15px 0;
+  background-color: #fafafa;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.05);
+  border-color: #e5e5e5 #eee #eee;
+  border-style: solid;
+  border-width: 1px 0;
+}
+.wu-full .wu-filelist-container {
+  margin: 20px;
+  border: 3px dashed #e6e6e6;
+}
+.wu-full .wu-filelist-container.filled {
+  padding: 17px;
+  margin: 0;
+  border: 3px dashed transparent;
+}
+.wu-full .wu-filelist-container.webuploader-dnd-over {
+  border: 3px dashed #999999;
+}
+.wu-full .wu-dnd-placeholder {
+  min-height: 300px;
+  padding-top: 178px;
+  text-align: center;
+  background: url(../images/image.png) center 93px no-repeat;
+  color: #cccccc;
+  font-size: 18px;
+  position: relative;
+}
+.wu-full .wu-dnd-placeholder .webuploader-pick {
+  font-size: 18px;
+  background: #00b7ee;
+  border-radius: 3px;
+  line-height: 44px;
+  padding: 0 30px;
+  *width: 120px;
+  color: #fff;
+  display: inline-block;
+  margin: 0 auto 20px auto;
+  cursor: pointer;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.wu-full .wu-dnd-placeholder .webuploader-pick-hover {
+  background: #00a2d4;
+}
+.wu-full .wu-dnd-placeholder .flashTip {
+  color: #666666;
+  font-size: 12px;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 20px;
+}
+.wu-full .wu-dnd-placeholder .flashTip a {
+  color: #0785d1;
+  text-decoration: none;
+}
+.wu-full .wu-dnd-placeholder .flashTip a:hover {
+  text-decoration: underline;
+}
+.wu-full .wu-filelist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.wu-full .wu-filelist:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+.wu-full .wu-fileitem {
+  width: 110px;
+  height: 146px;
+  background: url(../images/bg.png) no-repeat #F8F8F8;
+  margin: 8px;
+  position: relative;
+  display: inline;
+  float: left;
+  font-size: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+.wu-full .wu-fileitem:hover {
+  z-index: 100;
+}
+.wu-full .wu-fileitem:hover .wu-fileitem-title {
+  overflow: visible;
+}
+.wu-full .wu-fileitem-title {
+  height: 32px;
+  line-height: 16px;
+  overflow: hidden;
+  word-break: break-all;
+}
+.wu-full .wu-fileitem-title-text {
+  display: inline-block;
+  padding: 4px 4px 0 4px;
+  background-color: #F8F8F8;
+}
+.wu-full .wu-fileitem-progress {
+  position: absolute;
+  width: 100%;
+  bottom: 32px;
+  left: 0;
+  height: 8px;
+  overflow: hidden;
+  z-index: 50;
+  margin: 0;
+  border-radius: 0;
+  background: none;
+  -webkit-box-shadow: 0 0 0;
+}
+.wu-full .wu-fileitem-progress-bar {
+  display: none;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  background: #1483d8 url(../images/progress.png) repeat-x;
+  -webit-transition: width 200ms linear;
+  -moz-transition: width 200ms linear;
+  -o-transition: width 200ms linear;
+  -ms-transition: width 200ms linear;
+  transition: width 200ms linear;
+  -webkit-animation: wu-progressmove 2s linear infinite;
+  -moz-animation: wu-progressmove 2s linear infinite;
+  -o-animation: wu-progressmove 2s linear infinite;
+  -ms-animation: wu-progressmove 2s linear infinite;
+  animation: wu-progressmove 2s linear infinite;
+  -webkit-transform: translateZ(0);
+}
+.wu-full .wu-fileitem-thumbnail {
+  width: 110px;
+  height: 110px;
+  line-height: 110px;
+  vertical-align: middle;
+  overflow: hidden;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webit-transition: 200ms ease-out;
+  -moz-transition: 200ms ease-out;
+  -o-transition: 200ms ease-out;
+  -ms-transition: 200ms ease-out;
+  transition: 200ms ease-out;
+}
+.wu-full .wu-fileitem-thumbnail-file {
+  background: url(../images/filetype/file.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-avi {
+  background: url(../images/filetype/avi.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-css {
+  background: url(../images/filetype/css.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-doc,
+.wu-full .wu-fileitem-thumbnail-docx {
+  background: url(../images/filetype/doc.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-dwg {
+  background: url(../images/filetype/dwg.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-exe {
+  background: url(../images/filetype/exe.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-html {
+  background: url(../images/filetype/html.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-iso {
+  background: url(../images/filetype/iso.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-jpg {
+  background: url(../images/filetype/jpg.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-js {
+  background: url(../images/filetype/js.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-mp3 {
+  background: url(../images/filetype/mp3.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-mp4 {
+  background: url(../images/filetype/mp4.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-pdf {
+  background: url(../images/filetype/pdf.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-png {
+  background: url(../images/filetype/png.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-ppt,
+.wu-full .wu-fileitem-thumbnail-pptx {
+  background: url(../images/filetype/ppt.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-psd {
+  background: url(../images/filetype/psd.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-rtf {
+  background: url(../images/filetype/rtf.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-txt {
+  background: url(../images/filetype/txt.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-xls,
+.wu-full .wu-fileitem-thumbnail-xlsx {
+  background: url(../images/filetype/xls.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-xml {
+  background: url(../images/filetype/xml.png) no-repeat;
+}
+.wu-full .wu-fileitem-thumbnail-zip {
+  background: url(../images/filetype/zip.png) no-repeat;
+}
+.wu-full .wu-fileitem-img {
+  width: 100%;
+}
+.wu-full .wu-fileitem-error {
+  background: #f43838;
+  color: #fff;
+  position: absolute;
+  bottom: 36px;
+  left: 0;
+  height: 28px;
+  line-height: 28px;
+  width: 100%;
+  z-index: 100;
+}
+.wu-full .wu-fileitem-success {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 36px;
+  height: 40px;
+  width: 100%;
+  z-index: 200;
+  background: url(../images/success.png) no-repeat right bottom;
+}
+.wu-full .wu-fileitem-control {
+  z-index: 300;
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 30px;
+  height: 30px;
+}
+.wu-full .wu-fileitem-control-cancel {
+  display: inline;
+  float: right;
+  width: 30px;
+  height: 30px;
+  background: url(../images/icon_close.png) no-repeat 0 0;
+  text-indent: -9999px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.wu-full .wu-fileitem-control-cancel:hover {
+  background-position: -31px 0;
+}
+.wu-full .wu-statusbar {
+  height: 63px;
+  border-top: 1px solid #dadada;
+  padding: 0 20px;
+  line-height: 63px;
+  vertical-align: middle;
+  position: relative;
+}
+.wu-full .wu-statusbar-progress {
+  border: 1px solid #1483d8;
+  width: 198px;
+  background: #fff;
+  height: 18px;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  line-height: 20px;
+  color: #6dbfff;
+  position: relative;
+  margin: 0 10px 0 0;
+}
+.wu-full .wu-statusbar-progress-percentage {
+  width: 0;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: #1483d8;
+  position: absolute;
+}
+.wu-full .wu-statusbar-progress-text {
+  position: relative;
+  z-index: 10;
+}
+.wu-full .wu-statusbar-info {
+  display: inline-block;
+  font-size: 14px;
+  color: #666666;
+}
+.wu-full .wu-statusbar-btns {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  line-height: 40px;
+}
+.wu-full .wu-statusbar-btns .wu-filepicker {
+  display: inline-block;
+  float: left;
+}
+.wu-full .wu-statusbar-btns .webuploader-pick,
+.wu-full .wu-btn-upload,
+.wu-full .wu-btn-upload.state-uploading,
+.wu-full .wu-btn-upload.state-paused {
+  background: #ffffff;
+  border: 1px solid #cfcfcf;
+  color: #565656;
+  padding: 0 18px;
+  display: inline-block;
+  border-radius: 3px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  float: left;
+}
+.wu-full .wu-statusbar-btns .webuploader-pick-hover,
+.wu-full .wu-btn-upload:hover,
+.wu-full .wu-btn-upload.state-uploading:hover,
+.wu-full .wu-btn-upload.state-paused:hover {
+  background: #f0f0f0;
+}
+.wu-full .wu-btn-upload {
+  background: #00b7ee;
+  color: #fff;
+  border-color: transparent;
+}
+.wu-full .wu-btn-upload:hover {
+  background: #00a2d4;
+}
+.wu-full .wu-btn-upload.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+@-webkit-keyframes wu-progressmove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 17px 0;
+  }
+}
+@-moz-keyframes wu-progressmove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 17px 0;
+  }
+}
+@keyframes wu-progressmove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 17px 0;
+  }
+}

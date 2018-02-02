@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "data": {
+     "56780": { "id": "56780", "name": "警察_男", "type": "police_man" },
+     "56781": { "id": "56781", "name": "警察_女", "type": "police_woman" },
+     "56782": { "id": "56782", "name": "嫌疑人_男", "type": "suspect_man" },
+     "56783": { "id": "56783", "name": "嫌疑人_女", "type": "suspect_woman" },
+     "56786": { "id": "56786", "name": "一般人_男", "type": "ordinary_man" },
+     "56787": { "id": "56787", "name": "一般人_女", "type": "ordinary_woman" }
+  }
+}
