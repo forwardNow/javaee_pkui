@@ -41,7 +41,10 @@
        data-pkui-component="datagrid"
        data-pkui-component-options='{
             "selection": true,
-            "multiSelect": true
+            "multiSelect": true,
+            "selectionConditionSet": {
+            	"deptLevel": "2"
+            } 
        }'
        data-url="{% system.dept.list.sysDeptListData %}"
        data-query-form-selector="#sysDeptQueryForm"
@@ -193,5 +196,26 @@
             // 关闭 loading
             $button.isLoading( "hide" );
         } );
+    }
+    
+    /**
+     * 数据载入完毕后，让 deptLevel == "4" 的行被选中。
+     */
+    function sysDeptListAfterloadCallback() {
+    	var 
+    		bootgrid = this,
+    		idList = [],
+    		rows = bootgrid.currentRows,
+    		i, len, row
+ 		;
+    	
+    	for ( i = 0, len = rows.length; i < len; i++ ) {
+    		row = rows[ i ];
+    		if ( row && row[ "deptLevel" ] === "4" ) {
+    			idList.push( row[ "deptId" ] );
+    		}
+    	}
+    	
+    	bootgrid.select( idList );
     }
 </script>
